@@ -35,3 +35,6 @@ coverage/
 # Medusa
 .cache/
 uploads/
+
+# Mercur generated route types (run `bunx @mercurjs/cli codegen` / dev server regenerates)
+.mercur/

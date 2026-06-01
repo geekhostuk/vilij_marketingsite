@@ -113,6 +113,10 @@ module.exports = defineConfig({
     {
       resolve: "./src/modules/send-seller-profile",
     },
+    // The Vilij: curation review checklists (seller vetting + product quality).
+    {
+      resolve: "./src/modules/send-review",
+    },
     {
       resolve: '@mercurjs/core/modules/admin-ui',
       options: {
