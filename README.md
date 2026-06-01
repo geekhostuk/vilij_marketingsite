@@ -54,6 +54,8 @@ corepack yarn medusa exec ./src/scripts/setup-commission.ts    # product types +
 |--------|---------|
 | `setup-uk-region.ts` | Add GBP currency + create the UK/GBP region (idempotent). |
 | `setup-commission.ts` | Create Physical/Digital/Service product types + base commission rates (Digital 20%, Physical 5%, default 5%). |
+| `setup-taxonomy.ts` | Public filter lenses + internal supplier-mix categories + gift-guide collections (idempotent). |
+| `verify-curation.ts` | Assert stage→SellerStatus sync, founding, checklists, product publish gate. |
 | `check-config.ts` | List configured payment/payout providers (Stripe wiring check). |
 | `verify-commission.ts` | Assert commission resolution incl. Founders Fifty 0% + expiry revert. |
 
@@ -85,8 +87,8 @@ Admin login (dev): `admin@thevilij.uk` / `Vilij-dev-2026`.
 - [x] **Step 1** — Scaffold & run the stock stack (backend + admin + vendor + storefront), Redis wired.
 - [x] **Step 2** — Stripe Connect (test, UK/GBP) wired (self-activates on real key; see `STRIPE_SETUP.md`); UK/GBP region created.
 - [x] **Step 3** — Commission rules (Digital 20% / Physical 5% / default 5%) + Founders Fifty per-seller 0% override, daily expiry job + 30-day-warning subscriber. Verified via `verify-commission.ts`.
-- [ ] Step 4 — Curation extensions (SEND fields, review checklist, statuses, badges).
-- [ ] Step 5 — Categories & taxonomy.
+- [x] **Step 4** — Curation: SEND profile fields, review checklists (`send_review`), funnel stages synced to SellerStatus, badges, product quality gate, admin curation page. Verified via `verify-curation.ts` + HTTP.
+- [x] **Step 5** — Taxonomy: 9 public filter lenses, 4 internal supplier-mix categories (hidden), 4 gift-guide collections; demo categories hidden. Via `setup-taxonomy.ts`.
 - [ ] Step 6 — Product modes (digital + services-as-enquiry).
 - [ ] Step 7 — Bespoke storefront rebuild.
 - [ ] Step 8 — Branding pass.
