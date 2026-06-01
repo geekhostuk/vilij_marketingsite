@@ -109,6 +109,10 @@ module.exports = defineConfig({
     {
       resolve: "@medusajs/medusa/rbac",
     },
+    // The Vilij: SEND seller profile (funnel stage, Founders Fifty, badges, story).
+    {
+      resolve: "./src/modules/send-seller-profile",
+    },
     {
       resolve: '@mercurjs/core/modules/admin-ui',
       options: {

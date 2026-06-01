@@ -44,7 +44,18 @@ cd packages/api
 corepack yarn medusa db:migrate
 corepack yarn seed
 corepack yarn medusa user -e admin@thevilij.uk -p <password>   # create an admin
+corepack yarn medusa exec ./src/scripts/setup-uk-region.ts     # UK / GBP region
+corepack yarn medusa exec ./src/scripts/setup-commission.ts    # product types + commission rates
 ```
+
+### Provisioning / ops scripts (`packages/api/src/scripts`)
+
+| Script | Purpose |
+|--------|---------|
+| `setup-uk-region.ts` | Add GBP currency + create the UK/GBP region (idempotent). |
+| `setup-commission.ts` | Create Physical/Digital/Service product types + base commission rates (Digital 20%, Physical 5%, default 5%). |
+| `check-config.ts` | List configured payment/payout providers (Stripe wiring check). |
+| `verify-commission.ts` | Assert commission resolution incl. Founders Fifty 0% + expiry revert. |
 
 ## URLs
 
@@ -73,7 +84,7 @@ Admin login (dev): `admin@thevilij.uk` / `Vilij-dev-2026`.
 
 - [x] **Step 1** — Scaffold & run the stock stack (backend + admin + vendor + storefront), Redis wired.
 - [x] **Step 2** — Stripe Connect (test, UK/GBP) wired (self-activates on real key; see `STRIPE_SETUP.md`); UK/GBP region created.
-- [ ] Step 3 — Commission rules + Founders Fifty.
+- [x] **Step 3** — Commission rules (Digital 20% / Physical 5% / default 5%) + Founders Fifty per-seller 0% override, daily expiry job + 30-day-warning subscriber. Verified via `verify-commission.ts`.
 - [ ] Step 4 — Curation extensions (SEND fields, review checklist, statuses, badges).
 - [ ] Step 5 — Categories & taxonomy.
 - [ ] Step 6 — Product modes (digital + services-as-enquiry).
