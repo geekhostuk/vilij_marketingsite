@@ -1,0 +1,46 @@
+# Local development infrastructure for The Vilij.
+# Postgres + Redis run in Docker; the Mercur backend, admin, vendor panel and
+# storefront run on the host (fast HMR / file-watching on Windows).
+#
+#   docker compose -f docker-compose.dev.yml up -d
+#
+# Backend .env should point at:
+#   DATABASE_URL=postgres://vilij:vilij@localhost:5432/thevilij
+#   REDIS_URL=redis://localhost:6379
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: vilij-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vilij
+      POSTGRES_PASSWORD: vilij
+      POSTGRES_DB: thevilij
+    ports:
+      - "5432:5432"
+    volumes:
+      - vilij_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vilij -d thevilij"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7
+    container_name: vilij-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - vilij_redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  vilij_pgdata:
+  vilij_redisdata:
