@@ -1,0 +1,57 @@
+/*
+ * The Vilij — warm, calm, restorative theme.
+ * Overrides the storefront's CSS variables (imported after colors.css) so the
+ * whole UI takes on a warm clay-on-cream identity without touching components.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Nunito+Sans:wght@300;400;500;600;700&display=swap");
+
+:root {
+  /* Warm clay/terracotta brand ramp (light -> dark). Action colours use the
+     darker steps, giving deep warm-brown buttons and links on cream. */
+  --brand-25: 250, 246, 242;
+  --brand-50: 246, 238, 231;
+  --brand-100: 239, 226, 215;
+  --brand-200: 226, 201, 184;
+  --brand-300: 206, 169, 147;
+  --brand-400: 183, 134, 110;
+  --brand-500: 159, 104, 81;
+  --brand-600: 138, 84, 63;
+  --brand-700: 112, 66, 49;
+  --brand-800: 92, 54, 41;
+  --brand-900: 71, 42, 32;
+
+  /* Warm neutrals: cream backgrounds, warm charcoal text. */
+  --neutral-0: 253, 250, 245;
+  --neutral-25: 249, 244, 236;
+  --neutral-50: 244, 237, 227;
+  --neutral-100: 235, 226, 214;
+  --neutral-200: 214, 203, 189;
+  --neutral-300: 178, 165, 150;
+  --neutral-400: 138, 125, 112;
+  --neutral-500: 102, 90, 80;
+  --neutral-600: 74, 64, 56;
+  --neutral-700: 51, 43, 37;
+  --neutral-800: 38, 31, 27;
+  --neutral-900: 28, 23, 20;
+  --neutral-1000: 20, 16, 14;
+
+  /* A calm sage accent (used for the Wellbeing lens + restful highlights). */
+  --vilij-sage-100: 226, 232, 222;
+  --vilij-sage-300: 168, 185, 156;
+  --vilij-sage-500: 116, 138, 102;
+}
+
+/* Editorial serif for display headings — warmth + storytelling. */
+.font-display {
+  font-family: "Fraunces", ui-serif, Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+body {
+  font-family: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Soften the overall feel: warmer default radius on cards/buttons. */
+:root {
+  --vilij-radius: 14px;
+}

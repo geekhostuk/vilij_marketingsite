@@ -1,5 +1,7 @@
 /* Defined colors variables */
 @import "colors.css";
+/* The Vilij warm theme overrides (must come after colors.css) */
+@import "vilij-theme.css";
 
 @tailwind base;
 @tailwind components;

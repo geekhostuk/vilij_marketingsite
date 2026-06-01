@@ -125,6 +125,10 @@ module.exports = defineConfig({
     {
       resolve: "./src/modules/service-enquiry",
     },
+    // The Vilij: admin-curated homepage feature slots.
+    {
+      resolve: "./src/modules/homepage-slots",
+    },
     {
       resolve: '@mercurjs/core/modules/admin-ui',
       options: {

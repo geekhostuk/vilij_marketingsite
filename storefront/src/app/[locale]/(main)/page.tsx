@@ -1,17 +1,17 @@
-import {
-  BannerSection,
-  BlogSection,
-  Hero,
-  HomeCategories,
-  HomeProductSection,
-  ShopByStyleSection,
-} from "@/components/sections"
+import { HomeCategories, HomeProductSection } from "@/components/sections"
+import { VilijHero, VilijStoryBand, VilijCommitments } from "@/components/vilij"
+import { listHomepageSlots, type HomepageSlot } from "@/lib/data/homepage"
 
 import type { Metadata } from "next"
 import { headers } from "next/headers"
 import Script from "next/script"
 import { listRegions } from "@/lib/data/regions"
 import { toHreflang } from "@/lib/helpers/hreflang"
+
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "The Vilij"
+const SITE_DESCRIPTION =
+  process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
+  "A curated marketplace from the SEND community — warmth, story and quality."
 
 export async function generateMetadata({
   params,
@@ -25,7 +25,6 @@ export async function generateMetadata({
   const protocol = headersList.get("x-forwarded-proto") || "https"
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `${protocol}://${host}`
 
-  // Build alternates based on available regions (locales)
   let languages: Record<string, string> = {}
   try {
     const regions = await listRegions()
@@ -37,71 +36,25 @@ export async function generateMetadata({
           .filter(Boolean)
       )
     ) as string[]
-
     languages = locales.reduce<Record<string, string>>((acc, code) => {
-      const hrefLang = toHreflang(code)
-      acc[hrefLang] = `${baseUrl}/${code}`
+      acc[toHreflang(code)] = `${baseUrl}/${code}`
       return acc
     }, {})
   } catch {
-    // Fallback: only current locale
     languages = { [toHreflang(locale)]: `${baseUrl}/${locale}` }
   }
 
-  const title = "Home"
-  const description =
-    "Welcome to Mercur B2C Demo! Create a modern marketplace that you own and customize in every aspect with high-performance, fully customizable storefront."
-  const ogImage = "/B2C_Storefront_Open_Graph.png"
   const canonical = `${baseUrl}/${locale}`
-
   return {
-    title,
-    description,
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-video-preview": -1,
-        "max-snippet": -1,
-      },
-    },
-    alternates: {
-      canonical,
-      languages: {
-        ...languages,
-        "x-default": baseUrl,
-      },
-    },
+    title: "Home",
+    description: SITE_DESCRIPTION,
+    alternates: { canonical, languages: { ...languages, "x-default": baseUrl } },
     openGraph: {
-      title: `${title} | ${
-        process.env.NEXT_PUBLIC_SITE_NAME ||
-        "Mercur B2C Demo - Marketplace Storefront"
-      }`,
-      description,
+      title: `Home | ${SITE_NAME}`,
+      description: SITE_DESCRIPTION,
       url: canonical,
-      siteName:
-        process.env.NEXT_PUBLIC_SITE_NAME ||
-        "Mercur B2C Demo - Marketplace Storefront",
+      siteName: SITE_NAME,
       type: "website",
-      images: [
-        {
-          url: ogImage.startsWith("http") ? ogImage : `${baseUrl}${ogImage}`,
-          width: 1200,
-          height: 630,
-          alt:
-            process.env.NEXT_PUBLIC_SITE_NAME ||
-            "Mercur B2C Demo - Marketplace Storefront",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage.startsWith("http") ? ogImage : `${baseUrl}${ogImage}`],
     },
   }
 }
@@ -113,25 +66,19 @@ export default async function Home({
 }) {
   const { locale } = await params
 
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = headersList.get("x-forwarded-proto") || "https"
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `${protocol}://${host}`
+  const slots = await listHomepageSlots()
+  const bySlot = (key: HomepageSlot["slot_key"]) =>
+    slots.find((s) => s.slot_key === key)
 
-  const siteName =
-    process.env.NEXT_PUBLIC_SITE_NAME ||
-    "Mercur B2C Demo - Marketplace Storefront"
+  const startShopping = bySlot("start_shopping")
+  const spotlight = bySlot("seller_spotlight")
+  const newThisWeek = bySlot("new_this_week")
+  const favourites = bySlot("community_favourites")
+  const ownBrand = bySlot("vilij_own_brand")
+  const behind = bySlot("behind_the_business")
 
   return (
-    <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start text-primary">
-      <link
-        rel="preload"
-        as="image"
-        href="/images/hero/Image.jpg"
-        imageSrcSet="/images/hero/Image.jpg 700w"
-        imageSizes="(min-width: 1024px) 50vw, 100vw"
-      />
-      {/* Organization JSON-LD */}
+    <main className="flex flex-col w-full text-primary">
       <Script
         id="ld-org"
         type="application/ld+json"
@@ -139,50 +86,36 @@ export default async function Home({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: siteName,
-            url: `${baseUrl}/${locale}`,
-            logo: `${baseUrl}/favicon.ico`,
-          }),
-        }}
-      />
-      {/* WebSite JSON-LD */}
-      <Script
-        id="ld-website"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            name: siteName,
-            url: `${baseUrl}/${locale}`,
-            inLanguage: toHreflang(locale),
+            name: SITE_NAME,
+            url: `${process.env.NEXT_PUBLIC_BASE_URL || ""}/${locale}`,
           }),
         }}
       />
 
-      <Hero
-        image="/images/hero/Image.jpg"
-        heading="Snag your style in a flash"
-        paragraph="Buy, sell, and discover pre-loved gems from the trendiest brands."
-        buttons={[
-          { label: "Buy now", path: "/categories" },
-          {
-            label: "Sell now",
-            path:
-              process.env.NEXT_PUBLIC_VENDOR_URL ||
-              "https://vendor.mercurjs.com",
-          },
-        ]}
-      />
-      <div className="px-4 lg:px-8 w-full">
-        <HomeProductSection heading="trending listings" locale={locale} home />
+      <VilijHero locale={locale} />
+
+      {startShopping && <VilijStoryBand slot={startShopping} locale={locale} />}
+      <div className="px-4 lg:px-8 w-full mx-auto max-w-7xl">
+        <HomeCategories heading="Browse by what matters to you" />
       </div>
-      <div className="px-4 lg:px-8 w-full">
-        <HomeCategories heading="SHOP BY CATEGORY" />
+
+      {newThisWeek && <VilijStoryBand slot={newThisWeek} locale={locale} />}
+      <div className="px-4 lg:px-8 w-full mx-auto max-w-7xl">
+        <HomeProductSection
+          heading={favourites?.title || "Community favourites"}
+          locale={locale}
+          home
+        />
       </div>
-      <BannerSection />
-      <ShopByStyleSection />
-      <BlogSection />
+
+      {spotlight && (
+        <VilijStoryBand slot={spotlight} locale={locale} align="center" />
+      )}
+
+      <VilijCommitments />
+
+      {ownBrand && <VilijStoryBand slot={ownBrand} locale={locale} />}
+      {behind && <VilijStoryBand slot={behind} locale={locale} align="center" />}
     </main>
   )
 }
