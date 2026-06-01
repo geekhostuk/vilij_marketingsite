@@ -89,7 +89,7 @@ Admin login (dev): `admin@thevilij.uk` / `Vilij-dev-2026`.
 - [x] **Step 3** — Commission rules (Digital 20% / Physical 5% / default 5%) + Founders Fifty per-seller 0% override, daily expiry job + 30-day-warning subscriber. Verified via `verify-commission.ts`.
 - [x] **Step 4** — Curation: SEND profile fields, review checklists (`send_review`), funnel stages synced to SellerStatus, badges, product quality gate, admin curation page. Verified via `verify-curation.ts` + HTTP.
 - [x] **Step 5** — Taxonomy: 9 public filter lenses, 4 internal supplier-mix categories (hidden), 4 gift-guide collections; demo categories hidden. Via `setup-taxonomy.ts`.
-- [ ] Step 6 — Product modes (digital + services-as-enquiry).
+- [x] **Step 6** — Product modes: `digital_product` module (asset linked to variant, tokenised post-purchase download + buyer email subscriber) and `service_enquiry` module (enquiry route + seller-notify subscriber). Verified via `verify-product-modes.ts` + HTTP.
 - [ ] Step 7 — Bespoke storefront rebuild.
 - [ ] Step 8 — Branding pass.
 - [ ] Step 9 — Seed + walkthrough.

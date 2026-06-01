@@ -117,6 +117,14 @@ module.exports = defineConfig({
     {
       resolve: "./src/modules/send-review",
     },
+    // The Vilij: digital products (secure post-purchase delivery).
+    {
+      resolve: "./src/modules/digital-product",
+    },
+    // The Vilij: enquiry-led service listings (Phase 1, no checkout).
+    {
+      resolve: "./src/modules/service-enquiry",
+    },
     {
       resolve: '@mercurjs/core/modules/admin-ui',
       options: {
