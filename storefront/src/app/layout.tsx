@@ -19,13 +19,12 @@ const funnelDisplay = Funnel_Display({
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | ${
-      process.env.NEXT_PUBLIC_SITE_NAME || 'Mercur B2C Demo - Marketplace Storefront'
-    }`,
-    default: process.env.NEXT_PUBLIC_SITE_NAME || 'Mercur B2C Demo - Marketplace Storefront'
+    template: `%s | ${process.env.NEXT_PUBLIC_SITE_NAME || 'The Vilij'}`,
+    default: process.env.NEXT_PUBLIC_SITE_NAME || 'The Vilij'
   },
   description:
-    process.env.NEXT_PUBLIC_SITE_DESCRIPTION || 'Mercur B2C Demo - Marketplace Storefront',
+    process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
+    'A curated marketplace from the SEND community — warmth, story and quality.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
   alternates: {
     languages: {

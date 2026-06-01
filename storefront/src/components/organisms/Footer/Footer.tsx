@@ -64,7 +64,9 @@ export function Footer() {
       </div>
 
       <div className="py-6 border rounded-sm " data-testid="footer-copyright">
-        <p className="text-md text-secondary text-center ">© 2024 Fleek</p>
+        <p className="text-md text-secondary text-center ">
+          © 2026 The Vilij — from our community to yours
+        </p>
       </div>
     </footer>
   )

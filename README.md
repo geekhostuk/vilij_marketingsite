@@ -91,6 +91,6 @@ Admin login (dev): `admin@thevilij.uk` / `Vilij-dev-2026`.
 - [x] **Step 5** — Taxonomy: 9 public filter lenses, 4 internal supplier-mix categories (hidden), 4 gift-guide collections; demo categories hidden. Via `setup-taxonomy.ts`.
 - [x] **Step 6** — Product modes: `digital_product` module (asset linked to variant, tokenised post-purchase download + buyer email subscriber) and `service_enquiry` module (enquiry route + seller-notify subscriber). Verified via `verify-product-modes.ts` + HTTP.
 - [~] **Step 7** — Storefront: warm clay-on-cream theme (app-wide CSS-var override + serif display), `homepage_slots` content model + `/store/homepage-slots` route + curated 6-slot homepage, "Why I created this" product block, service enquiry form wired to backend. Remaining polish: story-led seller-profile restyle, dedicated gift-guide/lens pages.
-- [ ] Step 8 — Branding pass.
+- [x] **Step 8** — Branding pass (storefront): warm theme, header wordmark, footer, titles + microcopy → The Vilij. Vendor/admin deep rebrand + Resend templates deferred (light scope / Resend deferred).
 - [ ] Step 9 — Seed + walkthrough.
 - [ ] Step 10 — VPS deploy (deferred for Phase 1 build).
