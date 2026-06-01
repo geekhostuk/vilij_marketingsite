@@ -26,9 +26,11 @@ __metadata:
     "@medusajs/draft-order": "npm:2.13.4"
     "@medusajs/framework": "npm:2.13.4"
     "@medusajs/medusa": "npm:2.13.4"
+    "@medusajs/payment-stripe": "npm:2.13.4"
     "@medusajs/test-utils": "npm:2.13.4"
     "@mercurjs/cli": "npm:2.1.5"
     "@mercurjs/core": "npm:2.1.5"
+    "@mercurjs/payout-stripe-connect": "npm:2.1.5"
     "@mercurjs/types": "npm:2.1.5"
     "@swc/core": "npm:^1.7.28"
     "@swc/jest": "npm:^0.2.36"
@@ -3586,6 +3588,17 @@ __metadata:
     react-router-dom: "npm:6.30.3"
     zod: "npm:3.25.76"
   checksum: 10c0/7d8d2ace1a465d12eaaaeb638af51f38b87cbe6efa27d8ef3b5d99f81749cecce5172f7a19c156fb644758ba9bb88beca6d1a05d94f50314e1cafb15d8b71ea4
+  languageName: node
+  linkType: hard
+
+"@mercurjs/payout-stripe-connect@npm:2.1.5":
+  version: 2.1.5
+  resolution: "@mercurjs/payout-stripe-connect@npm:2.1.5"
+  dependencies:
+    stripe: "npm:^15.5.0"
+  peerDependencies:
+    "@medusajs/framework": 2.13.4
+  checksum: 10c0/099c7bbf20db862a0832a5fee78adb093743f04ca41c0a2d3dc84363835e7f258573f26d309d4992f94f406b95423678763d27285c9be4d094a9611dbd8f18d0
   languageName: node
   linkType: hard
 

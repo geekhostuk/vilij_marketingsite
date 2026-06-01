@@ -34,6 +34,58 @@ const redisModules = redisUrl
     ]
   : []
 
+// The Vilij — Stripe Connect (Step 2). Activated only when a real Stripe secret
+// key is present, so the stack still boots on placeholder/empty keys (falling
+// back to the default system payout provider + manual payment). When a key is
+// set, register the Stripe payment provider (buyer checkout) and the Mercur
+// Stripe Connect payout provider (Express accounts, split payouts to sellers).
+// Webhooks: payment -> /hooks/payment/stripe_stripe, payout -> /hooks/payout.
+const stripeApiKey = process.env.STRIPE_API_KEY
+const stripeEnabled = !!stripeApiKey && stripeApiKey.startsWith('sk_')
+const stripeModules = stripeEnabled
+  ? [
+      {
+        resolve: '@medusajs/medusa/payment',
+        options: {
+          providers: [
+            {
+              resolve: '@medusajs/payment-stripe',
+              id: 'stripe',
+              options: {
+                apiKey: stripeApiKey,
+                webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
+                capture: false,
+                automatic_payment_methods: true,
+              },
+            },
+          ],
+        },
+      },
+      {
+        resolve: '@mercurjs/core/modules/payout',
+        options: {
+          providers: [
+            {
+              resolve: '@mercurjs/payout-stripe-connect',
+              id: 'stripe-connect',
+              options: {
+                apiKey: stripeApiKey,
+                webhookSecret: process.env.STRIPE_PAYOUT_WEBHOOK_SECRET,
+                accountValidation: {
+                  detailsSubmitted: true,
+                  chargesEnabled: true,
+                  payoutsEnabled: true,
+                  noOutstandingRequirements: true,
+                  requiredCapabilities: [],
+                },
+              },
+            },
+          ],
+        },
+      },
+    ]
+  : []
+
 module.exports = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
@@ -53,6 +105,7 @@ module.exports = defineConfig({
   },
   modules: [
     ...redisModules,
+    ...stripeModules,
     {
       resolve: "@medusajs/medusa/rbac",
     },

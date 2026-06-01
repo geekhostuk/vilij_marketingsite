@@ -72,7 +72,7 @@ Admin login (dev): `admin@thevilij.uk` / `Vilij-dev-2026`.
 ## Build status (per brief §8)
 
 - [x] **Step 1** — Scaffold & run the stock stack (backend + admin + vendor + storefront), Redis wired.
-- [ ] Step 2 — Stripe Connect (test, UK/GBP) + commission lines.
+- [x] **Step 2** — Stripe Connect (test, UK/GBP) wired (self-activates on real key; see `STRIPE_SETUP.md`); UK/GBP region created.
 - [ ] Step 3 — Commission rules + Founders Fifty.
 - [ ] Step 4 — Curation extensions (SEND fields, review checklist, statuses, badges).
 - [ ] Step 5 — Categories & taxonomy.
