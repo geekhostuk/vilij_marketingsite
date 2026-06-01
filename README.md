@@ -56,6 +56,9 @@ corepack yarn medusa exec ./src/scripts/setup-commission.ts    # product types +
 | `setup-commission.ts` | Create Physical/Digital/Service product types + base commission rates (Digital 20%, Physical 5%, default 5%). |
 | `setup-taxonomy.ts` | Public filter lenses + internal supplier-mix categories + gift-guide collections (idempotent). |
 | `verify-curation.ts` | Assert stage→SellerStatus sync, founding, checklists, product publish gate. |
+| `setup-homepage.ts` | Seed the six curated homepage slots. |
+| `seed-vilij.ts` | Demo data: sellers, story-led products, founding activation, homepage targets. |
+| `verify-product-modes.ts` | Assert digital asset/link/delivery + service product fixtures. |
 | `check-config.ts` | List configured payment/payout providers (Stripe wiring check). |
 | `verify-commission.ts` | Assert commission resolution incl. Founders Fifty 0% + expiry revert. |
 
@@ -92,5 +95,5 @@ Admin login (dev): `admin@thevilij.uk` / `Vilij-dev-2026`.
 - [x] **Step 6** — Product modes: `digital_product` module (asset linked to variant, tokenised post-purchase download + buyer email subscriber) and `service_enquiry` module (enquiry route + seller-notify subscriber). Verified via `verify-product-modes.ts` + HTTP.
 - [~] **Step 7** — Storefront: warm clay-on-cream theme (app-wide CSS-var override + serif display), `homepage_slots` content model + `/store/homepage-slots` route + curated 6-slot homepage, "Why I created this" product block, service enquiry form wired to backend. Remaining polish: story-led seller-profile restyle, dedicated gift-guide/lens pages.
 - [x] **Step 8** — Branding pass (storefront): warm theme, header wordmark, footer, titles + microcopy → The Vilij. Vendor/admin deep rebrand + Resend templates deferred (light scope / Resend deferred).
-- [ ] Step 9 — Seed + walkthrough.
+- [x] **Step 9** — Seed (`seed-vilij.ts`): The Vilij own-brand + 4 founding sellers, 7 story-led products across categories/modes, Founders Fifty activated, homepage slots targeted. End-to-end demo documented in `WALKTHROUGH.md`.
 - [ ] Step 10 — VPS deploy (deferred for Phase 1 build).
