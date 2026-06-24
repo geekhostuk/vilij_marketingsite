@@ -14,6 +14,7 @@ design's interactive behaviour reproduced in vanilla JS.
 |---------|--------------------------|-------------|
 | `/`     | `src/pages/index.astro`  | Homepage — hero, "Everything you need" feature grid (Café, Hall, Library, Wellbeing, Expert Hub, High Street, Market Place, Campus), benefits panel, "Built by families", testimonials, CTAs, footer. |
 | `/cafe` | `src/pages/cafe.astro`   | Café page — hero, "Why The Café Exists", the six Café spaces (Sip & Natter, Tea and Empathy, The Brew Source, The Elder Brew, Show Us Your Mug, Brewtiful Bites), "What else inside the Vilij" grid, testimonials, CTAs, footer. |
+| `/hall` | `src/pages/hall.astro`   | Vilij Hall page — hero, "Why The Vilij Hall Exists", six feature cards (Collective wins, Our Stories, Come and meet, What's on?, Vilij News, Daily Chat), "What else inside the Vilij" grid, testimonials, CTAs, footer. |
 
 ### Interactive behaviour
 Both pages reproduce the original design component logic with a small inline
@@ -23,9 +24,12 @@ script:
 - The monthly **price** (£10) is rendered server-side.
 
 ### Navigation links
-- Homepage → Café: the "What's on at the Café?" card button and the footer
-  **Café** quick-link point to `/cafe`.
-- Café → Homepage: the nav **Home** link and the logo point to `/`.
+- Homepage → Café / Hall: the "What's on at the Café?" and "What's on in the
+  Vilij Hall?" card buttons (and the footer **Café** quick-link) point to
+  `/cafe` and `/hall`.
+- Café / Hall → Homepage: the nav **Home** link and the logo point to `/`; the
+  Café and Hall pages also cross-link to each other via their "What else inside
+  the Vilij" grids.
 
 ## Project structure
 
@@ -36,7 +40,8 @@ script:
 ├── src/
 │   └── pages/
 │       ├── index.astro      # Homepage
-│       └── cafe.astro       # Café page
+│       ├── cafe.astro       # Café page
+│       └── hall.astro       # Vilij Hall page
 ├── public/
 │   └── assets/              # Images (illustrations, photos, logos)
 └── Designs/                 # Original design PDFs (reference only, not served)
