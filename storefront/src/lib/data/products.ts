@@ -80,9 +80,11 @@ export const listProducts = async ({
         limit,
         offset,
         region_id: region?.id,
+        // NOTE: Mercur v2.1.5 has no seller `reviews` relation, so we must not
+        // request *seller.reviews* here (it 500s the /store/products query).
         fields:
           '*variants.calculated_price,+variants.inventory_quantity,*seller,*variants,*seller.products,' +
-          '*seller.reviews,*seller.reviews.customer,*seller.reviews.seller,*seller.products.variants,*attribute_values,*attribute_values.attribute',
+          '*seller.products.variants,*attribute_values,*attribute_values.attribute',
         ...queryParams
       },
       headers,
@@ -96,7 +98,7 @@ export const listProducts = async ({
 
       const response = products.filter(prod => {
         // @ts-ignore Property 'seller' exists but TypeScript doesn't recognize it
-        const reviews = prod.seller?.reviews.filter(item => !!item) ?? [];
+        const reviews = prod.seller?.reviews?.filter(item => !!item) ?? [];
         return (
           // @ts-ignore Property 'seller' exists but TypeScript doesn't recognize it
           prod?.seller && {

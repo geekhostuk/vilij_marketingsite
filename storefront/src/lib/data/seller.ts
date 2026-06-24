@@ -3,24 +3,24 @@ import { SellerProps } from '@/types/seller';
 import { sdk } from '../config';
 
 export const getSellerByHandle = async (handle: string) => {
+  // Mercur v2.1.5 exposes sellers at `/store/sellers?handle=` (plural, filtered),
+  // not `/store/seller/:handle`, and has no `reviews` relation — so we request
+  // only the supported fields and default reviews to an empty list.
   return sdk.client
-    .fetch<{ seller: SellerProps }>(`/store/seller/${handle}`, {
+    .fetch<{ sellers: SellerProps[] }>(`/store/sellers`, {
       query: {
+        handle,
         fields:
-          '+created_at,+email,+reviews.seller.name,+reviews.rating,+reviews.customer_note,+reviews.seller_note,+reviews.created_at,+reviews.updated_at,+reviews.customer.first_name,+reviews.customer.last_name'
+          'id,name,handle,description,logo,banner,metadata,created_at,*products,*products.variants'
       },
       cache: 'no-cache'
     })
-    .then(({ seller }) => {
-      const response = {
-        ...seller,
-        reviews:
-          seller.reviews
-            ?.filter(item => item !== null)
-            .sort((a, b) => b.created_at.localeCompare(a.created_at)) ?? []
-      };
-
-      return response as SellerProps;
+    .then(({ sellers }) => {
+      const seller = sellers?.[0];
+      if (!seller) {
+        return [] as unknown as SellerProps;
+      }
+      return { ...seller, reviews: [] } as SellerProps;
     })
     .catch(() => []);
 };
