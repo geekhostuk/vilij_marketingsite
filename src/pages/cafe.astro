@@ -1,0 +1,412 @@
+---
+// The Vilij — Café page
+// Imported from Claude Design project "Webpage creation request" (Vilij Café.dc.html)
+const monthlyPrice = "£10";
+const showSecondTestimonial = true;
+
+const testimonials = [
+  {
+    quote:
+      "Lorem ipsum doloramet, consectetuer adipiscin sed diam nonumy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi minim veniam, quis nostrud exerci tation",
+    name: "José, Nancy & Isaac",
+    role: "SEND Family, Manchester",
+    photo: "/assets/p_jose.png",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat wisi enim ad minim veniam.",
+    name: "Margaret & Charlie",
+    role: "SEND Family, Leeds",
+    photo: "/assets/p_grand.png",
+  },
+];
+
+const list = showSecondTestimonial ? testimonials : [testimonials[0]];
+const first = list[0];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Vilij — Welcome to the Café</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Mulish:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
+      body { margin: 0; }
+      * { box-sizing: border-box; }
+      .vlink:hover { color: #f28121 !important; }
+      .vpill:hover { filter: brightness(1.05); }
+      .vcard { transition: transform .25s ease, box-shadow .25s ease; }
+      .vcard:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(40,80,90,0.16) !important; }
+      .vnav-cta:hover { background: #15838a !important; }
+    </style>
+  </head>
+  <body>
+    <div style="font-family:Mulish,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
+
+      <!-- ===== HEADER + HERO ===== -->
+      <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
+        <div style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
+          <nav style="display:flex;align-items:center;justify-content:space-between;">
+            <a href="/"><img src="/assets/logo.png" alt="The Vilij" style="height:62px;width:auto;display:block;" /></a>
+            <div style="display:flex;align-items:center;gap:42px;">
+              <a href="/" class="vlink" style="font-family:Quicksand;font-weight:700;font-size:18px;color:#1f9ca0;text-decoration:none;">Home</a>
+              <a href="#" class="vlink" style="font-family:Quicksand;font-weight:600;font-size:18px;color:#1f9ca0;text-decoration:none;">Explore The Vilij</a>
+              <a href="#" class="vlink" style="font-family:Quicksand;font-weight:600;font-size:18px;color:#1f9ca0;text-decoration:none;">About Us</a>
+              <a href="#" class="vnav-cta vpill" style="font-family:Quicksand;font-weight:700;font-size:16px;letter-spacing:.5px;color:#ffffff;background:#1f9ca0;padding:13px 30px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(31,156,160,0.3);">SIGN UP</a>
+            </div>
+          </nav>
+          <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:60px 0 80px;">
+            <div>
+              <h1 style="font-family:Quicksand;font-weight:700;font-size:80px;line-height:1.02;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome to the Caf&eacute;</h1>
+              <p style="font-family:Mulish;font-weight:700;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:520px;">Pull up a chair, pour a brew, and find your people.</p>
+              <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:520px;">The Caf&eacute; includes several welcoming spaces, each designed for a different type of conversation.</p>
+            </div>
+            <div style="display:flex;justify-content:center;">
+              <img src="/assets/cafe_hero.png" alt="The Café" style="width:100%;max-width:600px;height:auto;display:block;" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== STAY AS LONG BAND ===== -->
+      <div style="background:#f28121;text-align:center;padding:26px 24px;">
+        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">Stay as long as you like, the doors are always open.</p>
+      </div>
+
+      <!-- ===== WHY THE CAFÉ EXISTS ===== -->
+      <section style="background:#ffffff;padding:90px 0 30px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
+          <div style="border-radius:26px;background:linear-gradient(100deg,#fcdcc0 0%,#fbe7d6 30%,#f4f1ec 50%,#dceae9 70%,#cfe9ea 100%);padding:48px 40px 54px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
+            <h2 style="font-family:Quicksand;font-weight:700;font-size:48px;color:#1f9ca0;margin:0 0 22px;">Why The Caf&eacute; Exists</h2>
+            <p style="font-family:Mulish;font-weight:700;font-size:21px;line-height:1.5;color:#353535;margin:0 auto 26px;max-width:920px;">AThe Caf&eacute; is a warm, heartfelt haven within The Vilij where SEND families who often feel isolated can breathe out, feel understood, and finally connect with others who truly get it..</p>
+            <p style="font-family:Mulish;font-size:19px;color:#3a3a3a;margin:0 0 18px;">The Caf&eacute; gives us:</p>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:center;font-family:Mulish;font-size:15px;color:#3a3a3a;">
+              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;white-space:nowrap;">
+                <span>&bull;&nbsp; A friendly place for informal conversation.</span>
+                <span>&bull;&nbsp; A space to share everyday experiences.</span>
+                <span>&bull;&nbsp; Peer support without judgement.</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;white-space:nowrap;">
+                <span>&bull;&nbsp; Moments of humour, relief, and solidarity.</span>
+                <span>&bull;&nbsp; Opportunities to build genuine friendships.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CAFÉ FEATURE CARDS ===== -->
+      <section style="background:#ffffff;padding:60px 0 80px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:46px 44px;">
+
+          <!-- Sip & Natter (orange, photo left) -->
+          <div style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
+            <div style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
+              <img src="/assets/p_sip.png" alt="Coffee chat" style="width:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <div style="flex:1;">
+              <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1;">Sip &amp; Natter</h3>
+              <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Our friendship corner to exhale &amp; connect.</p>
+              <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">It&rsquo;s a relaxed space for everyday chat &mdash; a place to catch up, share the little moments, laugh, vent, or just talk. The goal is simple: human connection.</p>
+            </div>
+          </div>
+
+          <!-- Tea and Empathy (teal, photo top-right) -->
+          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
+            <div style="display:flex;gap:18px;align-items:flex-start;">
+              <div style="flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Tea and Empathy</h3>
+                <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Honest conversations without judgement.</p>
+              </div>
+              <img src="/assets/p_tea.png" alt="Tea and empathy" style="flex:0 0 40%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">It&rsquo;s a quiet space for honest conversations about loneliness, exhaustion, identity, and the juggle of SEND family life &mdash; a place to feel understood and find hope in others who share similar experiences.</p>
+          </div>
+
+          <!-- The Brew Source (teal, photo top-right) -->
+          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
+            <div style="display:flex;gap:18px;align-items:flex-start;">
+              <div style="flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">The Brew Source</h3>
+                <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Quick answers from people who understand.</p>
+              </div>
+              <img src="/assets/p_brew.png" alt="Parents talking" style="flex:0 0 42%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">It&rsquo;s a supportive space where parents share heartfelt advice, honest questions, and practical solutions &mdash; all easy to find or add when you need a little help.</p>
+          </div>
+
+          <!-- The Elder Brew (orange, body top, photo right) -->
+          <div style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:300px;">
+            <div style="display:flex;gap:18px;align-items:flex-start;">
+              <p style="flex:1;font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">SEND grandparents carry fierce love and quiet worries of their own. The Elder Brew offers a gentle space to share, support one another, and celebrate the children they cherish.</p>
+              <img src="/assets/p_elder.png" alt="Grandparent and child" style="flex:0 0 40%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:20px 0 10px;line-height:1.02;">The Elder Brew</h3>
+            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">A circle just for grandparents</p>
+          </div>
+
+          <!-- Show Us Your Mug (orange, photo left) -->
+          <div style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
+            <div style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
+              <img src="/assets/p_mug.png" alt="Favourite mug" style="width:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <div style="flex:1;">
+              <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1;">Show Us Your Mug</h3>
+              <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">A warm welcome to new Vilij members.</p>
+              <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Make a brew and say hello by sharing your favourite mug and a few words about yourself.</p>
+            </div>
+          </div>
+
+          <!-- Brewtiful Bites (teal, body top, photo right) -->
+          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
+            <div style="display:flex;gap:18px;align-items:flex-start;">
+              <p style="flex:1;font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">A light-hearted space for sharing favourite recipes, comforting finds, quirky food combos SEND-friendly places, and the little food joys that bring us together.</p>
+              <img src="/assets/p_bites.png" alt="Child enjoying food" style="flex:0 0 41%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:20px 0 10px;line-height:1.02;">Brewtiful Bites</h3>
+            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Food, comfort, and small pleasures.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== BE MORE BAR ===== -->
+      <div style="background:#2bbfba;">
+        <div style="max-width:1240px;margin:0 auto;padding:30px 48px;display:flex;justify-content:space-around;align-items:center;gap:20px;">
+          <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be More</span>
+          <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be Brave</span>
+          <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be Curious</span>
+        </div>
+      </div>
+
+      <!-- ===== WHAT ELSE INSIDE THE VILIJ ===== -->
+      <section style="background:#ffffff;padding:84px 0 90px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
+          <h2 style="font-family:Quicksand;font-weight:700;font-size:44px;color:#1f9ca0;text-align:center;margin:0 0 14px;">What else you can see inside the Vilij</h2>
+          <p style="font-family:Mulish;font-size:20px;color:#444;text-align:center;margin:0 0 54px;">Take a look at the other areas of The Vilij and find out why it&rsquo;s such a special place for SEND families.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
+
+            <!-- Vilij Hall -->
+            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
+              <div style="padding:14px 8px 0;"><img src="/assets/hall.png" alt="Vilij Hall" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">VILIJ HALL</h3>
+                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Where stories are shared, voices are heard, and support comes to life.</p>
+                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON IN THE VILIJ HALL?</a>
+              </div>
+            </div>
+
+            <!-- Beach photo -->
+            <div style="border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(40,80,90,0.12);align-self:start;">
+              <img src="/assets/p_beach.png" alt="Child at the beach" style="width:100%;height:auto;display:block;" />
+            </div>
+
+            <!-- Library -->
+            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
+              <div style="padding:14px 8px 0;"><img src="/assets/library.png" alt="Library" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">LIBRARY</h3>
+                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Practical resources at your fingertips, ready whenever you are.</p>
+                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S IN THE LIBRARY?</a>
+              </div>
+            </div>
+
+            <!-- Wellbeing -->
+            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
+              <div style="padding:14px 8px 0;"><img src="/assets/wellbeing.png" alt="Wellbeing Centre" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">WELLBEING CENTRE</h3>
+                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Because caring for them starts with caring for you.</p>
+                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON AT THE WELL BEING CENTRE?</a>
+              </div>
+            </div>
+
+            <!-- Market Place -->
+            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
+              <div style="padding:14px 8px 0;"><img src="/assets/market.png" alt="Market Place" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">MARKET PLACE</h3>
+                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Discover wonderful products &amp; services created by S.E.N.D. parents in business.</p>
+                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON AT THE MARKET PLACE?</a>
+              </div>
+            </div>
+
+            <!-- Expert Hub -->
+            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
+              <div style="padding:14px 8px 0;"><img src="/assets/experthub.png" alt="Vilij Expert Hub" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">VILIJ EXPERT HUB</h3>
+                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Trusted experts, tailored advise, and tools that make a difference.</p>
+                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S IN THE EXPERT HUB?</a>
+              </div>
+            </div>
+
+            <!-- High Street -->
+            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
+              <div style="padding:14px 8px 0;"><img src="/assets/highstreet.png" alt="High Street" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">HIGH STREET</h3>
+                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Handpicked products for S.E.N.D families, all in one easy place.</p>
+                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON THE HIGH STREET?</a>
+              </div>
+            </div>
+
+            <!-- Grandparent photo -->
+            <div style="border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(40,80,90,0.12);align-self:start;">
+              <img src="/assets/p_grand.png" alt="Grandparent and child" style="width:100%;height:auto;display:block;" />
+            </div>
+
+            <!-- Vilij Campus -->
+            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
+              <div style="padding:14px 8px 0;"><img src="/assets/campus.png" alt="Vilij Campus" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">VILIJ CAMPUS</h3>
+                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">New exciting development now under construction.</p>
+                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S COMING TO THE VIJIL CAMPUS?</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== APP SIGNUP ORANGE BAND ===== -->
+      <section style="background:#f28121;text-align:center;padding:62px 24px;">
+        <p style="font-family:Mulish;font-size:20px;color:#ffe6cf;margin:0 0 8px;">So what do I do next?</p>
+        <h2 style="font-family:Quicksand;font-weight:700;font-size:58px;color:#ffffff;margin:0 0 14px;">Sign up to The Vilij App.</h2>
+        <p style="font-family:Mulish;font-size:22px;color:#fff;margin:0 0 34px;">Everything SEND in one place for just {monthlyPrice} per month.</p>
+        <a href="#" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#1f9ca0;font-family:Quicksand;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">JOIN US NOW <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
+      </section>
+
+      <!-- ===== STILL NOT SURE TEAL BAND ===== -->
+      <section style="background:#1f9ca0;padding:30px 24px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;">
+          <span style="font-family:Quicksand;font-weight:500;font-size:34px;color:#d7f0f0;">Still not sure?</span>
+          <a href="#" class="vpill" style="display:inline-flex;align-items:center;gap:14px;background:#f28121;color:#fff;font-family:Quicksand;font-weight:700;font-size:18px;letter-spacing:.5px;padding:12px 14px 12px 30px;border-radius:32px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,0.15);">TAKE A SNEAKY PEEK <span style="width:38px;height:38px;border-radius:50%;background:#ffffff;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:10px solid #1f9ca0;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px;"></span></span></a>
+        </div>
+      </section>
+
+      <!-- ===== TESTIMONIALS ===== -->
+      <section style="background:#ffffff;padding:74px 0 80px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
+          <p style="font-family:Mulish;font-weight:600;font-size:23px;color:#353535;text-align:center;margin:0 0 6px;">Our Testimonials</p>
+          <h2 style="font-family:Quicksand;font-weight:700;font-size:52px;color:#1f9ca0;text-align:center;margin:0 0 56px;">What Our <span style="color:#f28121;">Vilijers</span> Say</h2>
+          <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
+            <div style="position:relative;">
+              <img id="t-photo" src={first.photo} alt="A SEND family" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
+            </div>
+            <div>
+              <div style="color:#f28121;font-size:28px;letter-spacing:6px;margin-bottom:18px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p id="t-quote" style="font-family:Mulish;font-size:21px;line-height:1.6;color:#5a5a5a;margin:0 0 28px;max-width:560px;">{first.quote}</p>
+              <p id="t-name" style="font-family:Mulish;font-weight:700;font-size:24px;color:#222;margin:0 0 4px;">{first.name}</p>
+              <p id="t-role" style="font-family:Mulish;font-size:16px;color:#888;margin:0 0 30px;">{first.role}</p>
+              <div style="display:flex;gap:16px;">
+                <button id="t-prev" aria-label="Previous" style="width:58px;height:58px;border-radius:50%;border:2px solid #f0c79e;background:#fff;color:#f28121;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;">&#8249;</button>
+                <button id="t-next" aria-label="Next" style="width:58px;height:58px;border-radius:50%;border:none;background:#1f9ca0;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;">&#8250;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FINAL CTA ===== -->
+      <section style="background:#f28121;text-align:center;padding:66px 24px;">
+        <p style="font-family:Mulish;font-size:22px;color:#ffe6cf;margin:0 0 10px;">So, you&rsquo;ve come this far?</p>
+        <h2 style="font-family:Quicksand;font-weight:700;font-size:62px;color:#ffffff;margin:0 0 22px;">Your village is waiting for you.</h2>
+        <p style="font-family:Mulish;font-weight:600;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You don&rsquo;t need to be at breaking point.<br />You don&rsquo;t need to have it all together.<br />You&rsquo;re allowed support too.</p>
+        <a href="#" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#f28121;font-family:Quicksand;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">SIGN UP NOW <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <footer style="background:#ffffff;padding:74px 0 30px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1.4fr;gap:40px;">
+          <div>
+            <img src="/assets/footerlogo.png" alt="Vilij" style="height:48px;width:auto;display:block;margin-bottom:18px;" />
+            <p style="font-family:Mulish;font-size:17px;line-height:1.55;color:#555;margin:0 0 30px;max-width:280px;">Lorem ipsum dolor ame consectetue adipiscin diam and nonumy euismod laoret dolore magna aliuam.</p>
+            <a href="#" id="to-top" style="display:inline-flex;align-items:center;gap:14px;text-decoration:none;cursor:pointer;">
+              <span style="width:52px;height:52px;border-radius:50%;border:2px solid #1f9ca0;display:inline-flex;align-items:center;justify-content:center;color:#1f9ca0;font-size:22px;">&#8593;</span>
+              <span style="font-family:Mulish;font-size:18px;color:#444;">Back to the top</span>
+            </a>
+          </div>
+          <div>
+            <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">About</h4>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">About Us</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Our Story</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">News</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Become a Vilij Elder</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Quick Link</h4>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
+              <li><a href="/cafe" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Caf&eacute;</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Free Courses</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Addmition</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Request a Demo</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 18px;">Join Our Newsletter</h4>
+            <p style="font-family:Mulish;font-weight:700;font-size:17px;line-height:1.5;color:#444;margin:0 0 20px;">Lorem ipsum dolor amet, consectetuer adipiscing diam nonummy euismod tincidun.</p>
+            <div style="display:flex;gap:10px;margin-bottom:16px;max-width:380px;">
+              <input type="email" placeholder="Your Email Here" style="flex:1;font-family:Mulish;font-size:16px;padding:13px 16px;border:1px solid #ddd;border-radius:8px;outline:none;color:#333;" />
+              <button class="vpill" style="font-family:Mulish;font-weight:700;font-size:16px;color:#fff;background:#f28121;border:none;border-radius:8px;padding:0 22px;cursor:pointer;">Subscribe</button>
+            </div>
+            <label style="display:flex;align-items:center;gap:10px;font-family:Mulish;font-size:15px;color:#777;cursor:pointer;">
+              <input type="checkbox" style="width:16px;height:16px;accent-color:#f28121;" />
+              I agree to the privacy policy
+            </label>
+          </div>
+        </div>
+        <div style="max-width:1240px;margin:46px auto 0;padding:0 48px;">
+          <div style="border-top:1px solid #e7e7e7;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+            <span style="font-family:Mulish;font-size:15px;color:#999;">&copy; Copyright 2026. All Rights Design by Revive Creative.</span>
+            <div style="display:flex;align-items:center;gap:16px;font-family:Mulish;font-size:15px;color:#666;">
+              <a href="#" class="vlink" style="color:#666;text-decoration:none;">Terms</a><span style="color:#ccc;">&mdash;</span>
+              <a href="#" class="vlink" style="color:#666;text-decoration:none;">Privacy</a><span style="color:#ccc;">&mdash;</span>
+              <a href="#" class="vlink" style="color:#666;text-decoration:none;">Support</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script define:vars={{ list }}>
+      (function () {
+        let t = 0;
+        const photo = document.getElementById("t-photo");
+        const quote = document.getElementById("t-quote");
+        const name = document.getElementById("t-name");
+        const role = document.getElementById("t-role");
+
+        function render() {
+          const i = ((t % list.length) + list.length) % list.length;
+          const cur = list[i];
+          if (photo) { photo.src = cur.photo; photo.alt = cur.name; }
+          if (quote) quote.textContent = cur.quote;
+          if (name) name.textContent = cur.name;
+          if (role) role.textContent = cur.role;
+        }
+
+        const prev = document.getElementById("t-prev");
+        const next = document.getElementById("t-next");
+        if (prev) prev.addEventListener("click", function (e) { e.preventDefault(); t -= 1; render(); });
+        if (next) next.addEventListener("click", function (e) { e.preventDefault(); t += 1; render(); });
+
+        const toTop = document.getElementById("to-top");
+        if (toTop) toTop.addEventListener("click", function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>
