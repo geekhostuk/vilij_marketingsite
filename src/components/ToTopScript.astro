@@ -1,0 +1,11 @@
+---
+// The Vilij — the footer "back to the top" handler on its own, for the pages
+// that have no testimonial carousel. Pages with a carousel get the same handler
+// bundled into TestimonialScript.astro.
+---
+<script>
+  (function () {
+    const toTop = document.getElementById("to-top");
+    if (toTop) toTop.addEventListener("click", function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+  })();
+</script>

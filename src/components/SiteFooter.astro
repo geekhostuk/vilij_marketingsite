@@ -1,0 +1,67 @@
+---
+// The Vilij — site footer. Identical on all eight pages apart from the top
+// padding, which /newsletter-thanks tightens because that page is short.
+//
+// The company blurb (C1) and the newsletter blurb (C2) are still Lorem ipsum.
+// They are now in one place: when the real copy arrives it is one edit here,
+// not eight.
+interface Props {
+  padding?: string;
+}
+const { padding = "74px 0 30px" } = Astro.props;
+---
+<footer style={`background:#ffffff;padding:${padding};`}>
+  <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1.4fr;gap:40px;">
+    <div>
+      <img src="/assets/footerlogo.png" alt="Vilij" style="height:48px;width:auto;display:block;margin-bottom:18px;" />
+      <p style="font-family:Mulish;font-size:17px;line-height:1.55;color:#555;margin:0 0 30px;max-width:280px;">Lorem ipsum dolor ame consectetue adipiscin diam and nonumy euismod laoret dolore magna aliuam.</p>
+      <a href="#" id="to-top" style="display:inline-flex;align-items:center;gap:14px;text-decoration:none;cursor:pointer;">
+        <span style="width:52px;height:52px;border-radius:50%;border:2px solid #1f9ca0;display:inline-flex;align-items:center;justify-content:center;color:#1f9ca0;font-size:22px;">&#8593;</span>
+        <span style="font-family:Mulish;font-size:18px;color:#444;">Back to the top</span>
+      </a>
+    </div>
+    <div>
+      <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">About</h4>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
+        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">About Us</a></li>
+        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Our Story</a></li>
+        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">News</a></li>
+        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Become a Vilij Elder</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Quick Links</h4>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
+        <li><a href="/cafe" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Caf&eacute;</a></li>
+        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Free Courses</a></li>
+        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Admissions</a></li>
+        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Request a Demo</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 18px;">Join Our Newsletter</h4>
+      <p style="font-family:Mulish;font-weight:700;font-size:17px;line-height:1.5;color:#444;margin:0 0 20px;">Lorem ipsum dolor amet, consectetuer adipiscing diam nonummy euismod tincidun.</p>
+      <form method="get" action="/newsletter-thanks" style="margin:0;">
+        <div style="display:flex;gap:10px;margin-bottom:16px;max-width:380px;">
+          <label for="nl-email" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Email address</label>
+          <input id="nl-email" name="email" type="email" required placeholder="Your Email Here" style="flex:1;font-family:Mulish;font-size:16px;padding:13px 16px;border:1px solid #ddd;border-radius:8px;outline:none;color:#333;" />
+          <button type="submit" class="vpill" style="font-family:Mulish;font-weight:700;font-size:16px;color:#fff;background:#f28121;border:none;border-radius:8px;padding:0 22px;cursor:pointer;">Subscribe</button>
+        </div>
+        <label style="display:flex;align-items:flex-start;gap:10px;font-family:Mulish;font-size:15px;line-height:1.5;color:#777;cursor:pointer;max-width:380px;">
+          <input type="checkbox" name="newsletter_opt_in" value="yes" required style="width:16px;height:16px;margin-top:3px;flex:none;accent-color:#f28121;" />
+          <span>I agree to receive newsletter emails and accept the <a href="/privacy" class="vlink" style="color:#777;text-decoration:underline;">privacy policy</a>.</span>
+        </label>
+      </form>
+    </div>
+  </div>
+  <div style="max-width:1240px;margin:46px auto 0;padding:0 48px;">
+    <div style="border-top:1px solid #e7e7e7;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+      <span style="font-family:Mulish;font-size:15px;color:#999;">&copy; Copyright 2026. All rights reserved. Design by Revive Creative.</span>
+      <div style="display:flex;align-items:center;gap:16px;font-family:Mulish;font-size:15px;color:#666;">
+        <a href="#" class="vlink" style="color:#666;text-decoration:none;">Terms</a><span style="color:#ccc;">&mdash;</span>
+        <a href="/privacy" class="vlink" style="color:#666;text-decoration:none;">Privacy</a><span style="color:#ccc;">&mdash;</span>
+        <a href="#" class="vlink" style="color:#666;text-decoration:none;">Support</a>
+      </div>
+    </div>
+  </div>
+</footer>

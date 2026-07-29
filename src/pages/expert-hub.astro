@@ -1,8 +1,15 @@
 ---
 // The Vilij — Vilij Expert Hub page
 // Built from design "Vilij Website Expert Hub page v2.pdf"
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import AreasGrid from "../components/AreasGrid.astro";
+import TestimonialCarousel from "../components/TestimonialCarousel.astro";
+import { showSecondTestimonial } from "../data/testimonials";
+import * as areas from "../data/areas";
+
 const monthlyPrice = "£10";
-const showSecondTestimonial = true;
 
 const testimonials = [
   {
@@ -25,25 +32,27 @@ const testimonials = [
 ];
 
 const list = showSecondTestimonial ? testimonials : [testimonials[0]];
-const first = list[0];
+
+// The order of the "What else you can see inside the Vilij" grid, as it stands
+// on this page. Every page uses a different order and a different second photo.
+const gridItems = [
+  areas.hall,
+  { label: "Beach photo", img: "/assets/p_beach.png", alt: "Child at the beach" },
+  areas.cafe,
+  areas.library,
+  areas.marketPlaceShort,
+  areas.highStreet,
+  areas.wellbeing,
+  { label: "Family photo", img: "/assets/p_jose.png", alt: "A SEND family" },
+  areas.campus,
+];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
-    <link rel="icon" href="/favicon-512.png" type="image/png" sizes="512x512" />
-    <link rel="apple-touch-icon" href="/favicon-180.png" />
-    <title>Expert Hub — SEND Advice on Education and Health | The Vilij</title>
-    <meta name="description" content="The Vilij Expert Hub connects SEND families with trusted professionals for guidance on education, health, legal questions, emotional support and daily life." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Mulish:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+<BaseLayout
+  title="Expert Hub — SEND Advice on Education and Health | The Vilij"
+  description="The Vilij Expert Hub connects SEND families with trusted professionals for guidance on education, health, legal questions, emotional support and daily life."
+  carousel={list}
+>
     <style is:global>
       body { margin: 0; }
       * { box-sizing: border-box; }
@@ -53,23 +62,12 @@ const first = list[0];
       .vcard-img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
       .vcard:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(40,80,90,0.16) !important; }
       .vnav-cta:hover { background: #15838a !important; }
-    </style>
-  </head>
-  <body>
-    <div style="font-family:Mulish,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
+    </style><div style="font-family:Mulish,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
 
       <!-- ===== HEADER + HERO ===== -->
       <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
         <div style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
-          <nav style="display:flex;align-items:center;justify-content:space-between;">
-            <a href="/"><img src="/assets/logo.png" alt="The Vilij" style="height:62px;width:auto;display:block;" /></a>
-            <div style="display:flex;align-items:center;gap:42px;">
-              <a href="/" class="vlink" style="font-family:Quicksand;font-weight:700;font-size:18px;color:#1f9ca0;text-decoration:none;">Home</a>
-              <a href="#" class="vlink" style="font-family:Quicksand;font-weight:600;font-size:18px;color:#1f9ca0;text-decoration:none;">Explore The Vilij</a>
-              <a href="#" class="vlink" style="font-family:Quicksand;font-weight:600;font-size:18px;color:#1f9ca0;text-decoration:none;">About Us</a>
-              <a href="#" class="vnav-cta vpill" style="font-family:Quicksand;font-weight:700;font-size:16px;letter-spacing:.5px;color:#ffffff;background:#1f9ca0;padding:13px 30px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(31,156,160,0.3);">SIGN UP</a>
-            </div>
-          </nav>
+          <SiteNav />
           <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:54px 0 70px;">
             <div>
               <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome to<br />the Expert Hub</h1>
@@ -193,95 +191,7 @@ const first = list[0];
       </div>
 
       <!-- ===== WHAT ELSE INSIDE THE VILIJ ===== -->
-      <section style="background:#ffffff;padding:84px 0 90px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
-          <h2 style="font-family:Quicksand;font-weight:700;font-size:44px;color:#1f9ca0;text-align:center;margin:0 0 14px;">What else you can see inside the Vilij</h2>
-          <p style="font-family:Mulish;font-size:20px;color:#444;text-align:center;margin:0 0 54px;">Take a look at the other areas of The Vilij and find out why it&rsquo;s such a special place for SEND families.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
-
-            <!-- Vilij Hall -->
-            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/hall.png" alt="Vilij Hall" class="vcard-img" /></div>
-              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">VILIJ HALL</h3>
-                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Where stories are shared, voices are heard, and support comes to life.</p>
-                <a href="/hall" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON IN THE VILIJ HALL?</a>
-              </div>
-            </div>
-
-            <!-- Beach photo -->
-            <div style="border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(40,80,90,0.12);align-self:start;">
-              <img src="/assets/p_beach.png" alt="Child at the beach" style="width:100%;height:auto;display:block;" />
-            </div>
-
-            <!-- Café -->
-            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/cafe.png" alt="Café" class="vcard-img" /></div>
-              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">CAF&Eacute;</h3>
-                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Pull up a chair, pour a brew and find your people.</p>
-                <a href="/cafe" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON AT THE CAF&Eacute;?</a>
-              </div>
-            </div>
-
-            <!-- Library -->
-            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/library.png" alt="Library" class="vcard-img" /></div>
-              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">LIBRARY</h3>
-                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Practical resources at your fingertips, ready whenever you are.</p>
-                <a href="/library" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S IN THE LIBRARY?</a>
-              </div>
-            </div>
-
-            <!-- Market Place -->
-            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/market.png" alt="Market Place" class="vcard-img" /></div>
-              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">MARKET PLACE</h3>
-                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Discover wonderful products created by SEND parents in business.</p>
-                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON AT THE MARKET PLACE?</a>
-              </div>
-            </div>
-
-            <!-- High Street -->
-            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/highstreet.png" alt="High Street" class="vcard-img" /></div>
-              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">HIGH STREET</h3>
-                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Handpicked products for SEND families, all in one easy place.</p>
-                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON THE HIGH STREET?</a>
-              </div>
-            </div>
-
-            <!-- Wellbeing -->
-            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/wellbeing.png" alt="Wellbeing Centre" class="vcard-img" /></div>
-              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">WELLBEING CENTRE</h3>
-                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Because caring for them starts with caring for you.</p>
-                <a href="/wellbeing" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON AT THE WELLBEING CENTRE?</a>
-              </div>
-            </div>
-
-            <!-- Family photo -->
-            <div style="border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(40,80,90,0.12);align-self:start;">
-              <img src="/assets/p_jose.png" alt="A SEND family" style="width:100%;height:auto;display:block;" />
-            </div>
-
-            <!-- Vilij Campus -->
-            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/campus.png" alt="Vilij Campus" class="vcard-img" /></div>
-              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">VILIJ CAMPUS</h3>
-                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">New exciting development now under construction.</p>
-                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S COMING TO THE VILIJ CAMPUS?</a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      <AreasGrid items={gridItems} />
 
       <!-- ===== APP SIGNUP ORANGE BAND ===== -->
       <section style="background:#f28121;text-align:center;padding:62px 24px;">
@@ -300,30 +210,7 @@ const first = list[0];
       </section>
 
       <!-- ===== TESTIMONIALS ===== -->
-      <section style="background:#ffffff;padding:74px 0 80px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
-          <p style="font-family:Mulish;font-weight:600;font-size:23px;color:#353535;text-align:center;margin:0 0 6px;">Our Testimonials</p>
-          <h2 style="font-family:Quicksand;font-weight:700;font-size:52px;color:#1f9ca0;text-align:center;margin:0 0 56px;">What Our <span style="color:#f28121;">Vilijers</span> Say</h2>
-          <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
-            <div style="position:relative;">
-              <img id="t-photo" src={first.photo} alt="A SEND family" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
-              <div style="position:absolute;top:-22px;right:-22px;width:84px;height:84px;border-radius:50%;background:#1f9ca0;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(31,156,160,0.35);">
-                <span style="font-family:Georgia,serif;font-weight:700;font-size:58px;line-height:1;color:#fff;margin-top:30px;">&rdquo;</span>
-              </div>
-            </div>
-            <div>
-              <div id="t-stars" style={`color:#f28121;font-size:28px;letter-spacing:6px;margin-bottom:18px;${first.stars ? "" : "display:none;"}`}>{first.stars ? "★".repeat(first.stars) : ""}</div>
-              <p id="t-quote" style="font-family:Mulish;font-size:21px;line-height:1.6;color:#5a5a5a;margin:0 0 28px;max-width:560px;">{first.quote}</p>
-              <p id="t-name" style="font-family:Mulish;font-weight:700;font-size:24px;color:#222;margin:0 0 4px;">{first.name}</p>
-              <p id="t-role" style="font-family:Mulish;font-size:16px;color:#888;margin:0 0 30px;">{first.role}</p>
-              <div style="display:flex;gap:16px;">
-                <button id="t-prev" aria-label="Previous" style="width:58px;height:58px;border-radius:50%;border:2px solid #f0c79e;background:#fff;color:#f28121;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;">&#8249;</button>
-                <button id="t-next" aria-label="Next" style="width:58px;height:58px;border-radius:50%;border:none;background:#1f9ca0;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;">&#8250;</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialCarousel list={list} />
 
       <!-- ===== FINAL CTA ===== -->
       <section style="background:#f28121;text-align:center;padding:66px 24px;">
@@ -334,101 +221,7 @@ const first = list[0];
       </section>
 
       <!-- ===== FOOTER ===== -->
-      <footer style="background:#ffffff;padding:74px 0 30px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1.4fr;gap:40px;">
-          <div>
-            <img src="/assets/footerlogo.png" alt="Vilij" style="height:48px;width:auto;display:block;margin-bottom:18px;" />
-            <p style="font-family:Mulish;font-size:17px;line-height:1.55;color:#555;margin:0 0 30px;max-width:280px;">Lorem ipsum dolor ame consectetue adipiscin diam and nonumy euismod laoret dolore magna aliuam.</p>
-            <a href="#" id="to-top" style="display:inline-flex;align-items:center;gap:14px;text-decoration:none;cursor:pointer;">
-              <span style="width:52px;height:52px;border-radius:50%;border:2px solid #1f9ca0;display:inline-flex;align-items:center;justify-content:center;color:#1f9ca0;font-size:22px;">&#8593;</span>
-              <span style="font-family:Mulish;font-size:18px;color:#444;">Back to the top</span>
-            </a>
-          </div>
-          <div>
-            <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">About</h4>
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
-              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">About Us</a></li>
-              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Our Story</a></li>
-              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">News</a></li>
-              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Become a Vilij Elder</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Quick Links</h4>
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
-              <li><a href="/cafe" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Caf&eacute;</a></li>
-              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Free Courses</a></li>
-              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Admissions</a></li>
-              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Request a Demo</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 18px;">Join Our Newsletter</h4>
-            <p style="font-family:Mulish;font-weight:700;font-size:17px;line-height:1.5;color:#444;margin:0 0 20px;">Lorem ipsum dolor amet, consectetuer adipiscing diam nonummy euismod tincidun.</p>
-            <form method="get" action="/newsletter-thanks" style="margin:0;">
-              <div style="display:flex;gap:10px;margin-bottom:16px;max-width:380px;">
-                <label for="nl-email" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Email address</label>
-                <input id="nl-email" name="email" type="email" required placeholder="Your Email Here" style="flex:1;font-family:Mulish;font-size:16px;padding:13px 16px;border:1px solid #ddd;border-radius:8px;outline:none;color:#333;" />
-                <button type="submit" class="vpill" style="font-family:Mulish;font-weight:700;font-size:16px;color:#fff;background:#f28121;border:none;border-radius:8px;padding:0 22px;cursor:pointer;">Subscribe</button>
-              </div>
-              <label style="display:flex;align-items:flex-start;gap:10px;font-family:Mulish;font-size:15px;line-height:1.5;color:#777;cursor:pointer;max-width:380px;">
-                <input type="checkbox" name="newsletter_opt_in" value="yes" required style="width:16px;height:16px;margin-top:3px;flex:none;accent-color:#f28121;" />
-                <span>I agree to receive newsletter emails and accept the <a href="/privacy" class="vlink" style="color:#777;text-decoration:underline;">privacy policy</a>.</span>
-              </label>
-            </form>
-          </div>
-        </div>
-        <div style="max-width:1240px;margin:46px auto 0;padding:0 48px;">
-          <div style="border-top:1px solid #e7e7e7;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
-            <span style="font-family:Mulish;font-size:15px;color:#999;">&copy; Copyright 2026. All rights reserved. Design by Revive Creative.</span>
-            <div style="display:flex;align-items:center;gap:16px;font-family:Mulish;font-size:15px;color:#666;">
-              <a href="#" class="vlink" style="color:#666;text-decoration:none;">Terms</a><span style="color:#ccc;">&mdash;</span>
-              <a href="/privacy" class="vlink" style="color:#666;text-decoration:none;">Privacy</a><span style="color:#ccc;">&mdash;</span>
-              <a href="#" class="vlink" style="color:#666;text-decoration:none;">Support</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
     </div>
-
-    <script define:vars={{ list }}>
-      (function () {
-        let t = 0;
-        const photo = document.getElementById("t-photo");
-        const quote = document.getElementById("t-quote");
-        const name = document.getElementById("t-name");
-        const role = document.getElementById("t-role");
-        const stars = document.getElementById("t-stars");
-
-        function render() {
-          const i = ((t % list.length) + list.length) % list.length;
-          const cur = list[i];
-          if (photo) { photo.src = cur.photo; photo.alt = cur.name; }
-          if (quote) quote.textContent = cur.quote;
-          if (name) name.textContent = cur.name;
-          if (role) role.textContent = cur.role;
-          if (stars) {
-            // A testimonial without a rating simply has no star row.
-            stars.textContent = cur.stars ? "\u2605".repeat(cur.stars) : "";
-            stars.style.display = cur.stars ? "" : "none";
-          }
-        }
-
-        const prev = document.getElementById("t-prev");
-        const next = document.getElementById("t-next");
-        if (prev) prev.addEventListener("click", function (e) { e.preventDefault(); t -= 1; render(); });
-        if (next) next.addEventListener("click", function (e) { e.preventDefault(); t += 1; render(); });
-
-        const toTop = document.getElementById("to-top");
-        if (toTop) toTop.addEventListener("click", function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
-
-        render();
-      })();
-    </script>
-
-    <!-- Start of HubSpot Embed Code -->
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/148725470.js" is:inline></script>
-    <!-- End of HubSpot Embed Code -->
-  </body>
-</html>
+</BaseLayout>

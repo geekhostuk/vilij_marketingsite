@@ -1,0 +1,62 @@
+---
+// The Vilij — the shared page shell: the document head, and the scripts that
+// close the body. Everything that legitimately varies between pages is a prop.
+//
+// The page's own markup is passed as the default slot and must start with the
+// full-width wrapper <div>; that div stays in the pages because Astro strips
+// HTML comments that sit at the top level of slotted content, and the pages'
+// <!-- ===== SECTION ===== --> markers need to survive.
+//
+// Each page also keeps its own <style is:global> block, which Astro lifts into
+// this head for us. The three CSS variants interleave (the card rules sit
+// between .vpill:hover and .vnav-cta:hover on some pages but not others), so
+// they cannot be composed from a shared base without reordering the stylesheet.
+// The pages butt </style> straight up against the wrapper <div> for the same
+// reason the slot below has no whitespace around it: Astro's HTML compressor
+// works per component, so a newline on both sides of a boundary becomes two
+// spaces in the output rather than one.
+import TestimonialScript from "../components/TestimonialScript.astro";
+import ToTopScript from "../components/ToTopScript.astro";
+import type { Testimonial } from "../data/testimonials";
+
+interface Props {
+  title: string;
+  description: string;
+  // Keeps /newsletter-thanks out of the index.
+  noindex?: boolean;
+  // Extra Google Fonts families, spliced into the stylesheet URL. /hall adds Caveat.
+  extraFonts?: string;
+  // The testimonials this page rotates through, if it has a carousel. Pages
+  // without one get the standalone "back to the top" handler instead.
+  carousel?: Testimonial[];
+}
+
+const { title, description, noindex = false, extraFonts = "", carousel } = Astro.props;
+
+const fontHref =
+  "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Mulish:wght@400;500;600;700;800" +
+  extraFonts +
+  "&display=swap";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon-512.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+    <title set:html={title}></title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={fontHref} rel="stylesheet" />
+  </head>
+  <body><slot />{carousel ? <TestimonialScript list={carousel} /> : <ToTopScript />}
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/148725470.js" is:inline></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>

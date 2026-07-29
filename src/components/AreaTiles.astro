@@ -1,0 +1,13 @@
+---
+// The Vilij — the tiles inside an areas grid, in the order the page asks for.
+// Anything with an `href` is an area card; anything else is a photo.
+import AreaCard from "./AreaCard.astro";
+import PhotoTile from "./PhotoTile.astro";
+import type { GridItem } from "../data/areas";
+
+interface Props {
+  items: GridItem[];
+}
+const { items } = Astro.props;
+---
+{items.map((item) => ("href" in item ? <AreaCard {...item} /> : <PhotoTile {...item} />))}

@@ -1,0 +1,47 @@
+---
+// The Vilij — the testimonial carousel behaviour, plus the footer "back to the
+// top" handler. Rendered by BaseLayout at the end of the body on the six pages
+// that carry a carousel; pages without one get ToTopScript.astro instead.
+//
+// The indentation below is load-bearing: define:vars scripts are emitted inline
+// and verbatim, so reformatting them changes the built HTML.
+import type { Testimonial } from "../data/testimonials";
+interface Props {
+  list: Testimonial[];
+}
+const { list } = Astro.props;
+---
+    <script define:vars={{ list }}>
+      (function () {
+        let t = 0;
+        const photo = document.getElementById("t-photo");
+        const quote = document.getElementById("t-quote");
+        const name = document.getElementById("t-name");
+        const role = document.getElementById("t-role");
+        const stars = document.getElementById("t-stars");
+
+        function render() {
+          const i = ((t % list.length) + list.length) % list.length;
+          const cur = list[i];
+          if (photo) { photo.src = cur.photo; photo.alt = cur.name; }
+          if (quote) quote.textContent = cur.quote;
+          if (name) name.textContent = cur.name;
+          if (role) role.textContent = cur.role;
+          if (stars) {
+            // A testimonial without a rating simply has no star row.
+            stars.textContent = cur.stars ? "\u2605".repeat(cur.stars) : "";
+            stars.style.display = cur.stars ? "" : "none";
+          }
+        }
+
+        const prev = document.getElementById("t-prev");
+        const next = document.getElementById("t-next");
+        if (prev) prev.addEventListener("click", function (e) { e.preventDefault(); t -= 1; render(); });
+        if (next) next.addEventListener("click", function (e) { e.preventDefault(); t += 1; render(); });
+
+        const toTop = document.getElementById("to-top");
+        if (toTop) toTop.addEventListener("click", function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+        render();
+      })();
+    </script>
