@@ -14,3 +14,6 @@ npm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# brand kit hand-off (not part of the build)
+brand-kit/
