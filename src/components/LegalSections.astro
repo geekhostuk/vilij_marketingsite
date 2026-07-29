@@ -109,12 +109,33 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
                     </tbody>
                   </table>
                 </div>
+              )}{c.grid && (
+                <div style="margin:22px 0 4px;overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-family:Mulish;font-size:16px;min-width:640px;">
+                    <thead>
+                      <tr>
+                        {c.grid.headers.map((h, i) => (
+                          <th style={`text-align:left;font-family:Quicksand;font-weight:700;font-size:17px;color:#ffffff;background:#1f9ca0;padding:14px 18px;${i === 0 ? "border-radius:12px 0 0 0;" : ""}${i === c.grid.headers.length - 1 ? "border-radius:0 12px 0 0;" : ""}`}>{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {c.grid.rows.map((row, i) => (
+                        <tr style={i % 2 === 1 ? "background:#f7fbfb;" : ""}>
+                          {row.map((cell, j) => (
+                            <td style={`padding:14px 18px;line-height:1.55;border-bottom:1px solid #e7eeee;vertical-align:top;${j === 0 ? "color:#222;font-weight:700;" : "color:#555;"}`}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               )}{c.outro && (
                 <p style="font-family:Mulish;font-size:17px;line-height:1.65;color:#444;margin:14px 0 0;">{c.outro}</p>
               )}
 
               {c.note && (
-                <p style="font-family:Mulish;font-size:17px;line-height:1.65;color:#555;margin:16px 0 0;padding-left:16px;border-left:3px solid #f6c79a;">{c.note}</p>
+                <p style="font-family:Mulish;font-size:17px;line-height:1.65;color:#555;margin:16px 0 0;padding-left:16px;border-left:3px solid #f6c79a;">{c.noteHtml ? <Fragment set:html={c.noteHtml} /> : c.note}</p>
               )}
 
               {c.ico && (

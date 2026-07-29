@@ -32,10 +32,14 @@ export interface LegalClause {
   outro?: string;
   /** Renders The Vilij Limited's registered details. */
   contact?: boolean;
-  /** Two-column table: [left, right]. */
+  /** Two-column data-retention table: [data type, retention period]. */
   table?: [string, string][];
+  /** Generic table with its own column headings. */
+  grid?: { headers: string[]; rows: string[][] };
   /** Aside set off with a rule. */
   note?: string;
+  /** Same aside, rendered as raw HTML so it can carry a link. */
+  noteHtml?: string;
   /** Renders a link to the Information Commissioner's Office. */
   ico?: boolean;
 }

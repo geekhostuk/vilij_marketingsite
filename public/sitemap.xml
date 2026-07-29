@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The 9 indexable public routes. Two are deliberately omitted:
+  The 10 indexable public routes. Two are deliberately omitted:
   /newsletter-thanks, which is noindex and reachable only from the footer
   newsletter form, and /complaints, which is noindex until the contact
   addresses in it are confirmed (see content-issues.md C55).
@@ -57,6 +57,12 @@
   </url>
   <url>
     <loc>https://marketing.thevilij.co.uk/community-guidelines</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://marketing.thevilij.co.uk/cookie-policy</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
