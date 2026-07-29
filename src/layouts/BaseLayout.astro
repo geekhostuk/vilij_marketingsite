@@ -17,6 +17,7 @@
 // spaces in the output rather than one.
 import TestimonialScript from "../components/TestimonialScript.astro";
 import ToTopScript from "../components/ToTopScript.astro";
+import CookieConsent from "../components/CookieConsent.astro";
 import type { Testimonial } from "../data/testimonials";
 
 interface Props {
@@ -65,8 +66,12 @@ const canonical = new URL(path || "/", Astro.site).href;
     <link href={fontHref} rel="stylesheet" />
   </head>
   <body><slot />{carousel ? <TestimonialScript list={carousel} /> : <ToTopScript />}
-    <!-- Start of HubSpot Embed Code -->
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/148725470.js" is:inline></script>
-    <!-- End of HubSpot Embed Code -->
+    <!--
+      The HubSpot tracking script used to be a plain <script> tag here, and it
+      set four analytics cookies on every visitor before anyone had agreed to
+      anything (C58). It is now injected by CookieConsent, and only once someone
+      has accepted. Do not put it back: an unconditional tag is the whole bug.
+    -->
+    <CookieConsent />
   </body>
 </html>

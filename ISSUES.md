@@ -30,13 +30,13 @@ Priority key: **P1** blocks launch · **P2** should fix before wider promotion �
 | # | Priority | Issue | Where |
 |---|----------|-------|-------|
 | 10 | **P1** | **Company registration number is an unfilled placeholder** — renders literally as `[●]`, carried over verbatim from the source PDF. Needs the real Companies House number. | `/privacy` §2.1 |
-| 11 | **P2** | No cookie consent banner anywhere on the site, despite the Privacy Policy (§16) and HubSpot tracking both setting cookies. UK PECR requires consent for non-essential cookies before they're set. Worth a legal steer. | Site-wide |
+| ~~11~~ | **P2** | ~~No cookie consent banner anywhere on the site, despite the Privacy Policy (§16) and HubSpot tracking both setting cookies. UK PECR requires consent for non-essential cookies before they're set.~~ **Done 29 July 2026.** `src/components/CookieConsent.astro`; the HubSpot script is no longer in the page at all until someone accepts. See content-issues.md C58. | Site-wide |
 
 ## Newsletter / HubSpot
 
 | # | Priority | Issue | Where |
 |---|----------|-------|-------|
-| 12 | **P1** | **HubSpot capture is unverified.** The form meets HubSpot's non-HubSpot form requirements, but nobody has submitted a real test entry yet. Confirm the form appears under HubSpot → Forms and that a Contact is created. | All 8 pages |
+| 12 | **P1** | **HubSpot capture is unverified, and now conditional.** The form meets HubSpot's non-HubSpot form requirements, and a test submission does fire `POST /collected-forms/submit/form` — but nobody has confirmed a Contact is actually created at the HubSpot end. Worse, non-HubSpot form capture is a feature of the *tracking* script, so since the consent banner went in (#11) it only happens for visitors who accept analytics cookies. Everyone else submits, is told they're on the list, and is not. See content-issues.md C64: the fix is a Cloudflare Pages Function posting to HubSpot's Forms API, which also closes #13. | All 13 pages |
 | 13 | **P2** | Form uses `method="get"`, so the subscriber's email ends up in the URL (`/newsletter-thanks?email=…`) and therefore in browser history. GET was chosen because Cloudflare Pages returns **405** to a POST against a static asset. Proper fix is a Cloudflare Pages Function to accept the POST and redirect. Note HubSpot's own docs use POST in their example — if capture turns out not to fire, this is the first thing to change. | All 8 pages |
 | 14 | **P3** | No client-side success/error state — the user is navigated away to `/newsletter-thanks` rather than getting inline confirmation. Deliberate: HubSpot warns that intercepting submit with JS can prevent capture. | All 8 pages |
 

@@ -6,19 +6,31 @@
 // and it is deliberately conservative — it claims nothing that cannot be checked
 // against the built output or the providers' own published documentation.
 //
-// Two things it does not do, both flagged in content-issues.md:
-//   * It does not claim consent has been obtained. The site has no cookie
-//     consent tool, so section 7 offers browser controls and the HubSpot
-//     opt-out and nothing else (C58).
-//   * The cookie inventory in section 5 is drawn from HubSpot's published
-//     documentation, not from a scan of the live site. Confirm it against a
-//     real scan before relying on it (C59).
+// Version 2.0, 1 August 2026. Version 1.0 was written on 29 July 2026, when the
+// site had no consent mechanism at all and this policy said so plainly. The
+// consent banner now exists (C58), which made five parts of version 1.0 wrong:
+// 4.1 and 4.2 (there is a preference setting now, and the categories it offers
+// are not the four listed), 5.1 (the site does now set a first-party cookie),
+// 5.2 (it was not in the table), 7 (browser settings were presented as the only
+// way to refuse) and 7.5 (GPC was said to be ignored). All are rewritten below.
+//
+// The version identifier lives in src/data/consent.ts and is stored alongside
+// every consent record. Bumping it makes every stored choice stale and the
+// banner ask again — so bump it whenever this document changes materially, and
+// leave it alone for a typo.
+//
+// One thing this policy still does not do, flagged in content-issues.md C59:
+// the cookie inventory in section 5 is drawn from HubSpot's and Cloudflare's
+// published documentation, not from a scan of the live site. The one row that
+// has been verified against the live site is the consent cookie, because we set
+// it. Confirm the rest against a real scan before relying on it.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import LegalContents from "../components/LegalContents.astro";
 import LegalSections from "../components/LegalSections.astro";
 import type { LegalSection } from "../data/legal";
+import { COOKIE_POLICY_VERSION, COOKIE_POLICY_EFFECTIVE, CONSENT_COOKIE } from "../data/consent";
 
 const sections: LegalSection[] = [
   {
@@ -81,31 +93,33 @@ const sections: LegalSection[] = [
     n: "4",
     title: "The categories of cookie we use",
     clauses: [
-      { n: "4.1", lead: "Strictly necessary.", text: " Cookies that are required for the website to work or to keep it secure. These cannot be switched off through a preference setting, although you can block them in your browser — the website may then not work properly." },
-      { n: "4.2", lead: "Functional.", text: " Cookies that remember choices you have made, so that you do not have to make them again." },
-      { n: "4.3", lead: "Analytics and performance.", text: " Cookies that tell us how the website is used: which pages are read, how long people stay and where they arrived from. These are not necessary for the website to work." },
+      { n: "4.1", lead: "Strictly necessary.", text: " Cookies that are required for the website to work, to keep it secure, or to remember that you have told us what you want. The cookie banner does not offer a switch for these, because switching them off is not something we can meaningfully offer: the site cannot be delivered without them, and the cookie that records your choice is what stops us asking you again. You can still block them in your browser — the website may then not work properly, and we will have no way of remembering that you refused anything." },
+      { n: "4.2", lead: "Functional.", text: " Cookies that remember choices you have made about how the site looks or behaves, so that you do not have to make them again. We do not currently use any. The cookie that records your cookie choice is treated as strictly necessary rather than functional, because without it we could not honour a refusal." },
+      { n: "4.3", lead: "Analytics and performance.", text: " Cookies that tell us how the website is used: which pages are read, how long people stay and where they arrived from. These are not necessary for the website to work, and none of them is set unless you accept them." },
       { n: "4.4", lead: "Advertising and targeting.", text: " We do not use these on this website." },
+      { n: "4.5", text: "The cookie banner therefore offers one choice, not four: analytics cookies on, or analytics cookies off. Strictly necessary cookies are explained rather than offered, and the other two categories are not in use." },
     ],
   },
   {
     n: "5",
     title: "The cookies used on this website",
     clauses: [
-      { n: "5.1", text: "This website sets no first-party cookies of its own. The cookies below are set by the third-party services described in section 6." },
+      { n: "5.1", text: `This website sets one first-party cookie of its own — ${CONSENT_COOKIE}, which records the cookie choice you made — and nothing else. Every other cookie in the table below is set by one of the third-party services described in section 6, and the analytics ones are set only if you accept them.` },
       {
         n: "5.2",
         text: "The cookies that may be set when you visit this website are:",
         grid: {
           headers: ["Cookie", "Set by", "Purpose", "Category", "Typical lifespan"],
           rows: [
-            ["__hstc", "HubSpot", "The main analytics cookie. Records the domain, a visitor identifier, the first and most recent visit and the number of visits.", "Analytics", "6 months"],
-            ["hubspotutk", "HubSpot", "Identifies a returning browser so that repeat visits are not counted as new ones.", "Analytics", "6 months"],
-            ["__hssc", "HubSpot", "Tracks a single browsing session and whether the visit count needs incrementing.", "Analytics", "30 minutes"],
-            ["__hssrc", "HubSpot", "Records whether the visitor has restarted their browser, so a new session can be started.", "Analytics", "Session"],
+            [CONSENT_COOKIE, "The Vilij", "Records the choice you made in the cookie banner: whether you accepted or refused analytics cookies, the date and time you chose, and the version of this policy you were shown. It contains no identifier and nothing about you.", "Strictly necessary", "6 months from the date you choose. If you closed the banner without choosing, it lasts only until you close your browser, and you will be asked again next time."],
+            ["__hstc", "HubSpot", "The main analytics cookie. Records the domain, a visitor identifier, the first and most recent visit and the number of visits.", "Analytics — only if you accept", "6 months"],
+            ["hubspotutk", "HubSpot", "Identifies a returning browser so that repeat visits are not counted as new ones.", "Analytics — only if you accept", "6 months"],
+            ["__hssc", "HubSpot", "Tracks a single browsing session and whether the visit count needs incrementing.", "Analytics — only if you accept", "30 minutes"],
+            ["__hssrc", "HubSpot", "Records whether the visitor has restarted their browser, so a new session can be started.", "Analytics — only if you accept", "Session"],
             ["__cf_bm", "Cloudflare", "Distinguishes people from automated traffic. Set only where Cloudflare bot protection is active.", "Strictly necessary", "30 minutes"],
           ],
         },
-        outro: "Cookie names and lifespans are set by the providers named above, not by us, and those providers may change them. The list is accurate to the best of our knowledge at the date of this policy.",
+        outro: "The four HubSpot cookies are not set until you accept analytics cookies. Until then the script that sets them is not loaded onto the page at all, so there is nothing to switch off. Cookie names and lifespans for the HubSpot and Cloudflare entries are set by those providers, not by us, and they may change them; the list is accurate to the best of our knowledge at the date of this policy.",
       },
       { n: "5.3", text: "You may see other cookies if you follow a link from this website to another organisation’s site. Those cookies are governed by that organisation’s own cookie policy, not this one." },
     ],
@@ -129,15 +143,23 @@ const sections: LegalSection[] = [
     n: "7",
     title: "How to control cookies",
     clauses: [
-      { n: "7.1", text: "You can control and delete cookies through your browser settings. Every major browser lets you see what has been set, delete it, block cookies from particular sites, or block all cookies." },
+      { n: "7.1", text: "The first time you visit, a banner asks whether you are willing to accept analytics cookies. It offers two choices of equal prominence — accept or reject — and nothing is set while you decide. Refusing is exactly as easy as accepting, and takes the same single click." },
+      { n: "7.2", text: "You do not have to choose at all. Closing the banner, or pressing Escape, dismisses it without accepting anything: no analytics cookies are set, and every page remains fully readable. We will ask again next time you visit." },
       {
-        n: "7.2",
+        n: "7.3",
+        text: "You can change your mind at any time. The “Cookie preferences” link in the footer of every page reopens the banner, and the choice you make there replaces the one before it. If you turn analytics cookies off having previously accepted them, we delete the four HubSpot cookies listed in section 5.2 and reload the page without the script that sets them.",
+        textHtml: 'You can change your mind at any time. The &ldquo;Cookie preferences&rdquo; link in the footer of every page reopens the banner, and the choice you make there replaces the one before it. If you turn analytics cookies off having previously accepted them, we delete the four HubSpot cookies listed in <a href="#s5" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">section 5.2</a> and reload the page without the script that sets them.',
+      },
+      { n: "7.4", text: "We will also ask again if this policy changes materially. Your choice is stored with the version of this policy it was given against, so if we begin using cookies in a way this document does not describe, the old answer stops applying and the banner reappears." },
+      { n: "7.5", text: "If your browser sends a Global Privacy Control signal, we treat it as a refusal of analytics cookies. We do not set them, and we do not show you the banner — you have already answered the question at the browser level, and being asked again would be ignoring you. You can still override this deliberately using the “Cookie preferences” link if you want to. We do not respond to the older “Do Not Track” header, which has no agreed meaning and was withdrawn as a standard." },
+      { n: "7.6", text: "Separately from all of the above, you can control and delete cookies through your browser settings. Every major browser lets you see what has been set, delete it, block cookies from particular sites, or block all cookies. This works whatever we do, which is why it is worth knowing about — but on this website it should not be necessary to refuse analytics cookies." },
+      {
+        n: "7.7",
         text: "Instructions for the most common browsers are published by their makers:",
         textHtml: 'Instructions for the most common browsers are published by their makers: <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Chrome</a>, <a href="https://support.apple.com/en-gb/guide/safari/sfri11471/mac" target="_blank" rel="noopener" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Safari</a>, <a href="https://support.mozilla.org/en-GB/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Firefox</a> and <a href="https://support.microsoft.com/en-gb/microsoft-edge" target="_blank" rel="noopener" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Edge</a>.',
       },
-      { n: "7.3", text: "Blocking all cookies will not stop you reading this website, but blocking strictly necessary cookies may affect how reliably it loads." },
-      { n: "7.4", text: "Most browsers also offer a private or incognito mode, which clears cookies when you close the window. If you share a device, that may be the simplest option." },
-      { n: "7.5", text: "If your browser sends a “Do Not Track” or Global Privacy Control signal, we do not currently respond to it automatically. Browser controls remain the reliable way to refuse cookies on this website." },
+      { n: "7.8", text: "Blocking all cookies will not stop you reading this website, but blocking strictly necessary cookies may affect how reliably it loads, and will stop us remembering that you refused analytics cookies — so you will see the banner on every visit." },
+      { n: "7.9", text: "Most browsers also offer a private or incognito mode, which clears cookies when you close the window. If you share a device, that may be the simplest option." },
     ],
   },
   {
@@ -145,8 +167,9 @@ const sections: LegalSection[] = [
     title: "Changes to this Cookie Policy",
     clauses: [
       { n: "8.1", text: "We may update this Cookie Policy to reflect changes to the website, the services we use or applicable law." },
-      { n: "8.2", text: "The current version is always the one published on this website, and it takes effect from the date shown at the top of this page." },
-      { n: "8.3", text: "Where we make a material change — for example, if we begin using a new category of cookie — we will say so clearly." },
+      { n: "8.2", text: "The current version is always the one published on this website, and it takes effect from the date shown at the top of this page. The version number is shown there too." },
+      { n: "8.3", text: "Where we make a material change — for example, if we begin using a new category of cookie — we will say so clearly, and we will ask you again rather than carrying your old answer forward. See clause 7.4." },
+      { n: "8.4", text: "This is version 2.0, effective 1 August 2026. Version 1.0, published on 29 July 2026, described a website that had no cookie banner and set analytics cookies without asking. That is what this version changes." },
     ],
   },
   {
@@ -167,7 +190,7 @@ const sections: LegalSection[] = [
 
 <BaseLayout
   title="Cookie Policy | The Vilij"
-  description="How The Vilij uses cookies on this website: what each cookie does, who sets it, how long it lasts, and how to block or delete cookies in your browser."
+  description="How The Vilij uses cookies: what each one does, who sets it, how long it lasts, and how to accept or refuse analytics cookies at any time from any page."
 >
     <style is:global>
       body { margin: 0; }
@@ -192,14 +215,14 @@ const sections: LegalSection[] = [
             <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Cookie Policy</h1>
             <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:640px;">A short, honest account of what this website puts on your device.</p>
             <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0 0 30px;max-width:640px;">Which cookies are set, who sets them, what each one is for, how long it lasts &mdash; and how to get rid of them if you would rather not have them.</p>
-            <p style="font-family:Mulish;font-weight:700;font-size:16px;letter-spacing:.4px;color:#1f9ca0;margin:0;display:inline-block;background:rgba(255,255,255,0.6);border-radius:24px;padding:11px 22px;">Effective from <time datetime="2026-07-29">29 July 2026</time></p>
+            <p style="font-family:Mulish;font-weight:700;font-size:16px;letter-spacing:.4px;color:#1f9ca0;margin:0;display:inline-block;background:rgba(255,255,255,0.6);border-radius:24px;padding:11px 22px;">Effective from <time datetime={COOKIE_POLICY_EFFECTIVE.iso}>{COOKIE_POLICY_EFFECTIVE.label}</time> &middot; Version {COOKIE_POLICY_VERSION}</p>
           </div>
         </div>
       </section>
 
       <!-- ===== BAND ===== -->
       <div style="background:#f28121;text-align:center;padding:26px 24px;">
-        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">No trackers you did not ask about.</p>
+        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">Nothing is set until you say yes.</p>
       </div>
 
       <!-- ===== CONTENTS ===== -->

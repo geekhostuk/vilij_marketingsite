@@ -23,7 +23,7 @@ else — have been fixed: **C4, C8, C9–C19, C35, C36, C37, C38, C41, C43, C45,
 C51, C52, C55.**
 
 A second batch closed on 29 July 2026, this time on instructions rather than by tidying:
-**C1, C2, C20, C23, C24, C25, C54, C56.** Three of those were decisions, not code — remove the
+**C1, C2, C20, C23, C24, C25, C54, C56, C58.** Three of those were decisions, not code — remove the
 placeholder copy without replacing it, point sign-up at the app, and give the Terms a date.
 **C3 is closed by hiding rather than filling**; C5, C6 and C7 go dormant with it, because the
 invented attributions are still in the page files, just not rendered.
@@ -31,6 +31,12 @@ invented attributions are still in the page files, just not rendered.
 Publishing the Safeguarding Policy (C56) raised two new items of its own, **C62** and **C63**.
 C63 is a P1: the policy's contact clause is fully filled in and includes two named individuals'
 personal mobile numbers.
+
+Closing the consent gap (**C58**) raised one, **C64**, and it is a P1 too. HubSpot captures the
+newsletter through the same script that sets the analytics cookies, so blocking the tracker until
+consent means signups from anyone who refuses analytics are no longer recorded — while the site
+still tells them they are on the list. Nothing was worked around; the choice belongs to someone
+else.
 
 C36 and C37 came off the blocked list on 29 July 2026 when the source documents turned up. C35
 followed the same day: no source existed, so the Cookie Policy was written from scratch. C55 and
@@ -52,10 +58,10 @@ Everything below is still open, and every one of them is blocked on something ex
 | **An asset that has to be produced** | C44 — Open Graph / Twitter Card tags need a 1200×630 image before they are worth adding |
 | **A lawyer's eye** | C53 and C62 — numbering faults in the source legal documents · C60 — the registered office now reads two ways |
 | **A decision about publishing personal contact details** | C63 — the Safeguarding Policy names two people and their mobile numbers |
-| **A consent tool, or dropping HubSpot** | C58 — analytics cookies are set before anyone has agreed to them |
+| **A decision about the newsletter** | C64 — blocking the tracker means HubSpot no longer captures newsletter signups from anyone who refuses analytics |
 | **The site being made responsive** | ISSUES #20 — the footer and every content section overflow below about 460px |
 
-C39, C58 and C63 are the remaining launch blockers on this list.
+C39, C63 and C64 are the remaining launch blockers on this list.
 
 > **All five legal documents are now published.** The source PDFs turned up in the client's
 > "Vilij Files" folder on 29 July 2026. **C36** (`/terms`), **C37** (`/community-guidelines`) and
@@ -228,7 +234,7 @@ written and now has been. **All four are live and all four are linked from the f
 
 | # | Priority | Document | Status |
 |---|----------|----------|--------|
-| ✅ C35 | **P1** | Cookie Policy *(ISSUES #6)* | **Written and published at `/cookie-policy`.** No source document existed, so unlike the other three this one was written from what the site demonstrably loads. Linked from Privacy §7.2 and §16.3 — the two places that promised it — and from the footer. See C58 and C59 for what it does not claim. |
+| ✅ C35 | **P1** | Cookie Policy *(ISSUES #6)* | **Written and published at `/cookie-policy`.** No source document existed, so unlike the other three this one was written from what the site demonstrably loads. Linked from Privacy §7.2 and §16.3 — the two places that promised it — and from the footer. **Rewritten to version 2.0 on 1 August 2026** once the consent banner existed (C58): §4.1, §4.2, §5.1, §5.2, §7 and §7.5 all described a site with no way to refuse anything. See C59 for what it still does not claim. |
 | ✅ C36 | **P1** | User Terms of Use *(ISSUES #7)* | Published at **`/terms`**. The footer "Terms" link, dead on all eight pages, now points at it. |
 | ✅ C37 | **P2** | Community Guidelines *(ISSUES #8)* | Published at **`/community-guidelines`**, linked from Privacy §1.5. |
 | ✅ C38 | **P2** | Complaints and Reporting Procedure *(ISSUES #8)* | Published at **`/complaints`**, linked from the footer. Held back until C55 was resolved; released once the general complaints address was confirmed. |
@@ -371,11 +377,12 @@ live on the site, and only their author can fix them.
 | ✅ C55 | **P1** | **The Complaints procedure had no real contact address.** The source PDF gives `email@email.co.uk` in five places, including the address for reporting **safeguarding and child protection concerns**. The safeguarding address was resolved from clause 7.2 of the Terms (`safeguarding@thevilij.co.uk`); the general complaints address was confirmed on 29 July 2026 as `complaints@thevilij.co.uk`. Both are now set in `src/pages/complaints.astro`, and the page has been published: `noindex` removed, added to `sitemap.xml`, `Disallow` lifted from `robots.txt`, linked from the footer on all 12 pages. **Confirm the `complaints@` mailbox is live and monitored** — the page now tells people it is. | `complaints` |
 | ✅ C56 | **P2** | ~~**The Safeguarding Policy is not published anywhere.**~~ Transcribed verbatim from `THE VILIJ Safeguarding Policy (Final).pdf` (version 1.1, effective 24 July 2026) and published at **`/safeguarding-policy`** — 19 sections, 129 clauses, the longest document on the site. The mislabelled footer link is fixed: "Privacy Policy & Safeguarding Policy" is split into two entries in the Quick Links column, and "Safeguarding" is added to the legal row alongside Terms, Privacy and Cookies. Added to `sitemap.xml`. **Nothing was added to the Privacy Policy, Terms or Community Guidelines** — those are published legal texts and a new cross-reference would change what they say. Faults reproduced from the source are recorded in C62; the contact details question is C63. | `safeguarding-policy` |
 | ☐ C57 | **P3** | **The Privacy Policy PDF is behind the live site.** The source still reads `company number []`; the live page carries **16718802**, taken from the executed Membership Agreement. Anyone re-transcribing from the PDF would regress C4. | source PDF |
-| ☐ C58 | **P1** | **Non-essential cookies are set with no consent.** The HubSpot embed loads on every page and sets four analytics cookies immediately. There is no consent banner, no preference centre and no way to refuse them other than browser settings. Under PECR reg. 6 analytics cookies need consent **before** they are set. The Cookie Policy documents this honestly — it offers browser controls and the HubSpot opt-out and claims nothing else — but a policy does not cure it. Either add a consent tool or drop the HubSpot embed from the marketing site. | All 11 pages |
+| ✅ C58 | **P1** | ~~**Non-essential cookies are set with no consent.**~~ Fixed on 29 July 2026 by a consent banner, and fixed properly: the HubSpot script tag is **gone from `BaseLayout.astro` entirely**, and is injected by `CookieConsent.astro` only after someone accepts. Loading HubSpot and asking it not to track would not have worked — the cookies get set either way. Verified in a real browser on a clean profile: no `__hstc`, `hubspotutk`, `__hssc` or `__hssrc` before a choice; still none after rejecting, after a navigation and after a reload; all four present after accepting. Accept and Reject are the same size, shape and colour, and both are fully on screen down to 320×568. Escape dismisses without accepting and without overwriting an earlier answer. GPC is honoured as a refusal. Withdrawing consent deletes the four cookies and reloads the page without the script. | All 13 pages |
+| ☐ C64 | **P1** | **The newsletter is only captured from people who accept analytics.** The footer form is a plain HTML form; HubSpot records it through *non-HubSpot form capture*, which is a feature of the tracking script rather than a separate forms script. Blocking tracking therefore does not break the form — it still submits and still lands on `/newsletter-thanks` — but nothing reaches HubSpot. Confirmed by watching the network in both states: with analytics rejected there are no HubSpot requests at all; with analytics accepted, `collectedforms.js` loads and a `POST /collected-forms/submit/form` fires on submit. **So a visitor who refuses analytics, subscribes, and is told “You’re on the list” is not on the list.** That is worse than a form that visibly fails, and it is a decision rather than something to work around. Three ways out: accept the loss; replace the plain form with a HubSpot embedded form, whose script is independent of tracking; or POST to a Cloudflare Pages Function that calls HubSpot’s Forms API server-side, which needs no client cookies in any consent state and would also close ISSUES #13. The third is the right one. | `SiteFooter` newsletter form |
 | ☐ C63 | **P1** | **The Safeguarding Policy publishes two people's personal mobile numbers.** Clause 19.4 is fully filled in — no placeholders — and names the DSL and Deputy DSL with their roles, work email addresses and mobile numbers (`07968 212108`, `07598 179440`). Transcribed verbatim because that is what the document says and it is the client's document. But publishing a personal mobile number on an indexed marketing page is a publication decision, not a transcription detail: it will be scraped. Three options, all of which need a person to choose: publish as-is, replace the numbers with `safeguarding@thevilij.co.uk` (which clause 19.4 already gives as the reporting route), or leave the page `noindex` until the policy is reissued. **Decide before this page goes live.** | `safeguarding-policy` §19.4 |
 | ☐ C62 | **P2** | **Numbering and naming faults in the source Safeguarding Policy.** Three, all reproduced as printed. **§16.8** prints an item `(g)` with no text at all — just the letter and a semicolon; the item is omitted rather than published as an empty bracket, and `(h)` and `(i)` keep the letters the document prints (this is what `itemLabels` in `src/data/legal.ts                     shared shape for the five legal documents` is for). **§19.5** is a heading, "Emergency and external contacts", with no clause text; the content it introduces is numbered 19.6. **§19.1** names the policy owner "Charlene Andruskeviciu" where §19.4 names the same person "Charlene Andruskevicius". Only the author can fix any of these. | `safeguarding-policy` |
 | ☐ C60 | **P2** | **The registered office now reads two ways.** The confirmed address is *The Meakin Suite, Ravenscliffe, First Avenue, Newcastle-under-Lyme, ST5 8QX*, and that is what the footer and the Privacy Policy §2.1 now carry. The Complaints procedure §11 still reads *Newcastle Under Lyme, Staffordshire, United Kingdom* because it is a solicitor document transcribed verbatim and correcting it would change what the published procedure says. Either the source PDF is reissued or someone decides the transcription rule bends for a factual address. | `complaints` §11 |
-| ☐ C59 | **P2** | **The cookie inventory has not been scanned.** The table in Cookie Policy §5 is built from HubSpot's and Cloudflare's published documentation, not from a scan of the live site, and lifespans are set by those providers and change. Confirm it against a real cookie scan before anyone relies on it, and re-check whenever the HubSpot embed changes. | `cookie-policy` §5 |
+| ☐ C59 | **P2** | **The cookie inventory has only been half scanned.** A real scan on 29 July 2026 confirmed the four HubSpot names, that they appear only after acceptance, and that `vilij_cookie_consent` behaves exactly as §5.2 now describes. Two gaps remain. The **lifespans** in the table are still HubSpot’s and Cloudflare’s published figures rather than measured ones, and those providers can change them. And `__cf_bm` could not be checked properly: the scan ran against a local server, where it appears only as a third-party cookie on HubSpot’s own domains. On the deployed site it is set at the Cloudflare edge for `marketing.thevilij.co.uk` before any of our JavaScript runs — nothing in the consent code touches it, but confirm that in production. | `cookie-policy` §5 |
 
 Two typographic corrections were made silently, both in the User Terms of Use: a stray space
 before a full stop in §7.2 ("by The Vilij ."), and the mangled currency symbol in §14.3, which
@@ -438,9 +445,10 @@ Steps 2 and 4 (in part) are done. What remains, in order:
 4. ~~**Fill in the company number** (C4)~~ — done. ~~**Publish the Terms of Use, Community
    Guidelines, Cookie Policy and Complaints procedure**~~ (C36, C37, C35, C38, C55) — done, and
    all four are now linked from the footer. Still outstanding: **fix the cookie consent gap**
-   (C58), **give the Terms an effective date** (C54), and **decide whether the Safeguarding
-   Policy goes public** (C56) — the footer link now reads "Privacy Policy & Safeguarding Policy"
-   but points only at `/privacy`.
+   (C58) — done, see the consent banner — ~~**give the Terms an effective date**~~ (C54) and
+   ~~**decide whether the Safeguarding Policy goes public**~~ (C56), both done. What the consent
+   work left behind is C64: the newsletter is no longer captured from people who refuse
+   analytics.
 5. ~~**Build or hide** High Street, Market Place and Campus (C23–C25)~~ — hidden, as
    "coming soon" tiles. Still outstanding: a Support/Contact route (C33).
 6. **Decide on pricing** (C39) — £10/month currently leads nowhere.

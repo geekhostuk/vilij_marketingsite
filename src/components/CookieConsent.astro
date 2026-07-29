@@ -1,0 +1,357 @@
+---
+// The Vilij — cookie consent banner (C58).
+//
+// The site sets four HubSpot analytics cookies. Under PECR reg. 6 those need
+// consent *before* they are set, and until now there was no way to give or
+// refuse it. This is that mechanism.
+//
+// What makes the blocking real: BaseLayout no longer renders the HubSpot script
+// tag at all. The script is injected by the code below, and only after someone
+// has accepted. Loading HubSpot and telling it not to track would not do — the
+// cookies get set either way.
+//
+// Cloudflare's __cf_bm is untouched. It is strictly necessary, it is set at the
+// edge before any of this runs, and it is not ours to control.
+//
+// Design decisions worth knowing about:
+//
+//   * Accept and Reject are the same size, the same shape and the same colour.
+//     Only the words differ. This is the part regulators actually look at, and
+//     any visual hierarchy between the two would be a finding.
+//   * It is not a cookie wall. There is no backdrop, the page scrolls behind it,
+//     and closing it without choosing is allowed — that just means no analytics.
+//   * Escape closes the banner. It does not accept anything. Nor does the ×.
+//   * Dismissing writes a session cookie, so the banner does not nag for the
+//     rest of the visit but asks again next time. Only an explicit Accept or
+//     Reject is recorded for six months.
+//   * Global Privacy Control is honoured. A browser sending GPC has already said
+//     no, so we do not set analytics cookies and we do not put a banner in front
+//     of someone who has answered the question at the browser level.
+//   * The buttons use #15838a rather than the site's usual #1f9ca0. White on
+//     #1f9ca0 is 3.3:1, which fails AA for text this size; #15838a is 4.6:1 and
+//     is already in the palette as the nav CTA hover colour.
+import {
+  CONSENT_COOKIE,
+  COOKIE_POLICY_VERSION,
+  CONSENT_MAX_AGE_DAYS,
+  HUBSPOT_TRACKING_SRC,
+  HUBSPOT_COOKIES,
+} from "../data/consent";
+---
+
+<div
+  id="cc-banner"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cc-title"
+  aria-describedby="cc-desc"
+  tabindex="-1"
+  hidden
+>
+  <div class="cc-inner">
+    <button type="button" id="cc-close" class="cc-close" aria-label="Close without choosing">&#10005;</button>
+    <h2 id="cc-title" class="cc-title">Cookies on this site</h2>
+    <div id="cc-desc" class="cc-desc">
+      <p class="cc-p"><strong>Strictly necessary cookies</strong> keep the site working and secure. They are always on, and there is nothing to agree to &mdash; the site cannot be delivered without them.</p>
+      <p class="cc-p"><strong>Analytics cookies</strong> tell us which pages are read and how people arrived, so we can tell whether what we publish is reaching the families it is meant for. They are off unless you turn them on, and nothing is set until you do.</p>
+      <p class="cc-p cc-quiet">We use no advertising or targeting cookies. You can change your mind at any time using the <em>Cookie preferences</em> link in the footer. <a href="/cookie-policy" class="cc-link">Read the Cookie Policy</a>.</p>
+    </div>
+    <div class="cc-actions">
+      <button type="button" id="cc-accept" class="cc-btn">Accept analytics cookies</button>
+      <button type="button" id="cc-reject" class="cc-btn">Reject analytics cookies</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  #cc-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: #ffffff;
+    border-top: 3px solid #15838a;
+    box-shadow: 0 -8px 28px rgba(20, 60, 65, 0.16);
+    max-height: 80vh;
+  }
+  #cc-banner[hidden] { display: none; }
+  .cc-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 26px 56px 28px 24px;
+    font-family: Mulish, sans-serif;
+  }
+  /*
+    Only the explanation scrolls. The title and, more importantly, both buttons
+    stay in view at every viewport height — on a 320x568 phone the description
+    alone is taller than the screen, and a layout where Accept is above the fold
+    and Reject is not fails the equal-prominence test however identical the two
+    buttons look when you finally see them together.
+  */
+  .cc-desc { overflow-y: auto; min-height: 0; }
+  .cc-title, .cc-actions { flex: none; }
+  .cc-title {
+    font-family: Quicksand, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #15838a;
+    margin: 0 0 12px;
+  }
+  .cc-p {
+    font-size: 16px;
+    line-height: 1.55;
+    color: #353535;
+    margin: 0 0 10px;
+  }
+  .cc-p strong { color: #222222; }
+  .cc-quiet { color: #555555; margin-bottom: 0; }
+  .cc-link { color: #15838a; font-weight: 700; text-decoration: underline; }
+  .cc-link:hover { color: #0f6167; }
+  .cc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  /* Accept and Reject are deliberately identical. Do not restyle one of them. */
+  .cc-btn {
+    flex: 1 1 260px;
+    min-height: 48px;
+    font-family: Mulish, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #ffffff;
+    background: #15838a;
+    border: 2px solid #15838a;
+    border-radius: 8px;
+    padding: 12px 18px;
+    cursor: pointer;
+  }
+  .cc-btn:hover { background: #0f6167; border-color: #0f6167; }
+  .cc-close {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #555555;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .cc-close:hover { color: #15838a; border-color: #cfe3e4; }
+  #cc-banner :is(button, a):focus-visible {
+    outline: 3px solid #f28121;
+    outline-offset: 2px;
+  }
+  @media (max-width: 520px) {
+    .cc-inner { padding: 22px 20px 24px; }
+    .cc-close { top: 10px; right: 8px; }
+    .cc-title { font-size: 21px; padding-right: 34px; }
+    .cc-btn { flex: 1 1 100%; }
+  }
+</style>
+
+<script
+  is:inline
+  define:vars={{
+    NAME: CONSENT_COOKIE,
+    VERSION: COOKIE_POLICY_VERSION,
+    MAX_AGE_DAYS: CONSENT_MAX_AGE_DAYS,
+    HS_SRC: HUBSPOT_TRACKING_SRC,
+    HS_COOKIES: HUBSPOT_COOKIES,
+  }}
+>
+  (function () {
+    var banner = document.getElementById("cc-banner");
+    if (!banner) return;
+
+    var returnFocusTo = null;
+    var hubspotLoadedHere = false;
+
+    // ---- the stored record -------------------------------------------------
+
+    function readRecord() {
+      var match = document.cookie.match(
+        new RegExp("(?:^|; )" + NAME.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "=([^;]*)")
+      );
+      if (!match) return null;
+      try {
+        var parsed = JSON.parse(decodeURIComponent(match[1]));
+        // A record written against an older Cookie Policy no longer describes
+        // what the visitor agreed to, so it is treated as no answer at all.
+        if (!parsed || parsed.v !== VERSION) return null;
+        return parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function writeRecord(state, persist) {
+      var record = {
+        analytics: state === "accepted",
+        state: state,
+        ts: new Date().toISOString(),
+        v: VERSION
+      };
+      var parts = [
+        NAME + "=" + encodeURIComponent(JSON.stringify(record)),
+        "path=/",
+        "SameSite=Lax"
+      ];
+      // No Max-Age for a dismissal: it lasts the browsing session, so the
+      // banner stops nagging now but asks again next time.
+      if (persist) parts.push("Max-Age=" + MAX_AGE_DAYS * 24 * 60 * 60);
+      if (location.protocol === "https:") parts.push("Secure");
+      document.cookie = parts.join("; ");
+    }
+
+    // ---- analytics ---------------------------------------------------------
+
+    function loadHubSpot() {
+      if (document.getElementById("hs-script-loader")) return;
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      s.id = "hs-script-loader";
+      s.async = true;
+      s.defer = true;
+      s.src = HS_SRC;
+      document.body.appendChild(s);
+      hubspotLoadedHere = true;
+    }
+
+    function clearHubSpotCookies() {
+      // Expire on every host the cookies could have been scoped to: HubSpot
+      // sets them on the registrable domain, so clearing only the exact host
+      // leaves them behind.
+      var host = location.hostname;
+      var domains = [null, host];
+      var labels = host.split(".");
+      for (var i = 1; i < labels.length - 1; i++) domains.push("." + labels.slice(i).join("."));
+      for (var c = 0; c < HS_COOKIES.length; c++) {
+        for (var d = 0; d < domains.length; d++) {
+          document.cookie =
+            HS_COOKIES[c] + "=; Max-Age=0; path=/" +
+            (domains[d] ? "; domain=" + domains[d] : "");
+        }
+      }
+    }
+
+    // ---- the banner --------------------------------------------------------
+
+    function focusable() {
+      return Array.prototype.filter.call(
+        banner.querySelectorAll("button, a[href]"),
+        function (el) { return el.offsetParent !== null; }
+      );
+    }
+
+    function open(trigger) {
+      returnFocusTo = trigger || null;
+      banner.hidden = false;
+      banner.focus();
+      document.addEventListener("keydown", onKeydown, true);
+    }
+
+    function close() {
+      banner.hidden = true;
+      document.removeEventListener("keydown", onKeydown, true);
+      if (returnFocusTo && document.contains(returnFocusTo)) returnFocusTo.focus();
+      returnFocusTo = null;
+    }
+
+    function onKeydown(e) {
+      if (banner.hidden) return;
+      if (e.key === "Escape") {
+        // Escape is not acceptance. It dismisses, which means no analytics.
+        e.preventDefault();
+        dismiss();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      var items = focusable();
+      if (!items.length) return;
+      var first = items[0];
+      var last = items[items.length - 1];
+      var active = document.activeElement;
+      if (e.shiftKey) {
+        if (active === first || active === banner || !banner.contains(active)) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else if (active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    function dismiss() {
+      // Dismissing means "I am not answering", so it must not overwrite an
+      // answer already given. Someone who rejected months ago, reopens their
+      // preferences and then presses Escape has changed nothing, and should not
+      // be demoted to having no record and asked again on their next visit.
+      var existing = readRecord();
+      if (!existing || existing.state === "dismissed") writeRecord("dismissed", false);
+      close();
+    }
+
+    function accept() {
+      writeRecord("accepted", true);
+      loadHubSpot();
+      close();
+    }
+
+    function reject() {
+      var wasLoaded = hubspotLoadedHere || !!document.getElementById("hs-script-loader");
+      writeRecord("rejected", true);
+      clearHubSpotCookies();
+      close();
+      // A tracker already running in this tab cannot be called off, so if it
+      // was loaded in this page view the page is reloaded without it. Nothing
+      // to reload if it never loaded.
+      if (wasLoaded) location.reload();
+    }
+
+    document.getElementById("cc-accept").addEventListener("click", accept);
+    document.getElementById("cc-reject").addEventListener("click", reject);
+    document.getElementById("cc-close").addEventListener("click", dismiss);
+
+    // Reopening from the footer link, on every page.
+    var prefs = document.getElementById("cookie-prefs");
+    if (prefs) {
+      prefs.addEventListener("click", function (e) {
+        e.preventDefault();
+        open(prefs);
+      });
+    }
+
+    // ---- what happens on load ----------------------------------------------
+
+    var record = readRecord();
+
+    if (record && record.state === "accepted") {
+      loadHubSpot();
+    } else if (record) {
+      // rejected, or dismissed earlier in this session. Either way: no
+      // analytics, and no banner.
+    } else if (navigator.globalPrivacyControl === true) {
+      // GPC is a refusal. Honour it and do not ask a question the browser has
+      // already answered. The footer link still reopens the banner for anyone
+      // who wants to override it deliberately.
+    } else {
+      open(null);
+    }
+  })();
+</script>

@@ -11,6 +11,10 @@
 // The columns were rebalanced for their absence: the logo's bottom margin now
 // carries the gap the paragraph used to, and the newsletter heading takes the
 // same 22px as its three siblings so the four headings sit on one line.
+//
+// "Cookie preferences" in the legal row is a <button>, not a link: it reopens
+// the consent banner rather than navigating anywhere. CookieConsent.astro binds
+// to it by id, and both live on every page, so it works everywhere.
 interface Props {
   padding?: string;
 }
@@ -70,6 +74,7 @@ const { padding = "74px 0 30px" } = Astro.props;
         <a href="/privacy" class="vlink" style="color:#666;text-decoration:none;">Privacy</a><span style="color:#ccc;">&mdash;</span>
         <a href="/cookie-policy" class="vlink" style="color:#666;text-decoration:none;">Cookies</a><span style="color:#ccc;">&mdash;</span>
         <a href="/safeguarding-policy" class="vlink" style="color:#666;text-decoration:none;">Safeguarding</a><span style="color:#ccc;">&mdash;</span>
+        <button type="button" id="cookie-prefs" class="vlink" style="font-family:Mulish;font-size:15px;color:#666;background:none;border:none;padding:0;cursor:pointer;">Cookie preferences</button><span style="color:#ccc;">&mdash;</span>
         <a href="#" class="vlink" style="color:#666;text-decoration:none;">Support</a>
       </div>
     </div>
