@@ -18,7 +18,7 @@ Status key: ☐ outstanding · ✅ fixed.
 ## What is still outstanding
 
 The self-contained items — everything fixable without new copy or a decision from someone
-else — have been fixed: **C4, C8, C9–C19, C41, C43, C45, C46, C47.**
+else — have been fixed: **C4, C8, C9–C19, C41, C43, C45, C46, C47, C48, C50, C51, C52.**
 
 Everything below is still open, and every one of them is blocked on something external:
 
@@ -32,6 +32,11 @@ Everything below is still open, and every one of them is blocked on something ex
 
 None of these can be closed by editing the existing pages. C1, C2, C5, C20 and C39 are the
 launch blockers.
+
+> **The duplicated markup is gone (C48).** The header, footer, testimonial carousel and areas
+> grid now live in `src/layouts/` and `src/components/`. C1 and C2 are one edit each in
+> `src/components/SiteFooter.astro` rather than eight, and `showSecondTestimonial` is a single
+> flag in `src/data/testimonials.ts`. It is still `true` — that decision has not been made.
 
 ---
 
@@ -48,13 +53,15 @@ launch blockers.
 > (The Meakin Suite, Ravenscliffe, First Avenue, Newcastle Under Lyme, ST5 8QX). Left as found.
 > Still worth confirming that this is the address the policy should carry.
 
-22 blocks of Latin are live across the site. Line references (re-checked 29 July 2026, after the
-copy, SEO and star-rating fixes — they drift with every edit, so search for the text rather than
-trusting the number):
+22 blocks of Latin are still live across the site, but after the C48 extraction they come from
+far fewer places (re-checked 29 July 2026 — line numbers drift with every edit, so search for
+the text rather than trusting the number):
 
-- **C1** — `index:312`, `cafe:340`, `hall:335`, `library:312`, `wellbeing:312`, `expert-hub:341`, `privacy:882`, `newsletter-thanks:87`
-- **C2** — `index:338`, `cafe:366`, `hall:361`, `library:338`, `wellbeing:338`, `expert-hub:367`, `privacy:908`, `newsletter-thanks:113`
-- **C3** — `index:19`, `cafe:18`, `hall:18`, `library:18`, `wellbeing:18`, `expert-hub:18`
+- **C1** — `src/components/SiteFooter.astro:17`. **One edit, all eight pages.**
+- **C2** — `src/components/SiteFooter.astro:43`. **One edit, all eight pages.**
+- **C3** — still six copies, one per page, because each carries a different invented
+  attribution: `index:26`, `cafe:25`, `hall:25`, `library:25`, `wellbeing:25`, `expert-hub:25`.
+  Setting `showSecondTestimonial = false` in `src/data/testimonials.ts` removes all six at once.
 
 ---
 
@@ -79,9 +86,12 @@ on every content page pairs the placeholder quote with a fully invented, named a
 | ☐ C7 | **P2** | `p_grand.png` is alt-texted "Grandparent and child" on `/cafe`, but carries four different identities across the site. | 4 pages |
 | ✅ C8 | **P3** | ~~The 5-star rating is hard-coded into the carousel frame, so it also displays against the placeholder.~~ Each testimonial now carries its own `stars` value. Emily & Loui keep 5; the placeholder slot is `stars: null` and the frame hides the star row rather than rendering an empty one. | 6 content pages |
 
-**Recommendation:** set `showSecondTestimonial = false` on all six pages until a second real,
-consented quote exists — rather than writing copy into an invented persona. Unsubstantiated
-endorsements breach CAP Code 3.45, and this is a brand asking families in difficulty for money.
+**Recommendation:** set `showSecondTestimonial = false` until a second real, consented quote
+exists — rather than writing copy into an invented persona. Unsubstantiated endorsements breach
+CAP Code 3.45, and this is a brand asking families in difficulty for money.
+
+Since C48 that is one flag in `src/data/testimonials.ts` covering all six pages. It is
+deliberately left `true`: the decision is not the developer's to make.
 
 ---
 
@@ -103,8 +113,8 @@ endorsements breach CAP Code 3.45, and this is a brand asking families in diffic
 | ✅ C18 | **P3** | Events card had no full stop, unlike every sibling | full stop added | `hall` |
 | ✅ C19 | **P3** | Acronym styled three ways: SEND, S.E.N.D. (8×), S.E.N.D (6×) | all 14 dotted forms normalised to **SEND** | Site-wide |
 
-C13–C15 note: the footer is duplicated in all eight page files, so each of those was an
-eight-way edit. See "Duplicated markup" below.
+C13–C15 note: the footer was duplicated in all eight page files, so each of those was an
+eight-way edit. That is what prompted C48, now done — the footer lives in one component.
 
 ---
 
@@ -219,11 +229,51 @@ Titles now live:
 
 | # | Priority | Issue | Where |
 |---|----------|-------|-------|
-| C48 | **P2** | **Duplicated markup.** There are no layouts or components. The header, footer, testimonial carousel and "What else you can see inside the Vilij" grid are copy-pasted into every page file, so every shared-content fix is a 6- or 8-way edit and the copies drift silently. This is the root cause of C13–C15 and of C49 below. Extracting a layout + footer partial would make the remaining copy work (C1, C2, C5) a single edit each instead of eight. | All 8 pages |
-| C49 | **P3** | **Card copy has already drifted.** The Market Place tile reads "Discover wonderful products **& services** created by SEND parents in business." on `/`, `/cafe`, `/hall` and `/wellbeing`, but drops "& services" on `/library` and `/expert-hub`. Same tile, two versions. Left as found — needs a decision on which is correct. | `library`, `expert-hub` |
-| C50 | **P3** | No `<link rel="canonical">` on any page, although `site` is set in `astro.config.mjs`. Worth adding alongside the Open Graph work (C44). | All 8 pages |
-| C51 | **P3** | The star row renders as five bare `★` characters with no accessible name, so a screen reader announces the glyphs rather than "rated 5 out of 5". Accessibility rather than content — probably belongs in [ISSUES.md](ISSUES.md). | 6 content pages |
-| C52 | **P3** | Homepage hero uses a hyphen where the rest of the site uses an em dash: "can be overwhelming **-** even when you're coping" and "a calm, kind place for SEND families **-** where you're understood". | `index` hero |
+| ✅ C48 | **P2** | ~~**Duplicated markup.** There are no layouts or components.~~ Extracted into a shared layout plus components — see below. The build output was byte-for-byte identical before and after. | All 8 pages |
+| ☐ C49 | **P3** | **Card copy has already drifted.** The Market Place tile reads "Discover wonderful products **& services** created by SEND parents in business." on `/`, `/cafe`, `/hall` and `/wellbeing`, but drops "& services" on `/library` and `/expert-hub`. Same tile, two versions. **Deliberately not normalised** — both survive as `areas.marketPlace` and `areas.marketPlaceShort` in `src/data/areas.ts`. Once a decision is made, delete the loser and repoint two pages. | `library`, `expert-hub` |
+| ✅ C50 | **P3** | ~~No `<link rel="canonical">` on any page.~~ Added to the shared layout, derived from `Astro.site` and the page path. No trailing slash except on `/`, matching what Cloudflare Pages actually serves and what `sitemap.xml` lists. Verified against the built HTML for all eight routes. Done without waiting on C44 — canonicals don't need the share image. | All 8 pages |
+| ✅ C51 | **P3** | ~~The star row renders as five bare `★` characters with no accessible name.~~ The row is now `role="img"` with an `aria-label` generated from the testimonial's own `stars` value ("Rated 5 out of 5"); the glyphs are in an `aria-hidden` span. The placeholder slot (`stars: null`) carries neither role nor label and stays hidden. Visual output unchanged. | 6 content pages |
+| ✅ C52 | **P3** | ~~Homepage hero uses a hyphen where the rest of the site uses an em dash.~~ Both now use the site's spaced `&mdash;` convention. | `index` hero |
+
+---
+
+## What the extraction found (C48)
+
+Where two copies of the "same" block disagreed, both versions were kept and parameterised
+rather than normalised. Each is now a one-line change once someone decides which is right.
+
+| What differs | Versions | Now controlled by |
+|---|---|---|
+| Market Place tile copy (**C49**) | "products **& services** created by…" on `/`, `/cafe`, `/hall`, `/wellbeing`; "products created by…" on `/library`, `/expert-hub` | `areas.marketPlace` / `areas.marketPlaceShort` |
+| Quote-mark bubble over the testimonial photo | Present on `/`, `/hall`, `/library`, `/wellbeing`, `/expert-hub`; **absent on `/cafe`** | `TestimonialCarousel showQuoteMark` |
+| Footer top padding | `74px` on seven pages; `34px` on `/newsletter-thanks` | `SiteFooter padding` |
+| Google Fonts families | `/hall` alone loads `Caveat` | `BaseLayout extraFonts` |
+| Second photo tile in the areas grid | `/cafe` `p_grand.png` alt "Grandparent and child"; `/wellbeing` **the same image** alt "A SEND grandparent and child"; `/hall`, `/library`, `/expert-hub` `p_jose.png` alt "A SEND family" | per-page `gridItems` |
+| Order of the areas grid | No two pages agree. `/library` and `/expert-hub` also swap High Street and Expert Hub relative to the others | per-page `gridItems` |
+
+The two `p_grand.png` alt texts are the same problem as **C7**: one image, several identities.
+Left as found.
+
+### File structure
+
+```
+src/layouts/BaseLayout.astro          head, body shell, closing scripts
+src/components/SiteNav.astro          header navigation
+src/components/SiteFooter.astro       footer — C1 and C2 live here
+src/components/AreasGrid.astro        "What else you can see inside the Vilij"
+src/components/AreaTiles.astro        the tiles inside a grid
+src/components/AreaCard.astro         one area tile
+src/components/PhotoTile.astro        one photo tile
+src/components/TestimonialCarousel.astro
+src/components/TestimonialScript.astro
+src/components/ToTopScript.astro
+src/data/areas.ts                     the nine area tiles' copy
+src/data/testimonials.ts              showSecondTestimonial, Testimonial type
+```
+
+Two things stayed in the page files on purpose: the `<style is:global>` block, because the
+three CSS variants interleave and cannot be composed from a shared base without reordering the
+stylesheet; and the header `<section>` wrapper, whose background gradient is page specific.
 
 ---
 
@@ -244,7 +294,7 @@ Steps 2 and 4 (in part) are done. What remains, in order:
 5. **Build or hide** High Street, Market Place and Campus (C23–C25), and add a Support/Contact
    route (C33).
 6. **Decide on pricing** (C39) — £10/month currently leads nowhere.
-7. **Produce the 1200×630 share image** so Open Graph tags can go in (C44), and add canonical
-   tags at the same time (C50).
-8. Everything else at P3. Extracting a shared layout (C48) would make each remaining copy fix a
-   one-line change rather than an eight-file sweep — worth doing before, not after, C1 and C2.
+7. **Produce the 1200×630 share image** so Open Graph tags can go in (C44). Canonical tags
+   (C50) are already done and did not need it.
+8. ~~Extracting a shared layout (C48)~~ — done, ahead of C1 and C2 as intended. Decide the
+   Market Place wording (C49) whenever convenient: it is now a one-word edit in one file.
