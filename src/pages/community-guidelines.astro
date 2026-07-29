@@ -1,0 +1,378 @@
+---
+// The Vilij — Community Guidelines
+// Content transcribed from "THE VILIJ  COMMUNITY GUIDELINES.pdf".
+//
+// Clause numbering is reproduced exactly as printed in the source, including
+// where the source is inconsistent: in section 2 the list under 2.1 restarts at
+// (a) after clauses 2.2 and 2.3, and in section 9 the list under 9.1 is numbered
+// 9.2–9.6 rather than (a)–(e). Both look like numbering faults in the original
+// document. They are left alone here because these documents cross-reference
+// each other by clause number — see content-issues.md C53.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import LegalContents from "../components/LegalContents.astro";
+import LegalSections from "../components/LegalSections.astro";
+import type { LegalSection } from "../data/legal";
+
+const sections: LegalSection[] = [
+  {
+    n: "1",
+    title: "Welcome to The Vilij",
+    clauses: [
+      { n: "1.1", text: "The Vilij is a supportive community for parents, carers and wider family members of children with special educational needs and disabilities (SEND)." },
+      { n: "1.2", text: "Our aim is to create a welcoming, respectful and inclusive environment where members can access support, share experiences, exchange ideas, learn from Experts and connect with others who understand the challenges and opportunities associated with raising and supporting children with SEND." },
+      { n: "1.3", text: "These Community Guidelines explain the standards of behaviour we expect from all Users and Experts who participate on the Platform." },
+      { n: "1.4", text: "By using the Platform, you agree to comply with these Community Guidelines, our User Terms of Use, Privacy Policy, Complaints and Reporting Procedure and any other policies published by The Vilij from time to time." },
+    ],
+  },
+  {
+    n: "2",
+    title: "Our Community Values",
+    clauses: [
+      { n: "2.1", text: "We ask all members to:", items: ["be kind, respectful and considerate;"] },
+      { n: "2.2", text: "engage with others in good faith;" },
+      {
+        n: "2.3",
+        text: "recognise that every child, family and situation is different;",
+        items: [
+          "support a safe and inclusive environment;",
+          "respect differing experiences, opinions and perspectives;",
+          "communicate constructively, even where views differ;",
+          "protect the privacy and wellbeing of others; and",
+          "contribute positively to the community.",
+        ],
+      },
+      { n: "2.4", text: "Parenting and caring for a child with SEND can be challenging and deeply personal. We encourage members to support one another and avoid judgement." },
+    ],
+  },
+  {
+    n: "3",
+    title: "Safeguarding and Community Safety",
+    clauses: [
+      { n: "3.1", text: "The safety and wellbeing of children, vulnerable individuals and members of our community is one of our highest priorities." },
+      {
+        n: "3.2",
+        text: "If you become aware of content, behaviour, communications or activity that:",
+        items: [
+          "raises safeguarding concerns;",
+          "indicates that a child or vulnerable person may be at risk of harm;",
+          "appears abusive, exploitative or inappropriate;",
+          "encourages self-harm, suicide or dangerous behaviour; or",
+          "otherwise presents a risk to the safety or wellbeing of a member,",
+          // Lettered (f) in the source although it reads as the conclusion of
+          // the sentence rather than a list item. Left as printed — see C53.
+          "you should report the matter to The Vilij immediately using the reporting procedures available on the Platform.",
+        ],
+      },
+      { n: "3.3", text: "Where we reasonably believe there is a risk of harm, we may take immediate protective action, including removing content, restricting access, suspending accounts or sharing information with relevant authorities or safeguarding organisations." },
+      { n: "3.4", text: "If you believe a child or vulnerable person is in immediate danger, you should contact the emergency services, police or relevant statutory authority immediately." },
+      { n: "3.5", text: "The Vilij is not an emergency reporting service." },
+    ],
+  },
+  {
+    n: "4",
+    title: "Be Respectful",
+    clauses: [
+      { n: "4.1", text: "We welcome different experiences and viewpoints. However, members must treat one another respectfully." },
+      {
+        n: "4.2",
+        text: "You must not:",
+        items: [
+          "harass, bully, threaten or intimidate another person;",
+          "engage in personal attacks;",
+          "use abusive, aggressive or offensive language directed at another member;",
+          "deliberately provoke or upset others;",
+          "engage in discriminatory behaviour or hate speech;",
+          "post content that is racist, sexist, disablist, ageist, homophobic, transphobic or otherwise discriminatory; or",
+          "engage in conduct that may undermine the safety, wellbeing or enjoyment of the community.",
+        ],
+      },
+      { n: "4.3", text: "Disagreement is acceptable. Personal attacks are not." },
+    ],
+  },
+  {
+    n: "5",
+    title: "Respect Privacy and Confidentiality",
+    clauses: [
+      { n: "5.1", text: "Many members share personal experiences involving themselves, their children and their families." },
+      {
+        n: "5.2",
+        text: "Please:",
+        items: [
+          "respect the privacy of others;",
+          "avoid sharing another person’s personal information without their consent;",
+          "avoid posting information that could unnecessarily identify a child or vulnerable person;",
+          "respect confidential information shared by other members;",
+          "exercise caution when sharing sensitive information online; and",
+          "think carefully before posting information about yourself, your child or your family.",
+        ],
+      },
+      { n: "5.3", text: "Information shared on the Platform may be visible to other members and may remain accessible for a period of time. Please take care when sharing personal information." },
+    ],
+  },
+  {
+    n: "6",
+    title: "Sharing Experiences and Information",
+    clauses: [
+      { n: "6.1", text: "The Vilij encourages members to share experiences, practical insights, resources and support." },
+      {
+        n: "6.2",
+        text: "However:",
+        items: [
+          "every child and family is different;",
+          "personal experiences should not be presented as guaranteed outcomes;",
+          "what works for one family may not work for another;",
+          "community discussions are not a substitute for professional advice; and",
+          "information shared by members should be considered carefully and in context.",
+        ],
+      },
+      { n: "6.3", text: "Members are encouraged to make clear whether they are sharing personal experiences, opinions or professional expertise." },
+    ],
+  },
+  {
+    n: "7",
+    title: "Community Content Is Not Professional Advice",
+    clauses: [
+      { n: "7.1", text: "Content posted by Users reflects their own views, experiences and opinions and does not necessarily represent the views of The Vilij." },
+      { n: "7.2", text: "Unless expressly stated otherwise, content published on the Platform should not be relied upon as legal, medical, clinical, educational, financial or other professional advice." },
+      { n: "7.3", text: "You should obtain appropriate professional advice before making decisions or taking action based on information shared through the Platform." },
+    ],
+  },
+  {
+    n: "8",
+    title: "Experts",
+    clauses: [
+      { n: "8.1", text: "Experts participating on the Platform are independent professionals or specialists." },
+      {
+        n: "8.2",
+        text: "When engaging with Experts, members should:",
+        items: [
+          "communicate respectfully;",
+          "provide accurate information;",
+          "respect professional boundaries; and",
+          "comply with any additional terms applicable to Expert services.",
+        ],
+      },
+      {
+        n: "8.3",
+        text: "Experts are expected to:",
+        items: [
+          "act professionally and respectfully;",
+          "communicate honestly and transparently;",
+          "provide accurate information about their qualifications and experience;",
+          "only provide services within their areas of expertise;",
+          "avoid misleading claims or guarantees;",
+          "comply with applicable professional obligations; and",
+          "comply with safeguarding requirements and Platform policies.",
+        ],
+      },
+      { n: "8.4", text: "Any services provided by an Expert are provided independently of The Vilij unless expressly stated otherwise." },
+    ],
+  },
+  {
+    n: "9",
+    title: "Be Honest About Who You Are",
+    clauses: [
+      { n: "9.1", text: "You must not:" },
+      { n: "9.2", text: "impersonate another person or organisation;" },
+      { n: "9.3", text: "create fake or misleading accounts;" },
+      { n: "9.4", text: "falsely claim qualifications, expertise or professional status;" },
+      { n: "9.5", text: "misrepresent your identity or affiliations; or" },
+      { n: "9.6", text: "use the Platform in a deceptive or dishonest manner." },
+      { n: "9.7", text: "Experts must ensure that any qualifications, registrations, accreditations and professional information they provide remain accurate and up to date." },
+    ],
+  },
+  {
+    n: "10",
+    title: "Content Standards",
+    clauses: [
+      { n: "10.1", text: "Content shared on the Platform must be lawful, respectful and appropriate." },
+      {
+        n: "10.2",
+        text: "You must not post, upload or share content that:",
+        items: [
+          "is unlawful;",
+          "is defamatory;",
+          "is threatening, abusive or harassing;",
+          "contains hate speech or discriminatory content;",
+          "promotes violence or criminal activity;",
+          "encourages self-harm, suicide or eating disorders;",
+        ],
+      },
+      { n: "10.3", text: "You must only upload or share content that you have the right to use and share. Appropriate permissions and acknowledgements should be obtained where necessary." },
+    ],
+  },
+  {
+    n: "11",
+    title: "Commercial Activity, Advertising and Promotion",
+    clauses: [
+      { n: "11.1", text: "The Vilij is intended to be a supportive community and not a marketing platform." },
+      {
+        n: "11.2",
+        text: "Unless expressly authorised by The Vilij, members must not:",
+        items: [
+          "advertise products or services;",
+          "promote businesses or commercial ventures;",
+          "recruit customers, clients or members;",
+          "seek employment opportunities;",
+          "conduct surveys or market research;",
+          "promote fundraising activities;",
+          "send unsolicited marketing communications; or",
+          "engage in spam or repetitive promotional activity.",
+        ],
+      },
+      { n: "11.3", text: "Members must not use the Platform to solicit business from other members or encourage members to move discussions to external channels for commercial purposes without The Vilij’s prior approval." },
+      { n: "11.4", text: "Experts may only promote their services in accordance with any permissions, memberships or arrangements approved by The Vilij." },
+    ],
+  },
+  {
+    n: "12",
+    title: "Misinformation and Misleading Content",
+    clauses: [
+      { n: "12.1", text: "Members must not knowingly post false, misleading or deceptive information." },
+      {
+        n: "12.2",
+        text: "Particular care should be taken when discussing:",
+        items: [
+          "SEND-related matters;",
+          "education and EHCP processes;",
+          "health or medical matters;",
+          "therapies and treatments;",
+          "safeguarding concerns;",
+          "legal rights and responsibilities;",
+          "benefits and funding; and",
+          "professional services.",
+        ],
+      },
+      { n: "12.3", text: "Where possible, members should distinguish between personal experience, opinion and factual information." },
+    ],
+  },
+  {
+    n: "13",
+    title: "Report Concerns Rather Than Escalating Them",
+    clauses: [
+      { n: "13.1", text: "If you believe content or behaviour breaches these Community Guidelines, please report it using the reporting tools available on the Platform or follow the Complaints and Reporting Procedure." },
+      { n: "13.2", text: "We encourage members not to engage in public arguments, accusations, confrontations or “call-outs”." },
+      { n: "13.3", text: "If you suspect that another member is acting dishonestly, inappropriately or in breach of these Community Guidelines, please report your concerns to The Vilij rather than raising accusations publicly." },
+    ],
+  },
+  {
+    n: "14",
+    title: "Moderation and Enforcement",
+    clauses: [
+      {
+        n: "14.1",
+        text: "To maintain a safe, supportive and inclusive environment, The Vilij reserves the right to review, moderate, remove or restrict content that it reasonably considers inconsistent with:",
+        items: [
+          "these Community Guidelines;",
+          "the User Terms of Use;",
+          "applicable laws; or",
+          "the safety, wellbeing or integrity of the community.",
+        ],
+      },
+      {
+        n: "14.2",
+        text: "Depending on the circumstances, The Vilij may:",
+        items: [
+          "request further information;",
+          "remove content;",
+          "restrict content visibility;",
+          "issue warnings;",
+          "restrict access to Platform features;",
+          "suspend accounts;",
+          "terminate memberships;",
+          "remove Expert status;",
+          "report matters to relevant authorities; or",
+          "take any other action reasonably considered necessary to protect members and the Platform.",
+        ],
+      },
+      { n: "14.3", text: "We may take action where content or behaviour is inconsistent with the spirit or purpose of these Community Guidelines, even if it does not expressly breach a specific rule." },
+    ],
+  },
+  {
+    n: "15",
+    title: "Compliance with Platform Policies",
+    clauses: [
+      {
+        n: "15.1",
+        text: "All Users and Experts must comply with:",
+        items: [
+          "these Community Guidelines;",
+          "the User Terms of Use;",
+          "the Privacy Policy;",
+          "the Complaints and Reporting Procedure; and",
+          "any other policies published by The Vilij from time to time.",
+        ],
+      },
+      { n: "15.2", text: "Failure to comply with these requirements may result in moderation action, suspension or termination of access to the Platform." },
+    ],
+  },
+  {
+    n: "16",
+    title: "Changes to these Guidelines",
+    clauses: [
+      { n: "16.1", text: "The Vilij may update these Community Guidelines from time to time to reflect changes to the Platform, community needs, safeguarding requirements or applicable laws." },
+      { n: "16.2", text: "The latest version will be published on the Platform and will take effect from the date of publication." },
+      { n: "16.3", text: "Continued use of the Platform following publication of updated Community Guidelines constitutes acceptance of the revised version." },
+      { n: "16.4", text: "Thank you for helping us create a supportive, respectful and safe community for everyone who uses The Vilij." },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Community Guidelines | The Vilij"
+  description="The standards of behaviour The Vilij expects from everyone in the community: respect, privacy, safeguarding, honesty and how we moderate the Platform."
+>
+    <style is:global>
+      body { margin: 0; }
+      * { box-sizing: border-box; }
+      .vlink:hover { color: #f28121 !important; }
+      .vpill:hover { filter: brightness(1.05); }
+      .vnav-cta:hover { background: #15838a !important; }
+      .vclause { display: grid; grid-template-columns: 72px 1fr; gap: 0 12px; margin: 0 0 20px; }
+      .vsub { display: grid; grid-template-columns: 44px 1fr; gap: 0 12px; margin: 12px 0 0; }
+      .vtoc a:hover { color: #f28121 !important; }
+      @media (max-width: 820px) {
+        .vclause { grid-template-columns: 54px 1fr; }
+        .vsub { grid-template-columns: 34px 1fr; }
+      }
+    </style><div style="font-family:Mulish,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
+
+      <!-- ===== HEADER + HERO ===== -->
+      <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
+        <div style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
+          <SiteNav />
+          <div style="padding:54px 0 70px;max-width:820px;">
+            <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Community Guidelines</h1>
+            <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:640px;">A village only works if everyone looks after it.</p>
+            <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0 0 30px;max-width:640px;">These guidelines set out what we expect from everyone in The Vilij &mdash; and what you can expect from us if something goes wrong.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== BAND ===== -->
+      <div style="background:#f28121;text-align:center;padding:26px 24px;">
+        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">Be kind. Be honest. Look out for each other.</p>
+      </div>
+
+      <!-- ===== CONTENTS ===== -->
+      <LegalContents sections={sections} heading={"What&rsquo;s In These Guidelines"} />
+
+      <!-- ===== POLICY BODY ===== -->
+      <LegalSections sections={sections} />
+
+      <!-- ===== QUESTIONS CTA ===== -->
+      <section style="background:#f28121;text-align:center;padding:66px 24px;">
+        <p style="font-family:Mulish;font-size:22px;color:#ffe6cf;margin:0 0 10px;">Seen something that worries you?</p>
+        <h2 style="font-family:Quicksand;font-weight:700;font-size:62px;color:#ffffff;margin:0 0 22px;">Tell us rather than the room.</h2>
+        <p style="font-family:Mulish;font-weight:600;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">If something on the Platform raises a safeguarding concern,<br />please report it straight away.</p>
+        <a href="mailto:safeguarding@thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#f28121;font-family:Quicksand;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">REPORT A CONCERN <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <SiteFooter />
+
+    </div>
+</BaseLayout>

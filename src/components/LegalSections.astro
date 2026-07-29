@@ -38,7 +38,7 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
             <span style="font-family:Mulish;font-weight:800;font-size:18px;line-height:1.65;color:#1f9ca0;">{c.n}</span>
             <div>
               <p style="font-family:Mulish;font-size:18px;line-height:1.65;color:#444;margin:0;">
-                {c.lead && <strong style="color:#222;">{c.lead}</strong>}{c.text}
+                {c.lead && <strong style="color:#222;">{c.lead}</strong>}{c.textHtml ? <Fragment set:html={c.textHtml} /> : c.text}
               </p>
 
               {c.contact && (
@@ -126,7 +126,9 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
           </div>
         ))}{s.outro && (
           <p style="font-family:Mulish;font-size:18px;line-height:1.65;color:#444;margin:18px 0 0;">{s.outro}</p>
-        )}
+        )}{s.outros && s.outros.map((p) => (
+          <p style="font-family:Mulish;font-size:18px;line-height:1.65;color:#444;margin:18px 0 0;">{p}</p>
+        ))}
       </div>
     ))}
 

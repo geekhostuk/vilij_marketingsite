@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The 7 indexable public routes. /newsletter-thanks is deliberately omitted:
-  it is noindex and reachable only from the footer newsletter form.
+  The 9 indexable public routes. Two are deliberately omitted:
+  /newsletter-thanks, which is noindex and reachable only from the footer
+  newsletter form, and /complaints, which is noindex until the contact
+  addresses in it are confirmed (see content-issues.md C55).
   Keep this file in step with src/pages/ when a route is added or removed.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -43,6 +45,18 @@
   </url>
   <url>
     <loc>https://marketing.thevilij.co.uk/privacy</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://marketing.thevilij.co.uk/terms</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://marketing.thevilij.co.uk/community-guidelines</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

@@ -31,7 +31,13 @@ const sections: LegalSection[] = [
         ],
       },
       { n: "1.4", text: "This Privacy Policy also explains your rights in relation to your personal data and how to contact us if you have any questions about our data processing activities." },
-      { n: "1.5", text: "Please read this Privacy Policy together with our User Terms of Use, Community Guidelines, Complaints and Reporting Procedure and any other policies referred to within those documents." },
+      {
+        n: "1.5",
+        text: "Please read this Privacy Policy together with our User Terms of Use, Community Guidelines, Complaints and Reporting Procedure and any other policies referred to within those documents.",
+        // The Complaints and Reporting Procedure is deliberately not linked yet:
+        // it is still waiting on a contact address. See content-issues.md C55.
+        textHtml: 'Please read this Privacy Policy together with our <a href="/terms" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">User Terms of Use</a>, <a href="/community-guidelines" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Community Guidelines</a>, Complaints and Reporting Procedure and any other policies referred to within those documents.',
+      },
     ],
   },
   {

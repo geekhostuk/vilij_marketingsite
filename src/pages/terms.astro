@@ -1,0 +1,459 @@
+---
+// The Vilij — User Terms of Use
+// Content transcribed from "The Vilij - User Terms of Use.pdf".
+//
+// The source PDF carries "Effective Date: []" — an unfilled placeholder. Rather
+// than invent a date or publish an empty bracket, the effective-date pill is
+// omitted until a date is supplied. Set `effectiveDate` below and it appears.
+// See content-issues.md C54.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import LegalContents from "../components/LegalContents.astro";
+import LegalSections from "../components/LegalSections.astro";
+import type { LegalSection } from "../data/legal";
+
+const effectiveDate: { iso: string; label: string } | null = null;
+
+const sections: LegalSection[] = [
+  {
+    n: "1",
+    title: "Definitions",
+    clauses: [
+      {
+        n: "1.1",
+        text: "In these Terms:",
+        defs: [
+          ["Community Guidelines", "means the community guidelines, standards and rules governing participation in the Platform, as updated by The Vilij from time to time."],
+          ["Content", "means any information, materials, resources, articles, videos, posts, comments, communications or other content made available through the Platform."],
+          ["Expert", "means an independent professional, adviser, practitioner or other specialist who participates in the Platform and may offer services to Users."],
+          ["Intellectual Property Rights", "means all intellectual property rights of any kind, whether registered or unregistered, including copyright, database rights, trade marks, design rights and rights in confidential information."],
+          ["Personal Data", "has the meaning given to it under applicable data protection laws."],
+          ["Platform", "means the online platform, community, website, applications, services and functionality operated by The Vilij from time to time."],
+          ["User, you and your", "mean any individual accessing or using the Platform."],
+        ],
+      },
+    ],
+  },
+  {
+    n: "2",
+    title: "About the Platform",
+    clauses: [
+      { n: "2.1", text: "The Platform is operated by The Vilij Limited (“The Vilij”, “we”, “our” or “us”)." },
+      { n: "2.2", text: "The Vilij provides and operates a curated membership community designed to support parents and carers of children with special educational needs and disabilities through information, resources, community engagement and opportunities to connect with independent Experts." },
+      { n: "2.3", text: "The Platform facilitates connections between Users and independent Experts. Unless expressly stated otherwise in relation to a particular service, The Vilij does not itself provide legal, financial, medical, therapeutic, educational or other professional services." },
+      { n: "2.4", text: "The Vilij is not a party to any contract for services entered into between a User and an Expert unless expressly stated otherwise." },
+      {
+        n: "2.5",
+        text: "The Platform may include:",
+        items: [
+          "community discussion spaces;",
+          "articles and educational content;",
+          "expert profiles;",
+          "downloadable resources;",
+          "webinars and events;",
+          "wellbeing resources; and",
+          "other features, services or functionality introduced from time to time.",
+        ],
+      },
+      { n: "2.6", text: "The Vilij may modify, enhance, remove, replace or introduce features, services, functionality, content or membership offerings from time to time." },
+    ],
+  },
+  {
+    n: "3",
+    title: "Important Disclaimer",
+    clauses: [
+      { n: "3.1", text: "Content available through the Platform is intended to provide information, support, community insight and access to professional expertise. Where you are making important legal, financial, medical, educational or other significant decisions, you should consider obtaining advice tailored to your individual circumstances." },
+      { n: "3.2", text: "However, information made available through the Platform may not take account of your specific circumstances, needs or objectives. You should carefully consider whether any information, recommendation or guidance is appropriate for your particular situation and, where necessary, seek advice tailored to your individual circumstances." },
+      { n: "3.3", text: "Many Users and Experts may share personal experiences, opinions and insights. Such content reflects the views of the individual contributor and does not necessarily reflect the views of The Vilij. The Platform is provided for information, education, support and community purposes only." },
+      {
+        n: "3.4",
+        text: "The Vilij does not provide:",
+        items: [
+          "legal advice;",
+          "financial advice;",
+          "medical advice;",
+          "therapeutic services;",
+          "educational advice;",
+          "regulated professional services; or",
+          "any other professional services.",
+        ],
+      },
+      { n: "3.5", text: "The Vilij does not warrant or guarantee the accuracy, completeness, suitability or applicability of any Content made available through the Platform." },
+      { n: "3.6", text: "Nothing on the Platform constitutes, or is intended to constitute, legal advice, financial advice, medical advice, therapeutic advice or any other form of regulated professional advice." },
+    ],
+  },
+  {
+    n: "4",
+    title: "Experts",
+    clauses: [
+      { n: "4.1", text: "The Platform may allow you to view information about, communicate with or engage independent Experts and individuals who share lived experience relevant to the Platform community." },
+      { n: "4.2", text: "Experts are independent providers and are not employees, agents or representatives of The Vilij unless expressly stated otherwise." },
+      { n: "4.3", text: "Any services provided by an Expert are provided directly by that Expert and not by The Vilij." },
+      { n: "4.4", text: "Any contract for services is between you and the relevant Expert." },
+      { n: "4.5", text: "The Vilij may require Experts to satisfy certain onboarding, verification, safeguarding, insurance, qualification or professional requirements before participating in the Platform." },
+      { n: "4.6", text: "The Vilij does not supervise, direct or control the professional services provided by Experts and is not responsible for the content of any advice, recommendations or services provided by an Expert." },
+      {
+        n: "4.7",
+        text: "The Vilij does not guarantee:",
+        items: [
+          "the quality of any Expert;",
+          "the suitability of any Expert for your circumstances;",
+          "the outcome of any services; or",
+          "the accuracy, completeness or applicability of advice provided by Experts.",
+        ],
+      },
+      { n: "4.8", text: "Any onboarding, verification or safeguarding checks undertaken by The Vilij are carried out solely for our own operational, safeguarding and community purposes and should not be relied upon as a substitute for your own assessment of an Expert." },
+      { n: "4.9", text: "You are responsible for determining whether an Expert and any services offered by that Expert are appropriate for your needs and circumstances." },
+    ],
+  },
+  {
+    n: "5",
+    title: "User Accounts",
+    clauses: [
+      {
+        n: "5.1",
+        text: "You must:",
+        items: [
+          "be at least 18 years old;",
+          "provide accurate, complete and up-to-date information when creating and maintaining your account;",
+          "keep your account credentials secure and confidential;",
+          "promptly update any information which becomes inaccurate or incomplete; and",
+          "comply with any reasonable identity verification requirements implemented by The Vilij from time to time.",
+        ],
+      },
+      { n: "5.2", text: "You are responsible for all activity conducted through your account and for maintaining the security of your account credentials." },
+      {
+        n: "5.3",
+        text: "You must not:",
+        items: [
+          "permit any other person to access or use your account;",
+          "share your login credentials with any other person; or",
+          "create an account using false, misleading or inaccurate information.",
+        ],
+      },
+      {
+        n: "5.4",
+        text: "You must notify The Vilij promptly if you know or suspect that:",
+        items: [
+          "your account has been compromised;",
+          "your login credentials have been lost, stolen or disclosed to another person; or",
+          "there has been any unauthorised use of your account.",
+        ],
+      },
+      {
+        n: "5.5",
+        text: "The Vilij may suspend, restrict or terminate your account where it reasonably believes that:",
+        items: [
+          "information provided by you is inaccurate or misleading;",
+          "your account security has been compromised; or",
+          "continued access may pose a risk to the Platform, its Users or its Experts.",
+        ],
+      },
+    ],
+  },
+  {
+    n: "6",
+    title: "Community Participation",
+    clauses: [
+      { n: "6.1", text: "The Platform is intended to be a respectful, supportive and inclusive community." },
+      {
+        n: "6.2",
+        text: "You must comply with:",
+        items: [
+          "these Terms;",
+          "the Community Guidelines and any Complaints and Reporting Procedure published by The Vilij from time to time; and",
+          "applicable laws.",
+        ],
+      },
+      { n: "6.3", text: "You must engage with other Users and Experts in a respectful, responsible and constructive manner." },
+      {
+        n: "6.4",
+        text: "You must not:",
+        items: [
+          "harass, bully, intimidate, threaten or abuse any person;",
+          "discriminate against any person on the basis of disability, race, ethnicity, nationality, religion, sex, gender identity, sexual orientation, age or any other protected characteristic;",
+          "post, publish or share information that is false, misleading or deceptive;",
+          "share unlawful, harmful, abusive, defamatory, obscene or offensive content;",
+          "impersonate any person or misrepresent your identity, qualifications or relationship with any organisation;",
+          "misuse, collect, disclose or otherwise process another person’s personal information without appropriate authority;",
+          "promote, market or sell products or services, recruit personnel, solicit business, direct Users to external commercial services or otherwise engage in commercial activity through the Platform unless expressly authorised by The Vilij;",
+          "post content that infringes the Intellectual Property Rights or other rights of any third party;",
+          "post content that may place a child, vulnerable person or member of the community at risk; or",
+          "use the Platform in any manner that may adversely affect the safety, wellbeing or experience of other Users.",
+        ],
+      },
+      { n: "6.5", text: "You should take care when sharing information relating to yourself, your family or any child and should not post personal information about another individual unless you have the lawful authority to do so." },
+      { n: "6.6", text: "The Vilij may remove content, restrict access, suspend accounts or take any other action it reasonably considers necessary to protect Users, Experts, the Platform or the wider community." },
+    ],
+  },
+  {
+    n: "7",
+    title: "Safeguarding",
+    clauses: [
+      { n: "7.1", text: "The wellbeing and safety of members of the community is a priority for The Vilij." },
+      { n: "7.2", text: "If you become aware of any concern relating to the safety, welfare or wellbeing of a User, child, vulnerable individual or other member of the community, you should report it as soon as reasonably practicable by sending an email to safeguarding@thevilij.co.uk within 24 hours of becoming aware of any such concern in accordance with the safeguarding reporting procedure published on the Platform from time to time by The Vilij." },
+      { n: "7.3", text: "The Vilij may investigate any safeguarding concern and may request information from Users, Experts or other relevant persons in connection with such investigation." },
+      {
+        n: "7.4",
+        text: "Where The Vilij reasonably considers it necessary to protect the safety, welfare or wellbeing of any individual, it may:",
+        items: [
+          "remove Content;",
+          "restrict access to the Platform;",
+          "suspend or terminate accounts;",
+          "restrict interactions between Users and Experts;",
+          "notify relevant authorities, regulators, safeguarding bodies or law enforcement agencies; and",
+          "take any other action reasonably considered necessary.",
+        ],
+      },
+      { n: "7.5", text: "Any action taken by The Vilij under this clause may be taken on a precautionary basis and The Vilij shall not be required to conclude that a breach of these Terms has occurred before exercising its rights under this clause." },
+      { n: "7.6", text: "The Vilij may disclose information relating to a safeguarding concern where it reasonably considers such disclosure necessary to protect an individual, prevent harm or comply with applicable laws." },
+    ],
+  },
+  {
+    n: "8",
+    title: "User Content",
+    clauses: [
+      { n: "8.1", text: "You retain ownership of any content, information, materials, photographs, comments, posts or other content that you submit, upload or make available through the Platform (“User Content”)." },
+      {
+        n: "8.2",
+        text: "By posting User Content, you grant The Vilij a worldwide, non-exclusive, royalty-free, transferable and sub-licensable licence to host, store, reproduce, display, publish, distribute, moderate, edit, adapt and otherwise use the User Content for the purposes of:",
+        items: [
+          "operating and administering the Platform;",
+          "moderating and managing the community;",
+          "investigating complaints and safeguarding concerns;",
+          "improving and developing the Platform;",
+          "complying with legal and regulatory obligations; and",
+          "promoting and marketing the Platform.",
+        ],
+      },
+      {
+        n: "8.3",
+        text: "You warrant that:",
+        items: [
+          "you own or control all rights necessary to submit and make available the User Content;",
+          "the User Content does not infringe the Intellectual Property Rights, privacy rights or other rights of any third party;",
+          "the User Content is accurate to the best of your knowledge and is not misleading; and",
+          "you have all necessary permissions and consents to share any personal information, images or other information relating to another individual.",
+        ],
+      },
+      { n: "8.4", text: "You acknowledge that User Content may be viewed by other Users, Experts and authorised representatives of The Vilij in accordance with the functionality of the Platform." },
+      { n: "8.5", text: "The Vilij may remove, edit, restrict access to or disable User Content at any time where it reasonably considers such action necessary for operational, legal, regulatory, safeguarding, reputational or community management purposes." },
+      { n: "8.6", text: "The Vilij is not responsible for User Content posted by Users and does not endorse any views, opinions or statements expressed through User Content." },
+    ],
+  },
+  {
+    n: "9",
+    title: "Fees and Subscriptions",
+    clauses: [
+      { n: "9.1", text: "Access to some areas, content, services or functionality of the Platform may be available free of charge, whilst other areas, content, services or functionality may require payment of subscription fees." },
+      { n: "9.2", text: "Details of applicable subscription fees, billing arrangements, renewal terms and payment methods will be provided to you before you purchase a subscription." },
+      { n: "9.3", text: "Unless otherwise stated at the time of purchase, subscriptions will renew automatically for successive subscription periods unless cancelled before the applicable renewal date." },
+      { n: "9.4", text: "You authorise The Vilij and its payment service providers to collect all fees due in connection with your subscription using your nominated payment method." },
+      { n: "9.5", text: "The Vilij may change subscription fees, introduce new subscription plans or amend subscription features on reasonable notice. Any such changes will not affect the current subscription period for which you have already paid unless otherwise agreed with you." },
+      { n: "9.6", text: "If payment cannot be successfully collected, The Vilij may suspend or restrict access to subscription-only areas of the Platform until payment is received." },
+      { n: "9.7", text: "Additional terms may apply to paid subscriptions, events, resources, products or services made available through the Platform." },
+      { n: "9.8", text: "Fees payable to Experts for services are separate from any subscription fees payable to The Vilij and are governed by the arrangements agreed between you and the relevant Expert." },
+      { n: "9.9", text: "Nothing in this clause affects any rights you may have under applicable consumer protection legislation." },
+      { n: "9.10", text: "Where you purchase a subscription as a consumer, you may have statutory rights to cancel your purchase under applicable consumer protection legislation. Details of any applicable cancellation rights will be provided to you before you complete your purchase." },
+      { n: "9.11", text: "Unless otherwise stated at the time of purchase, cancellation of a subscription will prevent future renewal charges but will not entitle you to a refund for the remainder of the current subscription period." },
+      { n: "9.12", text: "Refunds will be provided only where required by applicable law or where The Vilij expressly agrees otherwise." },
+    ],
+  },
+  {
+    n: "10",
+    title: "Intellectual Property",
+    clauses: [
+      { n: "10.1", text: "All Intellectual Property Rights in and relating to the Platform, including its content, design, branding, logos, software, functionality, databases and underlying materials (excluding User Content and content owned by Experts), belong to The Vilij or its licensors." },
+      { n: "10.2", text: "Subject to your compliance with these Terms, The Vilij grants you a limited, non-exclusive, non-transferable and revocable right to access and use the Platform for your personal, non-commercial use." },
+      {
+        n: "10.3",
+        text: "Except as permitted by law or with the prior written consent of The Vilij, you must not:",
+        items: [
+          "copy, reproduce, distribute, modify or create derivative works from any part of the Platform;",
+          "commercially exploit any content or materials available through the Platform;",
+          "remove, obscure or alter any copyright, trade mark or other proprietary notices;",
+          "scrape, extract, harvest or systematically collect data from the Platform; or",
+          "use any content made available through the Platform in a manner that infringes the rights of The Vilij, an Expert or any third party.",
+        ],
+      },
+      { n: "10.4", text: "Nothing in these Terms transfers any Intellectual Property Rights to you." },
+    ],
+  },
+  {
+    n: "11",
+    title: "Privacy",
+    clauses: [
+      { n: "11.1", text: "The Vilij processes Personal Data in accordance with its Privacy Policy, which forms an important part of your use of the Platform." },
+      { n: "11.2", text: "By using the Platform, you acknowledge that certain information and content shared by you may be visible to other Users and Experts in accordance with the functionality of the Platform and your chosen privacy settings." },
+      { n: "11.3", text: "Where you engage directly with an Expert, that Expert may collect, use and process your Personal Data independently of The Vilij and in accordance with that Expert’s own privacy practices and legal obligations." },
+      { n: "11.4", text: "The Vilij is not responsible for the privacy practices, policies or data processing activities of any Expert." },
+      {
+        n: "11.5",
+        text: "The Vilij may disclose Personal Data and other information where reasonably necessary to:",
+        items: [
+          "comply with applicable laws;",
+          "comply with a lawful request from a regulatory authority, court or law enforcement agency;",
+          "investigate complaints or suspected breaches of these Terms; or",
+          "address a safeguarding concern or protect the safety, welfare or wellbeing of any individual.",
+        ],
+      },
+      { n: "11.6", text: "You should exercise caution when sharing Personal Data or information relating to yourself, your family or any child through the Platform." },
+    ],
+  },
+  {
+    n: "12",
+    title: "Complaints",
+    clauses: [
+      { n: "12.1", text: "Complaints and safeguarding concerns may be reported in accordance with the Complaints and Reporting Procedure published on the Platform from time to time." },
+      { n: "12.2", text: "The Vilij may investigate any complaint, safeguarding concern or alleged breach of these Terms." },
+      {
+        n: "12.3",
+        text: "In connection with any investigation, The Vilij may:",
+        items: [
+          "request information from Users, Experts or other relevant persons;",
+          "review Content and Platform activity;",
+          "remove or restrict access to Content;",
+          "suspend or restrict access to the Platform; and",
+          "take any other action reasonably considered appropriate.",
+        ],
+      },
+      { n: "12.4", text: "The Vilij is not obliged to resolve disputes arising directly between Users and Experts but may take action where it considers this necessary to protect Users, Experts, the Platform or the wider community." },
+    ],
+  },
+  {
+    n: "13",
+    title: "Availability",
+    clauses: [
+      { n: "13.1", text: "The Platform and all Content are provided on an “as is” and “as available” basis." },
+      { n: "13.2", text: "The Vilij does not guarantee that the Platform, or any part of it, will be available, uninterrupted, secure, error-free or free from delays at all times." },
+      { n: "13.3", text: "The Vilij may modify, suspend, withdraw, discontinue or restrict access to any feature, functionality, content or area of the Platform at any time." },
+      { n: "13.4", text: "The Vilij may carry out maintenance, updates, upgrades or other work which may temporarily affect the availability or functionality of the Platform." },
+      { n: "13.5", text: "The Vilij shall not be liable for any unavailability, interruption or loss of access arising from maintenance, technical issues, third-party service failures or circumstances beyond its reasonable control." },
+    ],
+  },
+  {
+    n: "14",
+    title: "Liability",
+    clauses: [
+      { n: "14.1", text: "Nothing in these Terms excludes or limits liability which cannot lawfully be excluded or limited, including liability for death or personal injury caused by negligence, fraud or fraudulent misrepresentation." },
+      {
+        n: "14.2",
+        text: "To the fullest extent permitted by law, The Vilij shall not be liable for:",
+        items: [
+          "Services provided by Experts;",
+          "advice, recommendations or information provided by Experts;",
+          "decisions made by Users based on Content or interactions through the Platform;",
+          "disputes between Users and Experts;",
+          "any interruption, unavailability or malfunction of the Platform;",
+          "loss of profits;",
+          "loss of opportunity;",
+          "loss of goodwill; or",
+          "any indirect or consequential loss.",
+        ],
+      },
+      {
+        n: "14.3",
+        text: "Subject to clauses 14.1 and 14.4, The Vilij’s total aggregate liability arising out of or in connection with the Platform or these Terms shall not exceed the greater of:",
+        items: [
+          "£100; and",
+          "the fees paid by you to The Vilij during the 12 months immediately preceding the event giving rise to the claim.",
+        ],
+      },
+      { n: "14.4", text: "Nothing in these Terms affects any statutory rights you may have as a consumer." },
+    ],
+  },
+  {
+    n: "15",
+    title: "Suspension and Termination",
+    clauses: [
+      {
+        n: "15.1",
+        text: "The Vilij may suspend, restrict or terminate your access to all or any part of the Platform where it reasonably considers that:",
+        items: [
+          "you have breached these Terms, the Community Guidelines or any applicable Platform policies;",
+          "a safeguarding concern arises;",
+          "a complaint has been made;",
+          "legal, regulatory or security concerns arise;",
+          "information provided by you is inaccurate or misleading; or",
+          "such action is necessary to protect Users, Experts, the Platform or the wider community.",
+        ],
+      },
+      { n: "15.2", text: "The Vilij may remove or restrict access to Content as part of any suspension, investigation or enforcement action." },
+      { n: "15.3", text: "You may stop using the Platform at any time and may cancel any subscription in accordance with the applicable subscription terms." },
+    ],
+  },
+  {
+    n: "16",
+    title: "General",
+    clauses: [
+      { n: "16.1", text: "The Vilij may amend these Terms from time to time by providing notice through the Platform." },
+      { n: "16.2", text: "Continued use of the Platform following the effective date of an amendment constitutes acceptance of the updated Terms." },
+      { n: "16.3", text: "If any provision of these Terms is held to be invalid, illegal or unenforceable, the remaining provisions shall remain in full force and effect." },
+      { n: "16.4", text: "These Terms constitute the entire agreement between you and The Vilij relating to your use of the Platform." },
+      { n: "16.5", text: "A person who is not a party to these Terms shall have no right under the Contracts (Rights of Third Parties) Act 1999 to enforce any provision of these Terms." },
+      { n: "16.6", text: "The Vilij may assign, transfer or otherwise deal with its rights and obligations under these Terms." },
+      { n: "16.7", text: "These Terms are governed by the laws of England and Wales and the courts of England and Wales shall have exclusive jurisdiction." },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="User Terms of Use | The Vilij"
+  description="The terms governing your use of The Vilij: accounts, community participation, safeguarding, user content, subscriptions, liability and how we handle complaints."
+>
+    <style is:global>
+      body { margin: 0; }
+      * { box-sizing: border-box; }
+      .vlink:hover { color: #f28121 !important; }
+      .vpill:hover { filter: brightness(1.05); }
+      .vnav-cta:hover { background: #15838a !important; }
+      .vclause { display: grid; grid-template-columns: 72px 1fr; gap: 0 12px; margin: 0 0 20px; }
+      .vsub { display: grid; grid-template-columns: 44px 1fr; gap: 0 12px; margin: 12px 0 0; }
+      .vtoc a:hover { color: #f28121 !important; }
+      @media (max-width: 820px) {
+        .vclause { grid-template-columns: 54px 1fr; }
+        .vsub { grid-template-columns: 34px 1fr; }
+      }
+    </style><div style="font-family:Mulish,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
+
+      <!-- ===== HEADER + HERO ===== -->
+      <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
+        <div style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
+          <SiteNav />
+          <div style="padding:54px 0 70px;max-width:820px;">
+            <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">User Terms of Use</h1>
+            <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:640px;">The agreement between you and The Vilij.</p>
+            <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0 0 30px;max-width:640px;">These Terms of Use (&ldquo;Terms&rdquo;) govern your access to and use of The Vilij platform and community (the &ldquo;Platform&rdquo;). By creating an account, accessing or using the Platform, you agree to be bound by these Terms.</p>
+            {effectiveDate && (
+              <p style="font-family:Mulish;font-weight:700;font-size:16px;letter-spacing:.4px;color:#1f9ca0;margin:0;display:inline-block;background:rgba(255,255,255,0.6);border-radius:24px;padding:11px 22px;">Effective from <time datetime={effectiveDate.iso}>{effectiveDate.label}</time></p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== BAND ===== -->
+      <div style="background:#f28121;text-align:center;padding:26px 24px;">
+        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">Plain terms for a community built on trust.</p>
+      </div>
+
+      <!-- ===== CONTENTS ===== -->
+      <LegalContents sections={sections} heading={"What&rsquo;s In These Terms"} />
+
+      <!-- ===== POLICY BODY ===== -->
+      <LegalSections sections={sections} />
+
+      <!-- ===== QUESTIONS CTA ===== -->
+      <section style="background:#f28121;text-align:center;padding:66px 24px;">
+        <p style="font-family:Mulish;font-size:22px;color:#ffe6cf;margin:0 0 10px;">Still got a question?</p>
+        <h2 style="font-family:Quicksand;font-weight:700;font-size:62px;color:#ffffff;margin:0 0 22px;">We&rsquo;re happy to help.</h2>
+        <p style="font-family:Mulish;font-weight:600;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">If anything here isn&rsquo;t clear, get in touch<br />and a real person will come back to you.</p>
+        <a href="mailto:privacy@thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#f28121;font-family:Quicksand;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">EMAIL US <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <SiteFooter />
+
+    </div>
+</BaseLayout>

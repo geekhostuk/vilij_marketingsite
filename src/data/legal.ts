@@ -14,6 +14,12 @@ export interface LegalClause {
   /** Bold run-in heading before the clause text. */
   lead?: string;
   text: string;
+  /**
+   * Same clause text, but rendered as raw HTML so cross-references to the other
+   * published documents can be links. Takes precedence over `text` when set;
+   * keep `text` in step with it as the plain-text record of the wording.
+   */
+  textHtml?: string;
   /** Lettered sub-list: (a), (b), (c)… */
   items?: string[];
   /** Unnumbered bullet list. */
@@ -47,4 +53,6 @@ export interface LegalSection {
   bullets?: string[];
   /** Closing paragraph after the clauses or bullets. */
   outro?: string;
+  /** Further closing paragraphs. */
+  outros?: string[];
 }

@@ -1,0 +1,261 @@
+---
+// The Vilij — Complaints and Reporting Procedure
+// Content transcribed from "The Vilij Complaints and Reporting Procedure.pdf".
+//
+// NOT PUBLISHED YET. The source PDF carries the placeholder "email@email.co.uk"
+// in five places, including the address people are told to use for safeguarding
+// and child protection concerns. Publishing a wrong reporting address would be
+// worse than publishing nothing, so this page is noindex, is absent from
+// sitemap.xml, and is not linked from the footer or the Privacy Policy.
+//
+// The safeguarding address below is not a guess: clause 7.2 of the User Terms of
+// Use — part of the same legal pack — names safeguarding@thevilij.co.uk for
+// exactly this purpose, and the Privacy Policy already publishes it.
+//
+// The general complaints address is genuinely unknown. Set `complaintsEmail`,
+// drop `noindex`, add the route to public/sitemap.xml and link it from
+// SiteFooter.astro to publish. See content-issues.md C55.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import LegalContents from "../components/LegalContents.astro";
+import LegalSections from "../components/LegalSections.astro";
+import type { LegalSection } from "../data/legal";
+
+const safeguardingEmail = "safeguarding@thevilij.co.uk";
+const complaintsEmail: string | null = null;
+const complaints = complaintsEmail ?? "[email address to be confirmed]";
+
+const sections: LegalSection[] = [
+  {
+    n: "1",
+    title: "Purpose of our Complaints and Reporting Procedure",
+    intro: "The purpose of this procedure is to ensure that complaints are handled consistently, fairly and transparently to protect all users of the Platform and to remove any abusive or unacceptable behaviour within our online community. We aim to resolve complaints as quickly as possible and to learn from feedback to make the Platform as safe and user-friendly as possible.",
+  },
+  {
+    n: "2",
+    title: "Types of complaints",
+    intro: "Please find below examples of the types of complaints and concerns which you can report to us:",
+    bullets: [
+      "safeguarding concerns;",
+      "concerns regarding user behaviour;",
+      "concerns regarding expert conduct;",
+      "concerns regarding content published on the Platform;",
+      "breaches of the Community Guidelines;",
+      "breaches of the Terms of Use;",
+      "harassment, bullying or intimidating behaviour;",
+      "discrimination or hate speech;",
+      "misleading, harmful or inappropriate content;",
+      "impersonation of another individual;",
+      "misuse of personal information;",
+      "spam or unauthorised promotion;",
+      "suspected fraud or dishonest activity;",
+      "breaches of safeguarding obligations.",
+    ],
+    outro: "If you wish to make a complaint/ express a concern which is not covered by the examples listed above but can still help us improve The Vilij and enhance user safety, please do still share your complaint/ concern with us. Please note, however, that The Vilij is not responsible for resolving contractual disputes between Users and Experts on the Platform relating to professional services, although we may investigate concerns relating to conduct, safeguarding or breaches of Platform policies as between Users and Experts.",
+  },
+  {
+    n: "3",
+    title: "Matters Outside Our Scope",
+    clauses: [
+      {
+        n: "3.1",
+        text: "The Vilij does not generally investigate:",
+        items: [
+          "disputes regarding the quality or outcome of professional advice;",
+          "fee disputes between Users and Experts;",
+          "contractual disputes between Users and Experts; or",
+          "matters unrelated to the Platform.",
+        ],
+      },
+      { n: "3.2", text: "However, we may investigate concerns relating to conduct, safeguarding, breaches of Platform policies or risks to members of the community." },
+    ],
+  },
+  {
+    n: "4",
+    title: "How to make a complaint",
+    clauses: [
+      { n: "4.1", text: "Emergency Situations" },
+      { n: "4.2", text: "If you believe a child, vulnerable person or another individual is in immediate danger, you should contact the emergency services, police or relevant statutory authority immediately. The Vilij should not be relied upon as an emergency reporting service." },
+      { n: "4.3", text: `If your complaint relates to a safeguarding or child protection concern, please email our dedicated address: ${safeguardingEmail}` },
+      { n: "4.4", text: "These complaints will be treated as a priority. Where we reasonably believe there is a risk of harm to a child, vulnerable person or member of the community, we may take immediate protective action before completing a full investigation." },
+      { n: "4.5", text: "We aim to acknowledge complaints within 48 hours and provide a response within 3 working days." },
+      { n: "4.6", text: "Where The Vilij considers it necessary to protect the safety or wellbeing of a child, vulnerable person or member of the community, we may share information with law enforcement agencies, local authorities, safeguarding organisations or other appropriate bodies." },
+      {
+        n: "4.7",
+        text: "For other types of complaints, please follow these steps:",
+        steps: [
+          {
+            title: "Step 1: informal resolution",
+            bullets: [
+              `Contact our support team via the following email address: ${complaints};`,
+              "Outline your complaint, providing relevant details such as dates, usernames, or links if applicable;",
+              "Our team will aim to respond to your concern within five working days and work with you to find a resolution informally.",
+            ],
+          },
+          {
+            title: "Step 2: formal complaint",
+            intro: "If your concern is not resolved informally, you can submit a formal complaint:",
+            bullets: [
+              `Email us at ${complaints} with the subject “Formal Complaint”;`,
+              "Provide a detailed explanation of the issue, including:",
+              "Your contact information;",
+              "A summary of previous communication and responses with our support team;",
+              "The resolution you are seeking.",
+              "A member of our team will aim to acknowledge receipt of your complaint within five working days.",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    n: "5",
+    title: "Our response process",
+    clauses: [
+      { n: "5.1", lead: "Investigation:", text: " Your complaint will be thoroughly investigated. In certain cases, we may need to reach out to you for additional information." },
+      { n: "5.2", lead: "Resolution:", text: " We aim to provide a written response with a resolution within 14 working days. If more time is required, we may inform you." },
+      { n: "5.3", lead: "Outcome:", text: " Our response will include details of the investigation, the decision, and any steps we will take to address your complaint." },
+      {
+        n: "5.4",
+        lead: "No Further Action:",
+        text: " The Vilij may decide that no further action is required where it reasonably considers that:",
+        items: [
+          "no breach has occurred;",
+          "insufficient evidence is available;",
+          "the matter falls outside the scope of this procedure; or",
+          "the concern has otherwise been resolved.",
+        ],
+      },
+    ],
+  },
+  {
+    n: "6",
+    title: "Investigation outcomes/actions",
+    intro: "Following a complaint or report, The Vilij may undertake the following actions, depending on the nature of the case and the outcome of our investigation procedure:",
+    bullets: [
+      "request information;",
+      "remove content;",
+      "restrict visibility of content;",
+      "issue warnings;",
+      "suspend accounts;",
+      "terminate memberships;",
+      "refer matters to the relevant authorities;",
+      "restrict messaging functionality;",
+      "restrict participation in specific areas of the Platform;",
+      "remove Expert status or Expert profile access; and",
+      "take any other action reasonably considered necessary to protect Users, Experts or the wider community.",
+    ],
+    outro: "This is not an exhaustive list of the actions which we may take following the investigation of a report, and we reserve the right to take any action necessary to remove threats or abusive behaviour from the Platform.",
+  },
+  {
+    n: "7",
+    title: "Escalation",
+    intro: "If you are not satisfied with the outcome of your formal complaint, you may request an internal review by a senior member of our team. To do this:",
+    bullets: [
+      "Reply to the outcome email with the subject “Request for Escalation”;",
+      "Provide reasons why you believe the outcome was unsatisfactory;",
+      "We aim to complete the review and provide a final response within 20 working days.",
+    ],
+    outro: "Following completion of the internal review, The Vilij’s decision will be final.",
+  },
+  {
+    n: "8",
+    title: "Confidentiality",
+    intro: "Where reasonably necessary to investigate concerns, protect individuals or comply with legal obligations, your information relating to complaints, reports and safeguarding concerns may be shared:",
+    bullets: [
+      "relevant members of the Vilij team;",
+      "professional advisers;",
+      "safeguarding organisations;",
+      "regulators;",
+      "law enforcement agencies; and",
+      "other appropriate third parties.",
+    ],
+    outro: "We cannot guarantee confidentiality where disclosure is required for safeguarding purposes, legal obligations, regulatory requirements, law enforcement investigations or the protection of individuals from harm.",
+  },
+  {
+    n: "9",
+    title: "Records and Data Protection",
+    clauses: [
+      { n: "9.1", text: "The Vilij may retain records of complaints, reports, investigations, decisions and related communications in accordance with its Privacy Policy and legal obligations." },
+      { n: "9.2", text: "Information relating to complaints, reports and safeguarding concerns will be processed in accordance with The Vilij’s Privacy Policy." },
+    ],
+  },
+  {
+    n: "10",
+    title: "Malicious complaints",
+    intro: "The Vilij reserves the right to limit, discontinue or decline further investigation of complaints which it reasonably considers to be malicious, abusive, vexatious, repetitive or made in bad faith.",
+  },
+  {
+    n: "11",
+    title: "Our contact details",
+    bullets: [
+      `Safeguarding email address: ${safeguardingEmail}`,
+      `General complaints email address: ${complaints}`,
+      "Registered office address: The Meakin Suite, Ravenscliffe, First Avenue, Newcastle Under Lyme, Staffordshire, United Kingdom, ST5 8QX",
+    ],
+    outro: "Information relating to complaints, reports and safeguarding concerns will be processed in accordance with The Vilij’s Privacy Policy.",
+    outros: [
+      "We thank you for bringing your concerns to our attention. We strive to make your experience with The Vilij as smooth and trouble-free as possible, and to continue to build our online community. Your input is invaluable in this regard.",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Complaints and Reporting Procedure | The Vilij"
+  description="How to report a complaint, concern or safeguarding issue to The Vilij, what happens next, how long it takes and how to escalate if you are not satisfied."
+  noindex
+>
+    <style is:global>
+      body { margin: 0; }
+      * { box-sizing: border-box; }
+      .vlink:hover { color: #f28121 !important; }
+      .vpill:hover { filter: brightness(1.05); }
+      .vnav-cta:hover { background: #15838a !important; }
+      .vclause { display: grid; grid-template-columns: 72px 1fr; gap: 0 12px; margin: 0 0 20px; }
+      .vsub { display: grid; grid-template-columns: 44px 1fr; gap: 0 12px; margin: 12px 0 0; }
+      .vtoc a:hover { color: #f28121 !important; }
+      @media (max-width: 820px) {
+        .vclause { grid-template-columns: 54px 1fr; }
+        .vsub { grid-template-columns: 34px 1fr; }
+      }
+    </style><div style="font-family:Mulish,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
+
+      <!-- ===== HEADER + HERO ===== -->
+      <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
+        <div style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
+          <SiteNav />
+          <div style="padding:54px 0 70px;max-width:820px;">
+            <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Complaints and Reporting</h1>
+            <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:640px;">We want The Vilij to be a safe and supportive community for all of our users.</p>
+            <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0 0 22px;max-width:640px;">If you encounter issues with any aspect of your experience on The Vilij, including with other users on the Platform, we are keen to hear from you so we can address your concerns promptly and effectively. Particularly, you should alert us to any user comments or posts which might pose a safeguarding or child protection concern. Protecting the safety and wellbeing of our users is one of our highest priorities.</p>
+            <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0 0 30px;max-width:640px;">Our Customer Service Team will do their best to resolve any problems you may encounter on our Platform in accordance with this Complaints and Reporting Procedure. This procedure explains how Users and Experts can report complaints, concerns, safeguarding issues and breaches of Platform policies, and how The Vilij will investigate and respond.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== BAND ===== -->
+      <div style="background:#f28121;text-align:center;padding:26px 24px;">
+        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">If something isn&rsquo;t right, tell us.</p>
+      </div>
+
+      <!-- ===== CONTENTS ===== -->
+      <LegalContents sections={sections} heading={"What&rsquo;s In This Procedure"} />
+
+      <!-- ===== POLICY BODY ===== -->
+      <LegalSections sections={sections} />
+
+      <!-- ===== QUESTIONS CTA ===== -->
+      <section style="background:#f28121;text-align:center;padding:66px 24px;">
+        <p style="font-family:Mulish;font-size:22px;color:#ffe6cf;margin:0 0 10px;">Worried about someone&rsquo;s safety?</p>
+        <h2 style="font-family:Quicksand;font-weight:700;font-size:62px;color:#ffffff;margin:0 0 22px;">Report it straight away.</h2>
+        <p style="font-family:Mulish;font-weight:600;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">If you believe someone is in immediate danger, contact the emergency<br />services first. The Vilij is not an emergency reporting service.</p>
+        <a href={`mailto:${safeguardingEmail}`} class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#f28121;font-family:Quicksand;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">REPORT A CONCERN <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <SiteFooter />
+
+    </div>
+</BaseLayout>
