@@ -1,0 +1,134 @@
+---
+// The Vilij — the body of a legal document: numbered sections, numbered
+// clauses, and the assorted list and callout shapes the four documents use.
+//
+// Every branch below is optional, so a document only pays for the shapes it
+// actually contains.
+import type { LegalSection } from "../data/legal";
+
+interface Props {
+  sections: LegalSection[];
+}
+const { sections } = Astro.props;
+const letters = "abcdefghijklmnopqrstuvwxyz".split("");
+---
+<section style="background:#ffffff;padding:40px 0 80px;">
+  <div style="max-width:1000px;margin:0 auto;padding:0 48px;">
+
+    {sections.map((s) => (
+      <div id={`s${s.n}`} style="padding-top:46px;">
+        <h2 style="font-family:Quicksand;font-weight:700;font-size:38px;line-height:1.15;color:#1f9ca0;margin:0 0 24px;">
+          <span style="color:#f28121;">{s.n}.</span> {s.title}
+        </h2>
+
+        {s.intro && (
+          <p style="font-family:Mulish;font-size:18px;line-height:1.65;color:#444;margin:0 0 24px;">{s.intro}</p>
+        )}{s.intros && s.intros.map((p) => (
+          <p style="font-family:Mulish;font-size:18px;line-height:1.65;color:#444;margin:0 0 24px;">{p}</p>
+        ))}{s.bullets && (
+          <ul style="list-style:none;padding:0;margin:0 0 24px;">
+            {s.bullets.map((b) => (
+              <li style="font-family:Mulish;font-size:18px;line-height:1.65;color:#444;margin:0 0 10px;padding-left:26px;position:relative;"><span style="position:absolute;left:0;color:#f28121;font-weight:800;">&bull;</span>{b}</li>
+            ))}
+          </ul>
+        )}
+
+        {(s.clauses ?? []).map((c) => (
+          <div class="vclause">
+            <span style="font-family:Mulish;font-weight:800;font-size:18px;line-height:1.65;color:#1f9ca0;">{c.n}</span>
+            <div>
+              <p style="font-family:Mulish;font-size:18px;line-height:1.65;color:#444;margin:0;">
+                {c.lead && <strong style="color:#222;">{c.lead}</strong>}{c.text}
+              </p>
+
+              {c.contact && (
+                <div style="margin:20px 0 4px;border-radius:18px;background:#f4faf9;border:1px solid #d9ecea;padding:26px 28px;">
+                  <p style="font-family:Quicksand;font-weight:700;font-size:22px;color:#1f9ca0;margin:0 0 14px;">The Vilij Limited</p>
+                  <p style="font-family:Mulish;font-size:17px;line-height:1.7;color:#444;margin:0 0 10px;">Registered in England and Wales under company number 16718802</p>
+                  <p style="font-family:Mulish;font-size:17px;line-height:1.7;color:#444;margin:0 0 10px;">Registered office: The Meakin Suite, Ravenscliffe, First Avenue, Newcastle Under Lyme, Staffordshire, United Kingdom, ST5 8QX</p>
+                  <p style="font-family:Mulish;font-size:17px;line-height:1.7;color:#444;margin:0 0 6px;">Email: <a href="mailto:privacy@thevilij.co.uk" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">privacy@thevilij.co.uk</a></p>
+                  <p style="font-family:Mulish;font-size:17px;line-height:1.7;color:#444;margin:0;">Safeguarding concerns: <a href="mailto:safeguarding@thevilij.co.uk" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">safeguarding@thevilij.co.uk</a></p>
+                </div>
+              )}{c.defs && (
+                <div style="margin:16px 0 4px;">
+                  {c.defs.map(([term, definition]) => (
+                    <p style="font-family:Mulish;font-size:17px;line-height:1.65;color:#444;margin:0 0 14px;"><strong style="color:#222;">{term}</strong> {definition}</p>
+                  ))}
+                </div>
+              )}
+
+              {c.items && (
+                <div style="margin-bottom:4px;">
+                  {c.items.map((item, i) => (
+                    <div class="vsub">
+                      <span style="font-family:Mulish;font-weight:700;font-size:17px;line-height:1.65;color:#f28121;">({letters[i]})</span>
+                      <span style="font-family:Mulish;font-size:17px;line-height:1.65;color:#444;">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              )}{c.bullets && (
+                <ul style="list-style:none;padding:0;margin:14px 0 4px;">
+                  {c.bullets.map((b) => (
+                    <li style="font-family:Mulish;font-size:17px;line-height:1.65;color:#444;margin:0 0 10px;padding-left:26px;position:relative;"><span style="position:absolute;left:0;color:#f28121;font-weight:800;">&bull;</span>{b}</li>
+                  ))}
+                </ul>
+              )}{c.steps && (
+                <div style="margin:18px 0 4px;">
+                  {c.steps.map((step) => (
+                    <div style="margin:0 0 22px;border-radius:18px;background:#f4faf9;border:1px solid #d9ecea;padding:22px 26px;">
+                      <p style="font-family:Quicksand;font-weight:700;font-size:20px;color:#1f9ca0;margin:0 0 12px;">{step.title}</p>
+                      {step.intro && (
+                        <p style="font-family:Mulish;font-size:17px;line-height:1.65;color:#444;margin:0 0 12px;">{step.intro}</p>
+                      )}
+                      <ul style="list-style:none;padding:0;margin:0;">
+                        {step.bullets.map((b) => (
+                          <li style="font-family:Mulish;font-size:17px;line-height:1.65;color:#444;margin:0 0 10px;padding-left:26px;position:relative;"><span style="position:absolute;left:0;color:#f28121;font-weight:800;">&bull;</span>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {c.table && (
+                <div style="margin:22px 0 4px;overflow-x:auto;">
+                  <table style="width:100%;border-collapse:collapse;font-family:Mulish;font-size:16px;min-width:520px;">
+                    <thead>
+                      <tr>
+                        <th style="text-align:left;font-family:Quicksand;font-weight:700;font-size:18px;color:#ffffff;background:#1f9ca0;padding:14px 18px;border-radius:12px 0 0 0;width:42%;">Data Type</th>
+                        <th style="text-align:left;font-family:Quicksand;font-weight:700;font-size:18px;color:#ffffff;background:#1f9ca0;padding:14px 18px;border-radius:0 12px 0 0;">Typical Retention Period</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {c.table.map((row, i) => (
+                        <tr style={i % 2 === 1 ? "background:#f7fbfb;" : ""}>
+                          <td style="padding:14px 18px;line-height:1.55;color:#222;font-weight:700;border-bottom:1px solid #e7eeee;vertical-align:top;">{row[0]}</td>
+                          <td style="padding:14px 18px;line-height:1.55;color:#555;border-bottom:1px solid #e7eeee;vertical-align:top;">{row[1]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}{c.outro && (
+                <p style="font-family:Mulish;font-size:17px;line-height:1.65;color:#444;margin:14px 0 0;">{c.outro}</p>
+              )}
+
+              {c.note && (
+                <p style="font-family:Mulish;font-size:17px;line-height:1.65;color:#555;margin:16px 0 0;padding-left:16px;border-left:3px solid #f6c79a;">{c.note}</p>
+              )}
+
+              {c.ico && (
+                <p style="font-family:Mulish;font-size:17px;line-height:1.65;margin:10px 0 0;">
+                  <a href="https://ico.org.uk/" target="_blank" rel="noopener" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Visit the Information Commissioner&rsquo;s Office &rarr;</a>
+                </p>
+              )}
+            </div>
+          </div>
+        ))}{s.outro && (
+          <p style="font-family:Mulish;font-size:18px;line-height:1.65;color:#444;margin:18px 0 0;">{s.outro}</p>
+        )}
+      </div>
+    ))}
+
+  </div>
+</section>

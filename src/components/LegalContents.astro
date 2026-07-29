@@ -1,0 +1,24 @@
+---
+// The Vilij — the "what's in this document" jump list at the top of a legal page.
+import type { LegalSection } from "../data/legal";
+
+interface Props {
+  sections: LegalSection[];
+  heading: string;
+}
+const { sections, heading } = Astro.props;
+---
+<section style="background:#ffffff;padding:70px 0 10px;">
+  <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
+    <div style="border-radius:26px;background:linear-gradient(90deg,#f6c79a 0%,#fbe5d1 26%,#ffffff 50%,#cfeae8 74%,#a4dbd7 100%);padding:42px 40px 46px;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
+      <h2 style="font-family:Quicksand;font-weight:700;font-size:38px;color:#1f9ca0;margin:0 0 24px;text-align:center;" set:html={heading}></h2>
+      <div class="vtoc" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 34px;">
+        {sections.map((s) => (
+          <a href={`#s${s.n}`} style="font-family:Mulish;font-weight:600;font-size:17px;color:#2a2a2a;text-decoration:none;">
+            <span style="color:#f28121;font-weight:800;">{s.n}.</span> {s.title}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

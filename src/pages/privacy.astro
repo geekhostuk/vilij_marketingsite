@@ -4,8 +4,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import LegalContents from "../components/LegalContents.astro";
+import LegalSections from "../components/LegalSections.astro";
+import type { LegalSection } from "../data/legal";
 
-const sections = [
+const sections: LegalSection[] = [
   {
     n: "1",
     title: "Introduction",
@@ -708,7 +711,6 @@ const sections = [
   },
 ];
 
-const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 ---
 
 <BaseLayout
@@ -749,102 +751,10 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
       </div>
 
       <!-- ===== CONTENTS ===== -->
-      <section style="background:#ffffff;padding:70px 0 10px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
-          <div style="border-radius:26px;background:linear-gradient(90deg,#f6c79a 0%,#fbe5d1 26%,#ffffff 50%,#cfeae8 74%,#a4dbd7 100%);padding:42px 40px 46px;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
-            <h2 style="font-family:Quicksand;font-weight:700;font-size:38px;color:#1f9ca0;margin:0 0 24px;text-align:center;">What&rsquo;s In This Policy</h2>
-            <div class="vtoc" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 34px;">
-              {sections.map((s) => (
-                <a href={`#s${s.n}`} style="font-family:Mulish;font-weight:600;font-size:17px;color:#2a2a2a;text-decoration:none;">
-                  <span style="color:#f28121;font-weight:800;">{s.n}.</span> {s.title}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <LegalContents sections={sections} heading={"What&rsquo;s In This Policy"} />
 
       <!-- ===== POLICY BODY ===== -->
-      <section style="background:#ffffff;padding:40px 0 80px;">
-        <div style="max-width:1000px;margin:0 auto;padding:0 48px;">
-
-          {sections.map((s) => (
-            <div id={`s${s.n}`} style="padding-top:46px;">
-              <h2 style="font-family:Quicksand;font-weight:700;font-size:38px;line-height:1.15;color:#1f9ca0;margin:0 0 24px;">
-                <span style="color:#f28121;">{s.n}.</span> {s.title}
-              </h2>
-
-              {s.intro && (
-                <p style="font-family:Mulish;font-size:18px;line-height:1.65;color:#444;margin:0 0 24px;">{s.intro}</p>
-              )}
-
-              {s.clauses.map((c) => (
-                <div class="vclause">
-                  <span style="font-family:Mulish;font-weight:800;font-size:18px;line-height:1.65;color:#1f9ca0;">{c.n}</span>
-                  <div>
-                    <p style="font-family:Mulish;font-size:18px;line-height:1.65;color:#444;margin:0;">
-                      {c.lead && <strong style="color:#222;">{c.lead}</strong>}{c.text}
-                    </p>
-
-                    {c.contact && (
-                      <div style="margin:20px 0 4px;border-radius:18px;background:#f4faf9;border:1px solid #d9ecea;padding:26px 28px;">
-                        <p style="font-family:Quicksand;font-weight:700;font-size:22px;color:#1f9ca0;margin:0 0 14px;">The Vilij Limited</p>
-                        <p style="font-family:Mulish;font-size:17px;line-height:1.7;color:#444;margin:0 0 10px;">Registered in England and Wales under company number 16718802</p>
-                        <p style="font-family:Mulish;font-size:17px;line-height:1.7;color:#444;margin:0 0 10px;">Registered office: The Meakin Suite, Ravenscliffe, First Avenue, Newcastle Under Lyme, Staffordshire, United Kingdom, ST5 8QX</p>
-                        <p style="font-family:Mulish;font-size:17px;line-height:1.7;color:#444;margin:0 0 6px;">Email: <a href="mailto:privacy@thevilij.co.uk" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">privacy@thevilij.co.uk</a></p>
-                        <p style="font-family:Mulish;font-size:17px;line-height:1.7;color:#444;margin:0;">Safeguarding concerns: <a href="mailto:safeguarding@thevilij.co.uk" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">safeguarding@thevilij.co.uk</a></p>
-                      </div>
-                    )}
-
-                    {c.items && (
-                      <div style="margin-bottom:4px;">
-                        {c.items.map((item, i) => (
-                          <div class="vsub">
-                            <span style="font-family:Mulish;font-weight:700;font-size:17px;line-height:1.65;color:#f28121;">({letters[i]})</span>
-                            <span style="font-family:Mulish;font-size:17px;line-height:1.65;color:#444;">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {c.table && (
-                      <div style="margin:22px 0 4px;overflow-x:auto;">
-                        <table style="width:100%;border-collapse:collapse;font-family:Mulish;font-size:16px;min-width:520px;">
-                          <thead>
-                            <tr>
-                              <th style="text-align:left;font-family:Quicksand;font-weight:700;font-size:18px;color:#ffffff;background:#1f9ca0;padding:14px 18px;border-radius:12px 0 0 0;width:42%;">Data Type</th>
-                              <th style="text-align:left;font-family:Quicksand;font-weight:700;font-size:18px;color:#ffffff;background:#1f9ca0;padding:14px 18px;border-radius:0 12px 0 0;">Typical Retention Period</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {c.table.map((row, i) => (
-                              <tr style={i % 2 === 1 ? "background:#f7fbfb;" : ""}>
-                                <td style="padding:14px 18px;line-height:1.55;color:#222;font-weight:700;border-bottom:1px solid #e7eeee;vertical-align:top;">{row[0]}</td>
-                                <td style="padding:14px 18px;line-height:1.55;color:#555;border-bottom:1px solid #e7eeee;vertical-align:top;">{row[1]}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    )}
-
-                    {c.note && (
-                      <p style="font-family:Mulish;font-size:17px;line-height:1.65;color:#555;margin:16px 0 0;padding-left:16px;border-left:3px solid #f6c79a;">{c.note}</p>
-                    )}
-
-                    {c.ico && (
-                      <p style="font-family:Mulish;font-size:17px;line-height:1.65;margin:10px 0 0;">
-                        <a href="https://ico.org.uk/" target="_blank" rel="noopener" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Visit the Information Commissioner&rsquo;s Office &rarr;</a>
-                      </p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ))}
-
-        </div>
-      </section>
+      <LegalSections sections={sections} />
 
       <!-- ===== QUESTIONS CTA ===== -->
       <section style="background:#f28121;text-align:center;padding:66px 24px;">
