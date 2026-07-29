@@ -1,6 +1,6 @@
 ---
-// The Vilij — Café page
-// Imported from Claude Design project "Webpage creation request" (Vilij Café.dc.html)
+// The Vilij — Library page
+// Built from design "Vilij Website Library page v 2.pdf"
 const monthlyPrice = "£10";
 const showSecondTestimonial = true;
 
@@ -8,16 +8,16 @@ const testimonials = [
   {
     quote:
       "Lorem ipsum doloramet, consectetuer adipiscin sed diam nonumy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi minim veniam, quis nostrud exerci tation",
-    name: "José, Nancy & Isaac",
-    role: "SEND Family, Manchester",
-    photo: "/assets/p_jose.png",
+    name: "Robert & Ethan",
+    role: "SEND Grandparent, Bristol",
+    photo: "/assets/p_grand.png",
   },
   {
     quote:
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat wisi enim ad minim veniam.",
-    name: "Margaret & Charlie",
-    role: "SEND Family, Leeds",
-    photo: "/assets/p_grand.png",
+    name: "José, Nancy & Isaac",
+    role: "SEND Family, Manchester",
+    photo: "/assets/p_jose.png",
   },
 ];
 
@@ -30,7 +30,7 @@ const first = list[0];
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>The Vilij — Welcome to the Café</title>
+    <title>The Vilij — Welcome to the Library</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -63,116 +63,85 @@ const first = list[0];
               <a href="#" class="vnav-cta vpill" style="font-family:Quicksand;font-weight:700;font-size:16px;letter-spacing:.5px;color:#ffffff;background:#1f9ca0;padding:13px 30px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(31,156,160,0.3);">SIGN UP</a>
             </div>
           </nav>
-          <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:60px 0 80px;">
+          <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:54px 0 70px;">
             <div>
-              <h1 style="font-family:Quicksand;font-weight:700;font-size:80px;line-height:1.02;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome to the Caf&eacute;</h1>
-              <p style="font-family:Mulish;font-weight:700;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:520px;">Pull up a chair, pour a brew, and find your people.</p>
-              <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:520px;">The Caf&eacute; includes several welcoming spaces, each designed for a different type of conversation.</p>
+              <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome<br />to the Library</h1>
+              <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:520px;">Practical resources at your fingertips, ready whenever you are.</p>
+              <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:520px;">Built from real questions, real experience, and a deep understanding of how hard this can be.</p>
             </div>
             <div style="display:flex;justify-content:center;">
-              <img src="/assets/cafe_hero.png" alt="The Café" style="width:100%;max-width:600px;height:auto;display:block;" />
+              <div style="width:100%;max-width:600px;border-radius:26px;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);padding:26px 24px;box-shadow:0 16px 38px rgba(40,80,90,0.12);">
+                <img src="/assets/library_hero.png" alt="The Vilij Library" style="width:100%;display:block;" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ===== STAY AS LONG BAND ===== -->
+      <!-- ===== NO MORE GUESSING BAND ===== -->
       <div style="background:#f28121;text-align:center;padding:26px 24px;">
-        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">Stay as long as you like, the doors are always open.</p>
+        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">So no parent, grandparent or carer has to keep guessing alone.</p>
       </div>
 
-      <!-- ===== WHY THE CAFÉ EXISTS ===== -->
+      <!-- ===== WHY THE LIBRARY EXISTS ===== -->
       <section style="background:#ffffff;padding:90px 0 30px;">
         <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
-          <div style="border-radius:26px;background:linear-gradient(100deg,#fcdcc0 0%,#fbe7d6 30%,#f4f1ec 50%,#dceae9 70%,#cfe9ea 100%);padding:48px 40px 54px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
-            <h2 style="font-family:Quicksand;font-weight:700;font-size:48px;color:#1f9ca0;margin:0 0 22px;">Why The Caf&eacute; Exists</h2>
-            <p style="font-family:Mulish;font-weight:700;font-size:21px;line-height:1.5;color:#353535;margin:0 auto 26px;max-width:920px;">AThe Caf&eacute; is a warm, heartfelt haven within The Vilij where SEND families who often feel isolated can breathe out, feel understood, and finally connect with others who truly get it..</p>
-            <p style="font-family:Mulish;font-size:19px;color:#3a3a3a;margin:0 0 18px;">The Caf&eacute; gives us:</p>
-            <div style="display:flex;flex-direction:column;gap:10px;align-items:center;font-family:Mulish;font-size:15px;color:#3a3a3a;">
-              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;white-space:nowrap;">
-                <span>&bull;&nbsp; A friendly place for informal conversation.</span>
-                <span>&bull;&nbsp; A space to share everyday experiences.</span>
-                <span>&bull;&nbsp; Peer support without judgement.</span>
-              </div>
-              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;white-space:nowrap;">
-                <span>&bull;&nbsp; Moments of humour, relief, and solidarity.</span>
-                <span>&bull;&nbsp; Opportunities to build genuine friendships.</span>
-              </div>
+          <div style="border-radius:26px;background:linear-gradient(90deg,#f6c79a 0%,#fbe5d1 26%,#ffffff 50%,#cfeae8 74%,#a4dbd7 100%);padding:50px 40px 56px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
+            <h2 style="font-family:Quicksand;font-weight:700;font-size:50px;color:#1f9ca0;margin:0 0 26px;">Why The Library Exists</h2>
+            <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.5;color:#222;margin:0 auto 28px;max-width:820px;">So no parent, grandparent or carer has to keep guessing alone &mdash; resources and guidance for the next step.</p>
+            <p style="font-family:Mulish;font-size:21px;color:#2a2a2a;margin:0 0 22px;">The Library gives us:</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;font-family:Mulish;font-size:20px;color:#2a2a2a;">
+              <span>&bull;&nbsp; Guides and documents for information.</span>
+              <span>&bull;&nbsp; Templates created to save you time and stress.</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ===== CAFÉ FEATURE CARDS ===== -->
-      <section style="background:#ffffff;padding:60px 0 80px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:46px 44px;">
+      <!-- ===== LIBRARY FEATURE CARDS ===== -->
+      <section style="background:#ffffff;padding:58px 0 80px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:44px;">
 
-          <!-- Sip & Natter (orange, photo left) -->
-          <div style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
-            <div style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_sip.png" alt="Coffee chat" style="width:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
-            </div>
-            <div style="flex:1;">
-              <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1;">Sip &amp; Natter</h3>
-              <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Our friendship corner to exhale &amp; connect.</p>
-              <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">It&rsquo;s a relaxed space for everyday chat &mdash; a place to catch up, share the little moments, laugh, vent, or just talk. The goal is simple: human connection.</p>
-            </div>
+          <!-- You (The Parent) -->
+          <div style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">You<br />(The Parent)</h3>
+            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Because you matter too.</p>
+            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">A place for you to feel seen, supported, and not so alone.</p>
           </div>
 
-          <!-- Tea and Empathy (teal, photo top-right) -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
-            <div style="display:flex;gap:18px;align-items:flex-start;">
-              <div style="flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Tea and Empathy</h3>
-                <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Honest conversations without judgement.</p>
-              </div>
-              <img src="/assets/p_tea.png" alt="Tea and empathy" style="flex:0 0 40%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
-            </div>
-            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">It&rsquo;s a quiet space for honest conversations about loneliness, exhaustion, identity, and the juggle of SEND family life &mdash; a place to feel understood and find hope in others who share similar experiences.</p>
+          <!-- Education & EHCP -->
+          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Education<br />&amp; EHCP</h3>
+            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Navigate the system with confidence.</p>
+            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Helping you find your way through the system, with clarity, support, and less overwhelm.</p>
           </div>
 
-          <!-- The Brew Source (teal, photo top-right) -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
-            <div style="display:flex;gap:18px;align-items:flex-start;">
-              <div style="flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">The Brew Source</h3>
-                <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Quick answers from people who understand.</p>
-              </div>
-              <img src="/assets/p_brew.png" alt="Parents talking" style="flex:0 0 42%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
-            </div>
-            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">It&rsquo;s a supportive space where parents share heartfelt advice, honest questions, and practical solutions &mdash; all easy to find or add when you need a little help.</p>
+          <!-- Practical Tools & Templates -->
+          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Practical Tools<br />&amp; Templates</h3>
+            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Download and breathe.</p>
+            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Tools for you to lean on, so things feel clearer and easier to manage.</p>
           </div>
 
-          <!-- The Elder Brew (orange, body top, photo right) -->
-          <div style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:300px;">
-            <div style="display:flex;gap:18px;align-items:flex-start;">
-              <p style="flex:1;font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">SEND grandparents carry fierce love and quiet worries of their own. The Elder Brew offers a gentle space to share, support one another, and celebrate the children they cherish.</p>
-              <img src="/assets/p_elder.png" alt="Grandparent and child" style="flex:0 0 40%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
-            </div>
-            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:20px 0 10px;line-height:1.02;">The Elder Brew</h3>
-            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">A circle just for grandparents</p>
+          <!-- Supporting Your Child -->
+          <div style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Supporting<br />Your Child</h3>
+            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Understand what&rsquo;s really happening.</p>
+            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Understanding your child more clearly, and how best to support them.</p>
           </div>
 
-          <!-- Show Us Your Mug (orange, photo left) -->
-          <div style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
-            <div style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_mug.png" alt="Favourite mug" style="width:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
-            </div>
-            <div style="flex:1;">
-              <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1;">Show Us Your Mug</h3>
-              <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">A warm welcome to new Vilij members.</p>
-              <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Make a brew and say hello by sharing your favourite mug and a few words about yourself.</p>
-            </div>
+          <!-- Everyday Life & Resources -->
+          <div style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Everyday Life<br />&amp; Resources</h3>
+            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Make daily life easier.</p>
+            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support for calmer, more manageable days.</p>
           </div>
 
-          <!-- Brewtiful Bites (teal, body top, photo right) -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
-            <div style="display:flex;gap:18px;align-items:flex-start;">
-              <p style="flex:1;font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">A light-hearted space for sharing favourite recipes, comforting finds, quirky food combos SEND-friendly places, and the little food joys that bring us together.</p>
-              <img src="/assets/p_bites.png" alt="Child enjoying food" style="flex:0 0 41%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
-            </div>
-            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:20px 0 10px;line-height:1.02;">Brewtiful Bites</h3>
-            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Food, comfort, and small pleasures.</p>
+          <!-- S.E.N.D. Roadmap & Acronym Guide -->
+          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">S.E.N.D. Roadmap<br />&amp; Acronym Guide</h3>
+            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Make sense of the system.</p>
+            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Clear, plain-English guidance so you finally understand what all of this really means.</p>
           </div>
 
         </div>
@@ -209,16 +178,6 @@ const first = list[0];
               <img src="/assets/p_beach.png" alt="Child at the beach" style="width:100%;height:auto;display:block;" />
             </div>
 
-            <!-- Library -->
-            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/library.png" alt="Library" class="vcard-img" /></div>
-              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">LIBRARY</h3>
-                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Practical resources at your fingertips, ready whenever you are.</p>
-                <a href="/library" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S IN THE LIBRARY?</a>
-              </div>
-            </div>
-
             <!-- Wellbeing -->
             <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
               <div style="padding:14px 8px 0;"><img src="/assets/wellbeing.png" alt="Wellbeing Centre" class="vcard-img" /></div>
@@ -229,23 +188,23 @@ const first = list[0];
               </div>
             </div>
 
+            <!-- Café -->
+            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
+              <div style="padding:14px 8px 0;"><img src="/assets/cafe.png" alt="Café" class="vcard-img" /></div>
+              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">CAF&Eacute;</h3>
+                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Pull up a chair, pour a brew and find your people.</p>
+                <a href="/cafe" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON AT THE CAF&Eacute;?</a>
+              </div>
+            </div>
+
             <!-- Market Place -->
             <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
               <div style="padding:14px 8px 0;"><img src="/assets/market.png" alt="Market Place" class="vcard-img" /></div>
               <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">MARKET PLACE</h3>
-                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Discover wonderful products &amp; services created by S.E.N.D. parents in business.</p>
+                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Discover wonderful products created by S.E.N.D. parents in business.</p>
                 <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON AT THE MARKET PLACE?</a>
-              </div>
-            </div>
-
-            <!-- Expert Hub -->
-            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/experthub.png" alt="Vilij Expert Hub" class="vcard-img" /></div>
-              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">VILIJ EXPERT HUB</h3>
-                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Trusted experts, tailored advise, and tools that make a difference.</p>
-                <a href="/expert-hub" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S IN THE EXPERT HUB?</a>
               </div>
             </div>
 
@@ -259,9 +218,19 @@ const first = list[0];
               </div>
             </div>
 
-            <!-- Grandparent photo -->
+            <!-- Expert Hub -->
+            <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
+              <div style="padding:14px 8px 0;"><img src="/assets/experthub.png" alt="Vilij Expert Hub" class="vcard-img" /></div>
+              <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
+                <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">VILIJ EXPERT HUB</h3>
+                <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Trusted experts, tailored advise, and tools that make a difference.</p>
+                <a href="/expert-hub" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S IN THE EXPERT HUB?</a>
+              </div>
+            </div>
+
+            <!-- Family photo -->
             <div style="border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(40,80,90,0.12);align-self:start;">
-              <img src="/assets/p_grand.png" alt="Grandparent and child" style="width:100%;height:auto;display:block;" />
+              <img src="/assets/p_jose.png" alt="A SEND family" style="width:100%;height:auto;display:block;" />
             </div>
 
             <!-- Vilij Campus -->
@@ -302,6 +271,9 @@ const first = list[0];
           <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
             <div style="position:relative;">
               <img id="t-photo" src={first.photo} alt="A SEND family" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
+              <div style="position:absolute;top:-22px;right:-22px;width:84px;height:84px;border-radius:50%;background:#1f9ca0;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(31,156,160,0.35);">
+                <span style="font-family:Georgia,serif;font-weight:700;font-size:58px;line-height:1;color:#fff;margin-top:30px;">&rdquo;</span>
+              </div>
             </div>
             <div>
               <div style="color:#f28121;font-size:28px;letter-spacing:6px;margin-bottom:18px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>

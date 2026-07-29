@@ -43,6 +43,7 @@ const first = list[0];
       .vlink:hover { color: #f28121 !important; }
       .vpill:hover { filter: brightness(1.05); }
       .vcard { transition: transform .25s ease, box-shadow .25s ease; }
+      .vcard-img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
       .vcard:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(40,80,90,0.16) !important; }
       .vnav-cta:hover { background: #15838a !important; }
     </style>
@@ -69,8 +70,8 @@ const first = list[0];
               <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:520px;">The Vilij Hall is the heart of the Vilij. A welcoming space designed to reduce isolation, build belonging, and remind every SEND parent that you are not alone.</p>
             </div>
             <div style="display:flex;justify-content:center;">
-              <div style="width:100%;max-width:600px;border-radius:26px;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);padding:20px 18px 0;box-shadow:0 16px 38px rgba(40,80,90,0.12);">
-                <img src="/assets/hall_trim.png" alt="The Vilij Hall" style="width:100%;display:block;border-radius:14px;-webkit-mask-image:linear-gradient(to bottom,#000 88%,transparent 100%);mask-image:linear-gradient(to bottom,#000 88%,transparent 100%);" />
+              <div style="width:100%;max-width:600px;border-radius:26px;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);padding:26px 24px;box-shadow:0 16px 38px rgba(40,80,90,0.12);">
+                <img src="/assets/hall_trim.png" alt="The Vilij Hall" style="width:100%;display:block;" />
               </div>
             </div>
           </div>
@@ -189,7 +190,7 @@ const first = list[0];
 
             <!-- Café -->
             <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/cafe.png" alt="Café" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:14px 8px 0;"><img src="/assets/cafe.png" alt="Café" class="vcard-img" /></div>
               <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">CAF&Eacute;</h3>
                 <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Pull up a chair, pour a brew and find your people.</p>
@@ -204,27 +205,27 @@ const first = list[0];
 
             <!-- Library -->
             <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/library.png" alt="Library" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:14px 8px 0;"><img src="/assets/library.png" alt="Library" class="vcard-img" /></div>
               <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">LIBRARY</h3>
                 <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Practical resources at your fingertips, ready whenever you are.</p>
-                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S IN THE LIBRARY?</a>
+                <a href="/library" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S IN THE LIBRARY?</a>
               </div>
             </div>
 
             <!-- Wellbeing -->
             <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/wellbeing.png" alt="Wellbeing Centre" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:14px 8px 0;"><img src="/assets/wellbeing.png" alt="Wellbeing Centre" class="vcard-img" /></div>
               <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">WELLBEING CENTRE</h3>
                 <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Because caring for them starts with caring for you.</p>
-                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON AT THE WELL BEING CENTRE?</a>
+                <a href="/wellbeing" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S ON AT THE WELL BEING CENTRE?</a>
               </div>
             </div>
 
             <!-- Market Place -->
             <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/market.png" alt="Market Place" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:14px 8px 0;"><img src="/assets/market.png" alt="Market Place" class="vcard-img" /></div>
               <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">MARKET PLACE</h3>
                 <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Discover wonderful products &amp; services created by S.E.N.D. parents in business.</p>
@@ -234,17 +235,17 @@ const first = list[0];
 
             <!-- Expert Hub -->
             <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/experthub.png" alt="Vilij Expert Hub" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:14px 8px 0;"><img src="/assets/experthub.png" alt="Vilij Expert Hub" class="vcard-img" /></div>
               <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">VILIJ EXPERT HUB</h3>
                 <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Trusted experts, tailored advise, and tools that make a difference.</p>
-                <a href="#" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S IN THE EXPERT HUB?</a>
+                <a href="/expert-hub" class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);">WHAT&rsquo;S IN THE EXPERT HUB?</a>
               </div>
             </div>
 
             <!-- High Street -->
             <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/highstreet.png" alt="High Street" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:14px 8px 0;"><img src="/assets/highstreet.png" alt="High Street" class="vcard-img" /></div>
               <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">HIGH STREET</h3>
                 <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">Handpicked products for S.E.N.D families, all in one easy place.</p>
@@ -259,7 +260,7 @@ const first = list[0];
 
             <!-- Vilij Campus -->
             <div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-              <div style="padding:14px 8px 0;"><img src="/assets/campus.png" alt="Vilij Campus" style="width:100%;display:block;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);" /></div>
+              <div style="padding:14px 8px 0;"><img src="/assets/campus.png" alt="Vilij Campus" class="vcard-img" /></div>
               <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;">VILIJ CAMPUS</h3>
                 <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;">New exciting development now under construction.</p>
