@@ -2,10 +2,10 @@
 // The Vilij — User Terms of Use
 // Content transcribed from "The Vilij - User Terms of Use.pdf".
 //
-// The source PDF carries "Effective Date: []" — an unfilled placeholder. Rather
-// than invent a date or publish an empty bracket, the effective-date pill is
-// omitted until a date is supplied. Set `effectiveDate` below and it appears.
-// See content-issues.md C54.
+// The source PDF carries "Effective Date: []" — an unfilled placeholder. The
+// date below was supplied separately by The Vilij on 29 July 2026, not taken
+// from the PDF; it is the only part of this page that is not a transcription.
+// Setting `effectiveDate` to null again omits the pill. See content-issues.md C54.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -13,7 +13,7 @@ import LegalContents from "../components/LegalContents.astro";
 import LegalSections from "../components/LegalSections.astro";
 import type { LegalSection } from "../data/legal";
 
-const effectiveDate: { iso: string; label: string } | null = null;
+const effectiveDate: { iso: string; label: string } | null = { iso: "2026-08-01", label: "1 August 2026" };
 
 const sections: LegalSection[] = [
   {
