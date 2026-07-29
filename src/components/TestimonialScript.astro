@@ -19,6 +19,7 @@ const { list } = Astro.props;
         const name = document.getElementById("t-name");
         const role = document.getElementById("t-role");
         const stars = document.getElementById("t-stars");
+        const starGlyphs = document.getElementById("t-star-glyphs");
 
         function render() {
           const i = ((t % list.length) + list.length) % list.length;
@@ -28,8 +29,16 @@ const { list } = Astro.props;
           if (name) name.textContent = cur.name;
           if (role) role.textContent = cur.role;
           if (stars) {
-            // A testimonial without a rating simply has no star row.
-            stars.textContent = cur.stars ? "\u2605".repeat(cur.stars) : "";
+            // A testimonial without a rating simply has no star row, and no
+            // accessible name to announce either.
+            if (cur.stars) {
+              stars.setAttribute("role", "img");
+              stars.setAttribute("aria-label", "Rated " + cur.stars + " out of 5");
+            } else {
+              stars.removeAttribute("role");
+              stars.removeAttribute("aria-label");
+            }
+            if (starGlyphs) starGlyphs.textContent = cur.stars ? "\u2605".repeat(cur.stars) : "";
             stars.style.display = cur.stars ? "" : "none";
           }
         }
