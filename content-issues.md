@@ -22,6 +22,12 @@ The self-contained items — everything fixable without new copy or a decision f
 else — have been fixed: **C4, C8, C9–C19, C35, C36, C37, C38, C41, C43, C45, C46, C47, C48, C50,
 C51, C52, C55.**
 
+A second batch closed on 29 July 2026, this time on instructions rather than by tidying:
+**C1, C2, C20, C23, C24, C25, C54.** Three of those were decisions, not code — remove the
+placeholder copy without replacing it, point sign-up at the app, and give the Terms a date.
+**C3 is closed by hiding rather than filling**; C5, C6 and C7 go dormant with it, because the
+invented attributions are still in the page files, just not rendered.
+
 C36 and C37 came off the blocked list on 29 July 2026 when the source documents turned up. C35
 followed the same day: no source existed, so the Cookie Policy was written from scratch. C55 and
 C38 followed when the general complaints address was confirmed as `complaints@thevilij.co.uk`,
@@ -35,16 +41,16 @@ Everything below is still open, and every one of them is blocked on something ex
 
 | Blocked on | Items |
 |------------|-------|
-| **Copy that has to be written** | C1 footer blurb · C2 newsletter blurb |
-| **A decision about the second testimonial** | C3, C5, C6, C7 — all six placeholder slots, plus the invented names, roles and photos attached to them |
-| **Pages that do not exist yet** | C20–C29, C33, C34 (nav, CTAs, area cards, footer links, Charlie's Story) · C40 |
+| **Copy that has to be written** | C1 and C2 are closed, but the footer blurb and newsletter blurb still have to be written — the site simply does without them in the meantime |
+| **A real second testimonial** | C5, C6, C7 — dormant, not gone. The invented names, roles and photos are still in the six page files |
+| **Pages that do not exist yet** | C21, C22, C26–C29, C33, C34 (nav, preview, footer links, Charlie's Story) · C40 |
 | **A commercial decision** | C39 — £10/month is quoted with no pricing page and no inclusions list |
 | **An asset that has to be produced** | C44 — Open Graph / Twitter Card tags need a 1200×630 image before they are worth adding |
-| **A lawyer's eye** | C53, C54 — numbering faults and an unfilled effective date in the source legal documents |
+| **A lawyer's eye** | C53 — numbering faults in the source legal documents · C60 — the registered office now reads two ways |
 | **A consent tool, or dropping HubSpot** | C58 — analytics cookies are set before anyone has agreed to them |
+| **The site being made responsive** | ISSUES #20 — the footer and every content section overflow below about 460px |
 
-None of these can be closed by editing the existing pages. C1, C2, C5, C20 and C39 are the
-launch blockers.
+C39 and C58 are the remaining launch blockers on this list.
 
 > **All four cited documents are now published.** The source PDFs turned up in the client's
 > "Vilij Files" folder on 29 July 2026. **C36** (`/terms`), **C37** (`/community-guidelines`) and
@@ -52,10 +58,13 @@ launch blockers.
 > source at all and has been written from what the site actually loads. The fifth document in
 > that folder, the Safeguarding Policy, is still unpublished — see C56.
 
-> **The duplicated markup is gone (C48).** The header, footer, testimonial carousel and areas
-> grid now live in `src/layouts/` and `src/components/`. C1 and C2 are one edit each in
-> `src/components/SiteFooter.astro` rather than eight, and `showSecondTestimonial` is a single
-> flag in `src/data/testimonials.ts`. It is still `true` — that decision has not been made.
+> **The duplicated markup is gone (C48), and it paid for itself.** The header, footer,
+> testimonial carousel and areas grid live in `src/layouts/` and `src/components/`. Every item
+> closed on 29 July 2026 was a single edit that reached all twelve pages: C1 and C2 in
+> `SiteFooter.astro`, the company details (C61) in the same file, the header SIGN UP in
+> `SiteNav.astro`, `showSecondTestimonial` in `src/data/testimonials.ts`, and the `comingSoon`
+> flag in `src/data/areas.ts`. Only the twelve body sign-up CTAs needed touching page by page,
+> because they are page copy rather than shared markup.
 
 ---
 
@@ -63,24 +72,27 @@ launch blockers.
 
 | # | Priority | Issue | Where |
 |---|----------|-------|-------|
-| ☐ C1 | **P1** | Footer company blurb is Lorem ipsum, sitting directly under the logo *(ISSUES #1)* | All 11 pages, footer col 1 |
-| ☐ C2 | **P1** | Newsletter blurb is Lorem ipsum — the copy meant to earn the email *(ISSUES #2)* | All 11 pages, footer col 4 |
+| ✅ C1 | **P1** | ~~Footer company blurb is Lorem ipsum, sitting directly under the logo~~ *(ISSUES #1)* — **removed, not replaced.** Nothing stands in its place; the logo's bottom margin absorbed the gap. The real copy drops back under the logo when it is written. | All 12 pages, footer col 1 |
+| ✅ C2 | **P1** | ~~Newsletter blurb is Lorem ipsum — the copy meant to earn the email~~ *(ISSUES #2)* — **removed, not replaced.** The heading, field, Subscribe button and consent checkbox are untouched; the newsletter heading now takes the same 22px bottom margin as its three siblings so the four column headings sit on one line. | All 12 pages, footer col 4 |
 | ☐ C3 | **P1** | Second testimonial quote is Lorem ipsum, reachable via the ▸ button *(ISSUES #3)* | 6 content pages |
 | ✅ C4 | **P1** | ~~Company registration number renders literally as `[●]`~~ *(ISSUES #10)* — now reads **16718802**, taken from the executed Expert Community Membership Agreement for THE VILIJ LIMITED. | `privacy` §2.1 |
 
-> **Registered office (§2.1):** not a placeholder — the block already carries a full address
-> (The Meakin Suite, Ravenscliffe, First Avenue, Newcastle Under Lyme, ST5 8QX). Left as found.
-> Still worth confirming that this is the address the policy should carry.
+> **Registered office (§2.1): confirmed and corrected on 29 July 2026.** The confirmed
+> registered office is **The Meakin Suite, Ravenscliffe, First Avenue, Newcastle-under-Lyme,
+> ST5 8QX**. The Privacy Policy carried a variant of it — "Newcastle Under Lyme" unhyphenated,
+> plus a trailing ", Staffordshire, United Kingdom" — and now matches the confirmed version
+> exactly. The same address appears verbatim in the Complaints procedure (§11), in the old
+> unhyphenated form; that page is a solicitor document transcribed verbatim and has been left
+> alone. **The two now disagree** — see C60.
 
-22 blocks of Latin are still live across the site, but after the C48 extraction they come from
-far fewer places (re-checked 29 July 2026 — line numbers drift with every edit, so search for
-the text rather than trusting the number):
+**No Lorem ipsum remains anywhere on the site.** All 22 blocks are gone as of 29 July 2026:
 
-- **C1** — `src/components/SiteFooter.astro:17`. **One edit, all eleven pages.**
-- **C2** — `src/components/SiteFooter.astro:43`. **One edit, all eleven pages.**
-- **C3** — still six copies, one per page, because each carries a different invented
-  attribution: `index:26`, `cafe:25`, `hall:25`, `library:25`, `wellbeing:25`, `expert-hub:25`.
-  Setting `showSecondTestimonial = false` in `src/data/testimonials.ts` removes all six at once.
+- **C1** and **C2** — deleted from `src/components/SiteFooter.astro`. One edit each, all twelve
+  pages. Nothing was written to replace them.
+- **C3** — the six placeholder quotes are still in the page files, one per page, each with its
+  own invented attribution. They are no longer rendered: `showSecondTestimonial` is now `false`
+  in `src/data/testimonials.ts`, which drops the second slot on all six pages at once. The data
+  stays so a real quote can take its place — see C3 and C5 below.
 
 ---
 
@@ -100,17 +112,26 @@ on every content page pairs the placeholder quote with a fully invented, named a
 
 | # | Priority | Issue | Where |
 |---|----------|-------|-------|
-| ☐ C5 | **P1** | Five invented families credited with one placeholder quote. Fill the Latin in without checking the names and the site ships five testimonials from people who don't exist. | 6 content pages, testimonial data |
-| ☐ C6 | **P2** | Homepage credits the placeholder to "Charlie & Family" using `charlie.png` — the photo the same page uses for founder Charlie. She appears to review her own product. | `index` testimonial 2, Charlie's Story panel |
-| ☐ C7 | **P2** | `p_grand.png` is alt-texted "Grandparent and child" on `/cafe`, but carries four different identities across the site. | 4 pages |
+| ☐ C5 | **P1** | Five invented families credited with one placeholder quote. Fill the Latin in without checking the names and the site ships five testimonials from people who don't exist. **Now dormant rather than live** — the slot is hidden, but the data is still in the six page files and comes back the moment the flag is flipped. | 6 content pages, testimonial data |
+| ☐ C6 | **P2** | Homepage credits the placeholder to "Charlie & Family" using `charlie.png` — the photo the same page uses for founder Charlie. She appears to review her own product. **Dormant** — no longer rendered. | `index` testimonial 2, Charlie's Story panel |
+| ☐ C7 | **P2** | `p_grand.png` is alt-texted "Grandparent and child" on `/cafe`, but carries four different identities across the site. **Dormant in the carousel**, but the image is still used in the areas grid on `/cafe` and `/wellbeing` with two different descriptions. | 4 pages |
 | ✅ C8 | **P3** | ~~The 5-star rating is hard-coded into the carousel frame, so it also displays against the placeholder.~~ Each testimonial now carries its own `stars` value. Emily & Loui keep 5; the placeholder slot is `stars: null` and the frame hides the star row rather than rendering an empty one. | 6 content pages |
 
-**Recommendation:** set `showSecondTestimonial = false` until a second real, consented quote
-exists — rather than writing copy into an invented persona. Unsubstantiated endorsements breach
-CAP Code 3.45, and this is a brand asking families in difficulty for money.
+**Done, 29 July 2026:** `showSecondTestimonial` is now `false`. The recommendation above was
+taken — hide the slot until a second real, consented quote exists, rather than write copy into
+an invented persona. Unsubstantiated endorsements breach CAP Code 3.45, and this is a brand
+asking families in difficulty for money.
 
-Since C48 that is one flag in `src/data/testimonials.ts` covering all six pages. It is
-deliberately left `true`: the decision is not the developer's to make.
+One flag in `src/data/testimonials.ts` covers all six pages. Two things went with it:
+
+- **The carousel controls are no longer rendered at all** when the list has a single entry.
+  Not disabled, not hidden with CSS — absent, so there is nothing to tab to and nothing for a
+  screen reader to announce. A next button that pages to nothing is worse than the placeholder
+  it replaced. (This carousel has no dot indicators; the prev/next pair was the whole of its
+  navigation.) The role line drops its bottom margin at the same time, so the column does not
+  end in the dead space the buttons used to occupy.
+- **The data is untouched.** All six second testimonials, invented attributions and photos
+  included, are still in the page files. C5, C6 and C7 are dormant, not fixed.
 
 ---
 
@@ -146,12 +167,12 @@ fixed by editing the existing pages — each one needs a destination to exist fi
 
 | # | Priority | Missing page | Linked from | Where |
 |---|----------|--------------|-------------|-------|
-| C20 | **P1** | Sign-up / join — the site's only conversion path | Header SIGN UP, JOIN US NOW, SIGN UP NOW *(ISSUES #15, #19)* | All 11 pages |
-| C21 | **P1** | Explore The Vilij | Header nav *(ISSUES #15)* | All 11 pages |
-| C22 | **P1** | About Us | Header nav + footer About *(ISSUES #15, #16)* | All 11 pages |
-| C23 | **P2** | High Street | Area card CTA *(ISSUES #18)* | 6 content pages |
-| C24 | **P2** | Market Place | Area card CTA *(ISSUES #18)* | 6 content pages |
-| C25 | **P2** | Vilij Campus | Area card CTA *(ISSUES #18)* | 6 content pages |
+| ✅ C20 | **P1** | Sign-up / join — the site's only conversion path | Header SIGN UP, JOIN US NOW, SIGN UP NOW *(ISSUES #15, #19)* | **Resolved 29 July 2026** — all 13 point at `https://app.thevilij.co.uk`, same tab |
+| C21 | **P1** | Explore The Vilij | Header nav *(ISSUES #15)* | All 12 pages |
+| C22 | **P1** | About Us | Header nav + footer About *(ISSUES #15, #16)* | All 12 pages |
+| ✅ C23 | **P2** | High Street | Area card CTA *(ISSUES #18)* | **Closed by conversion, not by building** — now a "coming soon" tile |
+| ✅ C24 | **P2** | Market Place | Area card CTA *(ISSUES #18)* | **Closed by conversion, not by building** — now a "coming soon" tile |
+| ✅ C25 | **P2** | Vilij Campus | Area card CTA *(ISSUES #18)* | **Closed by conversion, not by building** — now a "coming soon" tile |
 | C26 | **P2** | Preview / demo — "TAKE A SNEAKY PEEK" promises a look inside | Teal band | 6 content pages |
 | C27 | **P2** | Our Story | Footer About *(ISSUES #16)* | All 11 pages |
 | C28 | **P2** | News | Footer About *(ISSUES #16)* | All 11 pages |
@@ -164,8 +185,22 @@ fixed by editing the existing pages — each one needs a destination to exist fi
 
 Notes:
 
-- **C25** — the card's own copy reads "now under construction", so a non-clickable "coming soon"
-  tile reads better than a button that does nothing.
+- **C20** — the destination is `https://app.thevilij.co.uk`, confirmed 29 July 2026. Thirteen
+  calls to action now reach it: the header SIGN UP on all twelve pages, plus JOIN US NOW and
+  SIGN UP NOW in the body of the six content pages. Deliberately no `target="_blank"` — the app
+  is the same brand, not an outbound link. **"TAKE A SNEAKY PEEK" was left dead** (C26): it
+  promises a look inside without signing up, so pointing it at the sign-up page would be a lie.
+- **C23–C25** — closed the way C30–C32 were, by removal rather than by building. The three
+  cards are now non-interactive "coming soon" tiles: no anchor, no button, no `tabindex`, so
+  nothing to focus and nothing announced as activatable. They keep their descriptive copy and
+  are muted — a paler wash of the same gradient, a quieter shadow, and a plain "Coming soon"
+  label where the orange pill sits on a live card. They also drop the `vcard` class, which is
+  what carries the hover lift; a tile that rises under the cursor invites a click it cannot
+  honour. Driven by a `comingSoon` flag in `src/data/areas.ts`, not by name-matching in the
+  template. `href` and `cta` are left in the data: deleting the flag makes each a live card
+  again with the wording it always had.
+- **C25** — the card's own copy already read "now under construction", so this is the tile that
+  most obviously wanted the treatment.
 - **C28** — `/hall` already markets a "Vilij News" feature card, so the appetite exists.
 - **C30–C32** — closed on 29 July 2026 without the pages being built. The footer Quick Links
   column was repurposed to carry the four legal documents (Community Guidelines, User Terms of
@@ -200,34 +235,40 @@ the same order, and every sentence in each PDF appears in the rendered text.
 
 ## Dead links by page
 
-Recounted from the build on 29 July 2026, after the footer Quick Links column was replaced with
-the four legal documents. That removed three dead links from every page at once (Free Courses,
-Admissions, Request a Demo — C30–C32) and gave `/complaints` its first inbound link, so the page
-joins this table now that it is published.
+Recounted from the build on 29 July 2026, after the sign-up destination was set (C20) and the
+three unbuilt area cards became "coming soon" tiles (C23–C25).
 
 | Page | Dead `href="#"` | Working internal links |
 |------|-----------------|------------------------|
-| `/` | 14 | Café, Hall, Library, Wellbeing, Expert Hub + the 5 footer legal links |
-| `/cafe` | 14 | Home, Hall, Library, Wellbeing, Expert Hub + the 5 footer legal links |
-| `/hall` | 14 | Home, Café, Library, Wellbeing, Expert Hub + the 5 footer legal links |
-| `/library` | 14 | Home, Café, Hall, Wellbeing, Expert Hub + the 5 footer legal links |
-| `/wellbeing` | 14 | Home, Café, Hall, Library, Expert Hub + the 5 footer legal links |
-| `/expert-hub` | 14 | Home, Café, Hall, Library, Wellbeing + the 5 footer legal links |
-| `/privacy` | 8 | Home, Community Guidelines ×2, Cookie Policy ×3, Terms ×3, Complaints, ICO, 2 × mailto |
-| `/terms` | 8 | Home + the 5 footer legal links, mailto |
-| `/community-guidelines` | 8 | Home + the 5 footer legal links, mailto |
-| `/cookie-policy` | 8 | Home, Privacy ×5, Terms ×3, Cookies, Complaints, Community Guidelines, ICO, browser help ×4, HubSpot, mailto |
-| `/complaints` | 8 | Home + the 5 footer legal links, 2 × mailto |
-| `/newsletter-thanks` | 8 | Home, Café, Library, Wellbeing + the 5 footer legal links |
-| **Total** | **132** | |
+| `/` | 8 | Café, Hall, Library, Wellbeing, Expert Hub, app ×3 + the 5 footer legal links |
+| `/cafe` | 8 | Home, Hall, Library, Wellbeing, Expert Hub, app ×3 + the 5 footer legal links |
+| `/hall` | 8 | Home, Café, Library, Wellbeing, Expert Hub, app ×3 + the 5 footer legal links |
+| `/library` | 8 | Home, Café, Hall, Wellbeing, Expert Hub, app ×3 + the 5 footer legal links |
+| `/wellbeing` | 8 | Home, Café, Hall, Library, Expert Hub, app ×3 + the 5 footer legal links |
+| `/expert-hub` | 8 | Home, Café, Hall, Library, Wellbeing, app ×3 + the 5 footer legal links |
+| `/privacy` | 7 | Home, app, Community Guidelines ×2, Cookie Policy ×3, Terms ×3, Complaints, ICO, 2 × mailto |
+| `/terms` | 7 | Home, app + the 5 footer legal links, mailto |
+| `/community-guidelines` | 7 | Home, app + the 5 footer legal links, mailto |
+| `/cookie-policy` | 7 | Home, app, Privacy ×5, Terms ×3, Cookies, Complaints, Community Guidelines, ICO, browser help ×4, HubSpot, mailto |
+| `/complaints` | 7 | Home, app + the 5 footer legal links, 2 × mailto |
+| `/newsletter-thanks` | 7 | Home, app, Café, Library, Wellbeing + the 5 footer legal links |
+| **Total** | **90** | |
 
 "The 5 footer legal links" are the four in the Quick Links column — Community Guidelines, User
 Terms of Use, Complaints and Reporting Procedures, Privacy Policy — plus Cookies in the legal
-row, which also repeats Terms and Privacy.
+row, which also repeats Terms and Privacy. "app" is `https://app.thevilij.co.uk`, the only
+external destination in the count.
 
 Counts exclude the footer "Back to the top" anchor, which is `href="#"` by design and handled in JS.
-The total fell from 157 to 132 even though `/complaints` was added to the count: −3 on each of
-the 11 pages already listed, +8 for the newly counted one.
+
+The total fell from 132 to 90. On every page the header SIGN UP came off the count (−12 in
+all). On the six content pages, JOIN US NOW and SIGN UP NOW went the same way (−12), and the
+three "coming soon" tiles stopped rendering an anchor at all (−18). Six dead links per content
+page, one per legal page.
+
+The eight left on a content page are: Explore The Vilij, About Us, TAKE A SNEAKY PEEK, and the
+five in the footer (About Us, Our Story, News, Become a Vilij Elder, Support). The legal pages
+carry the same list without TAKE A SNEAKY PEEK.
 
 One regression to note: the legal pages and `/newsletter-thanks` used to reach `/cafe` through
 the footer Quick Links column, and no longer do. `/newsletter-thanks` has its own body links into
@@ -292,6 +333,7 @@ Titles now live:
 | ✅ C50 | **P3** | ~~No `<link rel="canonical">` on any page.~~ Added to the shared layout, derived from `Astro.site` and the page path. No trailing slash except on `/`, matching what Cloudflare Pages actually serves and what `sitemap.xml` lists. Verified against the built HTML for every route, and the three new pages picked it up for free. Done without waiting on C44 — canonicals don't need the share image. | All 11 pages |
 | ✅ C51 | **P3** | ~~The star row renders as five bare `★` characters with no accessible name.~~ The row is now `role="img"` with an `aria-label` generated from the testimonial's own `stars` value ("Rated 5 out of 5"); the glyphs are in an `aria-hidden` span. The placeholder slot (`stars: null`) carries neither role nor label and stays hidden. Visual output unchanged. | 6 content pages |
 | ✅ C52 | **P3** | ~~Homepage hero uses a hyphen where the rest of the site uses an em dash.~~ Both now use the site's spaced `&mdash;` convention. | `index` hero |
+| ✅ C61 | **P2** | ~~**The statutory company details appeared nowhere but the Privacy Policy.**~~ A UK company must disclose its registered name, registered office, registration number and place of registration on its website — not bury them in one policy a visitor has to open. The footer legal row now carries them on all twelve pages, in 13px `#767676` beneath the copyright line: quiet, but present. | `SiteFooter` legal row |
 
 ---
 
@@ -305,11 +347,12 @@ live on the site, and only their author can fix them.
 | # | Priority | Issue | Where |
 |---|----------|-------|-------|
 | ☐ C53 | **P2** | **Clause numbering faults in the Community Guidelines.** §2.1 introduces a list, but only its first item is lettered `(a)` — the next two are numbered `2.2` and `2.3` as if they were clauses, and the list then restarts at `(a)`. §9.1 has the same fault: "You must not:" is followed by `9.2`–`9.6` where `(a)`–`(e)` was clearly meant. §3.2 letters its closing sentence as item `(f)`. §10.2's list ends without an "or". | `community-guidelines` |
-| ☐ C54 | **P1** | **The User Terms of Use have no effective date.** The source PDF reads `Effective Date: [●]` — the same unfilled placeholder as C4. Rather than invent a date or publish an empty bracket, the effective-date pill is omitted. Set `effectiveDate` in `src/pages/terms.astro` to restore it. A set of Terms with no effective date is weak if it is ever relied on. | `terms` |
+| ✅ C54 | **P1** | ~~**The User Terms of Use have no effective date.** The source PDF reads `Effective Date: [●]`~~ — set to **1 August 2026**, supplied by The Vilij on 29 July 2026 and not taken from the PDF. It is the only part of `/terms` that is not a transcription. Rendered as the same "Effective from …" pill the Cookie Policy uses, in the same place: beneath the page intro, above the orange band. | `terms` |
 | ✅ C55 | **P1** | **The Complaints procedure had no real contact address.** The source PDF gives `email@email.co.uk` in five places, including the address for reporting **safeguarding and child protection concerns**. The safeguarding address was resolved from clause 7.2 of the Terms (`safeguarding@thevilij.co.uk`); the general complaints address was confirmed on 29 July 2026 as `complaints@thevilij.co.uk`. Both are now set in `src/pages/complaints.astro`, and the page has been published: `noindex` removed, added to `sitemap.xml`, `Disallow` lifted from `robots.txt`, linked from the footer on all 12 pages. **Confirm the `complaints@` mailbox is live and monitored** — the page now tells people it is. | `complaints` |
 | ☐ C56 | **P2** | **The Safeguarding Policy is not published anywhere.** `THE VILIJ Safeguarding Policy (Final).pdf` is a complete 9,000-word policy sitting alongside the other three. Nothing on the site references it and the Privacy Policy does not list it as a companion document — but it is the longest and most detailed of the set. **Raised from P3 on 29 July 2026:** the new footer link is labelled "Privacy Policy & Safeguarding Policy" and points at `/privacy`, which contains no safeguarding policy. Either transcribe the PDF and split the link in two, or retitle the link. | — |
 | ☐ C57 | **P3** | **The Privacy Policy PDF is behind the live site.** The source still reads `company number []`; the live page carries **16718802**, taken from the executed Membership Agreement. Anyone re-transcribing from the PDF would regress C4. | source PDF |
 | ☐ C58 | **P1** | **Non-essential cookies are set with no consent.** The HubSpot embed loads on every page and sets four analytics cookies immediately. There is no consent banner, no preference centre and no way to refuse them other than browser settings. Under PECR reg. 6 analytics cookies need consent **before** they are set. The Cookie Policy documents this honestly — it offers browser controls and the HubSpot opt-out and claims nothing else — but a policy does not cure it. Either add a consent tool or drop the HubSpot embed from the marketing site. | All 11 pages |
+| ☐ C60 | **P2** | **The registered office now reads two ways.** The confirmed address is *The Meakin Suite, Ravenscliffe, First Avenue, Newcastle-under-Lyme, ST5 8QX*, and that is what the footer and the Privacy Policy §2.1 now carry. The Complaints procedure §11 still reads *Newcastle Under Lyme, Staffordshire, United Kingdom* because it is a solicitor document transcribed verbatim and correcting it would change what the published procedure says. Either the source PDF is reissued or someone decides the transcription rule bends for a factual address. | `complaints` §11 |
 | ☐ C59 | **P2** | **The cookie inventory has not been scanned.** The table in Cookie Policy §5 is built from HubSpot's and Cloudflare's published documentation, not from a scan of the live site, and lifespans are set by those providers and change. Confirm it against a real cookie scan before anyone relies on it, and re-check whenever the HubSpot embed changes. | `cookie-policy` §5 |
 
 Two typographic corrections were made silently, both in the User Terms of Use: a stray space
@@ -340,7 +383,7 @@ Left as found.
 ```
 src/layouts/BaseLayout.astro          head, body shell, closing scripts
 src/components/SiteNav.astro          header navigation
-src/components/SiteFooter.astro       footer — C1 and C2 live here
+src/components/SiteFooter.astro       footer — C1, C2 and the company details (C61)
 src/components/AreasGrid.astro        "What else you can see inside the Vilij"
 src/components/AreaTiles.astro        the tiles inside a grid
 src/components/AreaCard.astro         one area tile
@@ -362,22 +405,22 @@ stylesheet; and the header `<section>` wrapper, whose background gradient is pag
 
 Steps 2 and 4 (in part) are done. What remains, in order:
 
-1. **Write the three missing pieces of real copy** — footer blurb, newsletter blurb, and a decision
-   on the second testimonial (C1, C2, C5). That alone clears 22 blocks of Latin. Until that
-   decision is made, the recommendation above stands: set `showSecondTestimonial = false` on all
-   six pages rather than writing copy into an invented persona.
+1. ~~**Write the three missing pieces of real copy**~~ — overtaken. The placeholders were
+   removed rather than filled (C1, C2) and the second testimonial hidden rather than written
+   (C3). The footer blurb and newsletter blurb are still wanted; the site now reads correctly
+   without them, so they are no longer blocking.
 2. ~~**Fix the four typos visible above the fold**~~ — done (C9, C10, C11, C12), along with the
    rest of C13–C19.
-3. **Give SIGN UP somewhere to go** (C20). Until then the site cannot convert. If the app isn't
-   ready, point it at a waiting-list form rather than `#`.
+3. ~~**Give SIGN UP somewhere to go** (C20)~~ — done. All thirteen sign-up calls to action now
+   reach `https://app.thevilij.co.uk`.
 4. ~~**Fill in the company number** (C4)~~ — done. ~~**Publish the Terms of Use, Community
    Guidelines, Cookie Policy and Complaints procedure**~~ (C36, C37, C35, C38, C55) — done, and
    all four are now linked from the footer. Still outstanding: **fix the cookie consent gap**
    (C58), **give the Terms an effective date** (C54), and **decide whether the Safeguarding
    Policy goes public** (C56) — the footer link now reads "Privacy Policy & Safeguarding Policy"
    but points only at `/privacy`.
-5. **Build or hide** High Street, Market Place and Campus (C23–C25), and add a Support/Contact
-   route (C33).
+5. ~~**Build or hide** High Street, Market Place and Campus (C23–C25)~~ — hidden, as
+   "coming soon" tiles. Still outstanding: a Support/Contact route (C33).
 6. **Decide on pricing** (C39) — £10/month currently leads nowhere.
 7. **Produce the 1200×630 share image** so Open Graph tags can go in (C44). Canonical tags
    (C50) are already done and did not need it.

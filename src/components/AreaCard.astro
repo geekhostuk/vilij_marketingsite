@@ -4,16 +4,33 @@
 // The spaces inside the comment fragment are deliberate: Astro drops the
 // whitespace either side of a top-level expression in a component, so they are
 // what separates this tile from the previous one and from its own markup.
+// A tile flagged `comingSoon` in src/data/areas.ts describes an area that has no
+// page yet. It renders as a panel rather than a card: no anchor, no button, no
+// tabindex, so there is nothing to focus and nothing announced as activatable —
+// the "Coming soon" text is read as the ordinary text it is. It also drops the
+// `vcard` class, which is what carries the hover lift, because a tile that rises
+// under the cursor is inviting a click it cannot honour.
+//
+// The muting is deliberately gentle: a paler wash of the same gradient, a
+// quieter shadow and a plain label where the orange pill sits on a live card.
+// Title and body keep their full contrast — greying out the words would trade
+// legibility for a signal the background already carries.
 import type { AreaCard } from "../data/areas";
 type Props = AreaCard;
-const { label, img, alt, title, body, href, cta } = Astro.props;
+const { label, img, alt, title, body, href, cta, comingSoon = false } = Astro.props;
 ---
-<Fragment set:html={` <!-- ${label} --> `} />
-<div class="vcard" style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;">
-  <div style="padding:14px 8px 0;"><img src={img} alt={alt} class="vcard-img" /></div>
+<Fragment set:html={` <!-- ${label}${comingSoon ? " (coming soon)" : ""} --> `} />
+<div class={comingSoon ? "" : "vcard"} style={comingSoon
+  ? "border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#f7f0e8 0%,#f2ece6 46%,#e9f0ef 72%,#e6f1f1 100%);box-shadow:0 4px 14px rgba(40,80,90,0.05);border:1px solid #e4eaea;display:flex;flex-direction:column;"
+  : "border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;"}>
+  <div style="padding:14px 8px 0;"><img src={img} alt={alt} class="vcard-img" style={comingSoon ? "opacity:.78;" : undefined} /></div>
   <div style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
     <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;" set:html={title}></h3>
     <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;" set:html={body}></p>
-    <a href={href} class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);" set:html={cta}></a>
+    {comingSoon ? (
+      <span style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#5f6b6b;background:#ffffff;border:1px solid #d5dedd;padding:12px 24px;border-radius:26px;">Coming soon</span>
+    ) : (
+      <a href={href} class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);" set:html={cta}></a>
+    )}
   </div>
 </div>

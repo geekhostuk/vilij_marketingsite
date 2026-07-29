@@ -20,6 +20,17 @@ export interface AreaCard {
   body: string;
   href: string;
   cta: string;
+  /**
+   * The area is described on the site but has no page yet (C23–C25). The tile
+   * still renders, with its copy intact, but as a plain "Coming soon" panel:
+   * no anchor, nothing focusable, nothing for assistive technology to announce
+   * as activatable.
+   *
+   * `href` and `cta` are deliberately left in place on these cards. They are
+   * what the tile goes back to when the page exists — deleting this one flag
+   * makes it a live card again, with the wording it always had.
+   */
+  comingSoon?: boolean;
 }
 
 // A photo slotted into the grid between the cards. Which photo, what it is
@@ -91,6 +102,7 @@ export const highStreet: AreaCard = {
   body: "Handpicked products for SEND families, all in one easy place.",
   href: "#",
   cta: "WHAT&rsquo;S ON THE HIGH STREET?",
+  comingSoon: true,
 };
 
 // C49 — the Market Place tile has drifted into two versions and which one is
@@ -107,6 +119,7 @@ export const marketPlace: AreaCard = {
   body: "Discover wonderful products &amp; services created by SEND parents in business.",
   href: "#",
   cta: "WHAT&rsquo;S ON AT THE MARKET PLACE?",
+  comingSoon: true,
 };
 
 export const marketPlaceShort: AreaCard = {
@@ -122,4 +135,5 @@ export const campus: AreaCard = {
   body: "New exciting development now under construction.",
   href: "#",
   cta: "WHAT&rsquo;S COMING TO THE VILIJ CAMPUS?",
+  comingSoon: true,
 };
