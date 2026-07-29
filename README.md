@@ -25,6 +25,7 @@ Eight public routes.
 | `/privacy` | `src/pages/privacy.astro` | Privacy Policy — transcribed from the source PDF into a `sections` data structure and rendered by the shared legal components. Linked from the footer and the newsletter opt-in. |
 | `/terms` | `src/pages/terms.astro` | User Terms of Use — transcribed from the source PDF. The footer **Terms** link points here. |
 | `/community-guidelines` | `src/pages/community-guidelines.astro` | Community Guidelines — transcribed from the source PDF. Linked from Privacy Policy §1.5. |
+| `/cookie-policy` | `src/pages/cookie-policy.astro` | Cookie Policy — **written, not transcribed**: no source document existed. Describes only what this site demonstrably loads. Linked from Privacy Policy §7.2 and §16.3 and from the footer. |
 | `/newsletter-thanks` | `src/pages/newsletter-thanks.astro` | Newsletter confirmation — the `action` target of the footer newsletter form. Must stay a plain GET destination: Cloudflare Pages serves static assets and returns 405 to POST. `noindex`, and excluded from `sitemap.xml`. |
 | `/complaints` | `src/pages/complaints.astro` | Complaints and Reporting Procedure — transcribed, but **not published**: `noindex`, absent from `sitemap.xml`, linked from nowhere. The source document's contact addresses are still placeholders. See C55 in [content-issues.md](content-issues.md). |
 
@@ -38,7 +39,7 @@ The page shell and every repeated block live in one place:
 | `src/components/SiteFooter.astro` | Footer, including the two blurbs still awaiting real copy. |
 | `src/components/AreasGrid.astro`, `AreaTiles.astro`, `AreaCard.astro`, `PhotoTile.astro` | The "What else you can see inside the Vilij" grid and its tiles. |
 | `src/components/TestimonialCarousel.astro`, `TestimonialScript.astro`, `ToTopScript.astro` | The carousel and the two end-of-body scripts. |
-| `src/components/LegalContents.astro`, `LegalSections.astro` | The contents jump list and clause renderer shared by the four legal pages. |
+| `src/components/LegalContents.astro`, `LegalSections.astro` | The contents jump list and clause renderer shared by the five legal pages. |
 | `src/data/areas.ts`, `testimonials.ts`, `legal.ts` | Area tile copy, the `showSecondTestimonial` flag, and the legal document shape. |
 
 Anything that legitimately varies between pages is a prop. Where two copies of
@@ -58,15 +59,16 @@ small inline script:
 - **Back to the top** — smooth-scrolls to the top of the page.
 - The monthly **price** (£10) is rendered server-side.
 
-The four legal pages carry the "Back to the top" script only.
+The five legal pages carry the "Back to the top" script only.
 
 ### Navigation links
 - The nav **Home** link and the logo point to `/` on every page.
 - The six content pages cross-link to each other through the "What else you can
   see inside the Vilij" grid; the footer **Café** quick-link points to `/cafe`.
-- The footer **Privacy** link and the newsletter opt-in point to `/privacy`;
-  the footer **Terms** link points to `/terms`.
-- Privacy Policy §1.5 links to `/terms` and `/community-guidelines`.
+- The footer legal row links to `/terms`, `/privacy` and `/cookie-policy`;
+  the newsletter opt-in points to `/privacy`.
+- Privacy Policy §1.5 links to `/terms` and `/community-guidelines`;
+  §7.2 and §16.3 link to `/cookie-policy`.
 - High Street, Market Place, Vilij Campus, sign-up, About and several footer
   links are still `href="#"` — see [content-issues.md](content-issues.md).
 
@@ -103,6 +105,7 @@ updated by hand when a route is added or removed.
 │       ├── privacy.astro            # Privacy Policy
 │       ├── terms.astro              # User Terms of Use
 │       ├── community-guidelines.astro
+│       ├── cookie-policy.astro      # Cookie Policy (written, not transcribed)
 │       ├── complaints.astro         # Transcribed, not published (noindex)
 │       └── newsletter-thanks.astro  # Newsletter sign-up confirmation (noindex)
 ├── public/                          # Copied verbatim to the site root
