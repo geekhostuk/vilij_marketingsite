@@ -2,19 +2,16 @@
 // The Vilij — Complaints and Reporting Procedure
 // Content transcribed from "The Vilij Complaints and Reporting Procedure.pdf".
 //
-// NOT PUBLISHED YET. The source PDF carries the placeholder "email@email.co.uk"
-// in five places, including the address people are told to use for safeguarding
-// and child protection concerns. Publishing a wrong reporting address would be
-// worse than publishing nothing, so this page is noindex, is absent from
-// sitemap.xml, and is not linked from the footer or the Privacy Policy.
+// The source PDF carries the placeholder "email@email.co.uk" in five places,
+// including the address people are told to use for safeguarding and child
+// protection concerns, so this page was held back until both addresses were
+// real. Both now are, and the page is published: indexed, in sitemap.xml, no
+// longer disallowed in robots.txt, and linked from the footer.
 //
 // The safeguarding address below is not a guess: clause 7.2 of the User Terms of
 // Use — part of the same legal pack — names safeguarding@thevilij.co.uk for
-// exactly this purpose, and the Privacy Policy already publishes it.
-//
-// The general complaints address is genuinely unknown. Set `complaintsEmail`,
-// drop `noindex`, add the route to public/sitemap.xml and link it from
-// SiteFooter.astro to publish. See content-issues.md C55.
+// exactly this purpose, and the Privacy Policy already publishes it. The general
+// complaints address was confirmed separately. See content-issues.md C55.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -23,7 +20,7 @@ import LegalSections from "../components/LegalSections.astro";
 import type { LegalSection } from "../data/legal";
 
 const safeguardingEmail = "safeguarding@thevilij.co.uk";
-const complaintsEmail: string | null = null;
+const complaintsEmail: string | null = "complaints@thevilij.co.uk";
 const complaints = complaintsEmail ?? "[email address to be confirmed]";
 
 const sections: LegalSection[] = [
@@ -205,7 +202,6 @@ const sections: LegalSection[] = [
 <BaseLayout
   title="Complaints and Reporting Procedure | The Vilij"
   description="How to report a complaint, concern or safeguarding issue to The Vilij, what happens next, how long it takes and how to escalate if you are not satisfied."
-  noindex
 >
     <style is:global>
       body { margin: 0; }

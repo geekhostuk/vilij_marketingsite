@@ -6,10 +6,9 @@ Last reviewed: 29 July 2026.
 Companion to [ISSUES.md](ISSUES.md), which covers technical, responsive and accessibility work.
 Items appearing in both are marked *(ISSUES #n)*; everything else is new.
 
-Scope — the 11 public routes: `/` · `/cafe` · `/hall` · `/library` · `/wellbeing` · `/expert-hub` ·
-`/privacy` · `/terms` · `/community-guidelines` · `/cookie-policy` · `/newsletter-thanks`
-
-`/complaints` also exists in the repo but is not published — see C55.
+Scope — the 12 public routes: `/` · `/cafe` · `/hall` · `/library` · `/wellbeing` · `/expert-hub` ·
+`/privacy` · `/terms` · `/community-guidelines` · `/cookie-policy` · `/complaints` ·
+`/newsletter-thanks`
 
 Priority key: **P1** blocks launch · **P2** should fix before wider promotion · **P3** tidy-up.
 
@@ -20,10 +19,17 @@ Status key: ☐ outstanding · ✅ fixed.
 ## What is still outstanding
 
 The self-contained items — everything fixable without new copy or a decision from someone
-else — have been fixed: **C4, C8, C9–C19, C35, C36, C37, C41, C43, C45, C46, C47, C48, C50, C51, C52.**
+else — have been fixed: **C4, C8, C9–C19, C35, C36, C37, C38, C41, C43, C45, C46, C47, C48, C50,
+C51, C52, C55.**
 
 C36 and C37 came off the blocked list on 29 July 2026 when the source documents turned up. C35
-followed the same day: no source existed, so the Cookie Policy was written from scratch.
+followed the same day: no source existed, so the Cookie Policy was written from scratch. C55 and
+C38 followed when the general complaints address was confirmed as `complaints@thevilij.co.uk`,
+which let `/complaints` go live. **All four cited documents are now published.**
+
+C30–C32 are closed by removal rather than by building the pages: the footer Quick Links column
+was replaced with the four legal documents on 29 July 2026, so the "Free Courses", "Admissions"
+and "Request a Demo" dead links no longer exist anywhere on the site.
 
 Everything below is still open, and every one of them is blocked on something external:
 
@@ -31,8 +37,7 @@ Everything below is still open, and every one of them is blocked on something ex
 |------------|-------|
 | **Copy that has to be written** | C1 footer blurb · C2 newsletter blurb |
 | **A decision about the second testimonial** | C3, C5, C6, C7 — all six placeholder slots, plus the invented names, roles and photos attached to them |
-| **Pages that do not exist yet** | C20–C34 (nav, CTAs, area cards, footer links, Charlie's Story) · C40 |
-| **A contact address that has to be confirmed** | C55 — `/complaints` is written but cannot go live while the reporting address is a placeholder |
+| **Pages that do not exist yet** | C20–C29, C33, C34 (nav, CTAs, area cards, footer links, Charlie's Story) · C40 |
 | **A commercial decision** | C39 — £10/month is quoted with no pricing page and no inclusions list |
 | **An asset that has to be produced** | C44 — Open Graph / Twitter Card tags need a 1200×630 image before they are worth adding |
 | **A lawyer's eye** | C53, C54 — numbering faults and an unfilled effective date in the source legal documents |
@@ -41,11 +46,11 @@ Everything below is still open, and every one of them is blocked on something ex
 None of these can be closed by editing the existing pages. C1, C2, C5, C20 and C39 are the
 launch blockers.
 
-> **Three of the four cited documents are now published.** The source PDFs turned up in the
-> client's "Vilij Files" folder on 29 July 2026. **C36** (`/terms`) and **C37**
-> (`/community-guidelines`) are live and linked; **C38** (`/complaints`) is transcribed but held
-> back on C55. The **Cookie Policy (C35)** had no source at all and has been written from what
-> the site actually loads. All four are now written; three of the four are live.
+> **All four cited documents are now published.** The source PDFs turned up in the client's
+> "Vilij Files" folder on 29 July 2026. **C36** (`/terms`), **C37** (`/community-guidelines`) and
+> **C38** (`/complaints`) are live and linked from the footer. The **Cookie Policy (C35)** had no
+> source at all and has been written from what the site actually loads. The fifth document in
+> that folder, the Safeguarding Policy, is still unpublished — see C56.
 
 > **The duplicated markup is gone (C48).** The header, footer, testimonial carousel and areas
 > grid now live in `src/layouts/` and `src/components/`. C1 and C2 are one edit each in
@@ -134,10 +139,10 @@ eight-way edit. That is what prompted C48, now done — the footer lives in one 
 
 ## Missing pages — navigation and CTAs
 
-**All of C20–C34 are outstanding.** Every link below is `href="#"`. Clicking does nothing: no
-navigation, no 404, no message. There is also no 404 page, so mistyped URLs fall through to
-Cloudflare's generic one *(ISSUES #24)*. Nothing here can be fixed by editing the existing
-pages — each one needs a destination to exist first.
+**C20–C29, C33 and C34 are outstanding; C30–C32 are closed.** Every link below still marked ☐ is
+`href="#"`. Clicking does nothing: no navigation, no 404, no message. There is also no 404 page,
+so mistyped URLs fall through to Cloudflare's generic one *(ISSUES #24)*. Nothing here can be
+fixed by editing the existing pages — each one needs a destination to exist first.
 
 | # | Priority | Missing page | Linked from | Where |
 |---|----------|--------------|-------------|-------|
@@ -151,9 +156,9 @@ pages — each one needs a destination to exist first.
 | C27 | **P2** | Our Story | Footer About *(ISSUES #16)* | All 11 pages |
 | C28 | **P2** | News | Footer About *(ISSUES #16)* | All 11 pages |
 | C29 | **P2** | Become a Vilij Elder | Footer About *(ISSUES #16)* | All 11 pages |
-| C30 | **P2** | Free Courses | Footer Quick Links *(ISSUES #17)* | All 11 pages |
-| C31 | **P2** | Admissions | Footer Quick Links *(ISSUES #17)* | All 11 pages |
-| C32 | **P2** | Request a Demo | Footer Quick Links *(ISSUES #17)* | All 11 pages |
+| ✅ C30 | **P2** | Free Courses | Footer Quick Links *(ISSUES #17)* | **Link removed** — see note below |
+| ✅ C31 | **P2** | Admissions | Footer Quick Links *(ISSUES #17)* | **Link removed** — see note below |
+| ✅ C32 | **P2** | Request a Demo | Footer Quick Links *(ISSUES #17)* | **Link removed** — see note below |
 | C33 | **P2** | Support / Contact | Footer legal row *(ISSUES #9)* | All 11 pages |
 | C34 | **P2** | Charlie's Story — panel has **no link at all**, not even a dead one | Homepage panel | `index:254–260` |
 
@@ -162,21 +167,29 @@ Notes:
 - **C25** — the card's own copy reads "now under construction", so a non-clickable "coming soon"
   tile reads better than a button that does nothing.
 - **C28** — `/hall` already markets a "Vilij News" feature card, so the appetite exists.
-- **C33** — there is **no way to contact The Vilij anywhere on the public site** except the
-  `privacy@` and `safeguarding@` addresses inside the Privacy Policy.
+- **C30–C32** — closed on 29 July 2026 without the pages being built. The footer Quick Links
+  column was repurposed to carry the four legal documents (Community Guidelines, User Terms of
+  Use, Complaints and Reporting Procedures, Privacy Policy), so the three dead links were
+  deleted rather than given destinations. The `/cafe` link that shared the column is unaffected —
+  it is still in the header nav on every page. If Free Courses, Admissions or Request a Demo are
+  wanted later they need somewhere new in the footer, not this column.
+- **C33** — the Support link in the legal row is still dead, but the site is no longer without a
+  contact route: `/complaints` now publishes `complaints@thevilij.co.uk` and
+  `safeguarding@thevilij.co.uk`, and the Privacy Policy publishes `privacy@`. A general contact
+  page is still missing.
 
 ## Missing pages — cited by the Privacy Policy
 
 The policy names four companion documents the reader "should read". Three existed as PDFs all
 along and are now transcribed onto the site; the fourth, the Cookie Policy, had never been
-written and now has been. **Three of the four are live; only `/complaints` is still held back.**
+written and now has been. **All four are live and all four are linked from the footer.**
 
 | # | Priority | Document | Status |
 |---|----------|----------|--------|
 | ✅ C35 | **P1** | Cookie Policy *(ISSUES #6)* | **Written and published at `/cookie-policy`.** No source document existed, so unlike the other three this one was written from what the site demonstrably loads. Linked from Privacy §7.2 and §16.3 — the two places that promised it — and from the footer. See C58 and C59 for what it does not claim. |
 | ✅ C36 | **P1** | User Terms of Use *(ISSUES #7)* | Published at **`/terms`**. The footer "Terms" link, dead on all eight pages, now points at it. |
 | ✅ C37 | **P2** | Community Guidelines *(ISSUES #8)* | Published at **`/community-guidelines`**, linked from Privacy §1.5. |
-| ☐ C38 | **P2** | Complaints and Reporting Procedure *(ISSUES #8)* | Transcribed at `/complaints` but **not published** — blocked on C55. |
+| ✅ C38 | **P2** | Complaints and Reporting Procedure *(ISSUES #8)* | Published at **`/complaints`**, linked from the footer. Held back until C55 was resolved; released once the general complaints address was confirmed. |
 
 Source documents: `THE VILIJ  COMMUNITY GUIDELINES.pdf`, `The Vilij - User Terms of Use.pdf`,
 `The Vilij Complaints and Reporting Procedure.pdf`. A fourth, `THE VILIJ Safeguarding Policy
@@ -187,28 +200,39 @@ the same order, and every sentence in each PDF appears in the rendered text.
 
 ## Dead links by page
 
-Recounted from the build on 29 July 2026, after the footer "Terms" link was given a destination
-and a "Cookies" link was added beside it. Every page lost exactly one dead link; the three new
-legal pages carry the same header and footer as everything else, so they arrive with 11 apiece.
+Recounted from the build on 29 July 2026, after the footer Quick Links column was replaced with
+the four legal documents. That removed three dead links from every page at once (Free Courses,
+Admissions, Request a Demo — C30–C32) and gave `/complaints` its first inbound link, so the page
+joins this table now that it is published.
 
 | Page | Dead `href="#"` | Working internal links |
 |------|-----------------|------------------------|
-| `/` | 17 | Café, Hall, Library, Wellbeing, Expert Hub, Terms, Privacy |
-| `/cafe` | 17 | Home, Hall, Library, Wellbeing, Expert Hub, Terms, Privacy |
-| `/hall` | 17 | Home, Café, Library, Wellbeing, Expert Hub, Terms, Privacy |
-| `/library` | 17 | Home, Café, Hall, Wellbeing, Expert Hub, Terms, Privacy |
-| `/wellbeing` | 17 | Home, Café, Hall, Library, Expert Hub, Terms, Privacy |
-| `/expert-hub` | 17 | Home, Café, Hall, Library, Wellbeing, Terms, Privacy |
-| `/privacy` | 11 | Home, Café, Terms, Community Guidelines, Cookie Policy ×2, Privacy, ICO, 2 × mailto |
-| `/terms` | 11 | Home, Café, Terms, Privacy, Cookies, mailto |
-| `/community-guidelines` | 11 | Home, Café, Terms, Privacy, Cookies, mailto |
-| `/cookie-policy` | 11 | Home, Café, Terms, Privacy ×2, Cookies, ICO, browser help ×4, HubSpot, mailto |
-| `/newsletter-thanks` | 11 | Home, Café, Library, Wellbeing, Terms, Privacy, Cookies |
-| **Total** | **157** | |
+| `/` | 14 | Café, Hall, Library, Wellbeing, Expert Hub + the 5 footer legal links |
+| `/cafe` | 14 | Home, Hall, Library, Wellbeing, Expert Hub + the 5 footer legal links |
+| `/hall` | 14 | Home, Café, Library, Wellbeing, Expert Hub + the 5 footer legal links |
+| `/library` | 14 | Home, Café, Hall, Wellbeing, Expert Hub + the 5 footer legal links |
+| `/wellbeing` | 14 | Home, Café, Hall, Library, Expert Hub + the 5 footer legal links |
+| `/expert-hub` | 14 | Home, Café, Hall, Library, Wellbeing + the 5 footer legal links |
+| `/privacy` | 8 | Home, Community Guidelines ×2, Cookie Policy ×3, Terms ×3, Complaints, ICO, 2 × mailto |
+| `/terms` | 8 | Home + the 5 footer legal links, mailto |
+| `/community-guidelines` | 8 | Home + the 5 footer legal links, mailto |
+| `/cookie-policy` | 8 | Home, Privacy ×5, Terms ×3, Cookies, Complaints, Community Guidelines, ICO, browser help ×4, HubSpot, mailto |
+| `/complaints` | 8 | Home + the 5 footer legal links, 2 × mailto |
+| `/newsletter-thanks` | 8 | Home, Café, Library, Wellbeing + the 5 footer legal links |
+| **Total** | **132** | |
+
+"The 5 footer legal links" are the four in the Quick Links column — Community Guidelines, User
+Terms of Use, Complaints and Reporting Procedures, Privacy Policy — plus Cookies in the legal
+row, which also repeats Terms and Privacy.
 
 Counts exclude the footer "Back to the top" anchor, which is `href="#"` by design and handled in JS.
-The total is higher than the 133 recorded before only because three new pages joined the site,
-each inheriting the same 11 dead header and footer links. Per page the number went down.
+The total fell from 157 to 132 even though `/complaints` was added to the count: −3 on each of
+the 11 pages already listed, +8 for the newly counted one.
+
+One regression to note: the legal pages and `/newsletter-thanks` used to reach `/cafe` through
+the footer Quick Links column, and no longer do. `/newsletter-thanks` has its own body links into
+the site, but from `/privacy`, `/terms`, `/community-guidelines`, `/cookie-policy` and
+`/complaints` the only route back into the marketing pages is the logo. Worth folding into C33.
 
 ---
 
@@ -282,8 +306,8 @@ live on the site, and only their author can fix them.
 |---|----------|-------|-------|
 | ☐ C53 | **P2** | **Clause numbering faults in the Community Guidelines.** §2.1 introduces a list, but only its first item is lettered `(a)` — the next two are numbered `2.2` and `2.3` as if they were clauses, and the list then restarts at `(a)`. §9.1 has the same fault: "You must not:" is followed by `9.2`–`9.6` where `(a)`–`(e)` was clearly meant. §3.2 letters its closing sentence as item `(f)`. §10.2's list ends without an "or". | `community-guidelines` |
 | ☐ C54 | **P1** | **The User Terms of Use have no effective date.** The source PDF reads `Effective Date: [●]` — the same unfilled placeholder as C4. Rather than invent a date or publish an empty bracket, the effective-date pill is omitted. Set `effectiveDate` in `src/pages/terms.astro` to restore it. A set of Terms with no effective date is weak if it is ever relied on. | `terms` |
-| ☐ C55 | **P1** | **The Complaints procedure has no real contact address.** The source PDF gives `email@email.co.uk` in five places, including the address for reporting **safeguarding and child protection concerns**. The safeguarding address is resolved from clause 7.2 of the Terms (`safeguarding@thevilij.co.uk`), but the general complaints address is unknown. The page is therefore `noindex`, absent from `sitemap.xml`, disallowed in `robots.txt` and linked from nowhere. Set `complaintsEmail` in `src/pages/complaints.astro` and remove `noindex` to publish. | `complaints` |
-| ☐ C56 | **P3** | **The Safeguarding Policy is not published anywhere.** `THE VILIJ Safeguarding Policy (Final).pdf` is a complete 9,000-word policy sitting alongside the other three. Nothing on the site references it and the Privacy Policy does not list it as a companion document — but it is the longest and most detailed of the set. Needs a decision on whether it should be public. | — |
+| ✅ C55 | **P1** | **The Complaints procedure had no real contact address.** The source PDF gives `email@email.co.uk` in five places, including the address for reporting **safeguarding and child protection concerns**. The safeguarding address was resolved from clause 7.2 of the Terms (`safeguarding@thevilij.co.uk`); the general complaints address was confirmed on 29 July 2026 as `complaints@thevilij.co.uk`. Both are now set in `src/pages/complaints.astro`, and the page has been published: `noindex` removed, added to `sitemap.xml`, `Disallow` lifted from `robots.txt`, linked from the footer on all 12 pages. **Confirm the `complaints@` mailbox is live and monitored** — the page now tells people it is. | `complaints` |
+| ☐ C56 | **P2** | **The Safeguarding Policy is not published anywhere.** `THE VILIJ Safeguarding Policy (Final).pdf` is a complete 9,000-word policy sitting alongside the other three. Nothing on the site references it and the Privacy Policy does not list it as a companion document — but it is the longest and most detailed of the set. **Raised from P3 on 29 July 2026:** the new footer link is labelled "Privacy Policy & Safeguarding Policy" and points at `/privacy`, which contains no safeguarding policy. Either transcribe the PDF and split the link in two, or retitle the link. | — |
 | ☐ C57 | **P3** | **The Privacy Policy PDF is behind the live site.** The source still reads `company number []`; the live page carries **16718802**, taken from the executed Membership Agreement. Anyone re-transcribing from the PDF would regress C4. | source PDF |
 | ☐ C58 | **P1** | **Non-essential cookies are set with no consent.** The HubSpot embed loads on every page and sets four analytics cookies immediately. There is no consent banner, no preference centre and no way to refuse them other than browser settings. Under PECR reg. 6 analytics cookies need consent **before** they are set. The Cookie Policy documents this honestly — it offers browser controls and the HubSpot opt-out and claims nothing else — but a policy does not cure it. Either add a consent tool or drop the HubSpot embed from the marketing site. | All 11 pages |
 | ☐ C59 | **P2** | **The cookie inventory has not been scanned.** The table in Cookie Policy §5 is built from HubSpot's and Cloudflare's published documentation, not from a scan of the live site, and lifespans are set by those providers and change. Confirm it against a real cookie scan before anyone relies on it, and re-check whenever the HubSpot embed changes. | `cookie-policy` §5 |
@@ -347,9 +371,11 @@ Steps 2 and 4 (in part) are done. What remains, in order:
 3. **Give SIGN UP somewhere to go** (C20). Until then the site cannot convert. If the app isn't
    ready, point it at a waiting-list form rather than `#`.
 4. ~~**Fill in the company number** (C4)~~ — done. ~~**Publish the Terms of Use, Community
-   Guidelines and Cookie Policy**~~ (C36, C37, C35) — done. Still outstanding: **fix the cookie
-   consent gap** (C58), **confirm the complaints address** so `/complaints` can go live
-   (C55, C38), and **give the Terms an effective date** (C54).
+   Guidelines, Cookie Policy and Complaints procedure**~~ (C36, C37, C35, C38, C55) — done, and
+   all four are now linked from the footer. Still outstanding: **fix the cookie consent gap**
+   (C58), **give the Terms an effective date** (C54), and **decide whether the Safeguarding
+   Policy goes public** (C56) — the footer link now reads "Privacy Policy & Safeguarding Policy"
+   but points only at `/privacy`.
 5. **Build or hide** High Street, Market Place and Campus (C23–C25), and add a Support/Contact
    route (C33).
 6. **Decide on pricing** (C39) — £10/month currently leads nowhere.

@@ -5,8 +5,4 @@ Allow: /
 # already marked noindex — no value in crawling it.
 Disallow: /newsletter-thanks
 
-# Complaints and Reporting Procedure. Transcribed but not published: the
-# contact addresses in the source document are still placeholders.
-Disallow: /complaints
-
 Sitemap: https://marketing.thevilij.co.uk/sitemap.xml
