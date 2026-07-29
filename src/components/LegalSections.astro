@@ -61,7 +61,7 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
                 <div style="margin-bottom:4px;">
                   {c.items.map((item, i) => (
                     <div class="vsub">
-                      <span style="font-family:Mulish;font-weight:700;font-size:17px;line-height:1.65;color:#f28121;">({letters[i]})</span>
+                      <span style="font-family:Mulish;font-weight:700;font-size:17px;line-height:1.65;color:#f28121;">({c.itemLabels ? c.itemLabels[i] : letters[i]})</span>
                       <span style="font-family:Mulish;font-size:17px;line-height:1.65;color:#444;">{item}</span>
                     </div>
                   ))}

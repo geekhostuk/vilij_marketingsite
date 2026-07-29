@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The 11 indexable public routes. One is deliberately omitted:
+  The 12 indexable public routes. One is deliberately omitted:
   /newsletter-thanks, which is noindex and reachable only from the footer
   newsletter form.
   Keep this file in step with src/pages/ when a route is added or removed.
@@ -68,6 +68,12 @@
   </url>
   <url>
     <loc>https://marketing.thevilij.co.uk/complaints</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://marketing.thevilij.co.uk/safeguarding-policy</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

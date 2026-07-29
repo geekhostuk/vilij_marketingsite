@@ -22,6 +22,14 @@ export interface LegalClause {
   textHtml?: string;
   /** Lettered sub-list: (a), (b), (c)… */
   items?: string[];
+  /**
+   * Explicit letters for `items`, one per entry, when the printed list does not
+   * run (a), (b), (c)… in order. Used where a source document skips a letter:
+   * the skipped item is omitted rather than published as an empty bracket, and
+   * the letters that follow keep the numbering the document actually prints.
+   * See the Safeguarding Policy §16.8, where the source's item (g) has no text.
+   */
+  itemLabels?: string[];
   /** Unnumbered bullet list. */
   bullets?: string[];
   /** Defined terms: [term, definition]. */

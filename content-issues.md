@@ -6,9 +6,9 @@ Last reviewed: 29 July 2026.
 Companion to [ISSUES.md](ISSUES.md), which covers technical, responsive and accessibility work.
 Items appearing in both are marked *(ISSUES #n)*; everything else is new.
 
-Scope — the 12 public routes: `/` · `/cafe` · `/hall` · `/library` · `/wellbeing` · `/expert-hub` ·
+Scope — the 13 public routes: `/` · `/cafe` · `/hall` · `/library` · `/wellbeing` · `/expert-hub` ·
 `/privacy` · `/terms` · `/community-guidelines` · `/cookie-policy` · `/complaints` ·
-`/newsletter-thanks`
+`/safeguarding-policy` · `/newsletter-thanks`
 
 Priority key: **P1** blocks launch · **P2** should fix before wider promotion · **P3** tidy-up.
 
@@ -23,10 +23,14 @@ else — have been fixed: **C4, C8, C9–C19, C35, C36, C37, C38, C41, C43, C45,
 C51, C52, C55.**
 
 A second batch closed on 29 July 2026, this time on instructions rather than by tidying:
-**C1, C2, C20, C23, C24, C25, C54.** Three of those were decisions, not code — remove the
+**C1, C2, C20, C23, C24, C25, C54, C56.** Three of those were decisions, not code — remove the
 placeholder copy without replacing it, point sign-up at the app, and give the Terms a date.
 **C3 is closed by hiding rather than filling**; C5, C6 and C7 go dormant with it, because the
 invented attributions are still in the page files, just not rendered.
+
+Publishing the Safeguarding Policy (C56) raised two new items of its own, **C62** and **C63**.
+C63 is a P1: the policy's contact clause is fully filled in and includes two named individuals'
+personal mobile numbers.
 
 C36 and C37 came off the blocked list on 29 July 2026 when the source documents turned up. C35
 followed the same day: no source existed, so the Cookie Policy was written from scratch. C55 and
@@ -46,25 +50,28 @@ Everything below is still open, and every one of them is blocked on something ex
 | **Pages that do not exist yet** | C21, C22, C26–C29, C33, C34 (nav, preview, footer links, Charlie's Story) · C40 |
 | **A commercial decision** | C39 — £10/month is quoted with no pricing page and no inclusions list |
 | **An asset that has to be produced** | C44 — Open Graph / Twitter Card tags need a 1200×630 image before they are worth adding |
-| **A lawyer's eye** | C53 — numbering faults in the source legal documents · C60 — the registered office now reads two ways |
+| **A lawyer's eye** | C53 and C62 — numbering faults in the source legal documents · C60 — the registered office now reads two ways |
+| **A decision about publishing personal contact details** | C63 — the Safeguarding Policy names two people and their mobile numbers |
 | **A consent tool, or dropping HubSpot** | C58 — analytics cookies are set before anyone has agreed to them |
 | **The site being made responsive** | ISSUES #20 — the footer and every content section overflow below about 460px |
 
-C39 and C58 are the remaining launch blockers on this list.
+C39, C58 and C63 are the remaining launch blockers on this list.
 
-> **All four cited documents are now published.** The source PDFs turned up in the client's
+> **All five legal documents are now published.** The source PDFs turned up in the client's
 > "Vilij Files" folder on 29 July 2026. **C36** (`/terms`), **C37** (`/community-guidelines`) and
 > **C38** (`/complaints`) are live and linked from the footer. The **Cookie Policy (C35)** had no
 > source at all and has been written from what the site actually loads. The fifth document in
-> that folder, the Safeguarding Policy, is still unpublished — see C56.
+> that folder, the **Safeguarding Policy (C56)**, is now transcribed and live at
+> `/safeguarding-policy` — the longest of the set at 19 sections and 129 clauses.
 
 > **The duplicated markup is gone (C48), and it paid for itself.** The header, footer,
 > testimonial carousel and areas grid live in `src/layouts/` and `src/components/`. Every item
-> closed on 29 July 2026 was a single edit that reached all twelve pages: C1 and C2 in
-> `SiteFooter.astro`, the company details (C61) in the same file, the header SIGN UP in
-> `SiteNav.astro`, `showSecondTestimonial` in `src/data/testimonials.ts`, and the `comingSoon`
-> flag in `src/data/areas.ts`. Only the twelve body sign-up CTAs needed touching page by page,
-> because they are page copy rather than shared markup.
+> closed on 29 July 2026 was a single edit that reached every page: C1 and C2 in
+> `SiteFooter.astro`, the company details (C61) and the two new Safeguarding Policy links in the
+> same file, the header SIGN UP in `SiteNav.astro`, `showSecondTestimonial` in
+> `src/data/testimonials.ts`, and the `comingSoon` flag in `src/data/areas.ts`. Only the twelve
+> body sign-up CTAs needed touching page by page, because they are page copy rather than shared
+> markup.
 
 ---
 
@@ -227,11 +234,20 @@ written and now has been. **All four are live and all four are linked from the f
 | ✅ C38 | **P2** | Complaints and Reporting Procedure *(ISSUES #8)* | Published at **`/complaints`**, linked from the footer. Held back until C55 was resolved; released once the general complaints address was confirmed. |
 
 Source documents: `THE VILIJ  COMMUNITY GUIDELINES.pdf`, `The Vilij - User Terms of Use.pdf`,
-`The Vilij Complaints and Reporting Procedure.pdf`. A fourth, `THE VILIJ Safeguarding Policy
-(Final).pdf`, is in the same folder and is not referenced anywhere on the site — see C56.
+`The Vilij Complaints and Reporting Procedure.pdf` and `THE VILIJ Safeguarding Policy
+(Final).pdf` — the last of which is now published too (C56).
 
 Transcription was verified mechanically: every clause number in each PDF appears on its page in
-the same order, and every sentence in each PDF appears in the rendered text.
+the same order, and every sentence in each PDF appears in the rendered text. For the Safeguarding
+Policy that is 129 clause numbers, all present and in order, and 756 sentences, of which 741
+matched exactly; the other 15 are clauses 19.3 and 19.4, which are key-and-value lines rather
+than prose and were checked by eye against the source.
+
+**Where the source PDFs live.** All five are in a folder that was moved to the Windows Recycle
+Bin on 28 July 2026 and had not been restored as of 29 July. Nothing was written back to it —
+the Safeguarding Policy was copied out to a scratch directory and transcribed from there — but
+the folder should be restored somewhere permanent before anyone needs to re-check a
+transcription.
 
 ## Dead links by page
 
@@ -251,13 +267,16 @@ three unbuilt area cards became "coming soon" tiles (C23–C25).
 | `/community-guidelines` | 7 | Home, app + the 5 footer legal links, mailto |
 | `/cookie-policy` | 7 | Home, app, Privacy ×5, Terms ×3, Cookies, Complaints, Community Guidelines, ICO, browser help ×4, HubSpot, mailto |
 | `/complaints` | 7 | Home, app + the 5 footer legal links, 2 × mailto |
-| `/newsletter-thanks` | 7 | Home, app, Café, Library, Wellbeing + the 5 footer legal links |
-| **Total** | **90** | |
+| `/safeguarding-policy` | 7 | Home, app + the 6 footer legal links, mailto |
+| `/newsletter-thanks` | 7 | Home, app, Café, Library, Wellbeing + the 6 footer legal links |
+| **Total** | **97** | |
 
-"The 5 footer legal links" are the four in the Quick Links column — Community Guidelines, User
-Terms of Use, Complaints and Reporting Procedures, Privacy Policy — plus Cookies in the legal
-row, which also repeats Terms and Privacy. "app" is `https://app.thevilij.co.uk`, the only
-external destination in the count.
+"The 6 footer legal links" are the five in the Quick Links column — Community Guidelines, User
+Terms of Use, Complaints and Reporting Procedures, Privacy Policy, Safeguarding Policy — plus
+Cookies in the legal row, which also repeats Terms, Privacy and Safeguarding. "app" is
+`https://app.thevilij.co.uk`, the only external destination in the count. The counts above are
+per page and unchanged by the Safeguarding Policy, which added a working link rather than a dead
+one; the total rose only because a thirteenth page joined the table.
 
 Counts exclude the footer "Back to the top" anchor, which is `href="#"` by design and handled in JS.
 
@@ -311,8 +330,9 @@ Titles now live:
 | `/terms` | User Terms of Use \| The Vilij |
 | `/community-guidelines` | Community Guidelines \| The Vilij |
 | `/cookie-policy` | Cookie Policy \| The Vilij |
+| `/safeguarding-policy` | Safeguarding Policy \| The Vilij |
 | `/newsletter-thanks` | You're on the List \| The Vilij |
-| `/complaints` *(unpublished)* | Complaints and Reporting Procedure \| The Vilij |
+| `/complaints` | Complaints and Reporting Procedure \| The Vilij |
 
 ---
 
@@ -349,9 +369,11 @@ live on the site, and only their author can fix them.
 | ☐ C53 | **P2** | **Clause numbering faults in the Community Guidelines.** §2.1 introduces a list, but only its first item is lettered `(a)` — the next two are numbered `2.2` and `2.3` as if they were clauses, and the list then restarts at `(a)`. §9.1 has the same fault: "You must not:" is followed by `9.2`–`9.6` where `(a)`–`(e)` was clearly meant. §3.2 letters its closing sentence as item `(f)`. §10.2's list ends without an "or". | `community-guidelines` |
 | ✅ C54 | **P1** | ~~**The User Terms of Use have no effective date.** The source PDF reads `Effective Date: [●]`~~ — set to **1 August 2026**, supplied by The Vilij on 29 July 2026 and not taken from the PDF. It is the only part of `/terms` that is not a transcription. Rendered as the same "Effective from …" pill the Cookie Policy uses, in the same place: beneath the page intro, above the orange band. | `terms` |
 | ✅ C55 | **P1** | **The Complaints procedure had no real contact address.** The source PDF gives `email@email.co.uk` in five places, including the address for reporting **safeguarding and child protection concerns**. The safeguarding address was resolved from clause 7.2 of the Terms (`safeguarding@thevilij.co.uk`); the general complaints address was confirmed on 29 July 2026 as `complaints@thevilij.co.uk`. Both are now set in `src/pages/complaints.astro`, and the page has been published: `noindex` removed, added to `sitemap.xml`, `Disallow` lifted from `robots.txt`, linked from the footer on all 12 pages. **Confirm the `complaints@` mailbox is live and monitored** — the page now tells people it is. | `complaints` |
-| ☐ C56 | **P2** | **The Safeguarding Policy is not published anywhere.** `THE VILIJ Safeguarding Policy (Final).pdf` is a complete 9,000-word policy sitting alongside the other three. Nothing on the site references it and the Privacy Policy does not list it as a companion document — but it is the longest and most detailed of the set. **Raised from P3 on 29 July 2026:** the new footer link is labelled "Privacy Policy & Safeguarding Policy" and points at `/privacy`, which contains no safeguarding policy. Either transcribe the PDF and split the link in two, or retitle the link. | — |
+| ✅ C56 | **P2** | ~~**The Safeguarding Policy is not published anywhere.**~~ Transcribed verbatim from `THE VILIJ Safeguarding Policy (Final).pdf` (version 1.1, effective 24 July 2026) and published at **`/safeguarding-policy`** — 19 sections, 129 clauses, the longest document on the site. The mislabelled footer link is fixed: "Privacy Policy & Safeguarding Policy" is split into two entries in the Quick Links column, and "Safeguarding" is added to the legal row alongside Terms, Privacy and Cookies. Added to `sitemap.xml`. **Nothing was added to the Privacy Policy, Terms or Community Guidelines** — those are published legal texts and a new cross-reference would change what they say. Faults reproduced from the source are recorded in C62; the contact details question is C63. | `safeguarding-policy` |
 | ☐ C57 | **P3** | **The Privacy Policy PDF is behind the live site.** The source still reads `company number []`; the live page carries **16718802**, taken from the executed Membership Agreement. Anyone re-transcribing from the PDF would regress C4. | source PDF |
 | ☐ C58 | **P1** | **Non-essential cookies are set with no consent.** The HubSpot embed loads on every page and sets four analytics cookies immediately. There is no consent banner, no preference centre and no way to refuse them other than browser settings. Under PECR reg. 6 analytics cookies need consent **before** they are set. The Cookie Policy documents this honestly — it offers browser controls and the HubSpot opt-out and claims nothing else — but a policy does not cure it. Either add a consent tool or drop the HubSpot embed from the marketing site. | All 11 pages |
+| ☐ C63 | **P1** | **The Safeguarding Policy publishes two people's personal mobile numbers.** Clause 19.4 is fully filled in — no placeholders — and names the DSL and Deputy DSL with their roles, work email addresses and mobile numbers (`07968 212108`, `07598 179440`). Transcribed verbatim because that is what the document says and it is the client's document. But publishing a personal mobile number on an indexed marketing page is a publication decision, not a transcription detail: it will be scraped. Three options, all of which need a person to choose: publish as-is, replace the numbers with `safeguarding@thevilij.co.uk` (which clause 19.4 already gives as the reporting route), or leave the page `noindex` until the policy is reissued. **Decide before this page goes live.** | `safeguarding-policy` §19.4 |
+| ☐ C62 | **P2** | **Numbering and naming faults in the source Safeguarding Policy.** Three, all reproduced as printed. **§16.8** prints an item `(g)` with no text at all — just the letter and a semicolon; the item is omitted rather than published as an empty bracket, and `(h)` and `(i)` keep the letters the document prints (this is what `itemLabels` in `src/data/legal.ts                     shared shape for the five legal documents` is for). **§19.5** is a heading, "Emergency and external contacts", with no clause text; the content it introduces is numbered 19.6. **§19.1** names the policy owner "Charlene Andruskeviciu" where §19.4 names the same person "Charlene Andruskevicius". Only the author can fix any of these. | `safeguarding-policy` |
 | ☐ C60 | **P2** | **The registered office now reads two ways.** The confirmed address is *The Meakin Suite, Ravenscliffe, First Avenue, Newcastle-under-Lyme, ST5 8QX*, and that is what the footer and the Privacy Policy §2.1 now carry. The Complaints procedure §11 still reads *Newcastle Under Lyme, Staffordshire, United Kingdom* because it is a solicitor document transcribed verbatim and correcting it would change what the published procedure says. Either the source PDF is reissued or someone decides the transcription rule bends for a factual address. | `complaints` §11 |
 | ☐ C59 | **P2** | **The cookie inventory has not been scanned.** The table in Cookie Policy §5 is built from HubSpot's and Cloudflare's published documentation, not from a scan of the live site, and lifespans are set by those providers and change. Confirm it against a real cookie scan before anyone relies on it, and re-check whenever the HubSpot embed changes. | `cookie-policy` §5 |
 

@@ -1,0 +1,1633 @@
+---
+// The Vilij — Safeguarding Policy
+// Content transcribed from "THE VILIJ Safeguarding Policy (Final).pdf",
+// version 1.1, effective 24 July 2026. See content-issues.md C56.
+//
+// Transcribed verbatim, on the same terms as the other three solicitor
+// documents: nothing corrected, renumbered, modernised or tidied. That means
+// the following faults in the source are reproduced here rather than fixed, and
+// are recorded in content-issues.md C62:
+//
+//   * §16.8 prints an item "(g)" with no text at all — just the letter and a
+//     semicolon. Publishing an empty bracket would be worse than the fault, so
+//     the item is omitted and (h) and (i) keep the letters the document prints.
+//     That is what `itemLabels` on clause 16.8 is doing.
+//   * §19.5 is a heading, "Emergency and external contacts", with no clause
+//     text; the content it introduces is numbered 19.6. Reproduced as printed.
+//   * §19.1 names the policy owner "Charlene Andruskeviciu"; §19.4 names the
+//     same person "Charlene Andruskevicius". Both spellings are as printed.
+//
+// No [] or email@email.co.uk placeholders appear anywhere in this document —
+// unlike the Complaints procedure (C55) and the Terms (C54), every contact
+// detail in clause 19.4 is filled in. Those details include two named
+// individuals' personal mobile numbers, which is a publication decision rather
+// than a transcription one; it is flagged in content-issues.md C63.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import LegalContents from "../components/LegalContents.astro";
+import LegalSections from "../components/LegalSections.astro";
+import type { LegalSection } from "../data/legal";
+
+const sections: LegalSection[] = [
+  {
+    n: "1",
+    title: "Purpose",
+    clauses: [
+      { n: "1.1", text: "The Vilij Limited (“The Vilij”, “we”, “us” or “our”) operates an online community and platform designed to support parents and carers of children with special educational needs and disabilities (“SEND”) through information, resources, community engagement and connections with independent Experts." },
+      { n: "1.2", text: "Although children are not permitted to create accounts on the Platform, children and young people may be discussed, referred to or otherwise affected by activities taking place through the Platform. Members of the community may also include adults who are vulnerable or at risk of harm." },
+      {
+        n: "1.3",
+        text: "The Vilij is committed to promoting the safety, welfare and wellbeing of:",
+        items: [
+          "children and young people whose circumstances are discussed through the Platform;",
+          "Users, including parents and carers;",
+          "adults at risk;",
+          "Experts;",
+          "staff, contractors, moderators and volunteers; and",
+          "any other person who may be affected by activities connected with The Vilij.",
+        ],
+      },
+      {
+        n: "1.4",
+        text: "The purposes of this Safeguarding Policy are to:",
+        items: [
+          "set out The Vilij’s safeguarding principles and commitments;",
+          "provide a framework for preventing and reducing the risk of harm arising through use of the Platform;",
+          "explain the responsibilities of Users, Experts and persons acting on behalf of The Vilij;",
+          "support the prompt recognition, reporting and appropriate management of Safeguarding Concerns;",
+          "ensure that safeguarding decisions are made consistently, proportionately and with appropriate senior oversight;",
+          "explain how safeguarding information will be recorded, stored and shared; and",
+          "promote a culture in which concerns can be raised safely and are taken seriously.",
+        ],
+      },
+      { n: "1.5", text: "The Vilij does not replace the role of statutory safeguarding agencies, emergency services, healthcare professionals, education providers or other competent authorities." },
+      { n: "1.6", text: "If any person believes that a Child, Adult at Risk or other individual is in immediate danger, they should contact the emergency services, police, relevant local authority, competent safeguarding authority or other appropriate statutory agency immediately. The Vilij must not be relied upon as an emergency reporting service." },
+    ],
+  },
+  {
+    n: "2",
+    title: "Scope",
+    clauses: [
+      {
+        n: "2.1",
+        text: "This policy applies to:",
+        items: [
+          "The Vilij’s directors and senior managers;",
+          "employees;",
+          "contractors and consultants;",
+          "moderators and community managers;",
+          "volunteers and work-experience personnel;",
+          "Experts participating on the Platform;",
+          "Users of the Platform; and",
+          "any other person acting for or on behalf of The Vilij.",
+        ],
+      },
+      {
+        n: "2.2",
+        text: "This policy applies to Safeguarding Concerns arising through or in connection with:",
+        items: [
+          "community discussions, posts, comments and uploaded content;",
+          "direct messaging or other communications functionality;",
+          "communications between Users and Experts;",
+          "Expert profiles, content and promotional activity;",
+          "online or in-person events, webinars and community activities organised or facilitated by The Vilij;",
+          "complaints, reports or disclosures made to The Vilij;",
+          "the conduct of staff, contractors, moderators, volunteers or Experts;",
+          "the misuse of personal data or confidential information;",
+          "attempted grooming, exploitation, coercion, intimidation or abuse;",
+          "content or conduct indicating that a Child, Adult at Risk or other individual may be at risk of harm; and",
+          "conduct outside the Platform where there is a sufficient connection with participation in, or the safety and integrity of, The Vilij community.",
+        ],
+      },
+      {
+        n: "2.3",
+        text: "This policy applies whether a concern:",
+        items: [
+          "is disclosed directly by the person affected;",
+          "is reported by a parent, carer, User, Expert or third party;",
+          "is identified through moderation or review of Platform activity;",
+          "arises from information received from a statutory agency or professional body; or",
+          "relates to actual, suspected, threatened or potential harm.",
+        ],
+      },
+      {
+        n: "2.4",
+        text: "For the purposes of this policy:",
+        defs: [
+          ["“Adult at Risk”", "means an adult who has needs for care and support and who, because of those needs, may be unable to protect themselves from abuse, neglect or exploitation."],
+          ["“Child”", "means any person under the age of 18."],
+          ["“Designated Safeguarding Lead” or “DSL”", "means the person appointed under clause 6 to lead and oversee safeguarding within The Vilij."],
+          ["“Expert”", "means an independent professional, adviser, practitioner, consultant or other specialist participating on the Platform."],
+          ["“Platform”", "means The Vilij’s online platform, website, applications, community areas, communications tools, events and related functionality."],
+          ["“Safeguarding Concern”", "means any concern, allegation, disclosure, incident or circumstance indicating that a Child, Adult at Risk or other individual may have suffered, may be suffering or may be at risk of abuse, neglect, exploitation or other harm."],
+          ["“User”", "means an adult who accesses, registers for or uses the Platform."],
+        ],
+      },
+      {
+        n: "2.5",
+        text: "This policy should be read alongside:",
+        items: [
+          "the User Terms of Use;",
+          "the Expert Community Membership Agreement;",
+          "the Community Guidelines;",
+          "the Complaints and Reporting Procedure;",
+          "the Privacy Policy;",
+          "the Cookie Policy;",
+          "any staff or contractor code of conduct;",
+          "any safer recruitment, onboarding and verification procedures;",
+          "any data retention and information-sharing procedures; and",
+          "any incident response, whistleblowing or disciplinary procedures adopted by The Vilij.",
+        ],
+      },
+    ],
+  },
+  {
+    n: "3",
+    title: "Safeguarding Commitment and Principles",
+    clauses: [
+      {
+        n: "3.1",
+        text: "The Vilij believes that:",
+        items: [
+          "children and Adults at Risk should never experience abuse, neglect or exploitation;",
+          "the welfare and safety of children and Adults at Risk should be central to decisions affecting the Platform and community;",
+          "safeguarding is everyone’s responsibility;",
+          "concerns should be raised promptly and considered seriously;",
+          "no person should be disadvantaged for raising a genuine Safeguarding Concern in good faith;",
+          "safeguarding action should be proportionate, timely and focused on protecting those who may be at risk;",
+          "effective safeguarding requires appropriate cooperation with parents, carers, professionals and statutory agencies;",
+          "privacy and confidentiality are important but must not prevent appropriate action being taken to protect a person from harm;",
+          "the wishes, feelings and circumstances of the person affected should be considered, so far as reasonably practicable and appropriate;",
+          "no person should be treated unfairly merely because a concern or allegation has been raised;",
+          "concerns should be managed sensitively and without prejudging their outcome;",
+          "safeguarding action should take account of equality, accessibility, disability and communication needs; and",
+          "safeguarding measures should be reviewed and improved in light of experience, incidents and emerging risks.",
+        ],
+      },
+      {
+        n: "3.2",
+        text: "The Vilij recognises that children with SEND may face increased safeguarding risks because of factors including:",
+        items: [
+          "communication difficulties;",
+          "reliance on adults for personal care or support;",
+          "reduced ability to recognise, resist or report harmful behaviour;",
+          "assumptions that changes in behaviour arise from disability rather than abuse or distress;",
+          "social isolation;",
+          "exposure to multiple professionals and service providers;",
+          "online vulnerability; and",
+          "barriers to being heard or believed.",
+        ],
+      },
+      {
+        n: "3.3",
+        text: "The Vilij will seek to ensure that safeguarding processes are accessible and responsive to different communication and support needs. This may include:",
+        items: [
+          "providing information in clear and accessible language;",
+          "allowing concerns to be raised through more than one reporting route;",
+          "taking account of disability, communication and accessibility requirements;",
+          "allowing a parent, carer, advocate or other appropriate person to assist with a report; and",
+          "making reasonable adjustments where required.",
+        ],
+      },
+      {
+        n: "3.4",
+        text: "The Vilij will seek to create a safer organisation and community by:",
+        items: [
+          "embedding safeguarding into governance, risk management and Platform design;",
+          "appointing a suitably supported DSL and appropriate deputy or escalation contact;",
+          "maintaining clear reporting and response procedures;",
+          "operating proportionate moderation and enforcement systems;",
+          "conducting appropriate checks on Experts, staff, contractors and volunteers according to their roles and applicable law;",
+          "providing appropriate safeguarding information, induction and training;",
+          "maintaining accurate and secure safeguarding records;",
+          "reviewing incidents, concerns and near misses to identify improvements;",
+          "sharing safeguarding information with appropriate authorities where necessary and lawful; and",
+          "reviewing this policy and related procedures in accordance with clause 19.2.",
+        ],
+      },
+      {
+        n: "3.5",
+        text: "The Vilij will not tolerate:",
+        items: [
+          "abuse, neglect or exploitation;",
+          "grooming or attempted grooming;",
+          "child sexual exploitation or abuse;",
+          "sexual harassment or sexual misconduct;",
+          "bullying, intimidation, stalking or coercive behaviour;",
+          "discrimination or hate-based abuse;",
+          "the encouragement or facilitation of self-harm, suicide or dangerous behaviour;",
+          "the misuse of the Platform to target, manipulate or exploit vulnerable individuals;",
+          "retaliation against a person who raises a Safeguarding Concern; or",
+          "deliberate concealment of a Safeguarding Concern.",
+        ],
+      },
+      {
+        n: "3.6",
+        text: "Safeguarding measures will be applied consistently and proportionately, taking account of:",
+        items: [
+          "the nature and seriousness of the concern;",
+          "the risk of immediate or future harm;",
+          "the needs and circumstances of the person affected;",
+          "the reliability and completeness of the available information;",
+          "the importance of privacy and freedom of expression within the law; and",
+          "any legal, regulatory or professional obligations.",
+        ],
+      },
+      {
+        n: "3.7",
+        text: "The Vilij will seek to balance safeguarding responsibilities with:",
+        items: [
+          "the right to privacy;",
+          "freedom of expression within the law;",
+          "the rights of individuals who are the subject of allegations;",
+          "the need to avoid unnecessary disclosure of sensitive information; and",
+          "the importance of preserving evidence and enabling proper investigation.",
+        ],
+      },
+      { n: "3.8", text: "The Vilij will not allow concerns about confidentiality, commercial reputation or disruption to the Platform to prevent appropriate safeguarding action." },
+    ],
+  },
+  {
+    n: "4",
+    title: "Legal and Regulatory Framework",
+    clauses: [
+      {
+        n: "4.1",
+        text: "This policy has been prepared with regard to the laws, statutory guidance and recognised safeguarding practice applicable in the United Kingdom. Relevant legislation and guidance may include, as applicable:",
+        items: [
+          "the Children Act 1989;",
+          "the Children Act 2004;",
+          "the Care Act 2014;",
+          "the Safeguarding Vulnerable Groups Act 2006;",
+          "the Protection of Freedoms Act 2012;",
+          "the Sexual Offences Act 2003;",
+          "the Modern Slavery Act 2015;",
+          "the Domestic Abuse Act 2021;",
+          "the Online Safety Act 2023;",
+          "the Data Protection Act 2018 and UK GDPR;",
+          "the Equality Act 2010;",
+          "the Human Rights Act 1998;",
+          "applicable information-sharing guidance; and",
+          "Working Together to Safeguard Children, as updated from time to time.",
+        ],
+      },
+      {
+        n: "4.2",
+        text: "The precise legal obligations applying to The Vilij will depend on:",
+        items: [
+          "the Platform’s functionality;",
+          "whether and how Users can interact with one another;",
+          "the nature of any services provided directly by The Vilij;",
+          "the role of Experts;",
+          "whether activities involve direct contact with children or Adults at Risk;",
+          "the jurisdictions in which activities take place; and",
+          "any future changes to the Platform or applicable law.",
+        ],
+      },
+      {
+        n: "4.3",
+        text: "The Vilij is an online community and platform provider and is not itself a statutory safeguarding authority. It will nevertheless:",
+        items: [
+          "take reasonable and proportionate steps to identify and respond to Safeguarding Concerns arising in connection with the Platform;",
+          "cooperate with statutory agencies and regulators where appropriate;",
+          "make referrals or disclosures where required or reasonably considered necessary to protect a person from harm; and",
+          "comply with applicable reporting obligations.",
+        ],
+      },
+      { n: "4.4", text: "Where the Platform permits Users to upload, share or encounter content generated by other Users, The Vilij will assess and address any obligations arising under the Online Safety Act 2023, including requirements relating to illegal content, reporting, complaints and consistent enforcement of applicable terms and policies." },
+      { n: "4.5", text: "The Vilij will review the legal and regulatory framework periodically and update this policy where necessary." },
+    ],
+  },
+  {
+    n: "5",
+    title: "Roles and Responsibilities",
+    clauses: [
+      {
+        n: "5.1",
+        lead: "Board and senior leadership",
+        text: " The directors and senior leadership of The Vilij are responsible for:",
+        items: [
+          "treating safeguarding as a governance and business priority;",
+          "approving this policy and ensuring that appropriate resources are available for its implementation;",
+          "appointing a suitably competent DSL and, where appropriate, a Deputy Designated Safeguarding Lead;",
+          "maintaining appropriate oversight of safeguarding risks, incidents and trends;",
+          "ensuring that safeguarding responsibilities are reflected in Platform design, operations, contracts and commercial decisions;",
+          "ensuring that appropriate reporting, escalation and record-keeping arrangements are maintained;",
+          "reviewing serious incidents and ensuring that lessons are implemented;",
+          "ensuring that appropriate insurance arrangements are maintained; and",
+          "ensuring that this policy is reviewed in accordance with clause 19.2.",
+        ],
+      },
+      { n: "5.2", lead: "Designated Safeguarding Lead", text: " The DSL is responsible for the matters set out in clause 6." },
+      {
+        n: "5.3",
+        text: "All staff, contractors, moderators and volunteers must:",
+        items: [
+          "read and comply with this policy and any applicable code of conduct;",
+          "complete safeguarding induction and training appropriate to their role;",
+          "remain alert to signs of abuse, neglect, exploitation and other harm;",
+          "report Safeguarding Concerns promptly through the prescribed route;",
+          "preserve relevant evidence and records;",
+          "maintain appropriate professional boundaries;",
+          "cooperate with safeguarding reviews and investigations;",
+          "keep safeguarding information confidential except where disclosure is authorised or required; and",
+          "avoid investigating a concern themselves unless expressly directed by the DSL.",
+        ],
+      },
+      { n: "5.4", text: "Experts must comply with the safeguarding responsibilities set out in clause 10." },
+      { n: "5.5", text: "Users must comply with the safeguarding responsibilities set out in clause 9." },
+      {
+        n: "5.6",
+        text: "The Vilij may seek support from:",
+        items: [
+          "legal advisers;",
+          "specialist safeguarding consultants;",
+          "insurers;",
+          "the relevant local authority;",
+          "police and other law enforcement agencies;",
+          "healthcare or education professionals;",
+          "regulators and professional bodies; and",
+          "specialist charities or safeguarding organisations.",
+        ],
+      },
+    ],
+  },
+  {
+    n: "6",
+    title: "Designated Safeguarding Lead",
+    clauses: [
+      {
+        n: "6.1",
+        text: "The Vilij will appoint a Designated Safeguarding Lead with overall operational responsibility for safeguarding. The Vilij will also appoint:",
+        items: [
+          "a Deputy Designated Safeguarding Lead who can act during the DSL’s absence; and",
+          "a director or senior leader with ultimate oversight of safeguarding governance.",
+        ],
+      },
+      {
+        n: "6.2",
+        text: "The DSL will be responsible for:",
+        items: [
+          "receiving and assessing Safeguarding Concerns;",
+          "identifying whether immediate protective action is required;",
+          "deciding whether a concern should be referred externally in accordance with clause 12.9;",
+          "ensuring that referrals are made without undue delay;",
+          "advising staff, contractors, moderators, volunteers and Experts on safeguarding matters;",
+          "maintaining oversight of safeguarding records in accordance with clause 15;",
+          "ensuring that information is shared lawfully, proportionately and only with those who need to know;",
+          "coordinating The Vilij’s internal safeguarding response, fact-finding and cooperation with any external investigation;",
+          "ensuring that the person who raised the concern receives appropriate acknowledgement and, where possible, information about the process;",
+          "managing allegations involving staff, contractors, moderators, volunteers or Experts;",
+          "monitoring patterns, repeat concerns and emerging risks;",
+          "arranging safeguarding induction, training and refresher training;",
+          "reviewing the effectiveness of safeguarding controls and recommending improvements;",
+          "reporting material safeguarding matters to the directors or senior safeguarding lead;",
+          "liaising with insurers, advisers and external agencies where appropriate; and",
+          "coordinating the review of this policy and related procedures in accordance with clause 19.2.",
+        ],
+      },
+      {
+        n: "6.3",
+        text: "The DSL should not:",
+        items: [
+          "conduct a criminal investigation;",
+          "interview a Child, Adult at Risk or alleged perpetrator beyond what is reasonably necessary to understand and report the immediate concern;",
+          "attempt to determine conclusively whether abuse has occurred where that determination properly belongs to a statutory agency; or",
+          "delay a referral while attempting to obtain complete information.",
+        ],
+      },
+      {
+        n: "6.4",
+        text: "Where a concern:",
+        items: [
+          "relates to the DSL;",
+          "creates an actual or potential conflict of interest for the DSL; or",
+          "cannot appropriately be handled by the DSL,",
+        ],
+        outro: "it must be referred immediately to the Deputy Designated Safeguarding Lead or the senior director responsible for safeguarding. Where the concern relates to the senior director responsible for safeguarding, it must be referred to another director and, where appropriate, to an external safeguarding adviser or statutory authority.",
+      },
+      {
+        n: "6.5",
+        lead: "Availability and cover",
+        text: " The Vilij will maintain arrangements to ensure that:",
+        items: [
+          "there is an identified safeguarding contact when the DSL is unavailable;",
+          "urgent concerns can be escalated promptly;",
+          "safeguarding inboxes or reporting channels are monitored at appropriate intervals; and",
+          "safeguarding responsibilities are formally handed over during planned absences.",
+        ],
+      },
+      { n: "6.6", text: "The current contact details for the Designated Safeguarding Lead, Deputy Designated Safeguarding Lead, senior director responsible for safeguarding and safeguarding reporting address are set out in clause 19.4." },
+    ],
+  },
+  {
+    n: "7",
+    title: "Recognising Safeguarding Concerns",
+    clauses: [
+      {
+        n: "7.1",
+        text: "A Safeguarding Concern may arise from a single incident, a disclosure, a pattern of behaviour or a combination of information indicating actual, suspected or potential harm. Safeguarding Concerns may relate to:",
+        items: [
+          "physical abuse;",
+          "emotional or psychological abuse;",
+          "sexual abuse or sexual exploitation;",
+          "neglect;",
+          "domestic abuse;",
+          "coercive or controlling behaviour;",
+          "grooming;",
+          "bullying, harassment or stalking;",
+          "financial abuse or exploitation;",
+          "discriminatory abuse;",
+          "online abuse;",
+          "self-harm, suicidal thoughts or behaviour;",
+          "exploitation linked to criminal activity;",
+          "modern slavery or trafficking;",
+          "radicalisation or extremist exploitation;",
+          "harmful professional conduct;",
+          "misuse of personal or confidential information; or",
+          "any other conduct that may place a Child, Adult at Risk or other person at risk of harm.",
+        ],
+      },
+      {
+        n: "7.2",
+        text: "Online indicators of a Safeguarding Concern may include:",
+        items: [
+          "repeated attempts to move communications away from the Platform;",
+          "requests for personal contact details, photographs, location information or private communications;",
+          "sexualised, intrusive or inappropriate messages;",
+          "attempts to isolate a User from other sources of support;",
+          "pressure to maintain secrecy;",
+          "threats, blackmail or coercion;",
+          "manipulation of a User’s vulnerability, distress or dependence;",
+          "offers of money, gifts, employment or services designed to create influence or control;",
+          "repeated contact after a User has asked for communication to stop;",
+          "false claims of professional qualifications, authority or affiliation;",
+          "content encouraging self-harm, suicide, dangerous challenges or harmful treatment;",
+          "discussions indicating immediate or escalating risk of abuse, neglect or exploitation;",
+          "sharing or requesting intimate images;",
+          "the disclosure of confidential records or identifying information about a Child; or",
+          "conduct suggesting child sexual exploitation or abuse.",
+        ],
+      },
+      {
+        n: "7.3",
+        text: "Safeguarding concerns involving Experts may include:",
+        items: [
+          "providing services outside the Expert’s competence or authority;",
+          "failing to maintain professional boundaries;",
+          "seeking to create inappropriate personal or dependent relationships with Users;",
+          "giving misleading assurances or guarantees;",
+          "discouraging Users from seeking other professional or statutory support;",
+          "requesting unnecessary sensitive information;",
+          "using information obtained through the Platform for unauthorised purposes;",
+          "failing to report a Safeguarding Concern;",
+          "failing to comply with professional or regulatory obligations;",
+          "providing services without required registration, authorisation or insurance;",
+          "making inappropriate referrals or receiving undisclosed commissions;",
+          "attempting to conceal complaints, sanctions or regulatory action; or",
+          "otherwise acting in a manner that may place a User, Child or Adult at Risk at risk of harm.",
+        ],
+      },
+      { n: "7.4", text: "A concern does not need to be proven before it is reported. Reports should be made in accordance with clause 12." },
+      { n: "7.5", text: "Where a disclosure is made, the recipient must follow the procedure in clauses 12.5 and 12.6." },
+    ],
+  },
+  {
+    n: "8",
+    title: "Online Safety",
+    clauses: [
+      {
+        n: "8.1",
+        text: "The Vilij recognises that safeguarding risks may arise through online content, messaging, profiles, events, links and interactions between Users and Experts. The Vilij will seek to reduce online safeguarding risks through appropriate and proportionate measures, which may include:",
+        items: [
+          "account registration and access controls;",
+          "age restrictions preventing children from creating accounts;",
+          "moderation of posts, comments and uploaded content;",
+          "reporting tools and dedicated safeguarding reporting channels;",
+          "controls over messaging functionality;",
+          "warnings, restrictions, suspensions and account termination;",
+          "Expert onboarding and verification;",
+          "monitoring for suspicious or harmful behaviour;",
+          "restrictions on commercial solicitation and unauthorised promotion;",
+          "guidance on privacy and the sharing of information about children;",
+          "systems for preserving and reviewing relevant records; and",
+          "cooperation with law enforcement, regulators and safeguarding bodies.",
+        ],
+      },
+      {
+        n: "8.2",
+        text: "Users and Experts must not use the Platform to:",
+        items: [
+          "groom, exploit, threaten or manipulate another person;",
+          "engage in child sexual exploitation or abuse;",
+          "share, request or distribute child sexual abuse material;",
+          "encourage or assist suicide, self-harm or dangerous behaviour;",
+          "distribute intimate images without consent;",
+          "engage in stalking, harassment, coercive or controlling behaviour;",
+          "promote violence, terrorism, hate crime or other criminal activity;",
+          "facilitate trafficking, modern slavery or exploitation;",
+          "impersonate another person or misrepresent professional status;",
+          "transmit malicious software or interfere with Platform security;",
+          "obtain personal information through deception;",
+          "publish confidential or identifying information about a Child or Adult at Risk without lawful authority; or",
+          "otherwise use the Platform in a way that places another person at risk of harm.",
+        ],
+      },
+      {
+        n: "8.3",
+        text: "Where direct messaging is available:",
+        items: [
+          "Users and Experts must communicate respectfully and for legitimate purposes connected with the Platform;",
+          "Experts must maintain appropriate professional boundaries;",
+          "no person should pressure another User to communicate privately or outside the Platform;",
+          "personal contact details should only be shared where lawful, appropriate and genuinely necessary;",
+          "Users should report unwanted, intrusive, sexualised, threatening or manipulative communications; and",
+          "The Vilij may access, preserve or review messages where permitted by law and reasonably necessary for moderation, safeguarding, security or investigation purposes.",
+        ],
+      },
+      {
+        n: "8.4",
+        text: "Users should take care when sharing information online and should avoid unnecessarily posting:",
+        items: [
+          "a Child’s full name;",
+          "photographs that identify a Child;",
+          "a home address or precise location;",
+          "school or education setting details;",
+          "medical, diagnostic or EHCP documents containing identifiable information;",
+          "contact details;",
+          "private family information; or",
+          "any information that could enable another person to identify, locate or target a Child or vulnerable individual.",
+        ],
+      },
+      { n: "8.5", text: "The Vilij may remove or restrict content where it reasonably considers this necessary to address a safeguarding risk, comply with law or enforce the Community Guidelines or User Terms of Use." },
+      {
+        n: "8.6",
+        text: "The Vilij may use manual moderation and, where implemented, technological tools to identify, prioritise or manage potentially harmful or unlawful content. Where such tools are used, The Vilij will seek to ensure that:",
+        items: [
+          "they are appropriate to the Platform’s size and risk profile;",
+          "material decisions are subject to appropriate human oversight;",
+          "users can report content or challenge moderation decisions through the available procedures; and",
+          "privacy and data protection requirements are taken into account.",
+        ],
+      },
+      {
+        n: "8.7",
+        text: "The Vilij will review its online safety controls periodically and when:",
+        items: [
+          "new functionality is introduced;",
+          "direct messaging is enabled or materially changed;",
+          "the nature or volume of user-generated content changes;",
+          "a serious incident or near miss occurs;",
+          "new safeguarding risks are identified; or",
+          "applicable legal or regulatory requirements change.",
+        ],
+      },
+    ],
+  },
+  {
+    n: "9",
+    title: "Expectations of Users",
+    clauses: [
+      {
+        n: "9.1",
+        text: "Users must:",
+        items: [
+          "comply with the User Terms of Use, Community Guidelines and Complaints and Reporting Procedure;",
+          "behave respectfully and responsibly;",
+          "report Safeguarding Concerns as soon as reasonably practicable;",
+          "contact emergency services or statutory agencies where a person appears to be in immediate danger;",
+          "avoid sharing unnecessary identifying or sensitive information about children or other individuals;",
+          "cooperate reasonably with safeguarding enquiries;",
+          "preserve relevant messages, posts and other evidence;",
+          "comply with reasonable protective measures imposed by The Vilij; and",
+          "use Platform features only for lawful and appropriate purposes.",
+        ],
+      },
+      {
+        n: "9.2",
+        text: "Users must not:",
+        items: [
+          "attempt to investigate allegations themselves;",
+          "publicly accuse another User or Expert of abuse or criminal conduct;",
+          "retaliate against a person who raises a Safeguarding Concern;",
+          "knowingly make a false or malicious safeguarding report;",
+          "attempt to identify or contact a Child through information shared on the Platform;",
+          "exploit another User’s distress, disability, vulnerability or need for support;",
+          "encourage a User to disregard professional, statutory or emergency advice;",
+          "disclose safeguarding information to persons who do not need to know;",
+          "interfere with an investigation; or",
+          "delete or alter relevant evidence after becoming aware of a Safeguarding Concern.",
+        ],
+      },
+      {
+        n: "9.3",
+        text: "Where a User is concerned about content or conduct, they should use the reporting route provided by The Vilij rather than:",
+        items: [
+          "engaging in public confrontation;",
+          "encouraging others to target the person concerned;",
+          "reposting harmful or identifying content;",
+          "conducting their own enquiries; or",
+          "contacting the alleged subject of the concern.",
+        ],
+      },
+      { n: "9.4", text: "The Vilij may take moderation, restriction or enforcement action against a User in accordance with clause 11 where the User presents a safeguarding risk, fails to comply with protective directions, obstructs an investigation, retaliates against a reporting person or otherwise acts inconsistently with the safety of the community." },
+    ],
+  },
+  {
+    n: "10",
+    title: "Expectations of Experts",
+    clauses: [
+      {
+        n: "10.1",
+        text: "Experts occupy a position of trust and must take particular care when interacting with Users who may be distressed, isolated or vulnerable. Experts must:",
+        items: [
+          "comply with the Expert Community Membership Agreement, this policy and all applicable Platform policies;",
+          "comply with applicable laws, professional standards and regulatory obligations;",
+          "maintain all required qualifications, registrations, authorisations, insurance and checks;",
+          "act only within the limits of their competence and professional scope;",
+          "maintain clear and appropriate professional boundaries;",
+          "communicate honestly, respectfully and transparently;",
+          "explain where information provided is general rather than tailored professional advice;",
+          "use appropriate written engagement terms where providing services directly to Users;",
+          "maintain appropriate records relating to their services;",
+          "comply with professional confidentiality and information-sharing obligations;",
+          "report Safeguarding Concerns through the required route and within any applicable timeframe;",
+          "cooperate fully with safeguarding enquiries; and",
+          "notify The Vilij of any matter that materially affects their suitability to participate as an Expert.",
+        ],
+      },
+      {
+        n: "10.2",
+        text: "Experts must not:",
+        items: [
+          "exploit a User’s vulnerability, distress, disability or dependency;",
+          "establish inappropriate personal, financial or sexual relationships with Users;",
+          "request unnecessary sensitive information;",
+          "communicate in a sexualised, coercive, threatening or manipulative manner;",
+          "pressure Users to purchase services;",
+          "use safeguarding disclosures to obtain commercial advantage;",
+          "guarantee outcomes;",
+          "provide services outside their competence or authorisation;",
+          "discourage a User from contacting emergency services, statutory agencies or another appropriate professional;",
+          "ask a User to conceal communications or services from family members, carers, regulators or The Vilij;",
+          "move communications off the Platform for inappropriate or unauthorised purposes;",
+          "use Platform information to target, solicit or contact Users without permission;",
+          "conceal complaints, investigations, sanctions or restrictions;",
+          "retaliate against a person who raises a concern; or",
+          "undertake their own investigation into allegations involving another person unless authorised by a competent body.",
+        ],
+      },
+      {
+        n: "10.3",
+        text: "An Expert who becomes aware of a Safeguarding Concern must:",
+        items: [
+          "take any immediate action reasonably necessary to address an imminent risk, including contacting emergency services where appropriate;",
+          "report the concern to the Safeguarding Contact as soon as reasonably practicable and, in any event, within 24 hours, unless immediate external reporting is required;",
+          "comply with any separate duty to report to a regulator, professional body, employer, relevant local authority or other competent authority;",
+          "preserve relevant records and evidence;",
+          "avoid promising confidentiality;",
+          "avoid contacting the alleged perpetrator unless directed by an appropriate authority; and",
+          "cooperate with any reasonable protective or investigative steps.",
+        ],
+      },
+      {
+        n: "10.4",
+        text: "Where an Expert is subject to a complaint, allegation, investigation, sanction or restriction that may affect their suitability to participate in the Platform, the Expert must notify The Vilij without undue delay. This includes:",
+        items: [
+          "regulatory investigations;",
+          "professional disciplinary proceedings;",
+          "suspension, restriction or loss of registration;",
+          "criminal investigations or charges;",
+          "safeguarding allegations;",
+          "insurance cancellation or lapse;",
+          "DBS information that may be relevant to their role; and",
+          "any restriction imposed by an employer, professional body or statutory agency.",
+        ],
+      },
+      { n: "10.5", text: "The Vilij may impose any proportionate protective, remedial or enforcement measure available under clause 11 in relation to an Expert, including restrictions, suspension, removal of Expert status, additional training or referral to an appropriate authority." },
+      { n: "10.6", text: "Nothing in this policy transfers responsibility for an Expert’s professional, legal or regulatory obligations to The Vilij." },
+    ],
+  },
+  {
+    n: "11",
+    title: "Moderation and Community Safety",
+    clauses: [
+      {
+        n: "11.1",
+        text: "The Vilij may moderate content, communications, profiles and Platform activity to:",
+        items: [
+          "promote a safe and respectful community;",
+          "identify and address safeguarding risks;",
+          "enforce the User Terms of Use, Community Guidelines and Expert Community Membership Agreement;",
+          "prevent unlawful or harmful activity;",
+          "protect privacy and confidential information;",
+          "respond to complaints and reports; and",
+          "comply with legal and regulatory obligations.",
+        ],
+      },
+      {
+        n: "11.2",
+        text: "Moderation may be:",
+        items: [
+          "reactive, following a report or complaint;",
+          "proactive, where The Vilij identifies potentially harmful activity;",
+          "temporary, pending further review; or",
+          "precautionary, where immediate action is reasonably considered necessary to reduce risk.",
+        ],
+      },
+      {
+        n: "11.3",
+        text: "Where a Safeguarding Concern arises, The Vilij may take immediate interim action before completing an investigation. This may include:",
+        items: [
+          "removing or restricting content;",
+          "restricting direct messaging;",
+          "limiting access to particular Platform areas;",
+          "suspending a User or Expert account;",
+          "removing an Expert profile;",
+          "preventing contact between specified individuals;",
+          "preserving relevant content and account information;",
+          "referring the matter to an appropriate authority;",
+          "warning potentially affected Users; or",
+          "taking any other proportionate action considered necessary to reduce the risk of harm.",
+        ],
+      },
+      { n: "11.4", text: "In determining what moderation or enforcement action to take, The Vilij will apply the safeguarding principles in clause 3 and the relevant risk-assessment factors set out in clause 12.7." },
+      {
+        n: "11.5",
+        text: "Possible outcomes following review may include:",
+        items: [
+          "no further action;",
+          "guidance or an informal reminder;",
+          "a formal warning;",
+          "removal or restriction of content;",
+          "limits on messaging or other Platform functionality;",
+          "mandatory training or remedial action;",
+          "temporary suspension;",
+          "termination of membership;",
+          "removal of Expert status;",
+          "referral to a professional body or regulator;",
+          "referral to law enforcement, a local authority or another safeguarding agency; or",
+          "any other proportionate protective or enforcement measure.",
+        ],
+      },
+      {
+        n: "11.6",
+        text: "The Vilij may decide that no further action is required where:",
+        items: [
+          "no safeguarding or policy breach is identified;",
+          "the evidence is insufficient;",
+          "the matter falls outside The Vilij’s role or jurisdiction;",
+          "the concern has been resolved appropriately; or",
+          "the matter has been referred to a more appropriate authority.",
+        ],
+      },
+      {
+        n: "11.7",
+        text: "A decision to take no further action does not prevent The Vilij from:",
+        items: [
+          "retaining an appropriate record;",
+          "monitoring for further concerns;",
+          "reviewing the matter if new information becomes available; or",
+          "taking different action if the risk changes.",
+        ],
+      },
+      { n: "11.8", text: "Moderation decisions must be documented in accordance with clause 15." },
+      {
+        n: "11.9",
+        text: "Where appropriate and lawful, The Vilij may notify the reporting person or affected User that a matter has been reviewed. However, The Vilij may be unable to disclose:",
+        items: [
+          "confidential information;",
+          "personal data relating to another person;",
+          "details that could prejudice an investigation;",
+          "information supplied by a statutory agency; or",
+          "the precise nature of action taken against another User or Expert.",
+        ],
+      },
+      { n: "11.10", text: "Users and Experts may raise concerns about moderation or enforcement decisions through the Complaints and Reporting Procedure." },
+      { n: "11.11", text: "The Vilij will seek to apply its safeguarding and moderation policies consistently, while recognising that decisions may differ according to context, risk and available evidence." },
+    ],
+  },
+  {
+    n: "12",
+    title: "Reporting and Responding to Safeguarding Concerns",
+    clauses: [
+      { n: "12.1", text: "Any person to whom this policy applies who becomes aware of a Safeguarding Concern must report it as soon as reasonably practicable through the reporting routes set out in this policy. A person does not need to be certain that abuse, neglect, exploitation or other harm has occurred before making a report." },
+      { n: "12.2", text: "Safeguarding Concerns should be reported using the contact details in clause 19.4. Where the concern relates to the DSL, it must be reported to the Deputy Designated Safeguarding Lead or the senior director responsible for safeguarding. Where the concern relates to the Deputy Designated Safeguarding Lead or senior director responsible for safeguarding, it must be reported to another director and, where appropriate, an independent safeguarding adviser or relevant statutory agency." },
+      {
+        n: "12.3",
+        text: "Where there is an immediate risk of serious harm, the person becoming aware of the concern should:",
+        items: [
+          "contact the emergency services, police or relevant local authority immediately;",
+          "take any reasonable and safe steps available to reduce the immediate risk;",
+          "avoid taking any action that may increase the danger to the person concerned;",
+          "preserve relevant information or evidence; and",
+          "notify the DSL as soon as reasonably practicable.",
+        ],
+        outro: "A report to The Vilij must not delay contact with emergency or statutory services where immediate action is required.",
+      },
+      {
+        n: "12.4",
+        text: "A safeguarding report should include, where available:",
+        items: [
+          "the name and contact details of the person making the report;",
+          "the name, username or other identifying details of the person affected;",
+          "the name or details of any person whose conduct is causing concern;",
+          "a clear description of what happened or what has been disclosed;",
+          "relevant dates, times and locations;",
+          "links, usernames, screenshots, messages or other relevant Platform information;",
+          "details of any immediate risk;",
+          "any action already taken;",
+          "whether emergency services, a local authority, police, regulator or other body has been contacted; and",
+          "any accessibility, communication or support needs of the person affected.",
+        ],
+        outro: "A lack of complete information must not prevent or delay a report.",
+      },
+      {
+        n: "12.5",
+        text: "A person receiving a disclosure should:",
+        items: [
+          "remain calm;",
+          "listen carefully and take the disclosure seriously;",
+          "allow the person to speak in their own words;",
+          "avoid making assumptions or expressing judgement;",
+          "avoid asking leading, probing or unnecessary questions;",
+          "not promise to keep the information secret;",
+          "explain that relevant information may need to be shared with people who can help;",
+          "make an accurate written record as soon as possible;",
+          "preserve any relevant messages, posts, documents or other evidence; and",
+          "report the matter promptly to the DSL.",
+        ],
+      },
+      {
+        n: "12.6",
+        text: "Unless necessary to address an immediate danger or expressly authorised by the DSL or a competent authority, a person receiving or reporting a concern must not:",
+        items: [
+          "confront the person alleged to have caused harm;",
+          "attempt to investigate the matter;",
+          "interview witnesses;",
+          "contact a Child directly;",
+          "seek to obtain a detailed account beyond what is reasonably necessary to understand the immediate concern;",
+          "make public allegations;",
+          "circulate safeguarding information more widely than necessary;",
+          "delete or alter relevant records; or",
+          "give assurances about the outcome of the matter.",
+        ],
+      },
+      {
+        n: "12.7",
+        text: "On receiving a report, the DSL will assess:",
+        items: [
+          "whether there is an immediate risk of harm;",
+          "whether emergency or protective action is required;",
+          "whether a referral should be made to police, the relevant local authority, healthcare services, a regulator, professional body or other relevant organisation;",
+          "whether content or access should be restricted;",
+          "whether relevant information and evidence should be preserved;",
+          "whether an Expert, User, member of staff or other individual should be temporarily suspended or restricted;",
+          "whether specialist legal or safeguarding advice is required;",
+          "whether the insurer should be notified;",
+          "who needs to be informed within The Vilij; and",
+          "what support or communication may be appropriate for the person affected.",
+        ],
+      },
+      { n: "12.8", text: "The Vilij may take any interim protective action available under clause 11.3 where reasonably necessary to manage an immediate or potential safeguarding risk. Such action is precautionary and does not, by itself, amount to a final finding against the person concerned." },
+      {
+        n: "12.9",
+        text: "The DSL may, where lawful, appropriate and proportionate in the circumstances, refer a concern to an appropriate external body, including:",
+        items: [
+          "police;",
+          "emergency services;",
+          "the relevant local authority children’s services department;",
+          "the relevant local authority adult safeguarding team;",
+          "the relevant Local Authority Designated Officer or equivalent service;",
+          "a healthcare or mental health service;",
+          "a professional regulator;",
+          "the Disclosure and Barring Service;",
+          "Ofcom or another relevant regulator;",
+          "a school, college or education provider;",
+          "an employer or commissioning body;",
+          "an insurer; or",
+          "another specialist safeguarding organisation.",
+        ],
+        outro: "A referral may be made without the consent of the person concerned where disclosure is required by law or where it is reasonably considered necessary and proportionate to protect a person from harm.",
+      },
+      { n: "12.10", text: "Where the concern relates to the DSL or a senior safeguarding lead, the conflict and escalation requirements in clause 6.4 will apply." },
+      {
+        n: "12.11",
+        text: "The Vilij may act on conduct occurring outside the Platform where that conduct:",
+        items: [
+          "indicates that a person may present a safeguarding risk to the community;",
+          "concerns an Expert’s professional suitability;",
+          "relates to services promoted or obtained through the Platform;",
+          "could materially affect the safety, trust or integrity of the Platform; or",
+          "is otherwise sufficiently connected with participation in The Vilij.",
+        ],
+      },
+      {
+        n: "12.12",
+        text: "Where appropriate and lawful, The Vilij will acknowledge receipt of a safeguarding report and may provide information about:",
+        items: [
+          "the process being followed;",
+          "whether the matter has been referred externally;",
+          "whether any immediate protective measures have been taken; and",
+          "when a further update may be provided.",
+        ],
+        outro: "The Vilij may be unable to provide detailed information about another person, any disciplinary or contractual action, or an external investigation.",
+      },
+    ],
+  },
+  {
+    n: "13",
+    title: "Decision-Making, Escalation and Review",
+    clauses: [
+      {
+        n: "13.1",
+        text: "Safeguarding decisions should, where practicable, be made or reviewed by the DSL. Serious or complex cases should be escalated to:",
+        items: [
+          "the Deputy Designated Safeguarding Lead;",
+          "the senior director responsible for safeguarding;",
+          "an independent safeguarding adviser;",
+          "legal advisers; or",
+          "another appropriate specialist.",
+        ],
+      },
+      {
+        n: "13.2",
+        text: "Matters requiring senior escalation may include:",
+        items: [
+          "an immediate or serious risk of harm;",
+          "suspected criminal conduct;",
+          "alleged child sexual exploitation or abuse;",
+          "allegations against a director, DSL, employee or Expert;",
+          "repeated or systemic safeguarding failures;",
+          "substantial reputational or regulatory risk;",
+          "proposed disclosure of significant sensitive information;",
+          "material media interest;",
+          "uncertainty about legal or reporting obligations; or",
+          "any matter the DSL considers beyond their authority or competence.",
+        ],
+      },
+      {
+        n: "13.3",
+        text: "Where reasonably practicable, safeguarding decisions should record:",
+        items: [
+          "the information available;",
+          "the risk identified;",
+          "the wishes and needs of the person affected, where known;",
+          "the legal or professional considerations taken into account;",
+          "the options considered;",
+          "the decision taken;",
+          "the reasons for that decision;",
+          "any external advice obtained;",
+          "any referral made; and",
+          "the date for review or follow-up.",
+        ],
+        outro: "Safeguarding decisions must be recorded in accordance with clause 15.",
+      },
+      {
+        n: "13.4",
+        text: "The Vilij may reopen or reconsider a safeguarding decision where:",
+        items: [
+          "new information becomes available;",
+          "another incident occurs;",
+          "a pattern of behaviour emerges;",
+          "an external authority provides further information;",
+          "the original risk assessment materially changes; or",
+          "the earlier decision appears to have been based on incomplete or inaccurate information.",
+        ],
+      },
+      { n: "13.5", text: "A person dissatisfied with The Vilij’s handling of a concern may use the Complaints and Reporting Procedure. However, an internal complaint or review process must not delay an urgent referral or protective action." },
+    ],
+  },
+  {
+    n: "14",
+    title: "Information Sharing, Confidentiality and External Communications",
+    clauses: [
+      {
+        n: "14.1",
+        lead: "General principles",
+        text: " Safeguarding information will be handled carefully and shared only where lawful, necessary and proportionate. Information may be shared where this is reasonably necessary to:",
+        items: [
+          "protect a Child, Adult at Risk or other person from harm;",
+          "assess or manage a safeguarding risk;",
+          "obtain specialist advice;",
+          "enable a statutory or regulatory body to carry out its functions;",
+          "comply with a legal obligation, court order or lawful request;",
+          "establish, exercise or defend legal claims;",
+          "investigate misconduct or enforce Platform policies; or",
+          "protect the rights and safety of The Vilij community.",
+        ],
+      },
+      {
+        n: "14.2",
+        lead: "Need-to-know basis",
+        text: " Safeguarding information should ordinarily be shared only with persons who require it to:",
+        items: [
+          "understand or manage the risk;",
+          "make or support a safeguarding decision;",
+          "carry out an investigation;",
+          "provide support to the person affected;",
+          "fulfil a legal, regulatory or professional duty; or",
+          "preserve relevant evidence.",
+        ],
+      },
+      {
+        n: "14.3",
+        lead: "Consent",
+        text: " Where appropriate, The Vilij may seek the consent of the person affected or, where relevant, their parent, carer or representative before sharing information. Consent will not be sought or relied upon where:",
+        items: [
+          "there is an immediate or serious risk of harm;",
+          "seeking consent may increase risk;",
+          "consent has been refused but disclosure is nevertheless necessary and lawful;",
+          "the person may lack capacity to make the relevant decision;",
+          "a Child’s welfare requires disclosure;",
+          "a legal or regulatory duty requires disclosure; or",
+          "seeking consent may prejudice an investigation.",
+        ],
+      },
+      {
+        n: "14.4",
+        lead: "Sharing without consent",
+        text: " Where information is shared without consent, the decision should record:",
+        items: [
+          "the information disclosed;",
+          "the recipient;",
+          "the purpose of disclosure;",
+          "the legal or safeguarding justification;",
+          "whether the person affected was informed;",
+          "any restrictions placed on further use or disclosure; and",
+          "the lawful basis and, where relevant, the condition relied upon for processing special category or criminal offence data.",
+        ],
+      },
+      {
+        n: "14.5",
+        lead: "Confidentiality",
+        text: " The Vilij will seek to handle safeguarding matters as confidentially as reasonably possible. However:",
+        items: [
+          "absolute confidentiality cannot be promised;",
+          "information may need to be shared to protect a person from harm;",
+          "safeguarding obligations may override ordinary expectations of confidentiality;",
+          "information may be disclosed to regulators, police, local authorities or other competent bodies; and",
+          "a person who raises a concern may not be entitled to receive detailed information about the outcome.",
+        ],
+      },
+      {
+        n: "14.6",
+        lead: "External communications",
+        text: " No person other than an authorised spokesperson should make public statements or communicate with the media about a safeguarding matter. This does not prevent:",
+        items: [
+          "lawful whistleblowing;",
+          "reporting to a regulator or statutory authority;",
+          "obtaining independent legal advice; or",
+          "exercising any other legally protected right.",
+        ],
+      },
+    ],
+  },
+  {
+    n: "15",
+    title: "Safeguarding Records and Data Protection",
+    clauses: [
+      {
+        n: "15.1",
+        text: "The Vilij will maintain appropriate records of:",
+        items: [
+          "safeguarding reports and disclosures;",
+          "initial assessments;",
+          "risk assessments;",
+          "decisions and reasons;",
+          "referrals and external communications;",
+          "protective or moderation action;",
+          "meetings, advice and consultations;",
+          "follow-up activity;",
+          "final outcomes, where known; and",
+          "lessons or remedial actions identified.",
+        ],
+      },
+      {
+        n: "15.2",
+        text: "Records should be:",
+        items: [
+          "accurate;",
+          "factual and objective;",
+          "made as soon as reasonably practicable;",
+          "dated and attributable to the person making the record;",
+          "clear about what was observed, disclosed, alleged or inferred;",
+          "clear about the source of information;",
+          "stored securely; and",
+          "accessible only to authorised persons.",
+        ],
+      },
+      {
+        n: "15.3",
+        text: "Where possible, records should distinguish between:",
+        items: ["facts;", "allegations;", "opinions;", "professional advice;", "decisions; and", "actions taken."],
+      },
+      {
+        n: "15.4",
+        text: "Safeguarding records should ordinarily be stored separately from:",
+        items: [
+          "general User account records;",
+          "routine customer service correspondence;",
+          "Expert profile information; and",
+          "ordinary personnel or contractor records.",
+        ],
+        outro: "A cross-reference may be placed on the relevant account or personnel file where necessary to alert authorised staff that a separate safeguarding record exists.",
+      },
+      {
+        n: "15.5",
+        text: "Access to safeguarding records will be limited to:",
+        items: [
+          "the DSL and Deputy Designated Safeguarding Lead;",
+          "the senior director responsible for safeguarding;",
+          "authorised personnel with a genuine need to know;",
+          "professional advisers; and",
+          "relevant statutory or regulatory bodies.",
+        ],
+        outro: "Safeguarding records may also be disclosed to relevant statutory or regulatory bodies in accordance with clause 14.",
+      },
+      {
+        n: "15.6",
+        text: "Safeguarding records will be retained for as long as reasonably necessary, taking account of:",
+        items: [
+          "the nature and seriousness of the concern;",
+          "the age of any Child involved;",
+          "the potential for delayed reporting or legal proceedings;",
+          "statutory or regulatory requirements;",
+          "professional advice;",
+          "limitation periods;",
+          "the need to identify patterns or repeat concerns; and",
+          "the rights and interests of affected individuals.",
+        ],
+        outro: "Retention periods will be determined and documented in accordance with The Vilij’s applicable retention procedures.",
+      },
+      {
+        n: "15.7",
+        text: "Safeguarding records must not be destroyed where:",
+        items: [
+          "a matter remains open;",
+          "an investigation or legal proceeding is contemplated or ongoing;",
+          "a preservation request has been received;",
+          "the information may be relevant to another Safeguarding Concern; or",
+          "destruction would be inconsistent with legal or regulatory requirements.",
+        ],
+      },
+      { n: "15.8", text: "Safeguarding information will be processed in accordance with The Vilij’s Privacy Policy and applicable data protection laws. The Vilij may process special category personal data and criminal offence information where an appropriate lawful basis and additional condition applies." },
+      {
+        n: "15.9",
+        text: "Any actual or suspected loss, unauthorised access, disclosure or alteration of safeguarding records must be reported immediately to:",
+        items: [
+          "the DSL;",
+          "the person responsible for data protection; and",
+          "any other internal or external contact required under the incident-response procedure.",
+        ],
+      },
+    ],
+  },
+  {
+    n: "16",
+    title: "Safer Recruitment, Appointment and Expert Verification",
+    clauses: [
+      {
+        n: "16.1",
+        text: "The Vilij will take reasonable and proportionate steps to assess the suitability of persons whose roles may give them:",
+        items: [
+          "access to safeguarding information;",
+          "moderation or administrative powers;",
+          "direct interaction with Users;",
+          "influence over children or Adults at Risk;",
+          "access to sensitive personal data; or",
+          "a position of trust within the community.",
+        ],
+      },
+      {
+        n: "16.2",
+        text: "The nature and extent of checks will depend on:",
+        items: [
+          "the responsibilities of the role;",
+          "the level and type of contact with Users;",
+          "whether there is direct contact with children or Adults at Risk;",
+          "access to private messaging or safeguarding records;",
+          "applicable professional or statutory requirements;",
+          "whether the role is regulated activity;",
+          "the risks identified in the relevant role assessment; and",
+          "the availability and legal permissibility of particular checks.",
+        ],
+      },
+      {
+        n: "16.3",
+        text: "Appropriate recruitment and appointment measures may include:",
+        items: [
+          "clear role descriptions;",
+          "application forms;",
+          "identity checks;",
+          "employment and qualification checks;",
+          "references;",
+          "interview and assessment;",
+          "consideration of unexplained employment gaps where relevant;",
+          "criminal record checks where lawful and appropriate;",
+          "professional registration checks;",
+          "conflict-of-interest declarations;",
+          "safeguarding declarations;",
+          "probationary or review periods;",
+          "written contractual obligations; and",
+          "safeguarding induction.",
+        ],
+      },
+      {
+        n: "16.4",
+        text: "Expert onboarding and verification may include:",
+        items: [
+          "identity verification;",
+          "qualifications and certifications;",
+          "professional registrations and memberships;",
+          "regulatory status;",
+          "insurance cover;",
+          "DBS or other criminal record information where lawful, relevant and appropriate;",
+          "professional disciplinary or enforcement history;",
+          "references;",
+          "safeguarding training;",
+          "declarations regarding investigations, allegations and sanctions;",
+          "confirmation of the Expert’s scope of practice;",
+          "review of profile claims and promotional materials; and",
+          "any further checks reasonably required in light of the services offered.",
+        ],
+      },
+      {
+        n: "16.5",
+        text: "Verification by The Vilij:",
+        items: [
+          "is intended to support risk management and Platform governance;",
+          "is not a guarantee that an individual will never present a safeguarding risk;",
+          "does not amount to accreditation, certification or endorsement;",
+          "does not replace the User’s own decision-making; and",
+          "does not transfer the Expert’s professional responsibilities to The Vilij.",
+        ],
+      },
+      {
+        n: "16.6",
+        text: "The Vilij may require staff, contractors, volunteers and Experts to:",
+        items: [
+          "update information periodically;",
+          "provide renewed insurance or registration evidence;",
+          "disclose material investigations, sanctions or changes in status;",
+          "undertake refresher training;",
+          "consent to repeat checks where lawful and appropriate; and",
+          "cooperate with audits or compliance reviews.",
+        ],
+      },
+      {
+        n: "16.7",
+        text: "Where a check or disclosure raises a concern, The Vilij will undertake a proportionate risk assessment considering:",
+        items: [
+          "the nature and relevance of the information;",
+          "the role and level of access involved;",
+          "the time elapsed;",
+          "evidence of rehabilitation or remediation;",
+          "professional or regulatory guidance;",
+          "potential risk to Users;",
+          "legal restrictions on the use of the information; and",
+          "any specialist advice obtained.",
+        ],
+      },
+      {
+        // The source prints an item "(g)" with no text — just the letter and a
+        // semicolon. It is omitted rather than published as an empty bracket,
+        // and (h) and (i) keep the letters the document actually prints.
+        n: "16.8",
+        text: "Possible outcomes may include:",
+        items: [
+          "further enquiries;",
+          "additional safeguards;",
+          "restricted duties or access;",
+          "supervision;",
+          "deferral of appointment;",
+          "refusal of appointment, engagement or membership, or withdrawal of an offer;",
+          "suspension; or",
+          "termination.",
+        ],
+        itemLabels: ["a", "b", "c", "d", "e", "f", "h", "i"],
+      },
+    ],
+  },
+  {
+    n: "17",
+    title: "Training, Induction and Support",
+    clauses: [
+      {
+        n: "17.1",
+        text: "The Vilij will provide safeguarding information, induction and training appropriate to each person’s role and level of responsibility. All directors, staff, contractors, moderators and volunteers must receive induction appropriate to their role covering:",
+        items: [
+          "The Vilij’s safeguarding principles;",
+          "recognising possible abuse, neglect, exploitation and online harm;",
+          "responding to disclosures;",
+          "reporting routes;",
+          "emergency action;",
+          "confidentiality and information sharing;",
+          "record keeping;",
+          "professional boundaries;",
+          "online safety;",
+          "relevant Platform policies; and",
+          "the consequences of failing to report or comply with safeguarding requirements.",
+        ],
+      },
+      {
+        n: "17.2",
+        text: "The DSL and Deputy Designated Safeguarding Lead must receive additional training appropriate to their responsibilities, including:",
+        items: [
+          "risk assessment;",
+          "decision-making and referrals;",
+          "allegations against persons in positions of trust;",
+          "safeguarding children with SEND;",
+          "adult safeguarding;",
+          "online harms;",
+          "information sharing and data protection;",
+          "record keeping;",
+          "liaison with statutory agencies;",
+          "managing conflicts of interest;",
+          "trauma-informed communication; and",
+          "governance and incident review.",
+        ],
+      },
+      {
+        n: "17.3",
+        text: "Moderators and community managers should receive role-specific training covering:",
+        items: [
+          "identifying potentially harmful content;",
+          "handling disclosures made through posts or messages;",
+          "preserving evidence;",
+          "escalation thresholds;",
+          "privacy and confidentiality;",
+          "applying moderation tools consistently;",
+          "recognising grooming, coercion and manipulation; and",
+          "supporting Users without attempting to provide professional safeguarding services.",
+        ],
+      },
+      {
+        n: "17.4",
+        text: "Experts may be required to complete or evidence safeguarding training appropriate to:",
+        items: [
+          "their profession;",
+          "the nature of their services;",
+          "the extent of contact with children or Adults at Risk;",
+          "regulatory requirements; and",
+          "the safeguarding risks associated with their role.",
+        ],
+      },
+      {
+        n: "17.5",
+        text: "Training should be refreshed:",
+        items: [
+          "periodically;",
+          "when a person’s role changes;",
+          "following a serious incident or identified failure;",
+          "when material legal or regulatory changes occur;",
+          "when new Platform functionality creates new risks; or",
+          "when the DSL considers further training necessary.",
+        ],
+      },
+      {
+        n: "17.6",
+        text: "The Vilij will seek to support persons involved in safeguarding matters by providing, where appropriate:",
+        items: [
+          "supervision;",
+          "debriefing;",
+          "access to specialist advice;",
+          "reasonable adjustments;",
+          "wellbeing support; and",
+          "clear communication about their role and responsibilities.",
+        ],
+      },
+    ],
+  },
+  {
+    n: "18",
+    title: "Risk Management, Monitoring and Learning",
+    clauses: [
+      {
+        n: "18.1",
+        text: "Safeguarding will form part of The Vilij’s wider governance and risk-management framework. The Vilij will seek to identify and assess safeguarding risks arising from:",
+        items: [
+          "Platform design and functionality;",
+          "user-generated content;",
+          "direct messaging;",
+          "Expert participation;",
+          "online and in-person events;",
+          "access to sensitive information;",
+          "commercial partnerships;",
+          "third-party service providers;",
+          "staff, contractor and volunteer roles;",
+          "new services or membership models; and",
+          "changes to law, regulation or sector practice.",
+        ],
+      },
+      {
+        n: "18.2",
+        text: "Safeguarding risk assessments should be undertaken:",
+        items: [
+          "before introducing material new functionality;",
+          "before commencing an activity involving direct contact with children or Adults at Risk;",
+          "before entering material partnerships involving safeguarding risks;",
+          "following a serious incident or near miss;",
+          "where a pattern of complaints or reports emerges; and",
+          "at other intervals considered appropriate by the DSL or directors.",
+        ],
+      },
+      {
+        n: "18.3",
+        text: "The Vilij will monitor, so far as reasonably practicable:",
+        items: [
+          "the number and type of safeguarding reports;",
+          "response and resolution times;",
+          "referral patterns;",
+          "repeated concerns involving the same User, Expert or feature;",
+          "moderation outcomes;",
+          "training completion;",
+          "compliance with onboarding and verification requirements;",
+          "data-security incidents affecting safeguarding information; and",
+          "implementation of lessons and remedial actions.",
+        ],
+      },
+      {
+        n: "18.4",
+        text: "Serious incidents and significant near misses should be reviewed to identify:",
+        items: [
+          "what happened;",
+          "whether existing policies and controls were followed;",
+          "whether risk indicators were missed;",
+          "whether action was sufficiently prompt;",
+          "whether information was shared appropriately;",
+          "whether affected persons received appropriate support;",
+          "whether changes to systems, training or resources are required; and",
+          "who is responsible for implementing and monitoring any action plan.",
+        ],
+      },
+      {
+        n: "18.5",
+        text: "The Vilij will seek to develop a culture in which:",
+        items: [
+          "Safeguarding Concerns can be raised without fear of retaliation;",
+          "mistakes and near misses are reported;",
+          "staff and Experts understand that safeguarding is part of everyday practice;",
+          "concerns are addressed rather than minimised;",
+          "learning is shared appropriately; and",
+          "directors maintain effective oversight.",
+        ],
+      },
+    ],
+  },
+  {
+    n: "19",
+    title: "Policy Governance, Review and Contacts",
+    clauses: [
+      {
+        n: "19.1",
+        lead: "Policy owner: Charlene Andruskeviciu",
+        text: " The directors of The Vilij retain ultimate responsibility for ensuring that appropriate safeguarding governance and resources are in place.",
+      },
+      {
+        n: "19.2",
+        lead: "Review",
+        text: " This policy will be reviewed:",
+        items: [
+          "at least annually;",
+          "following a serious safeguarding incident;",
+          "where an audit or review identifies a material weakness;",
+          "when the Platform’s functionality or business model changes materially;",
+          "following a significant change in law, regulation or recognised safeguarding practice; or",
+          "where the DSL or directors otherwise consider a review necessary.",
+        ],
+      },
+      {
+        n: "19.3",
+        lead: "Approval and version control",
+        text: "",
+        bullets: [
+          "Policy approved by: Stephanie Talbot",
+          "Approval date: 24 July 2026",
+          "Effective date: 24 July 2026",
+          "Version number: 1.1",
+          "Last reviewed: 24 July 2026",
+          "Next review date: 23 July 2027",
+        ],
+      },
+      {
+        n: "19.4",
+        lead: "Internal safeguarding contacts",
+        text: "",
+        steps: [
+          {
+            title: "Designated Safeguarding Lead",
+            bullets: [
+              "Name: Charlene Andruskevicius",
+              "Role: CEO",
+              "Email: charlie@thevilij.co.uk",
+              "Telephone: 07968 212108",
+            ],
+          },
+          {
+            title: "Deputy Designated Safeguarding Lead",
+            bullets: [
+              "Name: Stephanie Talbot",
+              "Role: CFO",
+              "Email: steph@thevilij.co.uk",
+              "Telephone: 07598 179440",
+            ],
+          },
+          {
+            title: "Senior director responsible for safeguarding",
+            bullets: [
+              "Name: Charlene Andruskevicius",
+              "Role: CEO",
+              "Email: charlie@thevilij.co.uk",
+              "Telephone: 07968 212108",
+            ],
+          },
+          {
+            title: "Safeguarding reporting email",
+            bullets: ["safeguarding@thevilij.co.uk"],
+          },
+        ],
+      },
+      { n: "19.5", lead: "Emergency and external contacts", text: "" },
+      {
+        n: "19.6",
+        text: "The appropriate external contact will depend on the nature of the concern and the location of the person affected. Current contact details should always be checked before making a referral.",
+        bullets: [
+          "Emergency services: 999",
+          "Police non-emergency: 101",
+          "Relevant children’s safeguarding service: contact the children’s social care or safeguarding service responsible for the area in which the child lives. Current contact details should be obtained from the relevant council, Health and Social Care Trust or other competent authority’s official website.",
+          "Relevant adult safeguarding service: contact the adult safeguarding service responsible for the area in which the Adult at Risk lives. Current contact details should be obtained from the relevant council, Health and Social Care Trust or other competent authority’s official website.",
+          "Local Authority Designated Officer or equivalent service: where a concern relates to an allegation against a person who works or volunteers with children, contact the Local Authority Designated Officer or equivalent service responsible for the area in which the person works or in which the alleged incident occurred.",
+        ],
+        outro: "If there is uncertainty about which authority is responsible, the referral or request for advice must not be delayed. The DSL should contact the authority most likely to be responsible and ask for the matter to be redirected or for details of the correct safeguarding team. NSPCC Helpline: 0808 800 5000 between 10am and 4pm Monday to Friday. The DSL may also seek advice from another appropriate national or specialist safeguarding organisation, depending on the nature of the concern.",
+      },
+      {
+        n: "19.7",
+        lead: "Accessibility",
+        text: " The Vilij will seek to make this policy and its safeguarding reporting routes reasonably accessible.",
+        outro: "Requests for this policy in an alternative format, or for assistance making a safeguarding report, may be sent to: Email: safeguarding@thevilij.co.uk",
+      },
+      { n: "19.8", lead: "Related documents", text: " The documents listed in clause 2.5 form part of The Vilij’s wider safeguarding framework." },
+      { n: "19.9", lead: "Statement of commitment", text: " The Vilij is committed to maintaining a community in which Safeguarding Concerns are recognised, reported and addressed appropriately. Everyone participating in or acting on behalf of The Vilij has a role in promoting safety, treating others with respect and taking reasonable action where a person may be at risk of harm." },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Safeguarding Policy | The Vilij"
+  description="How The Vilij protects children and adults at risk: recognising and reporting safeguarding concerns, online safety, moderation, record keeping and who to contact."
+>
+    <style is:global>
+      body { margin: 0; }
+      * { box-sizing: border-box; }
+      .vlink:hover { color: #f28121 !important; }
+      .vpill:hover { filter: brightness(1.05); }
+      .vnav-cta:hover { background: #15838a !important; }
+      .vclause { display: grid; grid-template-columns: 72px 1fr; gap: 0 12px; margin: 0 0 20px; }
+      .vsub { display: grid; grid-template-columns: 44px 1fr; gap: 0 12px; margin: 12px 0 0; }
+      .vtoc a:hover { color: #f28121 !important; }
+      @media (max-width: 820px) {
+        .vclause { grid-template-columns: 54px 1fr; }
+        .vsub { grid-template-columns: 34px 1fr; }
+      }
+    </style><div style="font-family:Mulish,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
+
+      <!-- ===== HEADER + HERO ===== -->
+      <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
+        <div style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
+          <SiteNav />
+          <div style="padding:54px 0 70px;max-width:820px;">
+            <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Safeguarding Policy</h1>
+            <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:640px;">Keeping children and adults at risk safe is everyone&rsquo;s job.</p>
+            <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0 0 30px;max-width:640px;">This policy sets out how The Vilij recognises, reports and responds to safeguarding concerns &mdash; what we expect of everyone in the community, and what we will do when something is raised.</p>
+            <p style="font-family:Mulish;font-weight:700;font-size:16px;letter-spacing:.4px;color:#1f9ca0;margin:0;display:inline-block;background:rgba(255,255,255,0.6);border-radius:24px;padding:11px 22px;">Effective from <time datetime="2026-07-24">24 July 2026</time></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== BAND ===== -->
+      <div style="background:#f28121;text-align:center;padding:26px 24px;">
+        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">If someone is in immediate danger, call 999 first.</p>
+      </div>
+
+      <!-- ===== CONTENTS ===== -->
+      <LegalContents sections={sections} heading={"What&rsquo;s In This Policy"} />
+
+      <!-- ===== POLICY BODY ===== -->
+      <LegalSections sections={sections} />
+
+      <!-- ===== QUESTIONS CTA ===== -->
+      <section style="background:#f28121;text-align:center;padding:66px 24px;">
+        <p style="font-family:Mulish;font-size:22px;color:#ffe6cf;margin:0 0 10px;">Worried about someone?</p>
+        <h2 style="font-family:Quicksand;font-weight:700;font-size:62px;color:#ffffff;margin:0 0 22px;">Tell us. We will act.</h2>
+        <p style="font-family:Mulish;font-weight:600;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You do not need to be certain before you report something.<br />If a person is in immediate danger, contact the emergency services first.</p>
+        <a href="mailto:safeguarding@thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#f28121;font-family:Quicksand;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">REPORT A CONCERN <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <SiteFooter />
+
+    </div>
+</BaseLayout>
