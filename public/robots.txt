@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Newsletter confirmation page. Reachable only from the footer form and
+# already marked noindex — no value in crawling it.
+Disallow: /newsletter-thanks
+
+Sitemap: https://marketing.thevilij.co.uk/sitemap.xml
