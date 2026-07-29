@@ -1,0 +1,151 @@
+---
+// The Vilij — Newsletter sign-up confirmation
+// This is the `action` target of the footer newsletter form. It must be a plain
+// GET destination: Cloudflare Pages serves static assets and returns 405 to POST.
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon-512.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+    <title>The Vilij &mdash; You&rsquo;re On The List</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Mulish:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
+      body { margin: 0; }
+      * { box-sizing: border-box; }
+      .vlink:hover { color: #f28121 !important; }
+      .vpill:hover { filter: brightness(1.05); }
+      .vnav-cta:hover { background: #15838a !important; }
+    </style>
+  </head>
+  <body>
+    <div style="font-family:Mulish,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
+
+      <!-- ===== HEADER + HERO ===== -->
+      <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
+        <div style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
+          <nav style="display:flex;align-items:center;justify-content:space-between;">
+            <a href="/"><img src="/assets/logo.png" alt="The Vilij" style="height:62px;width:auto;display:block;" /></a>
+            <div style="display:flex;align-items:center;gap:42px;">
+              <a href="/" class="vlink" style="font-family:Quicksand;font-weight:700;font-size:18px;color:#1f9ca0;text-decoration:none;">Home</a>
+              <a href="#" class="vlink" style="font-family:Quicksand;font-weight:600;font-size:18px;color:#1f9ca0;text-decoration:none;">Explore The Vilij</a>
+              <a href="#" class="vlink" style="font-family:Quicksand;font-weight:600;font-size:18px;color:#1f9ca0;text-decoration:none;">About Us</a>
+              <a href="#" class="vnav-cta vpill" style="font-family:Quicksand;font-weight:700;font-size:16px;letter-spacing:.5px;color:#ffffff;background:#1f9ca0;padding:13px 30px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(31,156,160,0.3);">SIGN UP</a>
+            </div>
+          </nav>
+          <div style="padding:80px 0 100px;text-align:center;">
+            <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">You&rsquo;re on the list</h1>
+            <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.4;color:#353535;margin:0 auto 22px;max-width:620px;">Thank you for joining our newsletter.</p>
+            <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0 auto 40px;max-width:620px;">We&rsquo;ll be in touch with news from around the Vilij &mdash; what&rsquo;s on, what&rsquo;s new, and the things we think will genuinely help. You can unsubscribe at any time.</p>
+            <a href="/" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#f28121;color:#ffffff;font-family:Quicksand;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(242,129,33,0.28);">BACK TO THE VILIJ <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== BAND ===== -->
+      <div style="background:#f28121;text-align:center;padding:26px 24px;">
+        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">Nobody should have to do this alone.</p>
+      </div>
+
+      <!-- ===== WHERE NEXT ===== -->
+      <section style="background:#ffffff;padding:80px 0;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
+          <h2 style="font-family:Quicksand;font-weight:700;font-size:50px;color:#1f9ca0;margin:0 0 40px;text-align:center;">While You&rsquo;re Here</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;">
+            <a href="/cafe" style="text-decoration:none;background:#f28121;border-radius:22px;padding:34px 32px;display:block;">
+              <h3 style="font-family:Quicksand;font-weight:700;font-size:34px;color:#fff;margin:0 0 12px;">The Caf&eacute;</h3>
+              <p style="font-family:Mulish;font-size:17px;line-height:1.55;color:rgba(255,255,255,0.95);margin:0;">Where the kettle&rsquo;s always on and someone always understands.</p>
+            </a>
+            <a href="/library" style="text-decoration:none;background:#1f9ca0;border-radius:22px;padding:34px 32px;display:block;">
+              <h3 style="font-family:Quicksand;font-weight:700;font-size:34px;color:#fff;margin:0 0 12px;">The Library</h3>
+              <p style="font-family:Mulish;font-size:17px;line-height:1.55;color:rgba(255,255,255,0.95);margin:0;">Practical resources at your fingertips, ready whenever you are.</p>
+            </a>
+            <a href="/wellbeing" style="text-decoration:none;background:#f28121;border-radius:22px;padding:34px 32px;display:block;">
+              <h3 style="font-family:Quicksand;font-weight:700;font-size:34px;color:#fff;margin:0 0 12px;">Wellbeing Centre</h3>
+              <p style="font-family:Mulish;font-size:17px;line-height:1.55;color:rgba(255,255,255,0.95);margin:0;">Because you matter too, not just everyone you look after.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FOOTER ===== -->
+      <footer style="background:#ffffff;padding:34px 0 30px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1.4fr;gap:40px;">
+          <div>
+            <img src="/assets/footerlogo.png" alt="Vilij" style="height:48px;width:auto;display:block;margin-bottom:18px;" />
+            <p style="font-family:Mulish;font-size:17px;line-height:1.55;color:#555;margin:0 0 30px;max-width:280px;">Lorem ipsum dolor ame consectetue adipiscin diam and nonumy euismod laoret dolore magna aliuam.</p>
+            <a href="#" id="to-top" style="display:inline-flex;align-items:center;gap:14px;text-decoration:none;cursor:pointer;">
+              <span style="width:52px;height:52px;border-radius:50%;border:2px solid #1f9ca0;display:inline-flex;align-items:center;justify-content:center;color:#1f9ca0;font-size:22px;">&#8593;</span>
+              <span style="font-family:Mulish;font-size:18px;color:#444;">Back to the top</span>
+            </a>
+          </div>
+          <div>
+            <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">About</h4>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">About Us</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Our Story</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">News</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Become a Vilij Elder</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Quick Link</h4>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
+              <li><a href="/cafe" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Caf&eacute;</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Free Courses</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Addmition</a></li>
+              <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Request a Demo</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 18px;">Join Our Newsletter</h4>
+            <p style="font-family:Mulish;font-weight:700;font-size:17px;line-height:1.5;color:#444;margin:0 0 20px;">Lorem ipsum dolor amet, consectetuer adipiscing diam nonummy euismod tincidun.</p>
+            <form method="get" action="/newsletter-thanks" style="margin:0;">
+              <div style="display:flex;gap:10px;margin-bottom:16px;max-width:380px;">
+                <label for="nl-email" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Email address</label>
+                <input id="nl-email" name="email" type="email" required placeholder="Your Email Here" style="flex:1;font-family:Mulish;font-size:16px;padding:13px 16px;border:1px solid #ddd;border-radius:8px;outline:none;color:#333;" />
+                <button type="submit" class="vpill" style="font-family:Mulish;font-weight:700;font-size:16px;color:#fff;background:#f28121;border:none;border-radius:8px;padding:0 22px;cursor:pointer;">Subscribe</button>
+              </div>
+              <label style="display:flex;align-items:flex-start;gap:10px;font-family:Mulish;font-size:15px;line-height:1.5;color:#777;cursor:pointer;max-width:380px;">
+                <input type="checkbox" name="newsletter_opt_in" value="yes" required style="width:16px;height:16px;margin-top:3px;flex:none;accent-color:#f28121;" />
+                <span>I agree to receive newsletter emails and accept the <a href="/privacy" class="vlink" style="color:#777;text-decoration:underline;">privacy policy</a>.</span>
+              </label>
+            </form>
+          </div>
+        </div>
+        <div style="max-width:1240px;margin:46px auto 0;padding:0 48px;">
+          <div style="border-top:1px solid #e7e7e7;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+            <span style="font-family:Mulish;font-size:15px;color:#999;">&copy; Copyright 2026. All Rights Design by Revive Creative.</span>
+            <div style="display:flex;align-items:center;gap:16px;font-family:Mulish;font-size:15px;color:#666;">
+              <a href="#" class="vlink" style="color:#666;text-decoration:none;">Terms</a><span style="color:#ccc;">&mdash;</span>
+              <a href="/privacy" class="vlink" style="color:#666;text-decoration:none;">Privacy</a><span style="color:#ccc;">&mdash;</span>
+              <a href="#" class="vlink" style="color:#666;text-decoration:none;">Support</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script>
+      (function () {
+        const toTop = document.getElementById("to-top");
+        if (toTop) toTop.addEventListener("click", function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+      })();
+    </script>
+
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/148725470.js" is:inline></script>
+    <!-- End of HubSpot Embed Code -->
+  </body>
+</html>
