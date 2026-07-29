@@ -5,10 +5,15 @@
 // C7 in content-issues.md. The audit recommends hiding that slot until a second
 // real, consented quote exists.
 //
-// Setting this to false hides the placeholder slot on all six pages at once.
-// It is left true here because that is the behaviour today and the decision is
-// not ours to make.
-export const showSecondTestimonial = true;
+// Set false on 29 July 2026: the placeholder slot is hidden on all six pages
+// until a second real, consented quote exists. The data itself is untouched —
+// each page still defines its second testimonial, invented attribution and all,
+// so restoring it is a one-word change here.
+//
+// With one testimonial there is nothing to page to, so TestimonialCarousel also
+// drops the prev/next controls when the list has a single entry. A next button
+// that does nothing is worse than the placeholder it replaced.
+export const showSecondTestimonial = false;
 
 export interface Testimonial {
   quote: string;

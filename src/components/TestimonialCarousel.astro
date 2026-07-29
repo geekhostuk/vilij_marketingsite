@@ -11,6 +11,13 @@
 // and the ★ glyphs themselves are hidden from assistive technology. A slot with
 // no rating (stars: null) carries neither role nor label and stays display:none,
 // so it announces nothing at all.
+//
+// C3 — with showSecondTestimonial off the list has a single entry, and a
+// carousel of one is not a carousel. The prev/next controls are not rendered at
+// all in that case rather than disabled or hidden with CSS: there is nothing to
+// page to, so there should be nothing to tab to either. The role line drops its
+// bottom margin at the same time so the column does not end in dead space.
+// (There are no dot indicators on this carousel — the controls are the only nav.)
 import type { Testimonial } from "../data/testimonials";
 
 interface Props {
@@ -19,6 +26,7 @@ interface Props {
 }
 const { list, showQuoteMark = true } = Astro.props;
 const first = list[0];
+const hasNav = list.length > 1;
 ---
 <section style="background:#ffffff;padding:74px 0 80px;">
   <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
@@ -41,11 +49,13 @@ const first = list[0];
         <div id="t-stars" role={first.stars ? "img" : undefined} aria-label={first.stars ? `Rated ${first.stars} out of 5` : undefined} style={`color:#f28121;font-size:28px;letter-spacing:6px;margin-bottom:18px;${first.stars ? "" : "display:none;"}`}><span id="t-star-glyphs" aria-hidden="true">{first.stars ? "★".repeat(first.stars) : ""}</span></div>
         <p id="t-quote" style="font-family:Mulish;font-size:21px;line-height:1.6;color:#5a5a5a;margin:0 0 28px;max-width:560px;">{first.quote}</p>
         <p id="t-name" style="font-family:Mulish;font-weight:700;font-size:24px;color:#222;margin:0 0 4px;">{first.name}</p>
-        <p id="t-role" style="font-family:Mulish;font-size:16px;color:#888;margin:0 0 30px;">{first.role}</p>
+        <p id="t-role" style={`font-family:Mulish;font-size:16px;color:#888;margin:0${hasNav ? " 0 30px" : ""};`}>{first.role}</p>
+        {hasNav && (
         <div style="display:flex;gap:16px;">
           <button id="t-prev" aria-label="Previous" style="width:58px;height:58px;border-radius:50%;border:2px solid #f0c79e;background:#fff;color:#f28121;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;">&#8249;</button>
           <button id="t-next" aria-label="Next" style="width:58px;height:58px;border-radius:50%;border:none;background:#1f9ca0;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;">&#8250;</button>
         </div>
+        )}
       </div>
     </div>
   </div>
