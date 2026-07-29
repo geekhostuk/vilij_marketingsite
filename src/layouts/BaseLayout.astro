@@ -37,6 +37,15 @@ const fontHref =
   "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Mulish:wght@400;500;600;700;800" +
   extraFonts +
   "&display=swap";
+
+// C50 — canonical URL, derived from `site` in astro.config.mjs and this page's
+// own path. Astro builds to /cafe/index.html and Cloudflare Pages serves that at
+// /cafe, redirecting /cafe/ to it, so the canonical drops the trailing slash on
+// everything except the homepage. That matches public/sitemap.xml and every
+// internal link on the site: a canonical pointing at a URL that redirects is
+// worse than no canonical at all.
+const path = Astro.url.pathname.replace(/\/+$/, "");
+const canonical = new URL(path || "/", Astro.site).href;
 ---
 
 <!DOCTYPE html>
@@ -50,6 +59,7 @@ const fontHref =
     <title set:html={title}></title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href={fontHref} rel="stylesheet" />
