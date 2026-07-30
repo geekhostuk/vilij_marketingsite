@@ -3,6 +3,27 @@
 //
 // `framed` is the rounded, shadowed treatment used on the content pages.
 // The homepage uses the unframed variant for its village illustration.
+//
+// Damien, 30 Jul 2026: "Louie on the beach image needs to be the same size as
+// all the rest of the blocks and so does the one of Steph and grandson", and on
+// /hall, "need to be full size blocks to complete the grid look."
+//
+// They were not, because the framed wrapper carried `align-self:start` and the
+// image `height:auto` — so the tile sized itself to the photo's own aspect ratio
+// and left a gap underneath wherever the cards in its row were taller. The tile
+// now stretches to the row like every other grid item, and the photo covers it.
+//
+// The image is absolutely positioned on purpose. Left in flow it would
+// contribute its own height back to the wrapper, which is the circular
+// constraint that made `height:100%` unreliable here; out of flow, the
+// wrapper's height comes from the grid row alone. `min-height` is the floor for
+// the single-column case at <=600px, where the row has no taller sibling to
+// stretch to and would otherwise collapse.
+//
+// Note this crops. The photos are landscape and the blocks are not, so cover
+// takes the middle of the frame: p_beach (840x500) and p_grand (760x480) hold up
+// fine, but p_jose (494x335) is both the smallest and the widest and loses the
+// most. A taller crop of that one would be worth having.
 interface Props {
   label: string;
   img: string;
@@ -11,10 +32,12 @@ interface Props {
 }
 const { label, img, alt, framed = true } = Astro.props;
 const wrapper = framed
-  ? "border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(40,80,90,0.12);align-self:start;"
+  ? "position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(40,80,90,0.12);align-self:stretch;min-height:260px;"
   : "display:flex;align-items:center;justify-content:center;padding:10px;";
 ---
 <Fragment set:html={` <!-- ${label} --> `} />
 <div style={wrapper}>
-  <img src={img} alt={alt} style="width:100%;height:auto;display:block;" />
+  <img src={img} alt={alt} style={framed
+    ? "position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"
+    : "width:100%;height:auto;display:block;"} />
 </div>

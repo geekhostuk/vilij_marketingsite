@@ -57,7 +57,6 @@ Roughly 19–20 `href="#"` placeholders per content page.
 | # | Priority | Issue | Where |
 |---|----------|-------|-------|
 | 22 | **P3** | Styling is entirely inline `style` attributes, so there's no design-token layer — colours (`#1f9ca0`, `#f28121`) and fonts are repeated hundreds of times. Makes any rebrand or accessibility contrast fix a find-and-replace exercise. **Partly mitigated, not resolved:** `src/styles/responsive.css` now exists, but it is a responsive layer, not a token layer, and it made the inline styles slightly more load-bearing — its type ramp keys on the literal `font-size:NNpx` substring in each `style` attribute, so changing an inline size means updating the ramp too. Read that file's header before touching a `font-size` anywhere. | `src/pages/*` |
-| 29 | **P2** | **`/cafe` clips its right-hand card column on desktop.** A flex item's automatic minimum width is its min-content width, and for an `<img>` that is the file's intrinsic pixel size — so `flex:0 0 42%` on the 800px-wide `p_brew.png` means "at least 800px", which drags the whole `1fr 1fr` card track out to 986px regardless of viewport. The page wrapper's `overflow-x:hidden` then silently cuts off the surplus: at 1440px roughly 270px of the second column is not on screen. `/expert-hub` carries `min-width:0` on its card items and does not have this; `/cafe` and `/hall` never got them. Fixed at tablet and below in `responsive.css`, but **deliberately not fixed above 1180px** — that would change the signed-off desktop layout, which is a call for whoever owns the design. | `src/pages/cafe.astro` cards 2, 4 and 6 |
 | 23 | **P3** | No `sitemap.xml` or `robots.txt`. `astro.config.mjs` has `site` set, so `@astrojs/sitemap` would be a drop-in addition. | Project root |
 | 24 | **P3** | No 404 page — Cloudflare Pages will serve its own generic one. | `src/pages/404.astro` |
 
@@ -73,6 +72,18 @@ Roughly 19–20 `href="#"` placeholders per content page.
 
 ## Recently resolved
 
+- ~~**#29 — `/cafe` clips its right-hand card column on desktop**~~ — fixed 30 July 2026, as part of
+  Damien's feedback pass ("the blocks are a bit of a mess and don't line up"). A flex item's automatic
+  minimum size is its min-content width, and for an `<img>` that is the file's intrinsic pixel size — so
+  `flex:0 0 42%` on the 800px-wide `p_brew.png` meant "at least 800px", dragging the `1fr 1fr` track out to
+  986px at every viewport; the wrapper's `overflow-x:hidden` then cut the surplus, hiding roughly 270px of
+  the second column at 1440px. `responsive.css` had unlocked this at <=1180px only, deliberately, because
+  fixing it above that moves the signed-off desktop layout. Damien owns the design and has asked for it, so
+  the `min-width:0` chain now sits in the `<style is:global>` blocks of `/cafe` and `/hall` — the two pages
+  that never got it; `/expert-hub` already carried it inline. The six `/cafe` card photos also gained
+  explicit heights and `object-fit:cover`, which is what makes them fill their boxes rather than sit at
+  their own aspect ratio. Still open and **not** fixed by this: those photos are 256–325px originals, so
+  they now fill correctly but remain soft. Bigger sources are needed from Damien.
 - ~~**#20 — the site is not responsive**~~ — fixed 30 July 2026. `src/styles/responsive.css` is the
   whole of it: one stylesheet, imported once by `BaseLayout`, in which every rule sits inside a
   `max-width` media query and carries `!important` (inline `style` attributes outrank any plain

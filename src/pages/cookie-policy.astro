@@ -93,7 +93,7 @@ const sections: LegalSection[] = [
     n: "4",
     title: "The categories of cookie we use",
     clauses: [
-      { n: "4.1", lead: "Strictly necessary.", text: " Cookies that are required for the website to work, to keep it secure, or to remember that you have told us what you want. The cookie banner does not offer a switch for these, because switching them off is not something we can meaningfully offer: the site cannot be delivered without them, and the cookie that records your choice is what stops us asking you again. You can still block them in your browser — the website may then not work properly, and we will have no way of remembering that you refused anything." },
+      { n: "4.1", lead: "Strictly necessary.", text: " Cookies that are required for the website to work, to keep it secure, or to remember that you have told us what you want. The cookie banner does not offer a switch for these, because switching them off is not something we can meaningfully offer: the site cannot be delivered without them, and the cookie that records your choice is what stops us asking you again. You can still block them in your browser, though the website may then not work properly, and we will have no way of remembering that you refused anything." },
       { n: "4.2", lead: "Functional.", text: " Cookies that remember choices you have made about how the site looks or behaves, so that you do not have to make them again. We do not currently use any. The cookie that records your cookie choice is treated as strictly necessary rather than functional, because without it we could not honour a refusal." },
       { n: "4.3", lead: "Analytics and performance.", text: " Cookies that tell us how the website is used: which pages are read, how long people stay and where they arrived from. These are not necessary for the website to work, and none of them is set unless you accept them." },
       { n: "4.4", lead: "Advertising and targeting.", text: " We do not use these on this website." },
@@ -104,7 +104,7 @@ const sections: LegalSection[] = [
     n: "5",
     title: "The cookies used on this website",
     clauses: [
-      { n: "5.1", text: `This website sets one first-party cookie of its own — ${CONSENT_COOKIE}, which records the cookie choice you made — and nothing else. Every other cookie in the table below is set by one of the third-party services described in section 6, and the analytics ones are set only if you accept them.` },
+      { n: "5.1", text: `This website sets one first-party cookie of its own (${CONSENT_COOKIE}, which records the cookie choice you made) and nothing else. Every other cookie in the table below is set by one of the third-party services described in section 6, and the analytics ones are set only if you accept them.` },
       {
         n: "5.2",
         text: "The cookies that may be set when you visit this website are:",
@@ -112,10 +112,10 @@ const sections: LegalSection[] = [
           headers: ["Cookie", "Set by", "Purpose", "Category", "Typical lifespan"],
           rows: [
             [CONSENT_COOKIE, "The Vilij", "Records the choice you made in the cookie banner: whether you accepted or refused analytics cookies, the date and time you chose, and the version of this policy you were shown. It contains no identifier and nothing about you.", "Strictly necessary", "6 months from the date you choose. If you closed the banner without choosing, it lasts only until you close your browser, and you will be asked again next time."],
-            ["__hstc", "HubSpot", "The main analytics cookie. Records the domain, a visitor identifier, the first and most recent visit and the number of visits.", "Analytics — only if you accept", "6 months"],
-            ["hubspotutk", "HubSpot", "Identifies a returning browser so that repeat visits are not counted as new ones.", "Analytics — only if you accept", "6 months"],
-            ["__hssc", "HubSpot", "Tracks a single browsing session and whether the visit count needs incrementing.", "Analytics — only if you accept", "30 minutes"],
-            ["__hssrc", "HubSpot", "Records whether the visitor has restarted their browser, so a new session can be started.", "Analytics — only if you accept", "Session"],
+            ["__hstc", "HubSpot", "The main analytics cookie. Records the domain, a visitor identifier, the first and most recent visit and the number of visits.", "Analytics, only if you accept", "6 months"],
+            ["hubspotutk", "HubSpot", "Identifies a returning browser so that repeat visits are not counted as new ones.", "Analytics, only if you accept", "6 months"],
+            ["__hssc", "HubSpot", "Tracks a single browsing session and whether the visit count needs incrementing.", "Analytics, only if you accept", "30 minutes"],
+            ["__hssrc", "HubSpot", "Records whether the visitor has restarted their browser, so a new session can be started.", "Analytics, only if you accept", "Session"],
             ["__cf_bm", "Cloudflare", "Distinguishes people from automated traffic. Set only where Cloudflare bot protection is active.", "Strictly necessary", "30 minutes"],
           ],
         },
@@ -143,7 +143,7 @@ const sections: LegalSection[] = [
     n: "7",
     title: "How to control cookies",
     clauses: [
-      { n: "7.1", text: "The first time you visit, a banner asks whether you are willing to accept analytics cookies. It offers two choices of equal prominence — accept or reject — and nothing is set while you decide. Refusing is exactly as easy as accepting, and takes the same single click." },
+      { n: "7.1", text: "The first time you visit, a banner asks whether you are willing to accept analytics cookies. It offers two choices of equal prominence (accept or reject), and nothing is set while you decide. Refusing is exactly as easy as accepting, and takes the same single click." },
       { n: "7.2", text: "You do not have to choose at all. Closing the banner, or pressing Escape, dismisses it without accepting anything: no analytics cookies are set, and every page remains fully readable. We will ask again next time you visit." },
       {
         n: "7.3",
@@ -151,14 +151,14 @@ const sections: LegalSection[] = [
         textHtml: 'You can change your mind at any time. The &ldquo;Cookie preferences&rdquo; link in the footer of every page reopens the banner, and the choice you make there replaces the one before it. If you turn analytics cookies off having previously accepted them, we delete the four HubSpot cookies listed in <a href="#s5" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">section 5.2</a> and reload the page without the script that sets them.',
       },
       { n: "7.4", text: "We will also ask again if this policy changes materially. Your choice is stored with the version of this policy it was given against, so if we begin using cookies in a way this document does not describe, the old answer stops applying and the banner reappears." },
-      { n: "7.5", text: "If your browser sends a Global Privacy Control signal, we treat it as a refusal of analytics cookies. We do not set them, and we do not show you the banner — you have already answered the question at the browser level, and being asked again would be ignoring you. You can still override this deliberately using the “Cookie preferences” link if you want to. We do not respond to the older “Do Not Track” header, which has no agreed meaning and was withdrawn as a standard." },
-      { n: "7.6", text: "Separately from all of the above, you can control and delete cookies through your browser settings. Every major browser lets you see what has been set, delete it, block cookies from particular sites, or block all cookies. This works whatever we do, which is why it is worth knowing about — but on this website it should not be necessary to refuse analytics cookies." },
+      { n: "7.5", text: "If your browser sends a Global Privacy Control signal, we treat it as a refusal of analytics cookies. We do not set them, and we do not show you the banner: you have already answered the question at the browser level, and being asked again would be ignoring you. You can still override this deliberately using the “Cookie preferences” link if you want to. We do not respond to the older “Do Not Track” header, which has no agreed meaning and was withdrawn as a standard." },
+      { n: "7.6", text: "Separately from all of the above, you can control and delete cookies through your browser settings. Every major browser lets you see what has been set, delete it, block cookies from particular sites, or block all cookies. This works whatever we do, which is why it is worth knowing about, but on this website it should not be necessary to refuse analytics cookies." },
       {
         n: "7.7",
         text: "Instructions for the most common browsers are published by their makers:",
         textHtml: 'Instructions for the most common browsers are published by their makers: <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Chrome</a>, <a href="https://support.apple.com/en-gb/guide/safari/sfri11471/mac" target="_blank" rel="noopener" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Safari</a>, <a href="https://support.mozilla.org/en-GB/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Firefox</a> and <a href="https://support.microsoft.com/en-gb/microsoft-edge" target="_blank" rel="noopener" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">Edge</a>.',
       },
-      { n: "7.8", text: "Blocking all cookies will not stop you reading this website, but blocking strictly necessary cookies may affect how reliably it loads, and will stop us remembering that you refused analytics cookies — so you will see the banner on every visit." },
+      { n: "7.8", text: "Blocking all cookies will not stop you reading this website, but blocking strictly necessary cookies may affect how reliably it loads, and will stop us remembering that you refused analytics cookies, so you will see the banner on every visit." },
       { n: "7.9", text: "Most browsers also offer a private or incognito mode, which clears cookies when you close the window. If you share a device, that may be the simplest option." },
     ],
   },
@@ -168,7 +168,7 @@ const sections: LegalSection[] = [
     clauses: [
       { n: "8.1", text: "We may update this Cookie Policy to reflect changes to the website, the services we use or applicable law." },
       { n: "8.2", text: "The current version is always the one published on this website, and it takes effect from the date shown at the top of this page. The version number is shown there too." },
-      { n: "8.3", text: "Where we make a material change — for example, if we begin using a new category of cookie — we will say so clearly, and we will ask you again rather than carrying your old answer forward. See clause 7.4." },
+      { n: "8.3", text: "Where we make a material change (for example, if we begin using a new category of cookie) we will say so clearly, and we will ask you again rather than carrying your old answer forward. See clause 7.4." },
       { n: "8.4", text: "This is version 2.0, effective 1 August 2026. Version 1.0, published on 29 July 2026, described a website that had no cookie banner and set analytics cookies without asking. That is what this version changes." },
     ],
   },
@@ -205,7 +205,7 @@ const sections: LegalSection[] = [
         .vclause { grid-template-columns: 54px 1fr; }
         .vsub { grid-template-columns: 34px 1fr; }
       }
-    </style><div style="font-family:Mulish,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
+    </style><div style="font-family:Lato,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
 
       <!-- ===== HEADER + HERO ===== -->
       <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
@@ -213,16 +213,16 @@ const sections: LegalSection[] = [
           <SiteNav />
           <div class="vhero-text" style="padding:54px 0 70px;max-width:820px;">
             <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Cookie Policy</h1>
-            <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:640px;">A short, honest account of what this website puts on your device.</p>
-            <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0 0 30px;max-width:640px;">Which cookies are set, who sets them, what each one is for, how long it lasts &mdash; and how to get rid of them if you would rather not have them.</p>
-            <p style="font-family:Mulish;font-weight:700;font-size:16px;letter-spacing:.4px;color:#1f9ca0;margin:0;display:inline-block;background:rgba(255,255,255,0.6);border-radius:24px;padding:11px 22px;">Effective from <time datetime={COOKIE_POLICY_EFFECTIVE.iso}>{COOKIE_POLICY_EFFECTIVE.label}</time> &middot; Version {COOKIE_POLICY_VERSION}</p>
+            <p style="font-family:Lato;font-weight:700;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:640px;">A short, honest account of what this website puts on your device.</p>
+            <p style="font-family:Lato;font-size:19px;line-height:1.55;color:#444;margin:0 0 30px;max-width:640px;">Which cookies are set, who sets them, what each one is for, how long it lasts, and how to get rid of them if you would rather not have them.</p>
+            <p style="font-family:Lato;font-weight:700;font-size:16px;letter-spacing:.4px;color:#1f9ca0;margin:0;display:inline-block;background:rgba(255,255,255,0.6);border-radius:24px;padding:11px 22px;">Effective from <time datetime={COOKIE_POLICY_EFFECTIVE.iso}>{COOKIE_POLICY_EFFECTIVE.label}</time> &middot; Version {COOKIE_POLICY_VERSION}</p>
           </div>
         </div>
       </section>
 
       <!-- ===== BAND ===== -->
       <div class="vband-sm" style="background:#f28121;text-align:center;padding:26px 24px;">
-        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">Nothing is set until you say yes.</p>
+        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffffff;margin:0;">Nothing is set until you say yes.</p>
       </div>
 
       <!-- ===== CONTENTS ===== -->
@@ -233,9 +233,9 @@ const sections: LegalSection[] = [
 
       <!-- ===== QUESTIONS CTA ===== -->
       <section class="vband" style="background:#f28121;text-align:center;padding:66px 24px;">
-        <p style="font-family:Mulish;font-size:22px;color:#ffe6cf;margin:0 0 10px;">Not sure what any of this means?</p>
-        <h2 style="font-family:Quicksand;font-weight:700;font-size:62px;color:#ffffff;margin:0 0 22px;">Just ask us.</h2>
-        <p style="font-family:Mulish;font-weight:600;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You should not need a law degree to know what a website<br />is doing. If anything here is unclear, tell us and we will explain.</p>
+        <p style="font-family:Lato;font-size:22px;color:#ffe6cf;margin:0 0 10px;">Not sure what any of this means?</p>
+        <h2 style="font-family:Quicksand;font-weight:700;font-size:58px;color:#ffffff;margin:0 0 22px;">Just ask us.</h2>
+        <p style="font-family:Lato;font-weight:700;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You should not need a law degree to know what a website<br />is doing. If anything here is unclear, tell us and we will explain.</p>
         <a href="mailto:privacy@thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#f28121;font-family:Quicksand;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">EMAIL US <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
       </section>
 

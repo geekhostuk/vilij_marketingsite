@@ -14,7 +14,7 @@ const { sections, heading } = Astro.props;
       <h2 style="font-family:Quicksand;font-weight:700;font-size:38px;color:#1f9ca0;margin:0 0 24px;text-align:center;" set:html={heading}></h2>
       <div class="vtoc" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 34px;">
         {sections.map((s) => (
-          <a href={`#s${s.n}`} style="font-family:Mulish;font-weight:600;font-size:17px;color:#2a2a2a;text-decoration:none;">
+          <a href={`#s${s.n}`} style="font-family:Lato;font-weight:700;font-size:17px;color:#2a2a2a;text-decoration:none;">
             <span style="color:#f28121;font-weight:800;">{s.n}.</span> {s.title}
           </a>
         ))}

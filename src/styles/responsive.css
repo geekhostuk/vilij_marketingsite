@@ -43,6 +43,16 @@
    The selector needs the exact substring, with no space after the colon,
    which is the form every inline style on the site already uses.
 
+   30 Jul 2026 — Damien's typography pass went through here. The headings were
+   harmonised (three H1 sizes down to one, nine H2 sizes down to two, and the
+   card straplines up a couple of points), and every new value was deliberately
+   chosen from sizes that ALREADY had rows below. So the ramp needed no edits,
+   and nothing silently reverted. The rows for 80, 64, 62, 56, 54, 52, 48, 44
+   and 25px now match nothing on the site. They are kept, not deleted: they cost
+   nothing, and they are what a size has to come back to if one of those values
+   ever returns. Do not read their presence as evidence the size is in use — run
+   the audit rather than trusting this list to stay current.
+
    Two deliberate limits on the ramp:
 
    - It only touches sizes >= 20px, and never goes below 16px. The audience is

@@ -42,8 +42,18 @@ interface Props {
 
 const { title, description, noindex = false, extraFonts = "", carousel } = Astro.props;
 
+// Body copy is Lato (Damien, 30 Jul 2026). Headings are still Quicksand pending
+// his answer on one open question: the Illustrator sources pair Figtree Medium
+// with Lato, so "Lato throughout" may or may not mean the headings too. Body is
+// Lato under either answer, which is why only half the swap has happened.
+//
+// Only 400 and 700 are requested. Lato has no 500, 600 or 800 — the weights the
+// old Mulish declarations used — so every one of those was rewritten to an
+// explicit 700 rather than left for the browser to round silently. Add 300 or
+// 900 here if a real use for them appears; do not add 500/600/800, they do not
+// exist and Google Fonts will ignore them.
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Mulish:wght@400;500;600;700;800" +
+  "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Lato:wght@400;700" +
   extraFonts +
   "&display=swap";
 
