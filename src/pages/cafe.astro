@@ -66,15 +66,15 @@ const gridItems = [
 
       <!-- ===== HEADER + HERO ===== -->
       <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
-        <div style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
+        <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
           <SiteNav />
-          <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:60px 0 80px;">
+          <div class="vhero" style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:60px 0 80px;">
             <div>
               <h1 style="font-family:Quicksand;font-weight:700;font-size:80px;line-height:1.02;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome to the Caf&eacute;</h1>
               <p style="font-family:Mulish;font-weight:700;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:520px;">Pull up a chair, pour a brew, and find your people.</p>
               <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:520px;">The Caf&eacute; includes several welcoming spaces, each designed for a different type of conversation.</p>
             </div>
-            <div style="display:flex;justify-content:center;">
+            <div class="vhero-art" style="display:flex;justify-content:center;">
               <img src="/assets/cafe_hero.png" alt="The Café" style="width:100%;max-width:600px;height:auto;display:block;" />
             </div>
           </div>
@@ -82,24 +82,24 @@ const gridItems = [
       </section>
 
       <!-- ===== STAY AS LONG BAND ===== -->
-      <div style="background:#f28121;text-align:center;padding:26px 24px;">
+      <div class="vband-sm" style="background:#f28121;text-align:center;padding:26px 24px;">
         <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">Stay as long as you like, the doors are always open.</p>
       </div>
 
       <!-- ===== WHY THE CAFÉ EXISTS ===== -->
       <section style="background:#ffffff;padding:90px 0 30px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
-          <div style="border-radius:26px;background:linear-gradient(100deg,#fcdcc0 0%,#fbe7d6 30%,#f4f1ec 50%,#dceae9 70%,#cfe9ea 100%);padding:48px 40px 54px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
+        <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
+          <div class="vpanel-soft" style="border-radius:26px;background:linear-gradient(100deg,#fcdcc0 0%,#fbe7d6 30%,#f4f1ec 50%,#dceae9 70%,#cfe9ea 100%);padding:48px 40px 54px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
             <h2 style="font-family:Quicksand;font-weight:700;font-size:48px;color:#1f9ca0;margin:0 0 22px;">Why The Caf&eacute; Exists</h2>
             <p style="font-family:Mulish;font-weight:700;font-size:21px;line-height:1.5;color:#353535;margin:0 auto 26px;max-width:920px;">The Caf&eacute; is a warm, heartfelt haven within The Vilij where SEND families who often feel isolated can breathe out, feel understood, and finally connect with others who truly get it.</p>
             <p style="font-family:Mulish;font-size:19px;color:#3a3a3a;margin:0 0 18px;">The Caf&eacute; gives us:</p>
             <div style="display:flex;flex-direction:column;gap:10px;align-items:center;font-family:Mulish;font-size:15px;color:#3a3a3a;">
-              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;white-space:nowrap;">
+              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;">
                 <span>&bull;&nbsp; A friendly place for informal conversation.</span>
                 <span>&bull;&nbsp; A space to share everyday experiences.</span>
                 <span>&bull;&nbsp; Peer support without judgement.</span>
               </div>
-              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;white-space:nowrap;">
+              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;">
                 <span>&bull;&nbsp; Moments of humour, relief, and solidarity.</span>
                 <span>&bull;&nbsp; Opportunities to build genuine friendships.</span>
               </div>
@@ -110,11 +110,11 @@ const gridItems = [
 
       <!-- ===== CAFÉ FEATURE CARDS ===== -->
       <section style="background:#ffffff;padding:60px 0 80px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:46px 44px;">
+        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:46px 44px;">
 
           <!-- Sip & Natter (orange, photo left) -->
-          <div style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
-            <div style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
+          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
+            <div class="vsplit-img" style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
               <img src="/assets/p_sip.png" alt="Coffee chat" style="width:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
             <div style="flex:1;">
@@ -125,42 +125,42 @@ const gridItems = [
           </div>
 
           <!-- Tea and Empathy (teal, photo top-right) -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
-            <div style="display:flex;gap:18px;align-items:flex-start;">
+          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
+            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
               <div style="flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Tea and Empathy</h3>
                 <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Honest conversations without judgement.</p>
               </div>
-              <img src="/assets/p_tea.png" alt="Tea and empathy" style="flex:0 0 40%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_tea.png" alt="Tea and empathy" class="vsplit-img" style="flex:0 0 40%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
             <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">It&rsquo;s a quiet space for honest conversations about loneliness, exhaustion, identity, and the juggle of SEND family life &mdash; a place to feel understood and find hope in others who share similar experiences.</p>
           </div>
 
           <!-- The Brew Source (teal, photo top-right) -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
-            <div style="display:flex;gap:18px;align-items:flex-start;">
+          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
+            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
               <div style="flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">The Brew Source</h3>
                 <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Quick answers from people who understand.</p>
               </div>
-              <img src="/assets/p_brew.png" alt="Parents talking" style="flex:0 0 42%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_brew.png" alt="Parents talking" class="vsplit-img" style="flex:0 0 42%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
             <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">It&rsquo;s a supportive space where parents share heartfelt advice, honest questions, and practical solutions &mdash; all easy to find or add when you need a little help.</p>
           </div>
 
           <!-- The Elder Brew (orange, body top, photo right) -->
-          <div style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:300px;">
-            <div style="display:flex;gap:18px;align-items:flex-start;">
+          <div class="vcard-feat vcard-flip" style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:300px;">
+            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
               <p style="flex:1;font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">SEND grandparents carry fierce love and quiet worries of their own. The Elder Brew offers a gentle space to share, support one another, and celebrate the children they cherish.</p>
-              <img src="/assets/p_elder.png" alt="Grandparent and child" style="flex:0 0 40%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_elder.png" alt="Grandparent and child" class="vsplit-img" style="flex:0 0 40%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
             <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:20px 0 10px;line-height:1.02;">The Elder Brew</h3>
             <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">A circle just for grandparents</p>
           </div>
 
           <!-- Show Us Your Mug (orange, photo left) -->
-          <div style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
-            <div style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
+          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
+            <div class="vsplit-img" style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
               <img src="/assets/p_mug.png" alt="Favourite mug" style="width:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
             <div style="flex:1;">
@@ -171,10 +171,10 @@ const gridItems = [
           </div>
 
           <!-- Brewtiful Bites (teal, body top, photo right) -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
-            <div style="display:flex;gap:18px;align-items:flex-start;">
+          <div class="vcard-feat vcard-flip" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
+            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
               <p style="flex:1;font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">A light-hearted space for sharing favourite recipes, comforting finds, quirky food combos, SEND-friendly places, and the little food joys that bring us together.</p>
-              <img src="/assets/p_bites.png" alt="Child enjoying food" style="flex:0 0 41%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_bites.png" alt="Child enjoying food" class="vsplit-img" style="flex:0 0 41%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
             <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:20px 0 10px;line-height:1.02;">Brewtiful Bites</h3>
             <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Food, comfort, and small pleasures.</p>
@@ -185,7 +185,7 @@ const gridItems = [
 
       <!-- ===== BE MORE BAR ===== -->
       <div style="background:#2bbfba;">
-        <div style="max-width:1240px;margin:0 auto;padding:30px 48px;display:flex;justify-content:space-around;align-items:center;gap:20px;">
+        <div class="vwrap vbar" style="max-width:1240px;margin:0 auto;padding:30px 48px;display:flex;justify-content:space-around;align-items:center;gap:20px;">
           <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be More</span>
           <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be Brave</span>
           <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be Curious</span>
@@ -196,7 +196,7 @@ const gridItems = [
       <AreasGrid items={gridItems} />
 
       <!-- ===== APP SIGNUP ORANGE BAND ===== -->
-      <section style="background:#f28121;text-align:center;padding:62px 24px;">
+      <section class="vband" style="background:#f28121;text-align:center;padding:62px 24px;">
         <p style="font-family:Mulish;font-size:20px;color:#ffe6cf;margin:0 0 8px;">So what do I do next?</p>
         <h2 style="font-family:Quicksand;font-weight:700;font-size:58px;color:#ffffff;margin:0 0 14px;">Sign up to The Vilij App.</h2>
         <p style="font-family:Mulish;font-size:22px;color:#fff;margin:0 0 34px;">Everything SEND in one place for just {monthlyPrice} per month.</p>
@@ -204,7 +204,7 @@ const gridItems = [
       </section>
 
       <!-- ===== STILL NOT SURE TEAL BAND ===== -->
-      <section style="background:#1f9ca0;padding:30px 24px;">
+      <section class="vband-sm" style="background:#1f9ca0;padding:30px 24px;">
         <div style="display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;">
           <span style="font-family:Quicksand;font-weight:500;font-size:34px;color:#d7f0f0;">Still not sure?</span>
           <a href="#" class="vpill" style="display:inline-flex;align-items:center;gap:14px;background:#f28121;color:#fff;font-family:Quicksand;font-weight:700;font-size:18px;letter-spacing:.5px;padding:12px 14px 12px 30px;border-radius:32px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,0.15);">TAKE A SNEAKY PEEK <span style="width:38px;height:38px;border-radius:50%;background:#ffffff;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:10px solid #1f9ca0;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px;"></span></span></a>
@@ -215,7 +215,7 @@ const gridItems = [
       <TestimonialCarousel list={list} showQuoteMark={false} />
 
       <!-- ===== FINAL CTA ===== -->
-      <section style="background:#f28121;text-align:center;padding:66px 24px;">
+      <section class="vband" style="background:#f28121;text-align:center;padding:66px 24px;">
         <p style="font-family:Mulish;font-size:22px;color:#ffe6cf;margin:0 0 10px;">So, you&rsquo;ve come this far?</p>
         <h2 style="font-family:Quicksand;font-weight:700;font-size:62px;color:#ffffff;margin:0 0 22px;">Your village is waiting for you.</h2>
         <p style="font-family:Mulish;font-weight:600;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You don&rsquo;t need to be at breaking point.<br />You don&rsquo;t need to have it all together.<br />You&rsquo;re allowed support too.</p>

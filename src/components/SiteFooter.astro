@@ -12,6 +12,12 @@
 // carries the gap the paragraph used to, and the newsletter heading takes the
 // same 22px as its three siblings so the four headings sit on one line.
 //
+// ISSUES #20 — the four-column grid was the worst overflow on the site: at
+// 375px its 1.3fr 1fr 1fr 1.4fr gave columns of 34-52px and the newsletter
+// input could not fit. vfoot takes it to two columns at 900px and one at 600px;
+// vnl-row stacks the input above Subscribe at 400px. The behaviour is in
+// src/styles/responsive.css — these classes do nothing above 900px.
+//
 // "Cookie preferences" in the legal row is a <button>, not a link: it reopens
 // the consent banner rather than navigating anywhere. CookieConsent.astro binds
 // to it by id, and both live on every page, so it works everywhere.
@@ -21,7 +27,7 @@ interface Props {
 const { padding = "74px 0 30px" } = Astro.props;
 ---
 <footer style={`background:#ffffff;padding:${padding};`}>
-  <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1.4fr;gap:40px;">
+  <div class="vwrap vfoot" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1.4fr;gap:40px;">
     <div>
       <img src="/assets/footerlogo.png" alt="Vilij" style="height:48px;width:auto;display:block;margin-bottom:34px;" />
       <a href="#" id="to-top" style="display:inline-flex;align-items:center;gap:14px;text-decoration:none;cursor:pointer;">
@@ -51,7 +57,7 @@ const { padding = "74px 0 30px" } = Astro.props;
     <div>
       <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Join Our Newsletter</h4>
       <form method="get" action="/newsletter-thanks" style="margin:0;">
-        <div style="display:flex;gap:10px;margin-bottom:16px;max-width:380px;">
+        <div class="vnl-row" style="display:flex;gap:10px;margin-bottom:16px;max-width:380px;">
           <label for="nl-email" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Email address</label>
           <input id="nl-email" name="email" type="email" required placeholder="Your Email Here" style="flex:1;font-family:Mulish;font-size:16px;padding:13px 16px;border:1px solid #ddd;border-radius:8px;outline:none;color:#333;" />
           <button type="submit" class="vpill" style="font-family:Mulish;font-weight:700;font-size:16px;color:#fff;background:#f28121;border:none;border-radius:8px;padding:0 22px;cursor:pointer;">Subscribe</button>
@@ -63,13 +69,13 @@ const { padding = "74px 0 30px" } = Astro.props;
       </form>
     </div>
   </div>
-  <div style="max-width:1240px;margin:46px auto 0;padding:0 48px;">
-    <div style="border-top:1px solid #e7e7e7;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+  <div class="vwrap" style="max-width:1240px;margin:46px auto 0;padding:0 48px;">
+    <div class="vfoot-legal" style="border-top:1px solid #e7e7e7;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
       <div style="display:flex;flex-direction:column;gap:8px;max-width:660px;">
         <span style="font-family:Mulish;font-size:15px;color:#999;">&copy; Copyright 2026. All rights reserved. Design by Revive Creative.</span>
         <span style="font-family:Mulish;font-size:13px;line-height:1.55;color:#767676;">The Vilij Limited, registered in England and Wales, company number 16718802. Registered office: The Meakin Suite, Ravenscliffe, First Avenue, Newcastle-under-Lyme, ST5 8QX.</span>
       </div>
-      <div style="display:flex;align-items:center;gap:16px;font-family:Mulish;font-size:15px;color:#666;">
+      <div class="vfoot-links" style="display:flex;align-items:center;gap:16px;font-family:Mulish;font-size:15px;color:#666;">
         <a href="/terms" class="vlink" style="color:#666;text-decoration:none;">Terms</a><span style="color:#ccc;">&mdash;</span>
         <a href="/privacy" class="vlink" style="color:#666;text-decoration:none;">Privacy</a><span style="color:#ccc;">&mdash;</span>
         <a href="/cookie-policy" class="vlink" style="color:#666;text-decoration:none;">Cookies</a><span style="color:#ccc;">&mdash;</span>

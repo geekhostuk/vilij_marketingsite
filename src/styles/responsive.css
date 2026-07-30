@@ -1,0 +1,439 @@
+/* ===========================================================================
+   The Vilij — the responsive layer. ISSUES #20.
+
+   This is the only stylesheet on the site. Everything else is an inline
+   style="…" attribute, which is why this file looks the way it does.
+
+   TWO RULES GOVERN THIS FILE. Both matter; please keep them.
+
+   1. EVERY RULE LIVES INSIDE A max-width MEDIA QUERY.
+      The desktop design is signed off and must not move. A rule outside a
+      media query can change it; a rule inside one cannot. There are exactly
+      two exceptions, both at the top of the nav section below, and both only
+      hide elements that did not exist before this file did.
+
+   2. EVERY DECLARATION CARRIES !important.
+      Not for emphasis — for arithmetic. An inline style attribute beats any
+      selector in the cascade, so a plain declaration here would lose to the
+      style="…" it is trying to override. !important is the only thing that
+      outranks it. It also makes this file order-independent against the
+      per-page <style is:global> blocks, so nothing here depends on where
+      Astro decides to put it in <head>.
+
+   ---------------------------------------------------------------------------
+   THE TYPE RAMP — READ THIS BEFORE EDITING A font-size ANYWHERE ON THE SITE
+
+   Every font size on this site is a hardcoded px value inside a style
+   attribute — 33 distinct values across ~200 elements. Adding a class to each
+   one meant a 200-element diff across all 13 pages, with 200 chances to
+   disturb the desktop look. So the ramp keys on the inline value itself:
+
+       [style*="font-size:74px"] { font-size: 46px !important }
+
+   That reads as "wherever the design asked for 74px, use 46px here". It costs
+   no markup at all and it covers all 13 pages at once, including the
+   1633-line safeguarding policy.
+
+   The catch, and it is a real one:
+
+       IF YOU CHANGE AN INLINE font-size IN A PAGE, THE RAMP STOPS MATCHING IT
+       AND THAT ELEMENT SILENTLY REVERTS TO DESKTOP SIZE ON MOBILE.
+
+   Change a size, then come back here and make sure the new value has a row.
+   The selector needs the exact substring, with no space after the colon,
+   which is the form every inline style on the site already uses.
+
+   Two deliberate limits on the ramp:
+
+   - It only touches sizes >= 20px, and never goes below 16px. The audience is
+     parents and carers reading on a phone, often tired; body copy is already
+     15-19px and shrinking it further would be the wrong trade. Display type
+     is what overflows, and display type is all the ramp moves.
+   - Not every size is in every breakpoint. Only >= 38px steps down at 1180px
+     (that is what breaks first), and only >= 27px steps down again at 400px.
+
+   ---------------------------------------------------------------------------
+   BREAKPOINTS
+
+     <= 1180px   small laptop / tablet landscape.  The container is 1240px wide
+                 plus 48px gutters = 1336px, so this is where the site first
+                 has less room than it wants. Gutters and display type only.
+     <=  900px   tablet portrait. The nav's three text links go behind a
+                 burger — its intrinsic width runs out at about 850px — and
+                 every multi-column grid collapses.
+     <=  600px   phone. Single column throughout. The feature-card photos stop
+                 bleeding past the card edge and stack above the copy instead.
+     <=  400px   small phone. Tightest gutters and one last type step.
+
+   Layout hooks are v-prefixed classes on the containers, matching the
+   vlink / vpill / vcard / vclause names already in use. Adding one of those
+   classes to an element does nothing until a media query below picks it up,
+   which is what makes the markup edits safe.
+
+   Not covered here, deliberately: CookieConsent.astro has its own scoped
+   styles and its own 520px breakpoint, and was already mobile-aware.
+   =========================================================================== */
+
+
+/* ===========================================================================
+   NAV — the two exceptions to rule 1.
+
+   .vnav-burger and .vnav-panel are new elements introduced alongside this
+   file. Hiding them outside a media query is safe because there is no
+   previous behaviour to change: before this file existed, neither element
+   was in the markup at all. Everything else about the nav is inside a
+   query below.
+   =========================================================================== */
+
+.vnav-burger { display: none; }
+.vnav-panel { display: none; }
+
+
+/* ===========================================================================
+   <= 1180px — small laptop / tablet landscape
+   =========================================================================== */
+
+@media (max-width: 1180px) {
+
+  /* Gutters. Left/right only, so the header container's own top padding
+     (30px 48px 0) and the footer's 46px top margin both survive. */
+  .vwrap { padding-left: 32px !important; padding-right: 32px !important; }
+
+  /* Display type, first step. Sizes below 38px still fit at this width. */
+  [style*="font-size:80px"] { font-size: 64px !important; }
+  [style*="font-size:74px"] { font-size: 60px !important; }
+  [style*="font-size:64px"] { font-size: 54px !important; }
+  [style*="font-size:62px"] { font-size: 52px !important; }
+  [style*="font-size:58px"] { font-size: 50px !important; }
+  [style*="font-size:56px"] { font-size: 48px !important; }
+  [style*="font-size:54px"] { font-size: 46px !important; }
+  [style*="font-size:52px"] { font-size: 45px !important; }
+  [style*="font-size:50px"] { font-size: 44px !important; }
+  [style*="font-size:48px"] { font-size: 42px !important; }
+  [style*="font-size:44px"] { font-size: 39px !important; }
+  [style*="font-size:42px"] { font-size: 37px !important; }
+  [style*="font-size:40px"] { font-size: 36px !important; }
+  [style*="font-size:38px"] { font-size: 34px !important; }
+
+  /* The five-across feature row on the homepage is the first thing to give:
+     five columns of a 1148px container is 205px each, and "Real-life
+     community spaces" does not fit that. */
+  .vfeat5 { grid-template-columns: repeat(3, 1fr) !important; gap: 26px 24px !important; }
+
+  /* A flex item's automatic minimum size is its min-content width, and for an
+     <img> that is the file's intrinsic pixel width. So `flex:0 0 43%` on a
+     600px photo does not mean 43% — it means "at least 600px", which drags the
+     whole card wider than its grid track and the surplus gets clipped by the
+     page wrapper's overflow-x:hidden. /expert-hub already carries min-width:0
+     on its card items for exactly this reason; /cafe and /hall never got them.
+     Rather than add 30-odd inline min-width:0 declarations, unlock it here for
+     every card split at once.
+
+     This is also why /cafe still clips at 1440px: the same bug, at a width
+     this file deliberately does not touch. See ISSUES #29.
+
+     The selector goes three levels deep on purpose. The card is a grid item
+     and has the same automatic minimum; the photo on /cafe is an
+     <img width:100%> inside a display:flex wrapper, so wrapper and image are
+     both flex items with an intrinsic-width floor of their own. Miss any one
+     of the three and the whole chain still refuses to shrink — p_brew.png is
+     800px natural, and on its own it dragged /cafe's two-column track out to
+     986px at every viewport. */
+  .vcard-feat,
+  .vsplit, .vsplit > *,
+  .vsplit-img, .vsplit-img > *, .vsplit-img img { min-width: 0 !important; }
+
+  /* The 1fr track of a legal clause has the same automatic minimum, so a wide
+     table (min-width:520px / 640px) inside it pushes the track past the
+     viewport instead of scrolling inside its own overflow-x:auto wrapper. */
+  .vclause > *, .vsub > * { min-width: 0 !important; }
+}
+
+
+/* ===========================================================================
+   <= 900px — tablet portrait
+   =========================================================================== */
+
+@media (max-width: 900px) {
+
+  /* --- Nav ---------------------------------------------------------------
+     Logo and SIGN UP stay in the bar at every width; SIGN UP is the
+     conversion action and should never be a tap away behind a menu. Only
+     the three text links move into the panel. */
+
+  .vnav-link { display: none !important; }
+
+  .vnav-right { gap: 16px !important; }
+
+  .vnav-burger {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    width: 44px !important;
+    height: 44px !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 10px !important;
+    cursor: pointer !important;
+    flex: none !important;
+  }
+
+  .vnav-burger span {
+    display: block !important;
+    width: 24px !important;
+    height: 2.5px !important;
+    border-radius: 2px !important;
+    background: #1f9ca0 !important;
+    transition: transform .2s ease, opacity .2s ease !important;
+  }
+
+  /* Bars fold into an X while the panel is open. The middle bar sits at the
+     centre already, so the outer two travel 7.5px (5px gap + 2.5px bar). */
+  .vnav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg) !important; }
+  .vnav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0 !important; }
+  .vnav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg) !important; }
+
+  /* The panel is an in-flow dropdown under the bar, not an overlay, so it
+     needs no scroll lock and cannot end up behind the fixed cookie banner. */
+  .vnav-panel:not([hidden]) {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-top: 14px !important;
+    border-top: 1px solid rgba(31, 156, 160, .22) !important;
+  }
+
+  .vnav-panel a {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 52px !important;
+    font-family: Quicksand, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 19px !important;
+    color: #1f9ca0 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(31, 156, 160, .12) !important;
+  }
+
+  .vnav-panel a:last-child { border-bottom: none !important; }
+
+  .vnav-logo img { height: 52px !important; width: auto !important; }
+  .vnav-cta { padding: 11px 20px !important; font-size: 15px !important; }
+
+  /* --- Layout ----------------------------------------------------------- */
+
+  /* Heroes: text above art. The text column keeps document order, so the
+     reading order and the tab order stay as they are on desktop. */
+  .vhero {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    padding-top: 34px !important;
+    padding-bottom: 54px !important;
+  }
+  .vhero-art img { max-width: 440px !important; }
+
+  /* Be More / Be Brave / Be Curious. The bar had no flex-wrap at all, so
+     three 42px words on one line ran ~600px wide. The ramp takes them to
+     30px here and wrapping catches whatever is left. */
+  .vbar {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px 26px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .vfeat5 { grid-template-columns: repeat(2, 1fr) !important; }
+  .vtiles { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+  .vpanel3 { grid-template-columns: 1fr !important; gap: 30px !important; padding: 34px 28px !important; }
+  .vcards2 { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .vbuilt { grid-template-columns: 1fr !important; gap: 38px !important; }
+
+  .vcard-body { padding: 6px 22px 26px !important; }
+
+  /* Testimonials. The 64px gap alone was 23% of a phone's content box. */
+  .vtestim { grid-template-columns: 1fr !important; gap: 34px !important; }
+  .vtestim-photo { max-width: 420px !important; margin: 0 auto !important; width: 100% !important; }
+  .vquote-mark span { font-size: 52px !important; margin-top: 26px !important; }
+
+  /* Footer: 1.3fr 1fr 1fr 1.4fr gave ~34-52px columns on a phone. */
+  .vfoot { grid-template-columns: repeat(2, 1fr) !important; gap: 36px !important; }
+  .vfoot a, .vfoot button { min-height: 24px !important; }
+}
+
+
+/* ===========================================================================
+   <= 600px — phone
+   =========================================================================== */
+
+@media (max-width: 600px) {
+
+  .vwrap { padding-left: 24px !important; padding-right: 24px !important; }
+
+  /* Type, second step. Nothing below 16px, ever. */
+  [style*="font-size:80px"] { font-size: 38px !important; }
+  [style*="font-size:74px"] { font-size: 36px !important; }
+  [style*="font-size:64px"] { font-size: 34px !important; }
+  [style*="font-size:62px"] { font-size: 32px !important; }
+  [style*="font-size:58px"] { font-size: 31px !important; }
+  [style*="font-size:56px"] { font-size: 30px !important; }
+  [style*="font-size:54px"] { font-size: 29px !important; }
+  [style*="font-size:52px"] { font-size: 28px !important; }
+  [style*="font-size:50px"] { font-size: 28px !important; }
+  [style*="font-size:48px"] { font-size: 27px !important; }
+  [style*="font-size:44px"] { font-size: 26px !important; }
+  [style*="font-size:42px"] { font-size: 25px !important; }
+  [style*="font-size:40px"] { font-size: 24px !important; }
+  [style*="font-size:38px"] { font-size: 23px !important; }
+  [style*="font-size:36px"] { font-size: 22px !important; }
+  [style*="font-size:34px"] { font-size: 22px !important; }
+  [style*="font-size:30px"] { font-size: 22px !important; }
+  [style*="font-size:28px"] { font-size: 21px !important; }
+  [style*="font-size:27px"] { font-size: 21px !important; }
+  [style*="font-size:25px"] { font-size: 20px !important; }
+  [style*="font-size:24px"] { font-size: 19px !important; }
+  [style*="font-size:23px"] { font-size: 18px !important; }
+  [style*="font-size:22px"] { font-size: 17px !important; }
+  [style*="font-size:21px"] { font-size: 17px !important; }
+  [style*="font-size:20px"] { font-size: 16px !important; }
+
+  /* -1px of tracking was tuned for a 74px h1. At 36px it closes the letters
+     up too far. */
+  [style*="letter-spacing:-1px"] { letter-spacing: -0.2px !important; }
+
+  .vbar { gap: 6px 20px !important; padding-top: 20px !important; padding-bottom: 20px !important; }
+
+  .vfeat5 { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .vtiles { grid-template-columns: 1fr !important; gap: 22px !important; }
+  .vpanel3 { padding: 28px 22px !important; gap: 26px !important; }
+  .vstory { grid-template-columns: 1fr !important; gap: 20px !important; padding: 24px !important; }
+  .vcard-body { padding: 6px 20px 24px !important; }
+
+  /* --- Feature cards ----------------------------------------------------
+     On desktop these are photo-beside-text, and the photos deliberately
+     bleed past the card edge on negative margins (margin-left:-22px,
+     margin-top:-26px) with a percentage flex basis. At this width the bleed
+     would land outside the viewport, so the card goes single-column, the
+     photo goes full width inside the padding, and the bleed comes off.
+
+     The asymmetric padding goes with it: cards that bleed left are
+     padding:32px 34px 32px 0 to make room, which reads as a missing edge
+     once nothing is bleeding into it. */
+  .vcard-feat { min-height: 0 !important; padding: 24px !important; }
+
+  .vsplit {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 18px !important;
+  }
+
+  .vsplit-img {
+    flex: none !important;
+    align-self: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+  .vsplit-img img { width: 100% !important; height: auto !important; }
+
+  /* Three of the cards put the body copy above the photo and the heading
+     below it, which is a nice desktop shape and an unreadable mobile one —
+     stacked, the heading would land at the bottom of the card. Reordering
+     the card puts the heading back on top: title, strapline, photo, body. */
+  .vcard-flip { display: flex !important; flex-direction: column !important; }
+  .vcard-flip > h3 { order: 1 !important; margin-top: 0 !important; }
+  .vcard-flip > p { order: 2 !important; }
+  .vcard-flip > .vsplit { order: 3 !important; flex-direction: column-reverse !important; }
+
+  /* hall's sticky note hangs off the card on -56px/-12px margins and a 4deg
+     rotation. Both are too much once the card is 300px wide. */
+  .vnote { margin: 0 !important; transform: rotate(-2deg) !important; }
+
+  /* hall's "What's on?" events photo is absolutely positioned bottom-right
+     with the copy held to max-width:48% beside it. Below the copy instead. */
+  .vevents p { max-width: 100% !important; }
+  .vevents-img {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 20px !important;
+  }
+
+  /* The quote-mark bubble sits at top:-22px;right:-22px over a parent with
+     no overflow:hidden, so at narrow widths it left the page. */
+  .vquote-mark { top: -12px !important; right: -6px !important; width: 60px !important; height: 60px !important; }
+  .vquote-mark span { font-size: 38px !important; margin-top: 18px !important; }
+
+  /* --- Footer ----------------------------------------------------------- */
+  .vfoot { grid-template-columns: 1fr !important; gap: 30px !important; }
+  .vfoot-legal { flex-direction: column !important; align-items: flex-start !important; }
+  .vfoot-links { flex-wrap: wrap !important; gap: 8px 12px !important; }
+
+  /* --- Bands, panels and legal ------------------------------------------ */
+  .vband { padding: 42px 20px !important; }
+  .vband-sm { padding: 22px 20px !important; }
+  .vpanel-soft { padding: 30px 22px 34px !important; }
+  /* The text-only heroes: the six legal intros and /newsletter-thanks. They
+     have no art column to collapse, just a lot of vertical padding tuned for
+     a 74px h1 that is now 36px. */
+  .vhero-text { padding-top: 30px !important; padding-bottom: 42px !important; }
+  .vcallout { padding: 20px 18px !important; }
+
+  /* The legal documents are full of email addresses, and an address is one
+     unbreakable token: "safeguarding@thevilij.co.uk" is about 205px at 17px,
+     wider than a clause body gets on a 320px phone. Without this the callouts
+     holding the safeguarding contacts push past the screen edge. */
+  .vclause, .vsub, .vcallout { overflow-wrap: anywhere !important; }
+}
+
+
+/* ===========================================================================
+   <= 400px — small phone
+   =========================================================================== */
+
+@media (max-width: 400px) {
+
+  .vwrap { padding-left: 16px !important; padding-right: 16px !important; }
+
+  /* The bar has to hold a 101px logo, the SIGN UP pill and a 44px burger
+     inside a 288px content box, so the pill tightens once more here. */
+  .vnav-logo img { height: 44px !important; }
+  .vnav-cta { padding: 10px 14px !important; font-size: 13px !important; }
+  .vnav-right { gap: 12px !important; }
+
+  /* Display type, last step. */
+  [style*="font-size:80px"] { font-size: 34px !important; }
+  [style*="font-size:74px"] { font-size: 32px !important; }
+  [style*="font-size:64px"] { font-size: 30px !important; }
+  [style*="font-size:62px"] { font-size: 29px !important; }
+  [style*="font-size:58px"] { font-size: 28px !important; }
+  [style*="font-size:56px"] { font-size: 27px !important; }
+  [style*="font-size:54px"] { font-size: 26px !important; }
+  [style*="font-size:52px"] { font-size: 26px !important; }
+  [style*="font-size:50px"] { font-size: 25px !important; }
+  [style*="font-size:48px"] { font-size: 25px !important; }
+  [style*="font-size:44px"] { font-size: 24px !important; }
+  [style*="font-size:42px"] { font-size: 23px !important; }
+  [style*="font-size:40px"] { font-size: 22px !important; }
+  [style*="font-size:38px"] { font-size: 22px !important; }
+  [style*="font-size:36px"] { font-size: 21px !important; }
+  [style*="font-size:34px"] { font-size: 21px !important; }
+  [style*="font-size:30px"] { font-size: 20px !important; }
+  [style*="font-size:28px"] { font-size: 20px !important; }
+  [style*="font-size:27px"] { font-size: 20px !important; }
+
+  .vcard-feat { padding: 20px !important; }
+  .vstory { padding: 20px !important; }
+  .vpanel3 { padding: 24px 18px !important; }
+  .vpanel-soft { padding: 26px 18px 30px !important; }
+
+  /* The newsletter input and its Subscribe button cannot share 288px, so
+     they stack. */
+  .vnl-row { flex-wrap: wrap !important; }
+  .vnl-row input { flex: 1 1 100% !important; }
+  .vnl-row button { flex: 1 1 100% !important; padding: 14px 22px !important; }
+}

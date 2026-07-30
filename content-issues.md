@@ -59,7 +59,7 @@ Everything below is still open, and every one of them is blocked on something ex
 | **A lawyer's eye** | C53 and C62 — numbering faults in the source legal documents · C60 — the registered office now reads two ways |
 | **A decision about publishing personal contact details** | C63 — the Safeguarding Policy names two people and their mobile numbers |
 | **A decision about the newsletter** | C64 — blocking the tracker means HubSpot no longer captures newsletter signups from anyone who refuses analytics |
-| **The site being made responsive** | ISSUES #20 — the footer and every content section overflow below about 460px |
+| **A decision about `/cafe`'s desktop layout** | ISSUES #29 — the right-hand card column has always been clipped on desktop; fixing it changes the signed-off layout |
 
 C39, C63 and C64 are the remaining launch blockers on this list.
 

@@ -1,6 +1,6 @@
 # Outstanding Issues
 
-Running log of known gaps in the marketing site. Last reviewed: 29 July 2026.
+Running log of known gaps in the marketing site. Last reviewed: 30 July 2026.
 
 Priority key: **P1** blocks launch · **P2** should fix before wider promotion · **P3** tidy-up.
 
@@ -56,9 +56,8 @@ Roughly 19–20 `href="#"` placeholders per content page.
 
 | # | Priority | Issue | Where |
 |---|----------|-------|-------|
-| 20 | **P1** | **The site is not responsive.** No `@media` queries exist on any page except `/privacy`. Footers use a fixed `grid-template-columns: 1.3fr 1fr 1fr 1.4fr`, hero headings are a hard-coded `74px`, and content grids are fixed two-column. On a phone this will overflow horizontally or crush to unreadable widths. Given the audience is parents and carers — a heavily mobile demographic — this is the highest-impact item on the list. | All pages except `/privacy` |
-| 21 | **P2** | **No shared layout component.** The header, footer and newsletter form are copy-pasted into all 8 pages. Every footer change means editing 8 files in lockstep. Extracting `src/layouts/Base.astro` plus a `Footer.astro` would remove a whole class of drift. | `src/pages/*` |
-| 22 | **P3** | Styling is entirely inline `style` attributes, so there's no design-token layer — colours (`#1f9ca0`, `#f28121`) and fonts are repeated hundreds of times. Makes any rebrand or accessibility contrast fix a find-and-replace exercise. | `src/pages/*` |
+| 22 | **P3** | Styling is entirely inline `style` attributes, so there's no design-token layer — colours (`#1f9ca0`, `#f28121`) and fonts are repeated hundreds of times. Makes any rebrand or accessibility contrast fix a find-and-replace exercise. **Partly mitigated, not resolved:** `src/styles/responsive.css` now exists, but it is a responsive layer, not a token layer, and it made the inline styles slightly more load-bearing — its type ramp keys on the literal `font-size:NNpx` substring in each `style` attribute, so changing an inline size means updating the ramp too. Read that file's header before touching a `font-size` anywhere. | `src/pages/*` |
+| 29 | **P2** | **`/cafe` clips its right-hand card column on desktop.** A flex item's automatic minimum width is its min-content width, and for an `<img>` that is the file's intrinsic pixel size — so `flex:0 0 42%` on the 800px-wide `p_brew.png` means "at least 800px", which drags the whole `1fr 1fr` card track out to 986px regardless of viewport. The page wrapper's `overflow-x:hidden` then silently cuts off the surplus: at 1440px roughly 270px of the second column is not on screen. `/expert-hub` carries `min-width:0` on its card items and does not have this; `/cafe` and `/hall` never got them. Fixed at tablet and below in `responsive.css`, but **deliberately not fixed above 1180px** — that would change the signed-off desktop layout, which is a call for whoever owns the design. | `src/pages/cafe.astro` cards 2, 4 and 6 |
 | 23 | **P3** | No `sitemap.xml` or `robots.txt`. `astro.config.mjs` has `site` set, so `@astrojs/sitemap` would be a drop-in addition. | Project root |
 | 24 | **P3** | No 404 page — Cloudflare Pages will serve its own generic one. | `src/pages/404.astro` |
 
@@ -74,6 +73,26 @@ Roughly 19–20 `href="#"` placeholders per content page.
 
 ## Recently resolved
 
+- ~~**#20 — the site is not responsive**~~ — fixed 30 July 2026. `src/styles/responsive.css` is the
+  whole of it: one stylesheet, imported once by `BaseLayout`, in which every rule sits inside a
+  `max-width` media query and carries `!important` (inline `style` attributes outrank any plain
+  selector, so `!important` is arithmetic here, not emphasis). Four breakpoints — 1180 / 900 / 600 /
+  400px. Below 900px the nav's three text links fold into a dropdown behind a burger while the logo
+  and SIGN UP stay in the bar; the footer goes 4 → 2 → 1 column; every fixed grid collapses; the
+  feature-card photos stop bleeding past the card edge and stack above the copy at 600px.
+  Type is scaled by a ramp keyed on the inline `font-size` value — see #22, which this made worse.
+  Measured across all 13 routes at 1440 / 1024 / 768 / 390 / 320px: horizontal overflow went from
+  70px (390) and 140px (320) to zero, and elements sitting past the viewport edge went from as many
+  as 88 per page to zero everywhere except `/cafe` above 1180px, which is #29 and pre-existing.
+  Desktop is untouched by construction and by measurement: with the added hook classes and the new
+  nav elements normalised away, the built `<body>` of all 13 pages is byte-identical to the
+  pre-change build.
+- ~~**#21 — no shared layout component**~~ — `src/layouts/BaseLayout.astro` plus `SiteNav`,
+  `SiteFooter`, `AreasGrid`, `AreaCard`, `PhotoTile`, `TestimonialCarousel`, `LegalContents` and
+  `LegalSections` now carry everything that was copy-pasted.
+- ~~`white-space:nowrap` on the `/cafe` "The Café gives us:" bullet rows~~ — each span is a whole
+  sentence, so `nowrap` forbade the only break that mattered and the wrapper's `overflow-x:hidden`
+  cut the ends off on any narrow screen. Removed; it never fired on desktop, where they fit anyway.
 - ~~Privacy Policy page missing~~ — `/privacy` built 29 July 2026 from the supplied PDF (16 sections, 94 clauses).
 - ~~Privacy Policy had no effective date, despite clause 3.2 referring to "the date stated at the top of the policy"~~ — set to 29 July 2026.
 - ~~Footer newsletter form was not a real `<form>` and could not be captured by HubSpot~~ — now a standard HTML form with `name="email"`, a required opt-in checkbox and explicit consent wording.
