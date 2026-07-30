@@ -13,7 +13,7 @@ const { sections } = Astro.props;
 const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 ---
 <section style="background:#ffffff;padding:40px 0 80px;">
-  <div style="max-width:1000px;margin:0 auto;padding:0 48px;">
+  <div class="vwrap" style="max-width:1000px;margin:0 auto;padding:0 48px;">
 
     {sections.map((s) => (
       <div id={`s${s.n}`} style="padding-top:46px;">
@@ -42,7 +42,7 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
               </p>
 
               {c.contact && (
-                <div style="margin:20px 0 4px;border-radius:18px;background:#f4faf9;border:1px solid #d9ecea;padding:26px 28px;">
+                <div class="vcallout" style="margin:20px 0 4px;border-radius:18px;background:#f4faf9;border:1px solid #d9ecea;padding:26px 28px;">
                   <p style="font-family:Quicksand;font-weight:700;font-size:22px;color:#1f9ca0;margin:0 0 14px;">The Vilij Limited</p>
                   <p style="font-family:Mulish;font-size:17px;line-height:1.7;color:#444;margin:0 0 10px;">Registered in England and Wales under company number 16718802</p>
                   <p style="font-family:Mulish;font-size:17px;line-height:1.7;color:#444;margin:0 0 10px;">Registered office: The Meakin Suite, Ravenscliffe, First Avenue, Newcastle-under-Lyme, ST5 8QX</p>
@@ -75,7 +75,7 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
               )}{c.steps && (
                 <div style="margin:18px 0 4px;">
                   {c.steps.map((step) => (
-                    <div style="margin:0 0 22px;border-radius:18px;background:#f4faf9;border:1px solid #d9ecea;padding:22px 26px;">
+                    <div class="vcallout" style="margin:0 0 22px;border-radius:18px;background:#f4faf9;border:1px solid #d9ecea;padding:22px 26px;">
                       <p style="font-family:Quicksand;font-weight:700;font-size:20px;color:#1f9ca0;margin:0 0 12px;">{step.title}</p>
                       {step.intro && (
                         <p style="font-family:Mulish;font-size:17px;line-height:1.65;color:#444;margin:0 0 12px;">{step.intro}</p>

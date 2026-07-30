@@ -12,10 +12,10 @@ interface Props {
 const { items } = Astro.props;
 ---
 <section style="background:#ffffff;padding:84px 0 90px;">
-  <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
+  <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
     <h2 style="font-family:Quicksand;font-weight:700;font-size:44px;color:#1f9ca0;text-align:center;margin:0 0 14px;">What else you can see inside the Vilij</h2>
     <p style="font-family:Mulish;font-size:20px;color:#444;text-align:center;margin:0 0 54px;">Take a look at the other areas of The Vilij and find out why it&rsquo;s such a special place for SEND families.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;"><AreaTiles items={items} />
+    <div class="vtiles" style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;"><AreaTiles items={items} />
     </div>
   </div>
 </section>

@@ -66,15 +66,15 @@ const gridItems = [
 
       <!-- ===== HEADER + HERO ===== -->
       <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
-        <div style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
+        <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
           <SiteNav />
-          <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:54px 0 70px;">
+          <div class="vhero" style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:54px 0 70px;">
             <div>
               <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome<br />to the Library</h1>
               <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:520px;">Practical resources at your fingertips, ready whenever you are.</p>
               <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:520px;">Built from real questions, real experience, and a deep understanding of how hard this can be.</p>
             </div>
-            <div style="display:flex;justify-content:center;">
+            <div class="vhero-art" style="display:flex;justify-content:center;">
               <div style="width:100%;max-width:600px;border-radius:26px;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);padding:26px 24px;box-shadow:0 16px 38px rgba(40,80,90,0.12);">
                 <img src="/assets/library_hero.png" alt="The Vilij Library" style="width:100%;display:block;" />
               </div>
@@ -84,14 +84,14 @@ const gridItems = [
       </section>
 
       <!-- ===== NO MORE GUESSING BAND ===== -->
-      <div style="background:#f28121;text-align:center;padding:26px 24px;">
+      <div class="vband-sm" style="background:#f28121;text-align:center;padding:26px 24px;">
         <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">So no parent, grandparent or carer has to keep guessing alone.</p>
       </div>
 
       <!-- ===== WHY THE LIBRARY EXISTS ===== -->
       <section style="background:#ffffff;padding:90px 0 30px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
-          <div style="border-radius:26px;background:linear-gradient(90deg,#f6c79a 0%,#fbe5d1 26%,#ffffff 50%,#cfeae8 74%,#a4dbd7 100%);padding:50px 40px 56px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
+        <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
+          <div class="vpanel-soft" style="border-radius:26px;background:linear-gradient(90deg,#f6c79a 0%,#fbe5d1 26%,#ffffff 50%,#cfeae8 74%,#a4dbd7 100%);padding:50px 40px 56px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
             <h2 style="font-family:Quicksand;font-weight:700;font-size:50px;color:#1f9ca0;margin:0 0 26px;">Why The Library Exists</h2>
             <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.5;color:#222;margin:0 auto 28px;max-width:820px;">So no parent, grandparent or carer has to keep guessing alone &mdash; resources and guidance for the next step.</p>
             <p style="font-family:Mulish;font-size:21px;color:#2a2a2a;margin:0 0 22px;">The Library gives us:</p>
@@ -105,45 +105,45 @@ const gridItems = [
 
       <!-- ===== LIBRARY FEATURE CARDS ===== -->
       <section style="background:#ffffff;padding:58px 0 80px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:44px;">
+        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:44px;">
 
           <!-- You (The Parent) -->
-          <div style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="vcard-feat" style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
             <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">You<br />(The Parent)</h3>
             <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Because you matter too.</p>
             <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">A place for you to feel seen, supported, and not so alone.</p>
           </div>
 
           <!-- Education & EHCP -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
             <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Education<br />&amp; EHCP</h3>
             <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Navigate the system with confidence.</p>
             <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Helping you find your way through the system, with clarity, support, and less overwhelm.</p>
           </div>
 
           <!-- Practical Tools & Templates -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
             <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Practical Tools<br />&amp; Templates</h3>
             <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Download and breathe.</p>
             <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Tools for you to lean on, so things feel clearer and easier to manage.</p>
           </div>
 
           <!-- Supporting Your Child -->
-          <div style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="vcard-feat" style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
             <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Supporting<br />Your Child</h3>
             <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Understand what&rsquo;s really happening.</p>
             <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Understanding your child more clearly, and how best to support them.</p>
           </div>
 
           <!-- Everyday Life & Resources -->
-          <div style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="vcard-feat" style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
             <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Everyday Life<br />&amp; Resources</h3>
             <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Make daily life easier.</p>
             <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support for calmer, more manageable days.</p>
           </div>
 
           <!-- SEND Roadmap & Acronym Guide -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
             <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">SEND Roadmap<br />&amp; Acronym Guide</h3>
             <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Make sense of the system.</p>
             <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Clear, plain-English guidance so you finally understand what all of this really means.</p>
@@ -154,7 +154,7 @@ const gridItems = [
 
       <!-- ===== BE MORE BAR ===== -->
       <div style="background:#2bbfba;">
-        <div style="max-width:1240px;margin:0 auto;padding:30px 48px;display:flex;justify-content:space-around;align-items:center;gap:20px;">
+        <div class="vwrap vbar" style="max-width:1240px;margin:0 auto;padding:30px 48px;display:flex;justify-content:space-around;align-items:center;gap:20px;">
           <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be More</span>
           <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be Brave</span>
           <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be Curious</span>
@@ -165,7 +165,7 @@ const gridItems = [
       <AreasGrid items={gridItems} />
 
       <!-- ===== APP SIGNUP ORANGE BAND ===== -->
-      <section style="background:#f28121;text-align:center;padding:62px 24px;">
+      <section class="vband" style="background:#f28121;text-align:center;padding:62px 24px;">
         <p style="font-family:Mulish;font-size:20px;color:#ffe6cf;margin:0 0 8px;">So what do I do next?</p>
         <h2 style="font-family:Quicksand;font-weight:700;font-size:58px;color:#ffffff;margin:0 0 14px;">Sign up to The Vilij App.</h2>
         <p style="font-family:Mulish;font-size:22px;color:#fff;margin:0 0 34px;">Everything SEND in one place for just {monthlyPrice} per month.</p>
@@ -173,7 +173,7 @@ const gridItems = [
       </section>
 
       <!-- ===== STILL NOT SURE TEAL BAND ===== -->
-      <section style="background:#1f9ca0;padding:30px 24px;">
+      <section class="vband-sm" style="background:#1f9ca0;padding:30px 24px;">
         <div style="display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;">
           <span style="font-family:Quicksand;font-weight:500;font-size:34px;color:#d7f0f0;">Still not sure?</span>
           <a href="#" class="vpill" style="display:inline-flex;align-items:center;gap:14px;background:#f28121;color:#fff;font-family:Quicksand;font-weight:700;font-size:18px;letter-spacing:.5px;padding:12px 14px 12px 30px;border-radius:32px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,0.15);">TAKE A SNEAKY PEEK <span style="width:38px;height:38px;border-radius:50%;background:#ffffff;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:10px solid #1f9ca0;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px;"></span></span></a>
@@ -184,7 +184,7 @@ const gridItems = [
       <TestimonialCarousel list={list} />
 
       <!-- ===== FINAL CTA ===== -->
-      <section style="background:#f28121;text-align:center;padding:66px 24px;">
+      <section class="vband" style="background:#f28121;text-align:center;padding:66px 24px;">
         <p style="font-family:Mulish;font-size:22px;color:#ffe6cf;margin:0 0 10px;">So, you&rsquo;ve come this far?</p>
         <h2 style="font-family:Quicksand;font-weight:700;font-size:62px;color:#ffffff;margin:0 0 22px;">Your village is waiting for you.</h2>
         <p style="font-family:Mulish;font-weight:600;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You don&rsquo;t need to be at breaking point.<br />You don&rsquo;t need to have it all together.<br />You&rsquo;re allowed support too.</p>

@@ -29,19 +29,19 @@ const first = list[0];
 const hasNav = list.length > 1;
 ---
 <section style="background:#ffffff;padding:74px 0 80px;">
-  <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
+  <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
     <p style="font-family:Mulish;font-weight:600;font-size:23px;color:#353535;text-align:center;margin:0 0 6px;">Our Testimonials</p>
     <h2 style="font-family:Quicksand;font-weight:700;font-size:52px;color:#1f9ca0;text-align:center;margin:0 0 56px;">What Our <span style="color:#f28121;">Vilijers</span> Say</h2>
-    <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
+    <div class="vtestim" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
       {showQuoteMark ? (
-        <div style="position:relative;">
+        <div class="vtestim-photo" style="position:relative;">
           <img id="t-photo" src={first.photo} alt="A SEND family" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
-          <div style="position:absolute;top:-22px;right:-22px;width:84px;height:84px;border-radius:50%;background:#1f9ca0;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(31,156,160,0.35);">
+          <div class="vquote-mark" style="position:absolute;top:-22px;right:-22px;width:84px;height:84px;border-radius:50%;background:#1f9ca0;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(31,156,160,0.35);">
             <span style="font-family:Georgia,serif;font-weight:700;font-size:58px;line-height:1;color:#fff;margin-top:30px;">&rdquo;</span>
           </div>
         </div>
       ) : (
-        <div style="position:relative;">
+        <div class="vtestim-photo" style="position:relative;">
           <img id="t-photo" src={first.photo} alt="A SEND family" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
         </div>
       )}

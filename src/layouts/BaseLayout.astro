@@ -8,13 +8,21 @@
 // <!-- ===== SECTION ===== --> markers need to survive.
 //
 // Each page also keeps its own <style is:global> block, which Astro lifts into
-// this head for us. The three CSS variants interleave (the card rules sit
-// between .vpill:hover and .vnav-cta:hover on some pages but not others), so
-// they cannot be composed from a shared base without reordering the stylesheet.
+// this head for us. The comment here used to say the three variants interleave
+// and so could not share a base; that is no longer true — the six content
+// pages' blocks are byte-identical to each other, and so are the six legal
+// pages'. Consolidating them is still worth doing (ISSUES #22) but it would
+// churn all 13 pages, so it is not part of the responsive work.
 // The pages butt </style> straight up against the wrapper <div> for the same
 // reason the slot below has no whitespace around it: Astro's HTML compressor
 // works per component, so a newline on both sides of a boundary becomes two
 // spaces in the output rather than one.
+//
+// responsive.css is the site's one real stylesheet: the tablet and mobile
+// layer, ISSUES #20. Every rule in it sits inside a max-width media query, so
+// importing it here cannot move the desktop design on any of the 13 pages.
+// Read its header before changing any inline font-size anywhere on the site.
+import "../styles/responsive.css";
 import TestimonialScript from "../components/TestimonialScript.astro";
 import ToTopScript from "../components/ToTopScript.astro";
 import CookieConsent from "../components/CookieConsent.astro";

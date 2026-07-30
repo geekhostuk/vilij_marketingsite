@@ -67,15 +67,15 @@ const gridItems = [
 
       <!-- ===== HEADER + HERO ===== -->
       <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
-        <div style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
+        <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:30px 48px 0;">
           <SiteNav />
-          <div style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:54px 0 70px;">
+          <div class="vhero" style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:54px 0 70px;">
             <div>
               <h1 style="font-family:Quicksand;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome to<br />the Vilij Hall</h1>
               <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:520px;">Where stories are shared, voices are heard, and support comes to life.</p>
               <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:520px;">The Vilij Hall is the heart of the Vilij. A welcoming space designed to reduce isolation, build belonging, and remind every SEND parent that you are not alone.</p>
             </div>
-            <div style="display:flex;justify-content:center;">
+            <div class="vhero-art" style="display:flex;justify-content:center;">
               <div style="width:100%;max-width:600px;border-radius:26px;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);padding:26px 24px;box-shadow:0 16px 38px rgba(40,80,90,0.12);">
                 <img src="/assets/hall_trim.png" alt="The Vilij Hall" style="width:100%;display:block;" />
               </div>
@@ -85,14 +85,14 @@ const gridItems = [
       </section>
 
       <!-- ===== STAY AS LONG BAND ===== -->
-      <div style="background:#f28121;text-align:center;padding:26px 24px;">
+      <div class="vband-sm" style="background:#f28121;text-align:center;padding:26px 24px;">
         <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">Stay as long as you like, the doors are always open.</p>
       </div>
 
       <!-- ===== WHY THE VILIJ HALL EXISTS ===== -->
       <section style="background:#ffffff;padding:90px 0 30px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;">
-          <div style="border-radius:26px;background:linear-gradient(90deg,#f6c79a 0%,#fbe5d1 26%,#ffffff 50%,#cfeae8 74%,#a4dbd7 100%);padding:50px 40px 56px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
+        <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
+          <div class="vpanel-soft" style="border-radius:26px;background:linear-gradient(90deg,#f6c79a 0%,#fbe5d1 26%,#ffffff 50%,#cfeae8 74%,#a4dbd7 100%);padding:50px 40px 56px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
             <h2 style="font-family:Quicksand;font-weight:700;font-size:50px;color:#1f9ca0;margin:0 0 26px;">Why The Vilij Hall Exists</h2>
             <p style="font-family:Mulish;font-weight:800;font-size:23px;line-height:1.5;color:#222;margin:0 auto 28px;max-width:760px;">As SEND families we often feel exhausted, invisible, and overwhelmed.</p>
             <p style="font-family:Mulish;font-size:21px;color:#2a2a2a;margin:0 0 22px;">The Vilij Hall gives us:</p>
@@ -108,12 +108,12 @@ const gridItems = [
 
       <!-- ===== FEATURE CARDS ===== -->
       <section style="background:#ffffff;padding:58px 0 80px;">
-        <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 44px;">
+        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 44px;">
 
           <!-- Collective wins (orange, sticky note top-left) -->
-          <div style="position:relative;background:#f28121;border-radius:22px;display:flex;gap:24px;padding:34px 36px;min-height:330px;">
-            <div style="flex:0 0 40%;display:flex;align-items:flex-start;">
-              <div style="background:#fbf3bf;border-radius:6px;padding:22px 20px 28px;margin-top:-56px;margin-left:-12px;box-shadow:0 14px 26px rgba(0,0,0,0.18);transform:rotate(-4deg);width:100%;">
+          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;gap:24px;padding:34px 36px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 40%;display:flex;align-items:flex-start;">
+              <div class="vnote" style="background:#fbf3bf;border-radius:6px;padding:22px 20px 28px;margin-top:-56px;margin-left:-12px;box-shadow:0 14px 26px rgba(0,0,0,0.18);transform:rotate(-4deg);width:100%;">
                 <p style="font-family:Caveat;font-weight:600;font-size:27px;line-height:1.25;color:#2a2a2a;margin:0;">Today my son Adam, 9, picked up a pencil and scribbled for the first time!</p>
                 <div style="text-align:center;font-size:22px;color:#222;margin-top:6px;">&#9825;</div>
               </div>
@@ -126,38 +126,38 @@ const gridItems = [
           </div>
 
           <!-- Our Stories (teal, photo top-right) -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:330px;">
-            <div style="display:flex;gap:18px;align-items:flex-start;">
+          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:330px;">
+            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
               <div style="flex:1;">
                 <h3 style="font-family:Quicksand;font-weight:700;font-size:42px;color:#fff;margin:0 0 16px;line-height:1.0;">Our Stories</h3>
                 <p style="font-family:Mulish;font-weight:800;font-size:21px;color:#fff;margin:0;line-height:1.25;">Stories from<br />our Vilijers</p>
               </div>
-              <img src="/assets/p_brew.png" alt="Vilijers in conversation" style="flex:0 0 46%;height:170px;object-fit:cover;margin-top:-30px;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_brew.png" alt="Vilijers in conversation" class="vsplit-img" style="flex:0 0 46%;height:170px;object-fit:cover;margin-top:-30px;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
             <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:rgba(255,255,255,0.96);margin:24px 0 0;">Real conversations with parents, grandparents, siblings, and carers living the SEND life, sharing their journeys, hopes and lessons.</p>
           </div>
 
           <!-- Come and meet (teal, photo right) -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:34px 0 34px 36px;min-height:330px;">
+          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:34px 0 34px 36px;min-height:330px;">
             <div style="flex:1;">
               <h3 style="font-family:Quicksand;font-weight:700;font-size:42px;color:#fff;margin:0 0 16px;line-height:1.02;">Come<br />and meet</h3>
               <p style="font-family:Mulish;font-weight:800;font-size:21px;color:#fff;margin:0 0 14px;line-height:1.25;">Guidance you<br />can trust</p>
               <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.96);margin:0;">Trusted voices. Real stories. Practical guidance. Meet the experts, parents and people helping to make life feel a little less overwhelming and a lot less lonely.</p>
             </div>
-            <img src="/assets/p_experts.png" alt="Meet the people of the Vilij" style="flex:0 0 42%;height:280px;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            <img src="/assets/p_experts.png" alt="Meet the people of the Vilij" class="vsplit-img" style="flex:0 0 42%;height:280px;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
           </div>
 
           <!-- What's on? (orange, events photo bottom-right) -->
-          <div style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:330px;overflow:hidden;">
+          <div class="vcard-feat vevents" style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:330px;overflow:hidden;">
             <h3 style="font-family:Quicksand;font-weight:700;font-size:42px;color:#fff;margin:0 0 18px;line-height:1.0;">What&rsquo;s on?</h3>
             <p style="font-family:Mulish;font-weight:800;font-size:21px;color:#fff;margin:0 0 16px;line-height:1.25;max-width:48%;">Find the latest<br />Events here.</p>
             <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:rgba(255,255,255,0.96);margin:0;max-width:48%;">National and local SEND events held online and face to face.</p>
-            <img src="/assets/p_events.png" alt="A signpost pointing to events" style="position:absolute;right:-14px;bottom:-14px;width:48%;height:200px;object-fit:cover;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.2);" />
+            <img src="/assets/p_events.png" alt="A signpost pointing to events" class="vevents-img" style="position:absolute;right:-14px;bottom:-14px;width:48%;height:200px;object-fit:cover;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.2);" />
           </div>
 
           <!-- Vilij News (orange, photo left) -->
-          <div style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:24px;padding:34px 36px 34px 0;min-height:300px;">
-            <img src="/assets/p_founders.png" alt="Vilij founders Charlie and Steph" style="flex:0 0 44%;height:250px;object-fit:cover;margin-left:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:24px;padding:34px 36px 34px 0;min-height:300px;">
+            <img src="/assets/p_founders.png" alt="Vilij founders Charlie and Steph" class="vsplit-img" style="flex:0 0 44%;height:250px;object-fit:cover;margin-left:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             <div style="flex:1;">
               <h3 style="font-family:Quicksand;font-weight:700;font-size:42px;color:#fff;margin:0 0 18px;line-height:1.02;">Vilij<br />News</h3>
               <p style="font-family:Mulish;font-size:18px;line-height:1.55;color:rgba(255,255,255,0.96);margin:0;">Vilij updates &amp; news from our founders Charlie &amp; Steph</p>
@@ -165,12 +165,12 @@ const gridItems = [
           </div>
 
           <!-- Daily Chat (teal, photo right) -->
-          <div style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:34px 0 34px 36px;min-height:300px;">
+          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:34px 0 34px 36px;min-height:300px;">
             <div style="flex:1;">
               <h3 style="font-family:Quicksand;font-weight:700;font-size:42px;color:#fff;margin:0 0 16px;line-height:1.02;">Daily<br />Chat</h3>
               <p style="font-family:Mulish;font-weight:800;font-size:21px;color:#fff;margin:0;line-height:1.25;">Today&rsquo;s<br />Conversations</p>
             </div>
-            <img src="/assets/p_dailychat.png" alt="Daily conversations" style="flex:0 0 46%;height:250px;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            <img src="/assets/p_dailychat.png" alt="Daily conversations" class="vsplit-img" style="flex:0 0 46%;height:250px;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
           </div>
 
         </div>
@@ -178,7 +178,7 @@ const gridItems = [
 
       <!-- ===== BE MORE BAR ===== -->
       <div style="background:#2bbfba;">
-        <div style="max-width:1240px;margin:0 auto;padding:30px 48px;display:flex;justify-content:space-around;align-items:center;gap:20px;">
+        <div class="vwrap vbar" style="max-width:1240px;margin:0 auto;padding:30px 48px;display:flex;justify-content:space-around;align-items:center;gap:20px;">
           <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be More</span>
           <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be Brave</span>
           <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be Curious</span>
@@ -189,7 +189,7 @@ const gridItems = [
       <AreasGrid items={gridItems} />
 
       <!-- ===== APP SIGNUP ORANGE BAND ===== -->
-      <section style="background:#f28121;text-align:center;padding:62px 24px;">
+      <section class="vband" style="background:#f28121;text-align:center;padding:62px 24px;">
         <p style="font-family:Mulish;font-size:20px;color:#ffe6cf;margin:0 0 8px;">So what do I do next?</p>
         <h2 style="font-family:Quicksand;font-weight:700;font-size:58px;color:#ffffff;margin:0 0 14px;">Sign up to The Vilij App.</h2>
         <p style="font-family:Mulish;font-size:22px;color:#fff;margin:0 0 34px;">Everything SEND in one place for just {monthlyPrice} per month.</p>
@@ -197,7 +197,7 @@ const gridItems = [
       </section>
 
       <!-- ===== STILL NOT SURE TEAL BAND ===== -->
-      <section style="background:#1f9ca0;padding:30px 24px;">
+      <section class="vband-sm" style="background:#1f9ca0;padding:30px 24px;">
         <div style="display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;">
           <span style="font-family:Quicksand;font-weight:500;font-size:34px;color:#d7f0f0;">Still not sure?</span>
           <a href="#" class="vpill" style="display:inline-flex;align-items:center;gap:14px;background:#f28121;color:#fff;font-family:Quicksand;font-weight:700;font-size:18px;letter-spacing:.5px;padding:12px 14px 12px 30px;border-radius:32px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,0.15);">TAKE A SNEAKY PEEK <span style="width:38px;height:38px;border-radius:50%;background:#ffffff;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:10px solid #1f9ca0;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px;"></span></span></a>
@@ -208,7 +208,7 @@ const gridItems = [
       <TestimonialCarousel list={list} />
 
       <!-- ===== FINAL CTA ===== -->
-      <section style="background:#f28121;text-align:center;padding:66px 24px;">
+      <section class="vband" style="background:#f28121;text-align:center;padding:66px 24px;">
         <p style="font-family:Mulish;font-size:22px;color:#ffe6cf;margin:0 0 10px;">So, you&rsquo;ve come this far?</p>
         <h2 style="font-family:Quicksand;font-weight:700;font-size:62px;color:#ffffff;margin:0 0 22px;">Your village is waiting for you.</h2>
         <p style="font-family:Mulish;font-weight:600;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You don&rsquo;t need to be at breaking point.<br />You don&rsquo;t need to have it all together.<br />You&rsquo;re allowed support too.</p>
