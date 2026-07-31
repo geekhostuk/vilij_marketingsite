@@ -31,8 +31,16 @@ import type { Testimonial } from "../data/testimonials";
 interface Props {
   title: string;
   description: string;
-  // Keeps /newsletter-thanks out of the index.
+  // Keeps /newsletter-thanks, /library and /wellbeing out of the index.
   noindex?: boolean;
+  // C50 / SEO-REVIEW §4 — the Open Graph share image, root-relative. Defaults to
+  // the site-wide card; give a page its own by passing this. Whatever it points
+  // at must be 1200x630, or the og:image:width/height below become a lie and
+  // Facebook and LinkedIn will letterbox the result.
+  ogImage?: string;
+  // Alt text for that image. Defaults with it, so a page that overrides one
+  // should override both.
+  ogImageAlt?: string;
   // Extra Google Fonts families, spliced into the stylesheet URL. /hall adds Caveat.
   extraFonts?: string;
   // The testimonials this page rotates through, if it has a carousel. Pages
@@ -40,7 +48,15 @@ interface Props {
   carousel?: Testimonial[];
 }
 
-const { title, description, noindex = false, extraFonts = "", carousel } = Astro.props;
+const {
+  title,
+  description,
+  noindex = false,
+  extraFonts = "",
+  carousel,
+  ogImage = "/assets/og-default.jpg",
+  ogImageAlt = "An illustration of The Vilij village",
+} = Astro.props;
 
 // Lato throughout, headings included (Damien, 31 Jul 2026: "It's always been
 // Lato"). This closes the Figtree question — the Illustrator sources pair
@@ -82,10 +98,21 @@ const fontHref =
 // worse than no canonical at all.
 const path = Astro.url.pathname.replace(/\/+$/, "");
 const canonical = new URL(path || "/", Astro.site).href;
+
+// SEO-REVIEW §4 — Open Graph and Twitter Card. Both must be absolute URLs on the
+// live origin; every scraper rejects a root-relative og:image, which is the
+// usual reason a share silently renders with no picture.
+const ogImageUrl = new URL(ogImage, Astro.site).href;
+
+// og:site_name already carries the brand, so the "| The Vilij" suffix that every
+// page title ends with is repetition inside a share card that has limited room.
+// The homepage title uses an em dash rather than the pipe and so is untouched,
+// which is correct — it reads as a sentence.
+const ogTitle = title.replace(/\s*\|\s*The Vilij\s*$/, "");
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -96,6 +123,21 @@ const canonical = new URL(path || "/", Astro.site).href;
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Vilij" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href={fontHref} rel="stylesheet" />

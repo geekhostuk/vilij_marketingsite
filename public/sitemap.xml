@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The 12 indexable public routes. One is deliberately omitted:
-  /newsletter-thanks, which is noindex and reachable only from the footer
-  newsletter form.
+  The 10 indexable public routes. Three of the 13 built routes are deliberately
+  omitted, all three noindex:
+
+    /newsletter-thanks  reachable only from the footer newsletter form.
+    /library            held back behind the coming-soon banner (31 Jul 2026).
+    /wellbeing          the same.
+
+  The two held-back pages are noindex but NOT disallowed in robots.txt, and that
+  is deliberate: a page blocked from crawling cannot be read, so Google never
+  sees the noindex and can keep an already-indexed URL listed indefinitely. The
+  crawler has to be let in to be told to go away.
+
+  Put /library and /wellbeing back here, and drop the `noindex` prop from both
+  pages, when the app features go live.
+
   Keep this file in step with src/pages/ when a route is added or removed.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -20,18 +32,6 @@
   </url>
   <url>
     <loc>https://marketing.thevilij.co.uk/hall</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://marketing.thevilij.co.uk/library</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://marketing.thevilij.co.uk/wellbeing</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

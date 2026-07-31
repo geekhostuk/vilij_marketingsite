@@ -30,15 +30,37 @@
 // stand out. The `weight` field is now redundant but stays, because the array
 // feeds both the desktop bar and the mobile panel and is the one place to
 // change if a real distinction is wanted later.
+// ISSUES #15 — "Explore The Vilij" and "About Us" were dead `#` placeholders on
+// all thirteen pages. Neither has a page of its own to point at, but both have a
+// section on the homepage that already says what they promise, so they now point
+// at those:
+//
+//   /#explore  the "Everything you need, in one place." section — the heading,
+//              the five-feature row, then the nine area tiles (Café, Vilij Hall,
+//              Expert Hub and the six coming-soon ones).
+//   /#about    the "Built by families who live this life." section, the one that
+//              opens "How We Can Support You".
+//
+// Root-relative and NOT bare fragments. The nav is on all thirteen pages, so a
+// bare `#explore` would silently do nothing on the twelve that have no such
+// element; `/#explore` navigates home and scrolls on every one of them.
+//
+// The nav is in normal flow, not sticky or fixed, so the browser's own fragment
+// scroll lands correctly and neither section needs a `scroll-margin-top`. Both
+// carry generous top padding anyway (84px and 56px), so the heading is not
+// jammed against the viewport edge. If the nav is ever made sticky, both
+// sections will need a scroll-margin equal to its height.
+//
+// Give either one a real page later and this array is where it changes.
 const links = [
   { href: "/", label: "Home", weight: 700 },
-  { href: "#", label: "Explore The Vilij", weight: 700 },
-  { href: "#", label: "About Us", weight: 700 },
+  { href: "/#explore", label: "Explore The Vilij", weight: 700 },
+  { href: "/#about", label: "About Us", weight: 700 },
 ];
 ---
 <div class="vnav-shell">
   <nav style="display:flex;align-items:center;justify-content:space-between;">
-    <a href="/" class="vnav-logo"><img src="/assets/logo.png" alt="The Vilij" style="height:62px;width:auto;display:block;" /></a>
+    <a href="/" class="vnav-logo"><img src="/assets/logo.png" alt="The Vilij" width="570" height="248" decoding="async" style="height:62px;width:auto;display:block;" /></a>
     <div class="vnav-right" style="display:flex;align-items:center;gap:42px;">
       {/* The trailing {" "} keeps the whitespace the hand-written links used to
           have between them. Flex ignores whitespace-only text nodes, so it
@@ -89,8 +111,14 @@ const links = [
       if (!panel.contains(t) && !toggle.contains(t)) close(false);
     });
 
-    // Following a link inside the panel navigates on this same page for the
-    // two "#" placeholders, which would otherwise leave the panel open.
+    // Close on following a link. This used to matter because the two "#"
+    // placeholders did not navigate at all and so left the panel hanging open.
+    // They now go to /#explore and /#about, and on the homepage that is a
+    // same-document scroll — which still does not unmount anything, so the panel
+    // would still hang open. Closing first is also what keeps the scroll honest:
+    // the panel is an in-flow dropdown, so hiding it shortens the document above
+    // the target. Doing that synchronously here means the browser measures the
+    // final layout when it runs the fragment scroll as the default action.
     panel.addEventListener("click", (e) => {
       if ((e.target as HTMLElement).closest("a")) close(false);
     });

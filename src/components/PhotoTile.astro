@@ -24,6 +24,14 @@
 // takes the middle of the frame: p_beach (840x500) and p_grand (760x480) hold up
 // fine, but p_jose (494x335) is both the smallest and the widest and loses the
 // most. A taller crop of that one would be worth having.
+//
+// SEO-REVIEW §2 — the framed variant pins both width and height in CSS, so the
+// attributes below cannot move it; they only reserve the box early. The unframed
+// variant is `width:100%;height:auto`, where the attributes supply the aspect
+// ratio the browser would otherwise have to download the file to learn. Both
+// tiles sit well below the fold, so both lazy-load.
+import { imageSize } from "../data/imageSizes";
+
 interface Props {
   label: string;
   img: string;
@@ -31,13 +39,14 @@ interface Props {
   framed?: boolean;
 }
 const { label, img, alt, framed = true } = Astro.props;
+const size = imageSize(img);
 const wrapper = framed
   ? "position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(40,80,90,0.12);align-self:stretch;min-height:260px;"
   : "display:flex;align-items:center;justify-content:center;padding:10px;";
 ---
 <Fragment set:html={` <!-- ${label} --> `} />
 <div style={wrapper}>
-  <img src={img} alt={alt} style={framed
+  <img src={img} alt={alt} width={size?.w} height={size?.h} loading="lazy" decoding="async" style={framed
     ? "position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"
     : "width:100%;height:auto;display:block;"} />
 </div>

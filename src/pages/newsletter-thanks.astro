@@ -51,13 +51,25 @@ const title = "You&rsquo;re on the List | The Vilij";
               <h3 style="font-family:Lato;font-weight:700;font-size:30px;color:#fff;margin:0 0 12px;">The Caf&eacute;</h3>
               <p style="font-family:Lato;font-size:17px;line-height:1.55;color:rgba(255,255,255,0.95);margin:0;">Where the kettle&rsquo;s always on and someone always understands.</p>
             </a>
-            <a href="/library" style="text-decoration:none;background:#1f9ca0;border-radius:22px;padding:34px 32px;display:block;">
-              <h3 style="font-family:Lato;font-weight:700;font-size:30px;color:#fff;margin:0 0 12px;">The Library</h3>
-              <p style="font-family:Lato;font-size:17px;line-height:1.55;color:rgba(255,255,255,0.95);margin:0;">Practical resources at your fingertips, ready whenever you are.</p>
+            {/* These two pointed at /library and /wellbeing until 31 Jul 2026.
+                Both areas are held back behind the coming-soon banner and are
+                now noindex (SEO-REVIEW §6), so sending a brand-new subscriber
+                to them was the one place on the site still offering an area
+                that is not open. Repointed at the other two areas that are:
+                Vilij Hall and the Expert Hub. Copy is lifted verbatim from
+                src/data/areas.ts so the wording matches the tiles.
+                Put the original two back when the app features go live.
+
+                A {/* */} comment rather than an HTML one so it does not ship to
+                every visitor — the <!-- ===== SECTION ===== --> markers are
+                deliberately in the output, an eight-line rationale is not. */}
+            <a href="/hall" style="text-decoration:none;background:#1f9ca0;border-radius:22px;padding:34px 32px;display:block;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:30px;color:#fff;margin:0 0 12px;">Vilij Hall</h3>
+              <p style="font-family:Lato;font-size:17px;line-height:1.55;color:rgba(255,255,255,0.95);margin:0;">Where stories are shared, voices are heard, and support comes to life.</p>
             </a>
-            <a href="/wellbeing" style="text-decoration:none;background:#f28121;border-radius:22px;padding:34px 32px;display:block;">
-              <h3 style="font-family:Lato;font-weight:700;font-size:30px;color:#fff;margin:0 0 12px;">Wellbeing Centre</h3>
-              <p style="font-family:Lato;font-size:17px;line-height:1.55;color:rgba(255,255,255,0.95);margin:0;">Because you matter too, not just everyone you look after.</p>
+            <a href="/expert-hub" style="text-decoration:none;background:#f28121;border-radius:22px;padding:34px 32px;display:block;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:30px;color:#fff;margin:0 0 12px;">Vilij Expert Hub</h3>
+              <p style="font-family:Lato;font-size:17px;line-height:1.55;color:rgba(255,255,255,0.95);margin:0;">Trusted experts, tailored advice, and tools that make a difference.</p>
             </a>
           </div>
         </div>

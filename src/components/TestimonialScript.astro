@@ -5,11 +5,24 @@
 //
 // The indentation below is load-bearing: define:vars scripts are emitted inline
 // and verbatim, so reformatting them changes the built HTML.
+//
+// SEO-REVIEW §2 — the photo is the one image on the site whose dimensions change
+// after load, because paging the carousel swaps the file. The markup carries the
+// first slide's width/height so the box is reserved before anything downloads;
+// this enriches each slide with its own size so the swap can keep them honest.
+// Without that, paging from a 780x510 photo to a 496x411 one would shift the
+// layout at exactly the moment the user is reading it.
+//
+// Currently academic — showSecondTestimonial is false, so there is one slide and
+// nothing to page to. It is here so that turning the second slot back on does
+// not quietly reintroduce the shift.
 import type { Testimonial } from "../data/testimonials";
+import { imageSize } from "../data/imageSizes";
 interface Props {
   list: Testimonial[];
 }
-const { list } = Astro.props;
+const { list: slides } = Astro.props;
+const list = slides.map((t) => ({ ...t, size: imageSize(t.photo) ?? null }));
 ---
     <script define:vars={{ list }}>
       (function () {
@@ -24,7 +37,14 @@ const { list } = Astro.props;
         function render() {
           const i = ((t % list.length) + list.length) % list.length;
           const cur = list[i];
-          if (photo) { photo.src = cur.photo; photo.alt = cur.name; }
+          if (photo) {
+            photo.src = cur.photo;
+            photo.alt = cur.name;
+            if (cur.size) {
+              photo.width = cur.size.w;
+              photo.height = cur.size.h;
+            }
+          }
           if (quote) quote.textContent = cur.quote;
           if (name) name.textContent = cur.name;
           if (role) role.textContent = cur.role;
