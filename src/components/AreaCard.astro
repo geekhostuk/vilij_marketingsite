@@ -30,6 +30,14 @@
 // the image and the bottom chip is gone. Title and body keep their full
 // contrast: greying the words out would trade legibility for a signal the
 // banner already carries loudly.
+//
+// Damien, 31 Jul 2026: bigger text, band lower — "the top of the teal box
+// starting from where the bottom of the current Coming soon text is". The band
+// went 15px -> 17px and top:36% -> top:45%. That 9% is ~28px of a ~300px image
+// box, which is the 10px padding plus the old 15px line: the band's top edge
+// now lands where its text used to bottom out. `top` stays a percentage so it
+// holds that position at every breakpoint, and 17px sits below the responsive
+// ramp's 20px floor, so it is never stepped down on a phone.
 import type { AreaCard } from "../data/areas";
 type Props = AreaCard;
 const { label, img, alt, title, body, href, cta, comingSoon = false } = Astro.props;
@@ -48,11 +56,11 @@ const Tag = comingSoon ? "div" : "a";
   <div style="position:relative;">
     <div style="padding:14px 8px 0;"><img src={img} alt={alt} class="vcard-img" style={comingSoon ? "opacity:.42;filter:saturate(.5);" : undefined} /></div>
     {comingSoon && (
-      <div style="position:absolute;left:0;right:0;top:36%;background:#1f9ca0;box-shadow:0 6px 16px rgba(31,156,160,0.28);padding:10px 0;text-align:center;font-family:Lato;font-weight:700;font-size:15px;letter-spacing:2px;color:#ffffff;">COMING SOON</div>
+      <div style="position:absolute;left:0;right:0;top:45%;background:#1f9ca0;box-shadow:0 6px 16px rgba(31,156,160,0.28);padding:10px 0;text-align:center;font-family:Lato;font-weight:700;font-size:17px;letter-spacing:2px;color:#ffffff;">COMING SOON</div>
     )}
   </div>
   <div class="vcard-body" style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-    <h3 style="font-family:Quicksand;font-weight:700;font-size:28px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;" set:html={title}></h3>
+    <h3 style="font-family:Lato;font-weight:700;font-size:28px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;" set:html={title}></h3>
     <p style="font-family:Lato;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;" set:html={body}></p>
     {!comingSoon && (
       <span class="vpill" style="align-self:flex-start;font-family:Lato;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;box-shadow:0 6px 14px rgba(242,129,33,0.3);" set:html={cta}></span>

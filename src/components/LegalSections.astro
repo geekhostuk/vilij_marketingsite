@@ -17,7 +17,7 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 
     {sections.map((s) => (
       <div id={`s${s.n}`} style="padding-top:46px;">
-        <h2 style="font-family:Quicksand;font-weight:700;font-size:38px;line-height:1.15;color:#1f9ca0;margin:0 0 24px;">
+        <h2 style="font-family:Lato;font-weight:700;font-size:38px;line-height:1.15;color:#1f9ca0;margin:0 0 24px;">
           <span style="color:#f28121;">{s.n}.</span> {s.title}
         </h2>
 
@@ -28,7 +28,7 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
         ))}{s.bullets && (
           <ul style="list-style:none;padding:0;margin:0 0 24px;">
             {s.bullets.map((b) => (
-              <li style="font-family:Lato;font-size:18px;line-height:1.65;color:#444;margin:0 0 10px;padding-left:26px;position:relative;"><span style="position:absolute;left:0;color:#f28121;font-weight:800;">&bull;</span>{b}</li>
+              <li style="font-family:Lato;font-size:18px;line-height:1.65;color:#444;margin:0 0 10px;padding-left:26px;position:relative;"><span style="position:absolute;left:0;color:#f28121;font-weight:700;">&bull;</span>{b}</li>
             ))}
           </ul>
         )}
@@ -43,7 +43,7 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
 
               {c.contact && (
                 <div class="vcallout" style="margin:20px 0 4px;border-radius:18px;background:#f4faf9;border:1px solid #d9ecea;padding:26px 28px;">
-                  <p style="font-family:Quicksand;font-weight:700;font-size:22px;color:#1f9ca0;margin:0 0 14px;">The Vilij Limited</p>
+                  <p style="font-family:Lato;font-weight:700;font-size:22px;color:#1f9ca0;margin:0 0 14px;">The Vilij Limited</p>
                   <p style="font-family:Lato;font-size:17px;line-height:1.7;color:#444;margin:0 0 10px;">Registered in England and Wales under company number 16718802</p>
                   <p style="font-family:Lato;font-size:17px;line-height:1.7;color:#444;margin:0 0 10px;">Registered office: The Meakin Suite, Ravenscliffe, First Avenue, Newcastle-under-Lyme, ST5 8QX</p>
                   <p style="font-family:Lato;font-size:17px;line-height:1.7;color:#444;margin:0 0 6px;">Email: <a href="mailto:privacy@thevilij.co.uk" class="vlink" style="color:#f28121;font-weight:700;text-decoration:none;">privacy@thevilij.co.uk</a></p>
@@ -69,20 +69,20 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
               )}{c.bullets && (
                 <ul style="list-style:none;padding:0;margin:14px 0 4px;">
                   {c.bullets.map((b) => (
-                    <li style="font-family:Lato;font-size:17px;line-height:1.65;color:#444;margin:0 0 10px;padding-left:26px;position:relative;"><span style="position:absolute;left:0;color:#f28121;font-weight:800;">&bull;</span>{b}</li>
+                    <li style="font-family:Lato;font-size:17px;line-height:1.65;color:#444;margin:0 0 10px;padding-left:26px;position:relative;"><span style="position:absolute;left:0;color:#f28121;font-weight:700;">&bull;</span>{b}</li>
                   ))}
                 </ul>
               )}{c.steps && (
                 <div style="margin:18px 0 4px;">
                   {c.steps.map((step) => (
                     <div class="vcallout" style="margin:0 0 22px;border-radius:18px;background:#f4faf9;border:1px solid #d9ecea;padding:22px 26px;">
-                      <p style="font-family:Quicksand;font-weight:700;font-size:20px;color:#1f9ca0;margin:0 0 12px;">{step.title}</p>
+                      <p style="font-family:Lato;font-weight:700;font-size:20px;color:#1f9ca0;margin:0 0 12px;">{step.title}</p>
                       {step.intro && (
                         <p style="font-family:Lato;font-size:17px;line-height:1.65;color:#444;margin:0 0 12px;">{step.intro}</p>
                       )}
                       <ul style="list-style:none;padding:0;margin:0;">
                         {step.bullets.map((b) => (
-                          <li style="font-family:Lato;font-size:17px;line-height:1.65;color:#444;margin:0 0 10px;padding-left:26px;position:relative;"><span style="position:absolute;left:0;color:#f28121;font-weight:800;">&bull;</span>{b}</li>
+                          <li style="font-family:Lato;font-size:17px;line-height:1.65;color:#444;margin:0 0 10px;padding-left:26px;position:relative;"><span style="position:absolute;left:0;color:#f28121;font-weight:700;">&bull;</span>{b}</li>
                         ))}
                       </ul>
                     </div>
@@ -95,8 +95,8 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
                   <table style="width:100%;border-collapse:collapse;font-family:Lato;font-size:16px;min-width:520px;">
                     <thead>
                       <tr>
-                        <th style="text-align:left;font-family:Quicksand;font-weight:700;font-size:18px;color:#ffffff;background:#1f9ca0;padding:14px 18px;border-radius:12px 0 0 0;width:42%;">Data Type</th>
-                        <th style="text-align:left;font-family:Quicksand;font-weight:700;font-size:18px;color:#ffffff;background:#1f9ca0;padding:14px 18px;border-radius:0 12px 0 0;">Typical Retention Period</th>
+                        <th style="text-align:left;font-family:Lato;font-weight:700;font-size:18px;color:#ffffff;background:#1f9ca0;padding:14px 18px;border-radius:12px 0 0 0;width:42%;">Data Type</th>
+                        <th style="text-align:left;font-family:Lato;font-weight:700;font-size:18px;color:#ffffff;background:#1f9ca0;padding:14px 18px;border-radius:0 12px 0 0;">Typical Retention Period</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -115,7 +115,7 @@ const letters = "abcdefghijklmnopqrstuvwxyz".split("");
                     <thead>
                       <tr>
                         {c.grid.headers.map((h, i) => (
-                          <th style={`text-align:left;font-family:Quicksand;font-weight:700;font-size:17px;color:#ffffff;background:#1f9ca0;padding:14px 18px;${i === 0 ? "border-radius:12px 0 0 0;" : ""}${i === c.grid.headers.length - 1 ? "border-radius:0 12px 0 0;" : ""}`}>{h}</th>
+                          <th style={`text-align:left;font-family:Lato;font-weight:700;font-size:17px;color:#ffffff;background:#1f9ca0;padding:14px 18px;${i === 0 ? "border-radius:12px 0 0 0;" : ""}${i === c.grid.headers.length - 1 ? "border-radius:0 12px 0 0;" : ""}`}>{h}</th>
                         ))}
                       </tr>
                     </thead>

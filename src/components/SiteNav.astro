@@ -22,10 +22,18 @@
 // up underneath the fixed cookie banner (z-index 9999).
 //
 // Sizing, hiding and the burger itself all live in src/styles/responsive.css.
+//
+// All three weights are 700. Home used to be 700 and the other two 600, a
+// subtle cue that Lato cannot express — it ships 100/300/400/700/900 and has no
+// 600. Dropping the other two to 400 was the alternative and it is worse: 400
+// at 18px teal reads as body copy, so all three links would weaken to make one
+// stand out. The `weight` field is now redundant but stays, because the array
+// feeds both the desktop bar and the mobile panel and is the one place to
+// change if a real distinction is wanted later.
 const links = [
   { href: "/", label: "Home", weight: 700 },
-  { href: "#", label: "Explore The Vilij", weight: 600 },
-  { href: "#", label: "About Us", weight: 600 },
+  { href: "#", label: "Explore The Vilij", weight: 700 },
+  { href: "#", label: "About Us", weight: 700 },
 ];
 ---
 <div class="vnav-shell">
@@ -38,9 +46,9 @@ const links = [
           shipped before, which makes "the desktop design did not move" a thing
           you can diff rather than a thing you have to take on trust. */}
       {links.map((l) => (
-        <a href={l.href} class="vnav-link vlink" style={`font-family:Quicksand;font-weight:${l.weight};font-size:18px;color:#1f9ca0;text-decoration:none;`}>{l.label}</a>
+        <a href={l.href} class="vnav-link vlink" style={`font-family:Lato;font-weight:${l.weight};font-size:18px;color:#1f9ca0;text-decoration:none;`}>{l.label}</a>
       )).flatMap((el) => [el, " "])}
-      <a href="https://app.thevilij.co.uk" class="vnav-cta vpill" style="font-family:Quicksand;font-weight:700;font-size:16px;letter-spacing:.5px;color:#ffffff;background:#1f9ca0;padding:13px 30px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(31,156,160,0.3);">SIGN UP</a>
+      <a href="https://app.thevilij.co.uk" class="vnav-cta vpill" style="font-family:Lato;font-weight:700;font-size:16px;letter-spacing:.5px;color:#ffffff;background:#1f9ca0;padding:13px 30px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(31,156,160,0.3);">SIGN UP</a>
       <button type="button" id="vnav-toggle" class="vnav-burger" aria-expanded="false" aria-controls="vnav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
