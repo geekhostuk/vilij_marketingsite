@@ -13,7 +13,7 @@ export interface ImageSize {
 }
 
 export const imageSizes: Record<string, ImageSize> = {
-  "/assets/cafe_hero.png": { w: 566, h: 423 },
+  "/assets/cafe_hero.png": { w: 1400, h: 1045 },
   "/assets/cafe.png": { w: 566, h: 423 },
   "/assets/campus.png": { w: 720, h: 507 },
   "/assets/charlie.png": { w: 496, h: 411 },

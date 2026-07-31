@@ -36,13 +36,23 @@ const list = showSecondTestimonial ? testimonials : [testimonials[0]];
 
 // The homepage shows all nine areas, with the village illustration sitting
 // unframed in the middle of the grid.
+//
+// Damien, 31 Jul 2026: "can we swop Library and Expert hub around so all live
+// pages are on the top layer please". The grid is three columns, so the top row
+// is the first three entries — and with Expert Hub moved up it reads Café,
+// Vilij Hall, Expert Hub, which is exactly the three areas open at launch.
+// Library takes Expert Hub's old slot in the middle row alongside Wellbeing,
+// with the other coming-soon areas.
+//
+// If an area opens or closes, re-sort so the live ones fill this first row
+// again. That is the rule; the specific order below is just today's answer.
 const gridItems = [
   areas.cafe,
   areas.hall,
-  areas.library,
+  areas.expertHub,
   areas.wellbeing,
   { label: "Village illustration (no card)", img: "/assets/village_sm.png", alt: "The Vilij community", framed: false },
-  areas.expertHub,
+  areas.library,
   areas.highStreet,
   areas.marketPlace,
   areas.campus,
@@ -77,7 +87,7 @@ const gridItems = [
                 <img src="/assets/houseicon.png" alt="" width="269" height="250" decoding="async" style="width:30px;height:auto;" />
                 <span style="font-family:Lato;font-size:23px;color:#3a3a3a;">Welcome to The Vilij</span>
               </div>
-              <h1 style="font-family:Lato;font-weight:900;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 26px;letter-spacing:-1px;">You were never meant to do this alone.</h1>
+              <h1 style="font-family:Lato;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 26px;letter-spacing:-1px;">You were never meant to do this alone.</h1>
               <p style="font-family:Lato;font-weight:700;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:560px;">Raising a child with additional needs can be overwhelming, even when you&rsquo;re coping.</p>
               <p style="font-family:Lato;font-size:19px;line-height:1.55;color:#444;margin:0 0 18px;max-width:560px;">The Vilij is a calm, kind place for SEND families, where you&rsquo;re understood without needing to explain, guided without judgement, and supported by people who actually get it.</p>
               <p style="font-family:Lato;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:560px;">Think of us as your online village community.</p>
@@ -101,7 +111,7 @@ const gridItems = [
       <!-- ===== EVERYTHING YOU NEED ===== -->
       <section id="explore" style="background:#ffffff;padding:84px 0 90px;">
         <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
-          <h2 style="font-family:Lato;font-weight:900;font-size:50px;color:#1f9ca0;text-align:center;margin:0 0 50px;">Everything you need, in one place.</h2>
+          <h2 style="font-family:Lato;font-weight:700;font-size:50px;color:#1f9ca0;text-align:center;margin:0 0 50px;">Everything you need, in one place.</h2>
           <!-- 5 features -->
           <div class="vfeat5" style="display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-bottom:64px;text-align:center;">
             <div><p style="font-family:Lato;font-size:18px;line-height:1.45;margin:0;color:#353535;"><strong style="color:#f28121;font-weight:700;">Real-life community spaces</strong> where you&rsquo;re seen, not judged</p></div>
@@ -119,7 +129,7 @@ const gridItems = [
       <!-- ===== APP SIGNUP ORANGE BAND ===== -->
       <section class="vband" style="background:#f28121;text-align:center;padding:62px 24px;">
         <p style="font-family:Lato;font-size:20px;color:#ffffff;margin:0 0 8px;">So what do I do next?</p>
-        <h2 style="font-family:Lato;font-weight:900;font-size:58px;color:#ffffff;margin:0 0 14px;">Sign up to The Vilij App.</h2>
+        <h2 style="font-family:Lato;font-weight:700;font-size:58px;color:#ffffff;margin:0 0 14px;">Sign up to The Vilij App.</h2>
         <p style="font-family:Lato;font-size:22px;color:#fff;margin:0 0 34px;">Everything SEND in one place for just {monthlyPrice} per month.</p>
         <a href="https://app.thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#1f9ca0;font-family:Lato;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">JOIN US NOW <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
       </section>
@@ -157,7 +167,7 @@ const gridItems = [
         <div class="vwrap vbuilt" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:start;">
           <div>
             <p style="font-family:Lato;font-size:22px;color:#3a3a3a;margin:0 0 10px;">How We Can Support You</p>
-            <h2 style="font-family:Lato;font-weight:900;font-size:50px;line-height:1.05;color:#f28121;margin:0 0 28px;">Built by families who live this life.</h2>
+            <h2 style="font-family:Lato;font-weight:700;font-size:50px;line-height:1.05;color:#f28121;margin:0 0 28px;">Built by families who live this life.</h2>
             <p style="font-family:Lato;font-weight:700;font-size:20px;line-height:1.5;color:#353535;margin:0 0 18px;">We know the fierce love we feel for our children and the exhaustion that comes from battling systems just to secure the life they deserve.</p>
             <p style="font-family:Lato;font-size:19px;line-height:1.55;color:#444;margin:0 0 16px;">We know the late-night Googling, the meetings, the advocacy, and the moments that feel overwhelming, lonely and frightening. Many of us have sat in hospital corridors, school meetings, and waiting rooms wondering if anyone else understands this life.</p>
             <p style="font-family:Lato;font-size:19px;line-height:1.55;color:#444;margin:0 0 16px;">We&rsquo;ve been there. We&rsquo;ve felt it all. And we believe no family should have to navigate it alone.</p>
@@ -188,7 +198,7 @@ const gridItems = [
       <!-- ===== FINAL CTA ===== -->
       <section class="vband" style="background:#f28121;text-align:center;padding:66px 24px;">
         <p style="font-family:Lato;font-size:22px;color:#ffffff;margin:0 0 10px;">So, you&rsquo;ve come this far?</p>
-        <h2 style="font-family:Lato;font-weight:900;font-size:58px;color:#ffffff;margin:0 0 22px;">Your village is waiting for you.</h2>
+        <h2 style="font-family:Lato;font-weight:700;font-size:58px;color:#ffffff;margin:0 0 22px;">Your village is waiting for you.</h2>
         <p style="font-family:Lato;font-weight:700;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You don&rsquo;t need to be at breaking point.<br />You don&rsquo;t need to have it all together.<br />You&rsquo;re allowed support too.</p>
         <a href="https://app.thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#f28121;font-family:Lato;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">SIGN UP NOW <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
       </section>

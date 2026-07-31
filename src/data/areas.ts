@@ -65,6 +65,11 @@ export interface AreaPhoto {
   img: string;
   alt: string;
   framed?: boolean;
+  /**
+   * CSS `object-position` for the framed crop, when centring the file does not
+   * centre the people in it. See the note in PhotoTile.astro.
+   */
+  objectPosition?: string;
 }
 
 export type GridItem = AreaCard | AreaPhoto;

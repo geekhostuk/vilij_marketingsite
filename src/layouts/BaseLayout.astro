@@ -63,30 +63,33 @@ const {
 // Figtree Medium with Lato, and the web build had substituted Quicksand for the
 // headings while that was open.
 //
-// Three weights, and the tiers are deliberate:
+// Two weights, and the tiers are deliberate:
 //
-//   900  display type >=50px — the 74px h1, the 58px band h2, the 50px section
-//        h2. Lato is narrower with a smaller x-height than Quicksand, so at 700
-//        the headings read about 5% smaller and noticeably lighter. Black puts
-//        the mass back and keeps daylight between an h2 and the 40px card h3
-//        directly under it.
-//   700  everything structural below 50px — card headings, footer, pills, nav,
-//        table headers. Unchanged from before.
+//   700  everything structural — the 74px h1, the 58px band h2 and the 50px
+//        section h2, and equally the 40px card h3, footer, pills, nav and table
+//        headers. Hierarchy above 50px is carried by SIZE ALONE, on purpose.
 //   400  the strapline voice: the 36px band paragraph and the 34px "Still not
-//        sure?". These went DOWN, not up, and that is the one place the old
-//        "round 500 up to 700" precedent must not be applied — they sit
-//        directly under a 900 h2, and at 700 they read as a second heading and
-//        flatten exactly the hierarchy this was meant to protect.
+//        sure?". These are the one place the old "round 500 up to 700"
+//        precedent must not be applied — they sit directly under a heading, and
+//        at 700 they read as a second heading and flatten the hierarchy.
 //
-// Lato ships 100/300/400/700/900 and nothing else. Do not add 500, 600 or 800:
-// Google Fonts ignores them and the browser rounds silently, which is how the
-// emphasis ladder collapses without anyone noticing. Every declaration that
-// used one now carries an explicit decision instead.
+// The display tier was 900 (Black) until 31 July 2026. Damien: "I think the big
+// headings can go back to bold instead of black — there is enough size
+// difference to differentiate the two. Black is a bit too strong for the subject
+// matter." That last clause is the reason and it outranks the typographic
+// argument that put 900 there: a 74px Black headline shouts, and the page is
+// addressed to exhausted parents. Do not reintroduce 900 for weight-versus-size
+// reasons without asking Damien first.
+//
+// So the font request below asks for 400 and 700 only. Lato ships
+// 100/300/400/700/900 and nothing else. Do not add 500, 600 or 800: Google Fonts
+// ignores them and the browser rounds silently, which is how the emphasis ladder
+// collapses without anyone noticing.
 //
 // Sizes were not touched. src/styles/responsive.css steps type down by matching
 // the literal inline string, so weight is free to change and px is not.
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900" +
+  "https://fonts.googleapis.com/css2?family=Lato:wght@400;700" +
   extraFonts +
   "&display=swap";
 

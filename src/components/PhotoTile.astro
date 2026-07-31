@@ -21,9 +21,26 @@
 // stretch to and would otherwise collapse.
 //
 // Note this crops. The photos are landscape and the blocks are not, so cover
-// takes the middle of the frame: p_beach (840x500) and p_grand (760x480) hold up
-// fine, but p_jose (494x335) is both the smallest and the widest and loses the
-// most. A taller crop of that one would be worth having.
+// takes the middle of the frame by default, and the middle of the frame is not
+// always where the people are.
+//
+// `objectPosition` is the escape hatch, and p_grand is why it exists. Damien,
+// 31 Jul 2026: "any chance you can centre your mum and grandson rather than
+// being to far left?" The pair sit roughly centred in the 1000x750 file, but
+// their faces do not — the two heads centre around x=385, well left of the
+// file's own centre. A default 50% cover-crop in a ~360x430 tile shows source
+// x=185..815 and puts the boy's face hard against the left edge. 32% shifts the
+// window to roughly x=118..748: both faces well inside the frame, neither
+// subject crowding an edge. Rendered all three candidates before picking it.
+//
+// Prefer this over re-cropping the source. The tile's height comes from the grid
+// row, so the crop ratio is not fixed, and a percentage keeps working at every
+// breakpoint where a hard crop would only be right at one of them.
+//
+// (The old note here quoted p_beach as 840x500, p_grand as 760x480 and p_jose as
+// 494x335. All three have been replaced since; they are now 800x1000, 1000x750
+// and 1000x750, and the "p_jose is the smallest and widest" caveat no longer
+// applies. Sizes live in src/data/imageSizes.ts, generated from the files.)
 //
 // SEO-REVIEW §2 — the framed variant pins both width and height in CSS, so the
 // attributes below cannot move it; they only reserve the box early. The unframed
@@ -37,16 +54,25 @@ interface Props {
   img: string;
   alt: string;
   framed?: boolean;
+  /**
+   * CSS `object-position` for the framed crop. Omit for the default centre;
+   * give a value when the subject is not in the middle of the file. Ignored by
+   * the unframed variant, which is not cropped at all.
+   */
+  objectPosition?: string;
 }
-const { label, img, alt, framed = true } = Astro.props;
+const { label, img, alt, framed = true, objectPosition } = Astro.props;
 const size = imageSize(img);
 const wrapper = framed
   ? "position:relative;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(40,80,90,0.12);align-self:stretch;min-height:260px;"
   : "display:flex;align-items:center;justify-content:center;padding:10px;";
+// Appended rather than baked into the string above so a tile without the prop
+// keeps byte-identical markup to what shipped before.
+const crop = framed && objectPosition ? `object-position:${objectPosition};` : "";
 ---
 <Fragment set:html={` <!-- ${label} --> `} />
 <div style={wrapper}>
   <img src={img} alt={alt} width={size?.w} height={size?.h} loading="lazy" decoding="async" style={framed
-    ? "position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;"
+    ? `position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;${crop}`
     : "width:100%;height:auto;display:block;"} />
 </div>
