@@ -13,8 +13,11 @@
 // The four headings sit on one line because each takes the same 22px bottom
 // margin; keep that in step if any of them changes.
 //
-// Column two's social links point at "#" — the real Facebook/Instagram/LinkedIn
-// URLs are not known yet.
+// Column two's social links are live (31 Jul 2026). Two query strings were
+// dropped from the URLs as supplied: Instagram's `?hl=en` pins the interface to
+// English for every visitor, and LinkedIn's `?viewAsMember=true` is an artefact
+// of viewing your own page while signed in as an admin. Neither belongs on a
+// public link. Facebook's `?id=` is load-bearing and stays.
 //
 // ISSUES #20 — the four-column grid was the worst overflow on the site: at
 // 375px its 1.3fr 1fr 1fr 1.4fr gave columns of 34-52px and the newsletter
@@ -43,9 +46,9 @@ const { padding = "74px 0 30px" } = Astro.props;
     <div>
       <h4 style="font-family:Lato;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Join Us</h4>
       <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
-        <li><a href="#" class="vlink" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Facebook</a></li>
-        <li><a href="#" class="vlink" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Instagram</a></li>
-        <li><a href="#" class="vlink" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61583218268871" class="vlink" target="_blank" rel="noopener" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Facebook</a></li>
+        <li><a href="https://www.instagram.com/the.vilij/" class="vlink" target="_blank" rel="noopener" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/company/the-vilij-ltd/" class="vlink" target="_blank" rel="noopener" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">LinkedIn</a></li>
       </ul>
     </div>
     <div>
