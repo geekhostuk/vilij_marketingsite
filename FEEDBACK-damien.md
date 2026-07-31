@@ -8,33 +8,56 @@ something from Damien or from whoever owns DNS before they can be finished.
 
 ---
 
-## STATUS — 30 July 2026
+## STATUS — 31 July 2026 (round two)
 
-Everything that could be done without an answer or an asset is done. The build
-is clean and the responsive ramp has been re-audited: every rendered size >=20px
-still steps down at all four breakpoints, no gaps.
+Damien replied on 31 July and sent the outstanding assets. Everything on his
+list is now done except the DNS item, which is not a code fix.
 
 | # | Item | Status |
 |---|---|---|
 | 1.1 | Body copy Mulish → Lato (222 declarations) | **done** |
-| 1.1 | Headings Quicksand → ? | **HELD** — needs the Figtree answer |
-| 1.1 | Weights 600/800 → explicit 700 (73) | **done** |
+| 1.1 | Headings Quicksand → Lato (157 declarations) | **done** — Figtree question closed |
+| 1.1 | Weights 500/600/800 → explicit 400/700/900 | **done** |
 | 1.2 | H1 3 sizes → 1; H2 9 → 2; H3 6 → 3 | **done** |
 | 1.3 | Card straplines up 2pt (29) | **done** |
 | 1.4 | Em dashes out of visible copy (22) | **done** |
 | 1.5 | Ramp re-audited, no gaps | **done** |
-| 2.1 | Coming-soon banner + lighter pics | **done** |
+| 2.1 | Coming-soon banner + lighter pics | **done** — bigger and lower per round two |
 | 2.2 | Whole tile clickable | **done** |
-| 2.3 | Buildings centred | **done** — see note below |
+| 2.3 | Buildings centred | **done** — approved as-is |
 | 2.4 | "Join us now" Error 1000 | **BLOCKED** — DNS, not code |
 | 3.1 | Café blocks lining up (#29) | **done** |
-| 3.2 | Café photos filling their boxes | **done** — but still low-res, needs assets |
+| 3.2 | Café photos filling their boxes | **done** — five replacements installed |
 | 3.3 | Photo tiles as full grid blocks | **done** |
 | 4.1 | Hall hero out of its box | **done** |
 | 4.2 | Vilij News / Daily Chat / What's on spacing | **done** |
-| 5.1 | Library / Wellbeing / Expert Hub heroes out of their boxes | **done** — Library still needs a bigger file |
-| 5.2 | Library + Wellbeing branch images | **BLOCKED** — 12 images don't exist |
-| 6 | Orange bar text white | **done** (12 pages) |
+| 5.1 | Library / Wellbeing / Expert Hub heroes | **done** — branch illustrations installed |
+| 5.2 | Library + Wellbeing branch images | **done** — 12 supplied and placed |
+| 6 | Orange bar text white | **done** — all 18 eyebrows, "always white" |
+
+### The type ramp after the Lato swap
+
+Three weights: **900** for display type ≥50px, **700** for structural type below
+it, **400** for the 34/36px strapline voice. Lato ships 100/300/400/700/900 and
+nothing else — do not reintroduce 500, 600 or 800, they round silently and
+flatten the ladder. The straplines went *down* to 400 deliberately: they sit
+under a 900 h2, and rounding them up to 700 reads as a second heading.
+
+No font size moved, so `src/styles/responsive.css` needed no ramp edits. The set
+of distinct `font-size` values is byte-identical before and after — that check
+is the cheapest proof the mobile step-down still matches everything.
+
+### Assets received 31 July
+
+24 files. Everything is cropped and re-encoded to the box it renders in;
+photographs moved PNG → JPEG q82, which is why `/cafe` dropped from 1377KB to
+807KB of images while more than doubling in resolution. The three branch
+illustrations stay PNG for their transparency, palette-quantised to about a
+third of their raw size.
+
+Library and Wellbeing branch cards now mirror Expert Hub's four layout variants
+position for position — the three pages share the same orange/teal colour
+rhythm, so the layouts land on the colours already signed off.
 
 **On 2.3, the buildings.** This went further than the "interim CSS nudge"
 option. The originals measured 5–20% off-centre (Library worst at 19.5%, Campus
@@ -53,10 +76,10 @@ Place 94%). Normalising that would make the grid properly uniform, but a single
 shop and a whole campus scene are not the same kind of drawing, so it is a
 design call rather than a mechanical one.
 
-**Not done, deliberately:** the two other orange bands ("So what do I do next?"
-and "So, you've come this far?") still use the `#ffe6cf` tint. Damien named the
-bar under the hero specifically; those two are a one-line change each, awaiting
-his nod rather than assumed.
+**The other orange bands** ("So what do I do next?" and "So, you've come this
+far?") were held on the `#ffe6cf` tint awaiting his nod. He gave it — "always
+white please" — so all 18 eyebrows across the six content pages and six legal
+pages are now `#ffffff`.
 
 ---
 
@@ -278,19 +301,33 @@ compliant. Related to `ISSUES.md` #25.
 
 ---
 
-## What's needed from Damien
+## What's needed from Damien — round three
+
+Items 2–6 from the previous round are all closed. What's left:
 
 1. **App URL + DNS** — confirm `app.thevilij.co.uk`; someone with Cloudflare zone
-   access to fix the Error 1000 record. Unblocks every CTA on the site.
-2. **Café photos** at 1000px+ — `p_sip`, `p_mug`, `p_tea`, `p_bites`, `p_elder`.
-3. **Library hero** at ~1400px wide, transparent PNG. Wellbeing and Expert Hub
-   too if the originals exist.
-4. **Library + Wellbeing branch images** — 12 total, or confirm text-only.
-5. **Area tiles re-exported** on a common canvas (900×600), building centred,
-   shadow cropped right — or approval to do the interim CSS nudge instead.
-6. **Figtree question** — the design sources pair Figtree Medium with Lato.
-   Proceeding with Lato throughout as asked; flagging in case headings were
-   meant to be Figtree.
+   access to fix the Error 1000 record. Unblocks every CTA on the site. He says
+   Jonathan is moving it to the app; once that lands, the header SIGN UP button
+   and every "Take a sneaky peek" get pointed at the same destination.
+2. **`cafe_hero.png` is the same defect the Library hero had** — it is
+   byte-identical to `cafe.png`, the 566×423 card thumbnail, so the Café hero is
+   an upscaled thumbnail. No Café branch illustration came in the drop. Not
+   previously recorded anywhere; worth adding while he is exporting.
+3. **"Financial Peace of Mind"** — nothing in the Wellbeing set is about money,
+   so that card currently carries the hilltop image on mood alone ("peace of
+   mind") rather than subject. Every other card in both sets is a direct hit.
+   One more file if he wants a literal one.
+4. **No Library or Wellbeing PDF exists** in `Designs/` — it holds only Homepage,
+   Café and Hall. He said to refer to the PDF for placement, so the layout
+   choice for those twelve cards was ours. Happy to rework against a PDF.
+5. **Adobe Stock licences** — the six `AdobeStock_*` files are full-res and
+   unwatermarked, so presumably licensed. Worth one line confirming before live.
+6. **A spare Hall photo** — `pexels-mizunokozuki` (two people talking over
+   coffee) came in the Hall folder with no obvious slot. Proposed for the Daily
+   Chat block if he wants it used.
+
+Also worth telling him: the nav's Home-vs-other-links weight distinction is gone.
+Home was 700 and the other two 600, and Lato has no 600.
 
 ## Sequencing
 

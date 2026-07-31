@@ -82,8 +82,10 @@ Roughly 19–20 `href="#"` placeholders per content page.
   the `min-width:0` chain now sits in the `<style is:global>` blocks of `/cafe` and `/hall` — the two pages
   that never got it; `/expert-hub` already carried it inline. The six `/cafe` card photos also gained
   explicit heights and `object-fit:cover`, which is what makes them fill their boxes rather than sit at
-  their own aspect ratio. Still open and **not** fixed by this: those photos are 256–325px originals, so
-  they now fill correctly but remain soft. Bigger sources are needed from Damien.
+  their own aspect ratio. The residual softness — those photos were 256–325px originals, so they filled
+  their boxes correctly but stayed blurry — was closed on 31 July when Damien supplied replacements. All
+  five are now cropped to their card box at 2x and shipped as JPEG rather than PNG, which is why `/cafe`
+  got *lighter* (1377KB → 807KB of images) while more than doubling in resolution.
 - ~~**#20 — the site is not responsive**~~ — fixed 30 July 2026. `src/styles/responsive.css` is the
   whole of it: one stylesheet, imported once by `BaseLayout`, in which every rule sits inside a
   `max-width` media query and carries `!important` (inline `style` attributes outrank any plain
