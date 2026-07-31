@@ -94,13 +94,26 @@ const fontHref =
   "&display=swap";
 
 // C50 — canonical URL, derived from `site` in astro.config.mjs and this page's
-// own path. Astro builds to /cafe/index.html and Cloudflare Pages serves that at
-// /cafe, redirecting /cafe/ to it, so the canonical drops the trailing slash on
-// everything except the homepage. That matches public/sitemap.xml and every
-// internal link on the site: a canonical pointing at a URL that redirects is
-// worse than no canonical at all.
+// own path.
+//
+// This used to strip the trailing slash, on the stated grounds that Cloudflare
+// Pages serves /cafe and redirects /cafe/ to it. That was backwards, and it was
+// never true. Measured against production on 31 Jul 2026:
+//
+//   GET /cafe   ->  308 Permanent Redirect  ->  /cafe/
+//   GET /cafe/  ->  200 OK
+//
+// Astro's default build format is `directory`, so every route builds to
+// <route>/index.html, and Cloudflare canonicalises those to the trailing-slash
+// form. So the slash-less canonical pointed at a URL that redirects on all 12
+// indexable routes — precisely the thing the old comment said it was avoiding.
+//
+// The trailing slash is therefore the real URL and the canonical says so.
+// public/sitemap.xml matches. If Astro's `build.format` or `trailingSlash` is
+// ever changed, re-measure with `curl -I` before touching this: the correct
+// answer is whichever form returns 200, not whichever form looks tidier.
 const path = Astro.url.pathname.replace(/\/+$/, "");
-const canonical = new URL(path || "/", Astro.site).href;
+const canonical = new URL(path ? `${path}/` : "/", Astro.site).href;
 
 // SEO-REVIEW §4 — Open Graph and Twitter Card. Both must be absolute URLs on the
 // live origin; every scraper rejects a root-relative og:image, which is the
