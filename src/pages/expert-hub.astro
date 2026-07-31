@@ -109,7 +109,7 @@ const gridItems = [
           <!-- Health & Therapy (orange, photo left) -->
           <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:330px;">
             <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-left:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_eh_health.png" alt="A therapy conversation" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:auto;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_eh_health.png" alt="A therapy conversation" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
             <div style="flex:1;min-width:0;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Health<br />&amp; Therapy</h3>
@@ -118,16 +118,35 @@ const gridItems = [
             </div>
           </div>
 
-          <!-- Emotional & Family Support (teal, photo top-right) -->
-          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:330px;">
-            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
-              <div style="flex:1;min-width:0;">
-                <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Emotional<br />&amp; Family Support</h3>
-                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0;">Because this affects all of you.</p>
-              </div>
-              <img src="/assets/p_eh_emotional.png" alt="A parent taking a moment" width="420" height="420" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          {/* Damien, 31 Jul 2026: "On the Expert Hub, the cards do need looking
+              at please — same way as the others have just been done. Emotional &
+              Fam / Featured Expert / Life, Work.. / Education & dev."
+
+              Those four are the mirrored Sip & Natter shape, exactly as used on
+              /cafe: photo down the right edge at full card height, text left.
+              flex-direction:row-reverse with the DOM order left as photo-then-
+              text is what lets responsive.css handle the mobile stack untouched
+              — it forces .vsplit to `column` below 600px, which overrides the
+              reverse.
+
+              Health & Therapy already had the left-hand version of this shape.
+              Legal, Financial & Future is left alone: Damien did not list it,
+              and at 280px its photo is not one of the "floaty small" ones.
+
+              The two flip cards lose .vcard-flip in the process. That class only
+              exists to pull a heading back above the photo when the desktop
+              shape puts it underneath; this shape does not, so all four now read
+              title, strapline, body like the rest of the page. */}
+          <!-- Emotional & Family Support (teal, photo right, full height) -->
+          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
+              <img src="/assets/p_eh_emotional.png" alt="A parent taking a moment" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">Support for the weight you&rsquo;re carrying, every day.</p>
+            <div style="flex:1;min-width:0;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Emotional<br />&amp; Family Support</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Because this affects all of you.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support for the weight you&rsquo;re carrying, every day.</p>
+            </div>
           </div>
 
           <!-- Legal, Financial & Future (teal, photo right) -->
@@ -140,40 +159,46 @@ const gridItems = [
             <img src="/assets/p_eh_legal.png" alt="Planning for the future together" width="420" height="420" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 42%;min-width:0;height:280px;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
           </div>
 
-          <!-- Education & Development (orange, photo top-right) -->
-          <div class="vcard-feat" style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:330px;">
-            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
-              <div style="flex:1;min-width:0;">
-                <h3 style="font-family:Lato;font-weight:700;font-size:30px;color:#fff;margin:0 0 12px;line-height:1.02;">Education<br />&amp; Development</h3>
-                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0;">When school or learning feels hard.</p>
-              </div>
-              <img src="/assets/p_eh_education.png" alt="Learning resources in a classroom" width="420" height="420" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 34%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          {/* Damien: "this one also needs the title the right size". It was the
+              only card heading on the page at 30px; every other one is 40px. Now
+              40px like the rest. Note responsive.css steps type by matching the
+              literal font-size string, so this heading now follows the 40px ramp
+              (36px at <=1180, 24px at <=600, 22px at <=400) instead of the 30px
+              one — which is the correct ramp for it to be on. */}
+          <!-- Education & Development (orange, photo right, full height) -->
+          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
+              <img src="/assets/p_eh_education.png" alt="Learning resources in a classroom" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">Support to help you understand and move forward.</p>
+            <div style="flex:1;min-width:0;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Education<br />&amp; Development</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">When school or learning feels hard.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support to help you understand and move forward.</p>
+            </div>
           </div>
 
-          <!-- Life, Work & Independence (orange, body top, heading last) -->
-          <div class="vcard-feat vcard-flip" style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:330px;">
-            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
-              <div style="flex:1;min-width:0;">
-                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">For what comes next.</p>
-                <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support to help build confidence and a way forward.</p>
-              </div>
-              <img src="/assets/p_eh_life.png" alt="A family looking ahead" width="420" height="420" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- Life, Work & Independence (orange, photo right, full height) -->
+          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
+              <img src="/assets/p_eh_life.png" alt="A family looking ahead" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:22px 0 0;line-height:1.02;">Life, Work<br />&amp; Independence</h3>
+            <div style="flex:1;min-width:0;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Life, Work<br />&amp; Independence</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">For what comes next.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support to help build confidence and a way forward.</p>
+            </div>
           </div>
 
-          <!-- Featured Expert (teal, body top, heading last) -->
-          <div class="vcard-feat vcard-flip" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:330px;">
-            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
-              <div style="flex:1;min-width:0;">
-                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Support you might not think to look for.</p>
-                <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Shared in a way that feels real and easy to take in.</p>
-              </div>
-              <img src="/assets/p_eh_expert.png" alt="A Vilij expert in conversation" width="420" height="420" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- Featured Expert (teal, photo right, full height) -->
+          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
+              <img src="/assets/p_eh_expert.png" alt="A Vilij expert in conversation" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:22px 0 0;line-height:1.02;">Featured<br />Expert</h3>
+            <div style="flex:1;min-width:0;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Featured<br />Expert</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Support you might not think to look for.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Shared in a way that feels real and easy to take in.</p>
+            </div>
           </div>
 
         </div>
