@@ -103,48 +103,76 @@ const gridItems = [
 
       <!-- ===== WELLBEING FEATURE CARDS ===== -->
       <section style="background:#ffffff;padding:58px 0 80px;">
-        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:44px;">
+        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 44px;">
 
-          <!-- Body-Based Calm -->
-          <div class="vcard-feat" style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Body-Based<br />Calm</h3>
-            <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Calm your body when everything feels too much.</p>
-            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Find steadiness again, quickly and simply.</p>
+          <!-- Body-Based Calm (orange, photo left) -->
+          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-left:-22px;align-self:stretch;display:flex;">
+              <img src="/assets/p_wb_calm.jpg" alt="Someone stretching out on the floor at home" style="width:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <div style="flex:1;min-width:0;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Body-Based<br />Calm</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Calm your body when everything feels too much.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Find steadiness again, quickly and simply.</p>
+            </div>
           </div>
 
-          <!-- Improve Your Emotional Wellbeing -->
-          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Improve Your<br />Emotional Wellbeing</h3>
-            <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Understand what you&rsquo;re feeling without judgement.</p>
-            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Feel seen, supported, and less alone.</p>
+          <!-- Improve Your Emotional Wellbeing (teal, photo top-right) -->
+          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:330px;">
+            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
+              <div style="flex:1;min-width:0;">
+                <h3 style="font-family:Lato;font-weight:700;font-size:30px;color:#fff;margin:0 0 12px;line-height:1.02;">Improve Your<br />Emotional Wellbeing</h3>
+                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0;">Understand what you&rsquo;re feeling without judgement.</p>
+              </div>
+              <img src="/assets/p_wb_emotional.jpg" alt="One person holding another&rsquo;s hands" class="vsplit-img" style="flex:0 0 34%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">Feel seen, supported, and less alone.</p>
           </div>
 
-          <!-- Burnout Survival & Recovery -->
-          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Burnout Survival<br />&amp; Recovery</h3>
-            <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Keep going without pushing yourself to breaking point.</p>
-            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Rest, reset, and rebuild your energy.</p>
+          <!-- Burnout Survival & Recovery (teal, photo right) -->
+          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:32px 0 32px 34px;min-height:330px;">
+            <div style="flex:1;min-width:0;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Burnout Survival<br />&amp; Recovery</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Keep going without pushing yourself to breaking point.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Rest, reset, and rebuild your energy.</p>
+            </div>
+            <img src="/assets/p_wb_burnout.jpg" alt="A parent resting on the sofa with two children" class="vsplit-img" style="flex:0 0 42%;min-width:0;height:280px;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
           </div>
 
-          <!-- Navigating Your Support Team -->
-          <div class="vcard-feat" style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Navigating<br />Your Support Team</h3>
-            <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Make sense of the relationships around you.</p>
-            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Feel clearer and less overwhelmed by others.</p>
+          <!-- Navigating Your Support Team (orange, photo top-right) -->
+          <div class="vcard-feat" style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:330px;">
+            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
+              <div style="flex:1;min-width:0;">
+                <h3 style="font-family:Lato;font-weight:700;font-size:30px;color:#fff;margin:0 0 12px;line-height:1.02;">Navigating<br />Your Support Team</h3>
+                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0;">Make sense of the relationships around you.</p>
+              </div>
+              <img src="/assets/p_wb_team.jpg" alt="A support group sitting in a circle, hands joined" class="vsplit-img" style="flex:0 0 34%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">Feel clearer and less overwhelmed by others.</p>
           </div>
 
-          <!-- Financial Peace of Mind -->
-          <div class="vcard-feat" style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Financial<br />Peace of Mind</h3>
-            <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Reduce the stress that sits quietly in the background.</p>
-            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Feel more secure and able to breathe.</p>
+          <!-- Financial Peace of Mind (orange, body top, heading last) -->
+          <div class="vcard-feat vcard-flip" style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:330px;">
+            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
+              <div style="flex:1;min-width:0;">
+                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Reduce the stress that sits quietly in the background.</p>
+                <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Feel more secure and able to breathe.</p>
+              </div>
+              <img src="/assets/p_wb_finance.jpg" alt="Someone lying on a hillside looking out at the view" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:22px 0 0;line-height:1.02;">Financial<br />Peace of Mind</h3>
           </div>
 
-          <!-- Social Media - Friend or Foe? -->
-          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:300px;display:flex;flex-direction:column;justify-content:center;">
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 14px;line-height:1.02;">Social Media:<br />Friend or Foe?</h3>
-            <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Step away from pressure, comparison, and noise.</p>
-            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Protect your peace and feel more in control.</p>
+          <!-- Social Media - Friend or Foe? (teal, body top, heading last) -->
+          <div class="vcard-feat vcard-flip" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:330px;">
+            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
+              <div style="flex:1;min-width:0;">
+                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Step away from pressure, comparison, and noise.</p>
+                <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Protect your peace and feel more in control.</p>
+              </div>
+              <img src="/assets/p_wb_social.jpg" alt="A phone screen showing a folder of social media apps" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            </div>
+            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:22px 0 0;line-height:1.02;">Social Media:<br />Friend or Foe?</h3>
           </div>
 
         </div>
