@@ -42,13 +42,17 @@ export interface AreaCard {
   href: string;
   cta: string;
   /**
-   * The area is described on the site but has no page yet (C23–C25). The tile
-   * still renders, with its copy intact, but as a plain "Coming soon" panel:
-   * no anchor, nothing focusable, nothing for assistive technology to announce
-   * as activatable.
+   * The area is not open to visitors yet. The tile still renders, with its copy
+   * intact, but as a plain "Coming soon" panel: no anchor, nothing focusable,
+   * nothing for assistive technology to announce as activatable.
+   *
+   * Two different reasons end up here. High Street, Market Place and Vilij
+   * Campus have no page at all (C23–C25). Library and Wellbeing are built and
+   * finished but held back, so only the Café, Vilij Hall and Expert Hub are
+   * open for now. The tile behaves identically either way.
    *
    * `href` and `cta` are deliberately left in place on these cards. They are
-   * what the tile goes back to when the page exists — deleting this one flag
+   * what the tile goes back to when the area opens — deleting this one flag
    * makes it a live card again, with the wording it always had.
    */
   comingSoon?: boolean;
@@ -85,6 +89,11 @@ export const hall: AreaCard = {
   cta: "WHAT&rsquo;S ON IN THE VILIJ HALL?",
 };
 
+// Library and Wellbeing are held back (31 Jul 2026): only the Café, Vilij Hall
+// and Expert Hub are open for now. Both pages are built and complete — they are
+// simply not being offered yet, so the tiles carry the same banner as the three
+// areas that have no page at all. `href` stays pointed at the real page, which
+// is what the tile goes back to the moment the flag comes off.
 export const library: AreaCard = {
   label: "Library",
   img: "/assets/tiles/library.png",
@@ -93,6 +102,7 @@ export const library: AreaCard = {
   body: "Practical resources at your fingertips, ready whenever you are.",
   href: "/library",
   cta: "WHAT&rsquo;S IN THE LIBRARY?",
+  comingSoon: true,
 };
 
 export const wellbeing: AreaCard = {
@@ -103,6 +113,7 @@ export const wellbeing: AreaCard = {
   body: "Because caring for them starts with caring for you.",
   href: "/wellbeing",
   cta: "WHAT&rsquo;S ON AT THE WELLBEING CENTRE?",
+  comingSoon: true,
 };
 
 export const expertHub: AreaCard = {
