@@ -5,12 +5,19 @@
 // The company blurb (C1) and the newsletter blurb (C2) were Lorem ipsum and
 // have been removed rather than rewritten — the real copy is being written
 // elsewhere. Nothing stands in their place deliberately: a substitute
-// placeholder is the same problem in a different font. When the copy arrives it
-// goes back under the logo in column one and above the form in column four.
+// placeholder is the same problem in a different font. Column four's line —
+// "Sign up to receive The Vilij News" — is the real copy and sits between the
+// heading and the form; column one still has none, and when it arrives it goes
+// under the contact email.
 //
-// The columns were rebalanced for their absence: the logo's bottom margin now
-// carries the gap the paragraph used to, and the newsletter heading takes the
-// same 22px as its three siblings so the four headings sit on one line.
+// The four headings sit on one line because each takes the same 22px bottom
+// margin; keep that in step if any of them changes.
+//
+// Column two's social links are live (31 Jul 2026). Two query strings were
+// dropped from the URLs as supplied: Instagram's `?hl=en` pins the interface to
+// English for every visitor, and LinkedIn's `?viewAsMember=true` is an artefact
+// of viewing your own page while signed in as an admin. Neither belongs on a
+// public link. Facebook's `?id=` is load-bearing and stays.
 //
 // ISSUES #20 — the four-column grid was the worst overflow on the site: at
 // 375px its 1.3fr 1fr 1fr 1.4fr gave columns of 34-52px and the newsletter
@@ -29,40 +36,41 @@ const { padding = "74px 0 30px" } = Astro.props;
 <footer style={`background:#ffffff;padding:${padding};`}>
   <div class="vwrap vfoot" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1.4fr;gap:40px;">
     <div>
-      <img src="/assets/footerlogo.png" alt="Vilij" style="height:48px;width:auto;display:block;margin-bottom:34px;" />
+      <img src="/assets/footerlogo.png" alt="Vilij" style="height:48px;width:auto;display:block;margin-bottom:20px;" />
+      <a href="mailto:info@thevilij.co.uk" class="vlink" style="display:block;font-family:Lato;font-size:18px;color:#444;text-decoration:none;margin-bottom:30px;">info@thevilij.co.uk</a>
       <a href="#" id="to-top" style="display:inline-flex;align-items:center;gap:14px;text-decoration:none;cursor:pointer;">
         <span style="width:52px;height:52px;border-radius:50%;border:2px solid #1f9ca0;display:inline-flex;align-items:center;justify-content:center;color:#1f9ca0;font-size:22px;">&#8593;</span>
-        <span style="font-family:Mulish;font-size:18px;color:#444;">Back to the top</span>
+        <span style="font-family:Lato;font-size:18px;color:#444;">Back to the top</span>
       </a>
     </div>
     <div>
-      <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">About</h4>
+      <h4 style="font-family:Lato;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Join Us</h4>
       <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
-        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">About Us</a></li>
-        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Our Story</a></li>
-        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">News</a></li>
-        <li><a href="#" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Become a Vilij Elder</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61583218268871" class="vlink" target="_blank" rel="noopener" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Facebook</a></li>
+        <li><a href="https://www.instagram.com/the.vilij/" class="vlink" target="_blank" rel="noopener" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/company/the-vilij-ltd/" class="vlink" target="_blank" rel="noopener" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">LinkedIn</a></li>
       </ul>
     </div>
     <div>
-      <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Quick Links</h4>
+      <h4 style="font-family:Lato;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Quick Links</h4>
       <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
-        <li><a href="/community-guidelines" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Community Guidelines</a></li>
-        <li><a href="/terms" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">User Terms of Use</a></li>
-        <li><a href="/complaints" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Complaints and Reporting Procedures</a></li>
-        <li><a href="/privacy" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Privacy Policy</a></li>
-        <li><a href="/safeguarding-policy" class="vlink" style="font-family:Mulish;font-size:18px;color:#444;text-decoration:none;">Safeguarding Policy</a></li>
+        <li><a href="/community-guidelines" class="vlink" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Community Guidelines</a></li>
+        <li><a href="/terms" class="vlink" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">User Terms of Use</a></li>
+        <li><a href="/complaints" class="vlink" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Complaints and Reporting Procedures</a></li>
+        <li><a href="/privacy" class="vlink" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Privacy Policy</a></li>
+        <li><a href="/safeguarding-policy" class="vlink" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Safeguarding Policy</a></li>
       </ul>
     </div>
     <div>
-      <h4 style="font-family:Quicksand;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Join Our Newsletter</h4>
+      <h4 style="font-family:Lato;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Join Our Newsletter</h4>
+      <p style="font-family:Lato;font-size:18px;line-height:1.55;color:#444;margin:0 0 16px;max-width:380px;">Sign up to receive The Vilij News</p>
       <form method="get" action="/newsletter-thanks" style="margin:0;">
         <div class="vnl-row" style="display:flex;gap:10px;margin-bottom:16px;max-width:380px;">
           <label for="nl-email" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Email address</label>
-          <input id="nl-email" name="email" type="email" required placeholder="Your Email Here" style="flex:1;font-family:Mulish;font-size:16px;padding:13px 16px;border:1px solid #ddd;border-radius:8px;outline:none;color:#333;" />
-          <button type="submit" class="vpill" style="font-family:Mulish;font-weight:700;font-size:16px;color:#fff;background:#f28121;border:none;border-radius:8px;padding:0 22px;cursor:pointer;">Subscribe</button>
+          <input id="nl-email" name="email" type="email" required placeholder="Your Email Here" style="flex:1;font-family:Lato;font-size:16px;padding:13px 16px;border:1px solid #ddd;border-radius:8px;outline:none;color:#333;" />
+          <button type="submit" class="vpill" style="font-family:Lato;font-weight:700;font-size:16px;color:#fff;background:#f28121;border:none;border-radius:8px;padding:0 22px;cursor:pointer;">Subscribe</button>
         </div>
-        <label style="display:flex;align-items:flex-start;gap:10px;font-family:Mulish;font-size:15px;line-height:1.5;color:#777;cursor:pointer;max-width:380px;">
+        <label style="display:flex;align-items:flex-start;gap:10px;font-family:Lato;font-size:15px;line-height:1.5;color:#777;cursor:pointer;max-width:380px;">
           <input type="checkbox" name="newsletter_opt_in" value="yes" required style="width:16px;height:16px;margin-top:3px;flex:none;accent-color:#f28121;" />
           <span>I agree to receive newsletter emails and accept the <a href="/privacy" class="vlink" style="color:#777;text-decoration:underline;">privacy policy</a>.</span>
         </label>
@@ -72,15 +80,15 @@ const { padding = "74px 0 30px" } = Astro.props;
   <div class="vwrap" style="max-width:1240px;margin:46px auto 0;padding:0 48px;">
     <div class="vfoot-legal" style="border-top:1px solid #e7e7e7;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
       <div style="display:flex;flex-direction:column;gap:8px;max-width:660px;">
-        <span style="font-family:Mulish;font-size:15px;color:#999;">&copy; Copyright 2026. All rights reserved. Design by Revive Creative.</span>
-        <span style="font-family:Mulish;font-size:13px;line-height:1.55;color:#767676;">The Vilij Limited, registered in England and Wales, company number 16718802. Registered office: The Meakin Suite, Ravenscliffe, First Avenue, Newcastle-under-Lyme, ST5 8QX.</span>
+        <span style="font-family:Lato;font-size:15px;color:#999;">&copy; Copyright 2026. All rights reserved. Design by <a href="https://revivecreative.com/" class="vlink" target="_blank" rel="noopener" style="color:#999;text-decoration:underline;">Revive Creative</a>.</span>
+        <span style="font-family:Lato;font-size:13px;line-height:1.55;color:#767676;">The Vilij Limited, registered in England and Wales, company number 16718802. Registered office: The Meakin Suite, Ravenscliffe, First Avenue, Newcastle-under-Lyme, ST5 8QX.</span>
       </div>
-      <div class="vfoot-links" style="display:flex;align-items:center;gap:16px;font-family:Mulish;font-size:15px;color:#666;">
-        <a href="/terms" class="vlink" style="color:#666;text-decoration:none;">Terms</a><span style="color:#ccc;">&mdash;</span>
-        <a href="/privacy" class="vlink" style="color:#666;text-decoration:none;">Privacy</a><span style="color:#ccc;">&mdash;</span>
-        <a href="/cookie-policy" class="vlink" style="color:#666;text-decoration:none;">Cookies</a><span style="color:#ccc;">&mdash;</span>
-        <a href="/safeguarding-policy" class="vlink" style="color:#666;text-decoration:none;">Safeguarding</a><span style="color:#ccc;">&mdash;</span>
-        <button type="button" id="cookie-prefs" class="vlink" style="font-family:Mulish;font-size:15px;color:#666;background:none;border:none;padding:0;cursor:pointer;">Cookie preferences</button><span style="color:#ccc;">&mdash;</span>
+      <div class="vfoot-links" style="display:flex;align-items:center;gap:16px;font-family:Lato;font-size:15px;color:#666;">
+        <a href="/terms" class="vlink" style="color:#666;text-decoration:none;">Terms</a><span style="color:#ccc;">&middot;</span>
+        <a href="/privacy" class="vlink" style="color:#666;text-decoration:none;">Privacy</a><span style="color:#ccc;">&middot;</span>
+        <a href="/cookie-policy" class="vlink" style="color:#666;text-decoration:none;">Cookies</a><span style="color:#ccc;">&middot;</span>
+        <a href="/safeguarding-policy" class="vlink" style="color:#666;text-decoration:none;">Safeguarding</a><span style="color:#ccc;">&middot;</span>
+        <button type="button" id="cookie-prefs" class="vlink" style="font-family:Lato;font-size:15px;color:#666;background:none;border:none;padding:0;cursor:pointer;">Cookie preferences</button><span style="color:#ccc;">&middot;</span>
         <a href="#" class="vlink" style="color:#666;text-decoration:none;">Support</a>
       </div>
     </div>

@@ -11,6 +11,27 @@
 //
 // `label` is the HTML comment that precedes the tile in the markup, kept so the
 // built output is unchanged from the hand-written version.
+//
+// `img` points at /assets/tiles/, not /assets/. Damien asked for the buildings
+// to be centred, "even if it means cropping the shadows and aligning the
+// cropped shadow to the right edge of the blocks". The originals are isometric
+// cutouts with a flat grey cast shadow trailing right, so every building sat
+// left of centre — measured, between 5% (Market Place) and 19.5% (Library).
+// They also ran from 1.03:1 to 1.70:1, so contain-fitting them into one 4:3 box
+// rendered each at a different size, which is the other half of why the grid
+// looked ragged.
+//
+// The tiles in /assets/tiles/ are re-canvassed from the originals: building
+// centred, artwork uncropped vertically, shadow allowed to run off the right
+// edge, every canvas exactly 4:3. The originals are untouched in /assets/ —
+// point these back at them to revert. If Damien supplies his own re-exports,
+// drop them into /assets/tiles/ with the same filenames and nothing else needs
+// to change.
+//
+// Still open: the buildings occupy very different shares of their frames (the
+// Café is 63% of canvas width, the Library 44%, Market Place 94%), because a
+// single shop and a whole campus scene are not the same kind of drawing.
+// Normalising that is a design call, not a mechanical one.
 
 export interface AreaCard {
   label: string;
@@ -46,7 +67,7 @@ export type GridItem = AreaCard | AreaPhoto;
 
 export const cafe: AreaCard = {
   label: "Café",
-  img: "/assets/cafe.png",
+  img: "/assets/tiles/cafe.png",
   alt: "Café",
   title: "CAF&Eacute;",
   body: "Pull up a chair, pour a brew and find your people.",
@@ -56,7 +77,7 @@ export const cafe: AreaCard = {
 
 export const hall: AreaCard = {
   label: "Vilij Hall",
-  img: "/assets/hall.png",
+  img: "/assets/tiles/hall.png",
   alt: "Vilij Hall",
   title: "VILIJ HALL",
   body: "Where stories are shared, voices are heard, and support comes to life.",
@@ -66,7 +87,7 @@ export const hall: AreaCard = {
 
 export const library: AreaCard = {
   label: "Library",
-  img: "/assets/library.png",
+  img: "/assets/tiles/library.png",
   alt: "Library",
   title: "LIBRARY",
   body: "Practical resources at your fingertips, ready whenever you are.",
@@ -76,7 +97,7 @@ export const library: AreaCard = {
 
 export const wellbeing: AreaCard = {
   label: "Wellbeing",
-  img: "/assets/wellbeing.png",
+  img: "/assets/tiles/wellbeing.png",
   alt: "Wellbeing Centre",
   title: "WELLBEING CENTRE",
   body: "Because caring for them starts with caring for you.",
@@ -86,7 +107,7 @@ export const wellbeing: AreaCard = {
 
 export const expertHub: AreaCard = {
   label: "Expert Hub",
-  img: "/assets/experthub.png",
+  img: "/assets/tiles/experthub.png",
   alt: "Vilij Expert Hub",
   title: "VILIJ EXPERT HUB",
   body: "Trusted experts, tailored advice, and tools that make a difference.",
@@ -96,7 +117,7 @@ export const expertHub: AreaCard = {
 
 export const highStreet: AreaCard = {
   label: "High Street",
-  img: "/assets/highstreet.png",
+  img: "/assets/tiles/highstreet.png",
   alt: "High Street",
   title: "HIGH STREET",
   body: "Handpicked products for SEND families, all in one easy place.",
@@ -113,7 +134,7 @@ export const highStreet: AreaCard = {
 // point the two pages at the survivor — a one-line change in one file.
 export const marketPlace: AreaCard = {
   label: "Market Place",
-  img: "/assets/market.png",
+  img: "/assets/tiles/market.png",
   alt: "Market Place",
   title: "MARKET PLACE",
   body: "Discover wonderful products &amp; services created by SEND parents in business.",
@@ -129,7 +150,7 @@ export const marketPlaceShort: AreaCard = {
 
 export const campus: AreaCard = {
   label: "Vilij Campus",
-  img: "/assets/campus.png",
+  img: "/assets/tiles/campus.png",
   alt: "Vilij Campus",
   title: "VILIJ CAMPUS",
   body: "New exciting development now under construction.",

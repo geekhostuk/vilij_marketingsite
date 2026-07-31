@@ -27,7 +27,7 @@ const testimonials = [
     role: "SEND Family, Leeds",
     // Placeholder slot — no real quote, so no rating to show.
     stars: null,
-    photo: "/assets/p_grand.png",
+    photo: "/assets/p_grand.jpg",
   },
 ];
 
@@ -37,13 +37,13 @@ const list = showSecondTestimonial ? testimonials : [testimonials[0]];
 // on this page. Every page uses a different order and a different second photo.
 const gridItems = [
   areas.hall,
-  { label: "Beach photo", img: "/assets/p_beach.png", alt: "Child at the beach" },
+  { label: "Beach photo", img: "/assets/p_beach.jpg", alt: "Child at the beach" },
   areas.library,
   areas.wellbeing,
   areas.marketPlace,
   areas.expertHub,
   areas.highStreet,
-  { label: "Grandparent photo", img: "/assets/p_grand.png", alt: "Grandparent and child" },
+  { label: "Grandparent photo", img: "/assets/p_grand.jpg", alt: "Grandparent and child" },
   areas.campus,
 ];
 ---
@@ -62,7 +62,27 @@ const gridItems = [
       .vcard-img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
       .vcard:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(40,80,90,0.16) !important; }
       .vnav-cta:hover { background: #15838a !important; }
-    </style><div style="font-family:Mulish,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
+      /* ISSUES #29, and Damien 30 Jul 2026: "the blocks are a bit of a mess and
+         don't line up". A flex item's automatic minimum size is its min-content
+         width, and for an <img> that is the file's intrinsic pixel width. So
+         `flex:0 0 42%` on the 800px-wide p_brew.png meant "at least 800px",
+         which dragged this page's 1fr 1fr track out to ~986px at every viewport
+         — and the wrapper's overflow-x:hidden then quietly cut the surplus off
+         the right-hand column. At 1440px roughly 270px of it was off-screen.
+
+         responsive.css already unlocks this at <=1180px, but deliberately not
+         above, because that would move the signed-off desktop layout. Damien
+         owns the design and has asked for it, so it is unlocked here.
+
+         The chain goes three levels deep on purpose: the card is a grid item
+         with the same automatic minimum, and the left-column photos are an
+         <img width:100%> inside a display:flex wrapper, so wrapper and image are
+         both flex items with an intrinsic floor of their own. Miss one and the
+         whole chain still refuses to shrink. */
+      .vcard-feat,
+      .vsplit, .vsplit > *,
+      .vsplit-img, .vsplit-img > *, .vsplit-img img { min-width: 0; }
+    </style><div style="font-family:Lato,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
 
       <!-- ===== HEADER + HERO ===== -->
       <section style="position:relative;background:linear-gradient(100deg,#dbeef1 0%,#e7eef0 38%,#f5e9dc 72%,#fbe1cd 100%);">
@@ -70,9 +90,9 @@ const gridItems = [
           <SiteNav />
           <div class="vhero" style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:60px 0 80px;">
             <div>
-              <h1 style="font-family:Quicksand;font-weight:700;font-size:80px;line-height:1.02;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome to the Caf&eacute;</h1>
-              <p style="font-family:Mulish;font-weight:700;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:520px;">Pull up a chair, pour a brew, and find your people.</p>
-              <p style="font-family:Mulish;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:520px;">The Caf&eacute; includes several welcoming spaces, each designed for a different type of conversation.</p>
+              <h1 style="font-family:Lato;font-weight:900;font-size:74px;line-height:1.02;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome to the Caf&eacute;</h1>
+              <p style="font-family:Lato;font-weight:700;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:520px;">Pull up a chair, pour a brew, and find your people.</p>
+              <p style="font-family:Lato;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:520px;">The Caf&eacute; includes several welcoming spaces, each designed for a different type of conversation.</p>
             </div>
             <div class="vhero-art" style="display:flex;justify-content:center;">
               <img src="/assets/cafe_hero.png" alt="The Café" style="width:100%;max-width:600px;height:auto;display:block;" />
@@ -83,17 +103,17 @@ const gridItems = [
 
       <!-- ===== STAY AS LONG BAND ===== -->
       <div class="vband-sm" style="background:#f28121;text-align:center;padding:26px 24px;">
-        <p style="font-family:Quicksand;font-weight:500;font-size:36px;color:#ffe9d6;margin:0;">Stay as long as you like, the doors are always open.</p>
+        <p style="font-family:Lato;font-weight:400;font-size:36px;color:#ffffff;margin:0;">Stay as long as you like, the doors are always open.</p>
       </div>
 
       <!-- ===== WHY THE CAFÉ EXISTS ===== -->
       <section style="background:#ffffff;padding:90px 0 30px;">
         <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
           <div class="vpanel-soft" style="border-radius:26px;background:linear-gradient(100deg,#fcdcc0 0%,#fbe7d6 30%,#f4f1ec 50%,#dceae9 70%,#cfe9ea 100%);padding:48px 40px 54px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
-            <h2 style="font-family:Quicksand;font-weight:700;font-size:48px;color:#1f9ca0;margin:0 0 22px;">Why The Caf&eacute; Exists</h2>
-            <p style="font-family:Mulish;font-weight:700;font-size:21px;line-height:1.5;color:#353535;margin:0 auto 26px;max-width:920px;">The Caf&eacute; is a warm, heartfelt haven within The Vilij where SEND families who often feel isolated can breathe out, feel understood, and finally connect with others who truly get it.</p>
-            <p style="font-family:Mulish;font-size:19px;color:#3a3a3a;margin:0 0 18px;">The Caf&eacute; gives us:</p>
-            <div style="display:flex;flex-direction:column;gap:10px;align-items:center;font-family:Mulish;font-size:15px;color:#3a3a3a;">
+            <h2 style="font-family:Lato;font-weight:900;font-size:50px;color:#1f9ca0;margin:0 0 22px;">Why The Caf&eacute; Exists</h2>
+            <p style="font-family:Lato;font-weight:700;font-size:21px;line-height:1.5;color:#353535;margin:0 auto 26px;max-width:920px;">The Caf&eacute; is a warm, heartfelt haven within The Vilij where SEND families who often feel isolated can breathe out, feel understood, and finally connect with others who truly get it.</p>
+            <p style="font-family:Lato;font-size:19px;color:#3a3a3a;margin:0 0 18px;">The Caf&eacute; gives us:</p>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:center;font-family:Lato;font-size:15px;color:#3a3a3a;">
               <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:20px;">
                 <span>&bull;&nbsp; A friendly place for informal conversation.</span>
                 <span>&bull;&nbsp; A space to share everyday experiences.</span>
@@ -115,12 +135,12 @@ const gridItems = [
           <!-- Sip & Natter (orange, photo left) -->
           <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
             <div class="vsplit-img" style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_sip.png" alt="Coffee chat" style="width:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_sip.jpg" alt="Coffee chat" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
             <div style="flex:1;">
-              <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1;">Sip &amp; Natter</h3>
-              <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">Our friendship corner to exhale &amp; connect.</p>
-              <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">It&rsquo;s a relaxed space for everyday chat &mdash; a place to catch up, share the little moments, laugh, vent, or just talk. The goal is simple: human connection.</p>
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1;">Sip &amp; Natter</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Our friendship corner to exhale &amp; connect.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">It&rsquo;s a relaxed space for everyday chat, a place to catch up, share the little moments, laugh, vent, or just talk. The goal is simple: human connection.</p>
             </div>
           </div>
 
@@ -128,56 +148,56 @@ const gridItems = [
           <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
             <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
               <div style="flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Tea and Empathy</h3>
-                <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Honest conversations without judgement.</p>
+                <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Tea and Empathy</h3>
+                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0;">Honest conversations without judgement.</p>
               </div>
-              <img src="/assets/p_tea.png" alt="Tea and empathy" class="vsplit-img" style="flex:0 0 40%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_tea.jpg" alt="Tea and empathy" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">It&rsquo;s a quiet space for honest conversations about loneliness, exhaustion, identity, and the juggle of SEND family life &mdash; a place to feel understood and find hope in others who share similar experiences.</p>
+            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">It&rsquo;s a quiet space for honest conversations about loneliness, exhaustion, identity, and the juggle of SEND family life, a place to feel understood and find hope in others who share similar experiences.</p>
           </div>
 
           <!-- The Brew Source (teal, photo top-right) -->
           <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
             <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
               <div style="flex:1;">
-                <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">The Brew Source</h3>
-                <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Quick answers from people who understand.</p>
+                <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">The Brew Source</h3>
+                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0;">Quick answers from people who understand.</p>
               </div>
-              <img src="/assets/p_brew.png" alt="Parents talking" class="vsplit-img" style="flex:0 0 42%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_brew.png" alt="Parents talking" class="vsplit-img" style="flex:0 0 42%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">It&rsquo;s a supportive space where parents share heartfelt advice, honest questions, and practical solutions &mdash; all easy to find or add when you need a little help.</p>
+            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">It&rsquo;s a supportive space where parents share heartfelt advice, honest questions, and practical solutions, all easy to find or add when you need a little help.</p>
           </div>
 
           <!-- The Elder Brew (orange, body top, photo right) -->
           <div class="vcard-feat vcard-flip" style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:300px;">
             <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
-              <p style="flex:1;font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">SEND grandparents carry fierce love and quiet worries of their own. The Elder Brew offers a gentle space to share, support one another, and celebrate the children they cherish.</p>
-              <img src="/assets/p_elder.png" alt="Grandparent and child" class="vsplit-img" style="flex:0 0 40%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <p style="flex:1;font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">SEND grandparents carry fierce love and quiet worries of their own. The Elder Brew offers a gentle space to share, support one another, and celebrate the children they cherish.</p>
+              <img src="/assets/p_elder.jpg" alt="Grandparent and child" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:20px 0 10px;line-height:1.02;">The Elder Brew</h3>
-            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">A circle just for grandparents</p>
+            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:20px 0 10px;line-height:1.02;">The Elder Brew</h3>
+            <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0;">A circle just for grandparents</p>
           </div>
 
           <!-- Show Us Your Mug (orange, photo left) -->
           <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
             <div class="vsplit-img" style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_mug.png" alt="Favourite mug" style="width:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_mug.jpg" alt="Favourite mug" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
             <div style="flex:1;">
-              <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1;">Show Us Your Mug</h3>
-              <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0 0 12px;">A warm welcome to new Vilij members.</p>
-              <p style="font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Make a brew and say hello by sharing your favourite mug and a few words about yourself.</p>
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1;">Show Us Your Mug</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">A warm welcome to new Vilij members.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Make a brew and say hello by sharing your favourite mug and a few words about yourself.</p>
             </div>
           </div>
 
           <!-- Brewtiful Bites (teal, body top, photo right) -->
           <div class="vcard-feat vcard-flip" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:300px;">
             <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
-              <p style="flex:1;font-family:Mulish;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">A light-hearted space for sharing favourite recipes, comforting finds, quirky food combos, SEND-friendly places, and the little food joys that bring us together.</p>
-              <img src="/assets/p_bites.png" alt="Child enjoying food" class="vsplit-img" style="flex:0 0 41%;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <p style="flex:1;font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">A light-hearted space for sharing favourite recipes, comforting finds, quirky food combos, SEND-friendly places, and the little food joys that bring us together.</p>
+              <img src="/assets/p_bites.jpg" alt="Child enjoying food" class="vsplit-img" style="flex:0 0 41%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <h3 style="font-family:Quicksand;font-weight:700;font-size:40px;color:#fff;margin:20px 0 10px;line-height:1.02;">Brewtiful Bites</h3>
-            <p style="font-family:Mulish;font-weight:800;font-size:20px;color:#fff;margin:0;">Food, comfort, and small pleasures.</p>
+            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:20px 0 10px;line-height:1.02;">Brewtiful Bites</h3>
+            <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0;">Food, comfort, and small pleasures.</p>
           </div>
 
         </div>
@@ -186,9 +206,9 @@ const gridItems = [
       <!-- ===== BE MORE BAR ===== -->
       <div style="background:#2bbfba;">
         <div class="vwrap vbar" style="max-width:1240px;margin:0 auto;padding:30px 48px;display:flex;justify-content:space-around;align-items:center;gap:20px;">
-          <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be More</span>
-          <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be Brave</span>
-          <span style="font-family:Quicksand;font-weight:600;font-size:42px;color:#ffffff;">Be Curious</span>
+          <span style="font-family:Lato;font-weight:700;font-size:42px;color:#ffffff;">Be More</span>
+          <span style="font-family:Lato;font-weight:700;font-size:42px;color:#ffffff;">Be Brave</span>
+          <span style="font-family:Lato;font-weight:700;font-size:42px;color:#ffffff;">Be Curious</span>
         </div>
       </div>
 
@@ -197,17 +217,17 @@ const gridItems = [
 
       <!-- ===== APP SIGNUP ORANGE BAND ===== -->
       <section class="vband" style="background:#f28121;text-align:center;padding:62px 24px;">
-        <p style="font-family:Mulish;font-size:20px;color:#ffe6cf;margin:0 0 8px;">So what do I do next?</p>
-        <h2 style="font-family:Quicksand;font-weight:700;font-size:58px;color:#ffffff;margin:0 0 14px;">Sign up to The Vilij App.</h2>
-        <p style="font-family:Mulish;font-size:22px;color:#fff;margin:0 0 34px;">Everything SEND in one place for just {monthlyPrice} per month.</p>
-        <a href="https://app.thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#1f9ca0;font-family:Quicksand;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">JOIN US NOW <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
+        <p style="font-family:Lato;font-size:20px;color:#ffffff;margin:0 0 8px;">So what do I do next?</p>
+        <h2 style="font-family:Lato;font-weight:900;font-size:58px;color:#ffffff;margin:0 0 14px;">Sign up to The Vilij App.</h2>
+        <p style="font-family:Lato;font-size:22px;color:#fff;margin:0 0 34px;">Everything SEND in one place for just {monthlyPrice} per month.</p>
+        <a href="https://app.thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#1f9ca0;font-family:Lato;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">JOIN US NOW <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
       </section>
 
       <!-- ===== STILL NOT SURE TEAL BAND ===== -->
       <section class="vband-sm" style="background:#1f9ca0;padding:30px 24px;">
         <div style="display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;">
-          <span style="font-family:Quicksand;font-weight:500;font-size:34px;color:#d7f0f0;">Still not sure?</span>
-          <a href="#" class="vpill" style="display:inline-flex;align-items:center;gap:14px;background:#f28121;color:#fff;font-family:Quicksand;font-weight:700;font-size:18px;letter-spacing:.5px;padding:12px 14px 12px 30px;border-radius:32px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,0.15);">TAKE A SNEAKY PEEK <span style="width:38px;height:38px;border-radius:50%;background:#ffffff;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:10px solid #1f9ca0;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px;"></span></span></a>
+          <span style="font-family:Lato;font-weight:400;font-size:34px;color:#d7f0f0;">Still not sure?</span>
+          <a href="#" class="vpill" style="display:inline-flex;align-items:center;gap:14px;background:#f28121;color:#fff;font-family:Lato;font-weight:700;font-size:18px;letter-spacing:.5px;padding:12px 14px 12px 30px;border-radius:32px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,0.15);">TAKE A SNEAKY PEEK <span style="width:38px;height:38px;border-radius:50%;background:#ffffff;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:10px solid #1f9ca0;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px;"></span></span></a>
         </div>
       </section>
 
@@ -216,10 +236,10 @@ const gridItems = [
 
       <!-- ===== FINAL CTA ===== -->
       <section class="vband" style="background:#f28121;text-align:center;padding:66px 24px;">
-        <p style="font-family:Mulish;font-size:22px;color:#ffe6cf;margin:0 0 10px;">So, you&rsquo;ve come this far?</p>
-        <h2 style="font-family:Quicksand;font-weight:700;font-size:62px;color:#ffffff;margin:0 0 22px;">Your village is waiting for you.</h2>
-        <p style="font-family:Mulish;font-weight:600;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You don&rsquo;t need to be at breaking point.<br />You don&rsquo;t need to have it all together.<br />You&rsquo;re allowed support too.</p>
-        <a href="https://app.thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#f28121;font-family:Quicksand;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">SIGN UP NOW <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
+        <p style="font-family:Lato;font-size:22px;color:#ffffff;margin:0 0 10px;">So, you&rsquo;ve come this far?</p>
+        <h2 style="font-family:Lato;font-weight:900;font-size:58px;color:#ffffff;margin:0 0 22px;">Your village is waiting for you.</h2>
+        <p style="font-family:Lato;font-weight:700;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You don&rsquo;t need to be at breaking point.<br />You don&rsquo;t need to have it all together.<br />You&rsquo;re allowed support too.</p>
+        <a href="https://app.thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#f28121;font-family:Lato;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">SIGN UP NOW <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
       </section>
 
       <!-- ===== FOOTER ===== -->

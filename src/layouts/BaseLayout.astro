@@ -42,8 +42,35 @@ interface Props {
 
 const { title, description, noindex = false, extraFonts = "", carousel } = Astro.props;
 
+// Lato throughout, headings included (Damien, 31 Jul 2026: "It's always been
+// Lato"). This closes the Figtree question — the Illustrator sources pair
+// Figtree Medium with Lato, and the web build had substituted Quicksand for the
+// headings while that was open.
+//
+// Three weights, and the tiers are deliberate:
+//
+//   900  display type >=50px — the 74px h1, the 58px band h2, the 50px section
+//        h2. Lato is narrower with a smaller x-height than Quicksand, so at 700
+//        the headings read about 5% smaller and noticeably lighter. Black puts
+//        the mass back and keeps daylight between an h2 and the 40px card h3
+//        directly under it.
+//   700  everything structural below 50px — card headings, footer, pills, nav,
+//        table headers. Unchanged from before.
+//   400  the strapline voice: the 36px band paragraph and the 34px "Still not
+//        sure?". These went DOWN, not up, and that is the one place the old
+//        "round 500 up to 700" precedent must not be applied — they sit
+//        directly under a 900 h2, and at 700 they read as a second heading and
+//        flatten exactly the hierarchy this was meant to protect.
+//
+// Lato ships 100/300/400/700/900 and nothing else. Do not add 500, 600 or 800:
+// Google Fonts ignores them and the browser rounds silently, which is how the
+// emphasis ladder collapses without anyone noticing. Every declaration that
+// used one now carries an explicit decision instead.
+//
+// Sizes were not touched. src/styles/responsive.css steps type down by matching
+// the literal inline string, so weight is free to change and px is not.
 const fontHref =
-  "https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Mulish:wght@400;500;600;700;800" +
+  "https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900" +
   extraFonts +
   "&display=swap";
 

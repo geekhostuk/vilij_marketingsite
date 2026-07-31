@@ -30,8 +30,8 @@ const hasNav = list.length > 1;
 ---
 <section style="background:#ffffff;padding:74px 0 80px;">
   <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
-    <p style="font-family:Mulish;font-weight:600;font-size:23px;color:#353535;text-align:center;margin:0 0 6px;">Our Testimonials</p>
-    <h2 style="font-family:Quicksand;font-weight:700;font-size:52px;color:#1f9ca0;text-align:center;margin:0 0 56px;">What Our <span style="color:#f28121;">Vilijers</span> Say</h2>
+    <p style="font-family:Lato;font-weight:700;font-size:23px;color:#353535;text-align:center;margin:0 0 6px;">Our Testimonials</p>
+    <h2 style="font-family:Lato;font-weight:900;font-size:50px;color:#1f9ca0;text-align:center;margin:0 0 56px;">What Our <span style="color:#f28121;">Vilijers</span> Say</h2>
     <div class="vtestim" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
       {showQuoteMark ? (
         <div class="vtestim-photo" style="position:relative;">
@@ -47,9 +47,9 @@ const hasNav = list.length > 1;
       )}
       <div>
         <div id="t-stars" role={first.stars ? "img" : undefined} aria-label={first.stars ? `Rated ${first.stars} out of 5` : undefined} style={`color:#f28121;font-size:28px;letter-spacing:6px;margin-bottom:18px;${first.stars ? "" : "display:none;"}`}><span id="t-star-glyphs" aria-hidden="true">{first.stars ? "★".repeat(first.stars) : ""}</span></div>
-        <p id="t-quote" style="font-family:Mulish;font-size:21px;line-height:1.6;color:#5a5a5a;margin:0 0 28px;max-width:560px;">{first.quote}</p>
-        <p id="t-name" style="font-family:Mulish;font-weight:700;font-size:24px;color:#222;margin:0 0 4px;">{first.name}</p>
-        <p id="t-role" style={`font-family:Mulish;font-size:16px;color:#888;margin:0${hasNav ? " 0 30px" : ""};`}>{first.role}</p>
+        <p id="t-quote" style="font-family:Lato;font-size:21px;line-height:1.6;color:#5a5a5a;margin:0 0 28px;max-width:560px;">{first.quote}</p>
+        <p id="t-name" style="font-family:Lato;font-weight:700;font-size:24px;color:#222;margin:0 0 4px;">{first.name}</p>
+        <p id="t-role" style={`font-family:Lato;font-size:16px;color:#888;margin:0${hasNav ? " 0 30px" : ""};`}>{first.role}</p>
         {hasNav && (
         <div style="display:flex;gap:16px;">
           <button id="t-prev" aria-label="Previous" style="width:58px;height:58px;border-radius:50%;border:2px solid #f0c79e;background:#fff;color:#f28121;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;">&#8249;</button>

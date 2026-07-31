@@ -4,33 +4,66 @@
 // The spaces inside the comment fragment are deliberate: Astro drops the
 // whitespace either side of a top-level expression in a component, so they are
 // what separates this tile from the previous one and from its own markup.
-// A tile flagged `comingSoon` in src/data/areas.ts describes an area that has no
-// page yet. It renders as a panel rather than a card: no anchor, no button, no
-// tabindex, so there is nothing to focus and nothing announced as activatable —
-// the "Coming soon" text is read as the ordinary text it is. It also drops the
-// `vcard` class, which is what carries the hover lift, because a tile that rises
-// under the cursor is inviting a click it cannot honour.
 //
-// The muting is deliberately gentle: a paler wash of the same gradient, a
-// quieter shadow and a plain label where the orange pill sits on a live card.
-// Title and body keep their full contrast — greying out the words would trade
-// legibility for a signal the background already carries.
+// LIVE CARD (Damien, 30 Jul 2026: "can we click anywhere on the boxes for the
+// branches as well as just the orange CTA pils?")
+// The whole card is the anchor and the orange pill is a <span> inside it. That
+// is why the pill stopped being a link: an <a> inside an <a> is invalid, the
+// parser unnests it, and assistive technology announces two links for one
+// destination. One anchor around everything gives the big hit target Damien
+// asked for and keeps exactly one link in the accessibility tree. Its
+// accessible name becomes the card's own text — title, body, then the CTA —
+// which reads correctly without an aria-label. An aria-label is not an option
+// here in any case: `cta` carries raw HTML entities like `CAF&Eacute;`, which
+// render through set:html but would be read out literally from an attribute.
+//
+// COMING-SOON CARD (Damien: "needs to be more pronounced as coming soon — even
+// lighter pics — banner across them instead of at the bottom/CTA?")
+// A tile flagged `comingSoon` in src/data/areas.ts describes an area with no
+// page yet. It stays a <div>: no anchor, no button, no tabindex, so there is
+// nothing to focus and nothing announced as activatable. It also drops the
+// `vcard` class, which is what carries the hover lift, because a tile that
+// rises under the cursor is inviting a click it cannot honour.
+//
+// The muting used to be gentle — .78 opacity, and a grey chip in the corner
+// where the pill sits. Damien wanted it unmistakable, so the banner now crosses
+// the image and the bottom chip is gone. Title and body keep their full
+// contrast: greying the words out would trade legibility for a signal the
+// banner already carries loudly.
+//
+// Damien, 31 Jul 2026: bigger text, band lower — "the top of the teal box
+// starting from where the bottom of the current Coming soon text is". The band
+// went 15px -> 17px and top:36% -> top:45%. That 9% is ~28px of a ~300px image
+// box, which is the 10px padding plus the old 15px line: the band's top edge
+// now lands where its text used to bottom out. `top` stays a percentage so it
+// holds that position at every breakpoint, and 17px sits below the responsive
+// ramp's 20px floor, so it is never stepped down on a phone.
 import type { AreaCard } from "../data/areas";
 type Props = AreaCard;
 const { label, img, alt, title, body, href, cta, comingSoon = false } = Astro.props;
+
+// Dynamic tag: <div> for a dead tile, <a> for a live one. Everything inside is
+// identical either way, which is the point — the two states must not drift.
+const Tag = comingSoon ? "div" : "a";
 ---
 <Fragment set:html={` <!-- ${label}${comingSoon ? " (coming soon)" : ""} --> `} />
-<div class={comingSoon ? "" : "vcard"} style={comingSoon
-  ? "border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#f7f0e8 0%,#f2ece6 46%,#e9f0ef 72%,#e6f1f1 100%);box-shadow:0 4px 14px rgba(40,80,90,0.05);border:1px solid #e4eaea;display:flex;flex-direction:column;"
-  : "border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;"}>
-  <div style="padding:14px 8px 0;"><img src={img} alt={alt} class="vcard-img" style={comingSoon ? "opacity:.78;" : undefined} /></div>
-  <div class="vcard-body" style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
-    <h3 style="font-family:Quicksand;font-weight:700;font-size:25px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;" set:html={title}></h3>
-    <p style="font-family:Mulish;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;" set:html={body}></p>
-    {comingSoon ? (
-      <span style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#5f6b6b;background:#ffffff;border:1px solid #d5dedd;padding:12px 24px;border-radius:26px;">Coming soon</span>
-    ) : (
-      <a href={href} class="vpill" style="align-self:flex-start;font-family:Mulish;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;text-decoration:none;box-shadow:0 6px 14px rgba(242,129,33,0.3);" set:html={cta}></a>
+<Tag
+  class={comingSoon ? undefined : "vcard"}
+  href={comingSoon ? undefined : href}
+  style={comingSoon
+    ? "border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#f7f0e8 0%,#f2ece6 46%,#e9f0ef 72%,#e6f1f1 100%);box-shadow:0 4px 14px rgba(40,80,90,0.05);border:1px solid #e4eaea;display:flex;flex-direction:column;"
+    : "border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;text-decoration:none;color:inherit;"}>
+  <div style="position:relative;">
+    <div style="padding:14px 8px 0;"><img src={img} alt={alt} class="vcard-img" style={comingSoon ? "opacity:.42;filter:saturate(.5);" : undefined} /></div>
+    {comingSoon && (
+      <div style="position:absolute;left:0;right:0;top:45%;background:#1f9ca0;box-shadow:0 6px 16px rgba(31,156,160,0.28);padding:10px 0;text-align:center;font-family:Lato;font-weight:700;font-size:17px;letter-spacing:2px;color:#ffffff;">COMING SOON</div>
     )}
   </div>
-</div>
+  <div class="vcard-body" style="padding:6px 30px 30px;display:flex;flex-direction:column;flex:1;">
+    <h3 style="font-family:Lato;font-weight:700;font-size:28px;color:#1f9ca0;margin:0 0 10px;letter-spacing:.4px;" set:html={title}></h3>
+    <p style="font-family:Lato;font-size:18px;line-height:1.5;color:#3a3a3a;margin:0 0 22px;flex:1;" set:html={body}></p>
+    {!comingSoon && (
+      <span class="vpill" style="align-self:flex-start;font-family:Lato;font-weight:700;font-size:14px;letter-spacing:.4px;color:#fff;background:#f28121;padding:12px 24px;border-radius:26px;box-shadow:0 6px 14px rgba(242,129,33,0.3);" set:html={cta}></span>
+    )}
+  </div>
+</Tag>
