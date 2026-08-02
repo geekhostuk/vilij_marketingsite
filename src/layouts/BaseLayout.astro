@@ -18,9 +18,15 @@
 // works per component, so a newline on both sides of a boundary becomes two
 // spaces in the output rather than one.
 //
-// responsive.css is the site's one real stylesheet: the tablet and mobile
-// layer, ISSUES #20. Every rule in it sits inside a max-width media query, so
-// importing it here cannot move the desktop design on any of the 13 pages.
+// cards.css is the feature-card geometry: the "imaginary outer shape" the
+// designs are built on, and the intrinsic-width unlock that used to be patched
+// three separate ways. It is the one stylesheet that does move the desktop
+// design, deliberately — read its header before touching a card.
+import "../styles/cards.css";
+// responsive.css is the site's other stylesheet: the tablet and mobile layer,
+// ISSUES #20. Every rule in it sits inside a max-width media query, so
+// importing it here cannot move the desktop design on any of the 13 pages. It
+// comes second so its !important rules win over cards.css at narrow widths.
 // Read its header before changing any inline font-size anywhere on the site.
 import "../styles/responsive.css";
 import TestimonialScript from "../components/TestimonialScript.astro";

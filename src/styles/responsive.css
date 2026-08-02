@@ -330,8 +330,19 @@
 
      The asymmetric padding goes with it: cards that bleed left are
      padding:32px 34px 32px 0 to make room, which reads as a missing edge
-     once nothing is bleeding into it. */
-  .vcard-feat { min-height: 0 !important; padding: 24px !important; }
+     once nothing is bleeding into it.
+
+     The margins are the other half of that. cards.css insets the card 22px on
+     the photo side (.vbleed-l / .vbleed-r) so the photo's -22px lands on the
+     grid track edge rather than past it. With the bleed gone there is nothing
+     for the inset to make room for, and it would read as a card that has
+     slipped sideways. */
+  .vcard-feat {
+    min-height: 0 !important;
+    padding: 24px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 
   .vsplit {
     flex-direction: column !important;
@@ -339,12 +350,17 @@
     gap: 18px !important;
   }
 
+  /* aspect-ratio sets each photo's shape from its page's PDF, which is the
+     right call beside a 200-300px text column and the wrong one at full
+     phone width — a 0.69 portrait across a 300px card is 435px of photo
+     before the copy starts. Back to the file's own proportions here. */
   .vsplit-img {
     flex: none !important;
     align-self: auto !important;
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
+    aspect-ratio: auto !important;
     margin: 0 !important;
   }
   .vsplit-img img { width: 100% !important; height: auto !important; }

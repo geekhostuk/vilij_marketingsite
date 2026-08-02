@@ -102,16 +102,50 @@ const gridItems = [
         </div>
       </section>
 
+      {/* Damien, 1 Aug 2026: "Need to be equal width […] the same 'imaginary'
+          outer shape with equal space down the middle", and "Expert Hub has
+          60/40 split in width? See pdf for reference."
+
+          Both come off the same measurement. "Vilij Website Expert Hub page
+          v2.pdf" puts every card inside an 800px shape on a 1920 artboard —
+          left 111->911, right 1019->1819, gutter 108 — and nothing on the page
+          escapes its shape. At this container that is 536 / 72 / 536, hence the
+          72px column gap below and .vbleed-r on the cards: see cards.css.
+
+          The photo sizes below are that PDF's, read off the clip path that
+          masks each image rather than its placement box, which is a good deal
+          smaller. As a share of the 800 shape, by grid position:
+
+              R1 L 42.8%  0.79      R1 R 39.9%  0.75
+              R2 L 36.4%  0.69      R2 R 55.9%  1.61
+              R3 L 41.6%  0.92      R3 R 47.4%  0.87
+
+          flex-basis resolves against the flex container's CONTENT box, not the
+          card: 536 shape - 22 inset - 34 padding = 480. So each figure above is
+          restated against 480, not 536 and not 514. Get that wrong and every
+          photo comes out about 2.5 points narrow, which is small enough to look
+          intentional and wrong enough to miss.
+
+          The ratios replace the old fixed heights and align-self:stretch —
+          "some are portrait some are square and some possibly landscape".
+          Where the <img> is the flex item itself rather than sitting in a
+          wrapper it also needs height:auto, or the intrinsic height attribute
+          added in 21bdc83 wins and aspect-ratio never gets a say. Same trap as
+          commit 23fe4b1.
+
+          Photo side is left as built rather than taken from the PDF: the v2
+          layout puts R1 R and R2 L on the left, but Damien has reviewed these
+          cards twice without raising sides, so only the sizes move. */}
       <!-- ===== EXPERT HUB FEATURE CARDS ===== -->
       <section style="background:#ffffff;padding:58px 0 80px;">
-        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 44px;">
+        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 72px;">
 
           <!-- Health & Therapy (orange, photo left) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-left:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_eh_health.png" alt="A therapy conversation" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <div class="vcard-feat vsplit vbleed-l" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 47.8%;margin-left:-22px;aspect-ratio:0.79;display:flex;">
+              <img src="/assets/p_eh_health.png" alt="A therapy conversation" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Health<br />&amp; Therapy</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">When something feels off, but hard to explain.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support that helps things make a little more sense.</p>
@@ -136,13 +170,16 @@ const gridItems = [
               The two flip cards lose .vcard-flip in the process. That class only
               exists to pull a heading back above the photo when the desktop
               shape puts it underneath; this shape does not, so all four now read
-              title, strapline, body like the rest of the page. */}
-          <!-- Emotional & Family Support (teal, photo right, full height) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_eh_emotional.png" alt="A parent taking a moment" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              title, strapline, body like the rest of the page.
+
+              1 Aug: "full card height" is no longer true of any of them — the
+              photos are on the PDF's aspect ratios now and sit centred. */}
+          <!-- Emotional & Family Support (teal, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 44.6%;margin-right:-22px;aspect-ratio:0.75;display:flex;">
+              <img src="/assets/p_eh_emotional.png" alt="A parent taking a moment" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Emotional<br />&amp; Family Support</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Because this affects all of you.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support for the weight you&rsquo;re carrying, every day.</p>
@@ -150,13 +187,13 @@ const gridItems = [
           </div>
 
           <!-- Legal, Financial & Future (teal, photo right) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:32px 0 32px 34px;min-height:330px;">
-            <div style="flex:1;min-width:0;">
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:32px 0 32px 34px;min-height:330px;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Legal, Financial<br />&amp; Future</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Here when the big worries start to build.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Guidance to help you feel a little more in control.</p>
             </div>
-            <img src="/assets/p_eh_legal.png" alt="Planning for the future together" width="420" height="420" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 42%;min-width:0;height:280px;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            <img src="/assets/p_eh_legal.png" alt="Planning for the future together" width="420" height="420" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 40.6%;aspect-ratio:0.69;height:auto;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
           </div>
 
           {/* Damien: "this one also needs the title the right size". It was the
@@ -165,36 +202,39 @@ const gridItems = [
               literal font-size string, so this heading now follows the 40px ramp
               (36px at <=1180, 24px at <=600, 22px at <=400) instead of the 30px
               one — which is the correct ramp for it to be on. */}
-          <!-- Education & Development (orange, photo right, full height) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_eh_education.png" alt="Learning resources in a classroom" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          {/* The one wide photo on the page: v2 has it at 55.9% of the shape
+              and 1.61 landscape, against 36-47% and portrait-to-square for the
+              other five. Deliberate in the design, so kept. */}
+          <!-- Education & Development (orange, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 62.4%;margin-right:-22px;aspect-ratio:1.61;display:flex;">
+              <img src="/assets/p_eh_education.png" alt="Learning resources in a classroom" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Education<br />&amp; Development</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">When school or learning feels hard.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support to help you understand and move forward.</p>
             </div>
           </div>
 
-          <!-- Life, Work & Independence (orange, photo right, full height) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_eh_life.png" alt="A family looking ahead" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- Life, Work & Independence (orange, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 46.5%;margin-right:-22px;aspect-ratio:0.92;display:flex;">
+              <img src="/assets/p_eh_life.png" alt="A family looking ahead" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Life, Work<br />&amp; Independence</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">For what comes next.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support to help build confidence and a way forward.</p>
             </div>
           </div>
 
-          <!-- Featured Expert (teal, photo right, full height) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_eh_expert.png" alt="A Vilij expert in conversation" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- Featured Expert (teal, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 52.9%;margin-right:-22px;aspect-ratio:0.87;display:flex;">
+              <img src="/assets/p_eh_expert.png" alt="A Vilij expert in conversation" width="420" height="420" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Featured<br />Expert</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Support you might not think to look for.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Shared in a way that feels real and easy to take in.</p>

@@ -62,26 +62,10 @@ const gridItems = [
       .vcard-img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
       .vcard:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(40,80,90,0.16) !important; }
       .vnav-cta:hover { background: #15838a !important; }
-      /* ISSUES #29, and Damien 30 Jul 2026: "the blocks are a bit of a mess and
-         don't line up". A flex item's automatic minimum size is its min-content
-         width, and for an <img> that is the file's intrinsic pixel width. So
-         `flex:0 0 42%` on the 800px-wide p_brew.png meant "at least 800px",
-         which dragged this page's 1fr 1fr track out to ~986px at every viewport
-         — and the wrapper's overflow-x:hidden then quietly cut the surplus off
-         the right-hand column. At 1440px roughly 270px of it was off-screen.
-
-         responsive.css already unlocks this at <=1180px, but deliberately not
-         above, because that would move the signed-off desktop layout. Damien
-         owns the design and has asked for it, so it is unlocked here.
-
-         The chain goes three levels deep on purpose: the card is a grid item
-         with the same automatic minimum, and the left-column photos are an
-         <img width:100%> inside a display:flex wrapper, so wrapper and image are
-         both flex items with an intrinsic floor of their own. Miss one and the
-         whole chain still refuses to shrink. */
-      .vcard-feat,
-      .vsplit, .vsplit > *,
-      .vsplit-img, .vsplit-img > *, .vsplit-img img { min-width: 0; }
+      /* The ISSUES #29 min-width:0 unlock that used to live here moved to
+         cards.css on 1 Aug 2026, where it covers all five card pages instead of
+         this one. Nothing else about this page's cards has changed — Damien:
+         "the Cafe as you've done it up to yet works well". */
     </style><div style="font-family:Lato,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
 
       <!-- ===== HEADER + HERO ===== -->
@@ -128,12 +112,30 @@ const gridItems = [
         </div>
       </section>
 
+      {/* Damien, 1 Aug 2026: "If this can't be achieved then the Cafe as
+          you've done it up to yet works well." So the card compositions here
+          are untouched — only the geometry underneath them, so that all five
+          pages sit on the same grid.
+
+          Two changes. The column gap goes 44px -> 72px, which is the 108px
+          gutter in "Vilij Website Cafe page v 3.pdf" scaled to this container.
+          And the four cards whose photo carries a -22px bleed pick up
+          .vbleed-l / .vbleed-r, which insets the block by the same 22px so the
+          photo lands ON the grid track edge instead of 22px past it — the
+          asymmetry Damien spotted on the other three pages. Tea and Empathy and
+          The Brew Source need neither: their photos are -20px inside 34px of
+          padding, so they were already inside the track. That is why this page
+          reads straight and /expert-hub does not.
+
+          Note this page is built from Cafe v1; the source folder now holds v3,
+          whose card compositions differ. Flagged to Damien rather than acted
+          on. */}
       <!-- ===== CAFÉ FEATURE CARDS ===== -->
       <section style="background:#ffffff;padding:60px 0 80px;">
-        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:46px 44px;">
+        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:46px 72px;">
 
           <!-- Sip & Natter (orange, photo left) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
+          <div class="vcard-feat vsplit vbleed-l" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
             <div class="vsplit-img" style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
               <img src="/assets/p_sip.jpg" alt="Coffee chat" width="500" height="640" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
@@ -185,7 +187,7 @@ const gridItems = [
               above the photo when the desktop shape puts it underneath; this
               shape does not, so the reordering is no longer needed. */}
           <!-- The Elder Brew (orange, photo right, full height) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:300px;">
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:300px;">
             <div class="vsplit-img" style="flex:0 0 43%;margin-right:-22px;align-self:stretch;display:flex;">
               <img src="/assets/p_elder.jpg" alt="Grandparent and child" width="480" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
@@ -197,7 +199,7 @@ const gridItems = [
           </div>
 
           <!-- Show Us Your Mug (orange, photo left) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
+          <div class="vcard-feat vsplit vbleed-l" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:300px;">
             <div class="vsplit-img" style="flex:0 0 43%;margin-left:-22px;align-self:stretch;display:flex;">
               <img src="/assets/p_mug.jpg" alt="Favourite mug" width="500" height="640" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
@@ -210,7 +212,7 @@ const gridItems = [
 
           {/* Mirrored Sip & Natter shape — see the note on The Elder Brew. */}
           <!-- Brewtiful Bites (teal, photo right, full height) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:300px;">
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:300px;">
             <div class="vsplit-img" style="flex:0 0 43%;margin-right:-22px;align-self:stretch;display:flex;">
               <img src="/assets/p_bites.jpg" alt="Child enjoying food" width="480" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>

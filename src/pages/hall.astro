@@ -63,11 +63,8 @@ const gridItems = [
       .vcard-img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
       .vcard:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(40,80,90,0.16) !important; }
       .vnav-cta:hover { background: #15838a !important; }
-      /* Same desktop clipping bug as /cafe — see the long note there, and
-         ISSUES #29. p_brew.png is 800px natural and sits at flex:0 0 46%. */
-      .vcard-feat,
-      .vsplit, .vsplit > *,
-      .vsplit-img, .vsplit-img > *, .vsplit-img img { min-width: 0; }
+      /* The ISSUES #29 min-width:0 unlock moved to cards.css on 1 Aug 2026.
+         It still matters most here: p_brew.png is 800px natural. */
     </style><div style="font-family:Lato,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
 
       <!-- ===== HEADER + HERO ===== -->
@@ -109,71 +106,120 @@ const gridItems = [
         </div>
       </section>
 
+      {/* Damien, 1 Aug 2026: "Vilij Hall struggles as bigger gaps between the
+          text titles and text and random sized pics. And different sized
+          blocks." All three, plus the equal-width point that applies to every
+          page.
+
+          BLOCKS. Every card is now the same: the 800px shape from
+          "Vilij Website Vijil Hall page v 7.pdf" (536px here), less a 22px
+          inset on the photo side — .vbleed-l / .vbleed-r, see cards.css. The
+          PDF actually varies its blocks between 81% and 100% of the shape, but
+          that variation is the thing Damien is objecting to, so it is not
+          reproduced. min-height is 330px on all six; it was 330 on four and
+          240 on the last two.
+
+          PICS. Shapes are v7's, read off each image's clip path. Widths are
+          v7's too, except where they would leave the text column under 175px —
+          this page's photos are much bigger than the other four (53-65% of the
+          shape against 36-56%), and our copy is longer than the design's
+          placeholder. Card 2 comes down from 64.5% to 57.3% and card 6 from
+          60.5% to 56.2% on that basis; cards 3, 4 and 5 are v7 untouched.
+
+              R1 R 57.3%  1.58      R2 L 54.6%  1.28
+              R2 R 52.9%  1.16      R3 L 57.0%  1.08
+              R3 R 56.2%  1.02
+
+          TITLE GAPS. Hall was the only page running 16-18px under its h3s and
+          14-16px under its straplines, against 12px everywhere else. Now 12px,
+          which is what "bigger gaps between the text titles and text" is. Font
+          sizes are untouched — responsive.css keys its ramp on those strings. */}
       <!-- ===== FEATURE CARDS ===== -->
       <section style="background:#ffffff;padding:58px 0 80px;">
-        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 44px;">
+        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 72px;">
 
           <!-- Collective wins (orange, sticky note top-left) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;gap:24px;padding:34px 36px;min-height:330px;">
+          <div class="vcard-feat vsplit vbleed-l" style="position:relative;background:#f28121;border-radius:22px;display:flex;gap:24px;padding:34px 36px 34px 0;min-height:330px;">
             <div class="vsplit-img" style="flex:0 0 40%;display:flex;align-items:flex-start;">
-              <div class="vnote" style="background:#fbf3bf;border-radius:6px;padding:22px 20px 28px;margin-top:-56px;margin-left:-12px;box-shadow:0 14px 26px rgba(0,0,0,0.18);transform:rotate(-4deg);width:100%;">
+              {/* -13px, not the -22px every photo on the page uses, because
+                  the note is the one element that is rotated. transform:rotate
+                  swings its bottom-left corner about 9px further out than its
+                  layout box, so -22px put the note 8.7px outside the shape —
+                  the exact thing this round is fixing. -13px lands the rotated
+                  corner on the shape edge. */}
+              <div class="vnote" style="background:#fbf3bf;border-radius:6px;padding:22px 20px 28px;margin-top:-56px;margin-left:-13px;box-shadow:0 14px 26px rgba(0,0,0,0.18);transform:rotate(-4deg);width:100%;">
                 <p style="font-family:Caveat;font-weight:600;font-size:27px;line-height:1.25;color:#2a2a2a;margin:0;">Today my son Adam, 9, picked up a pencil and scribbled for the first time!</p>
                 <div style="text-align:center;font-size:22px;color:#222;margin-top:6px;">&#9825;</div>
               </div>
             </div>
             <div style="flex:1;">
-              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 16px;line-height:1.0;">Collective wins</h3>
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.0;">Collective wins</h3>
               <p style="font-family:Lato;font-weight:700;font-size:23px;color:#fff;margin:0 0 12px;">Our emotional heartbeat</p>
               <p style="font-family:Lato;font-size:18px;line-height:1.5;color:rgba(255,255,255,0.96);margin:0;">A place to share and celebrate your victories, big and small, with a SEND community that truly gets it.</p>
             </div>
           </div>
 
+          {/* The photo is a flex item inside the card's 36px padding, not
+              against the card edge, so reaching the shape edge costs the
+              padding as well as the inset: -58px, not -22px. Every other card
+              on the page zeroes its padding on the photo side instead, but
+              this one cannot — the body copy below runs the full width and
+              needs that padding back. */}
           <!-- Our Stories (teal, photo top-right) -->
-          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:330px;">
+          <div class="vcard-feat vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;padding:34px 36px;min-height:330px;">
             <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
               <div style="flex:1;">
-                <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 16px;line-height:1.0;">Our Stories</h3>
+                <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.0;">Our Stories</h3>
                 <p style="font-family:Lato;font-weight:700;font-size:23px;color:#fff;margin:0;line-height:1.25;">Stories from our Vilijers</p>
               </div>
-              <img src="/assets/p_brew.png" alt="Vilijers in conversation" width="800" height="444" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 46%;height:170px;object-fit:cover;margin-top:-30px;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+              <img src="/assets/p_brew.png" alt="Vilijers in conversation" width="800" height="444" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 69.5%;aspect-ratio:1.58;height:auto;object-fit:cover;margin-top:-30px;margin-right:-58px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <p style="font-family:Lato;font-size:18px;line-height:1.5;color:rgba(255,255,255,0.96);margin:24px 0 0;">Real conversations with parents, grandparents, siblings, and carers living the SEND life, sharing their journeys, hopes and lessons.</p>
+            <p style="font-family:Lato;font-size:18px;line-height:1.5;color:rgba(255,255,255,0.96);margin:18px 0 0;">Real conversations with parents, grandparents, siblings, and carers living the SEND life, sharing their journeys, hopes and lessons.</p>
           </div>
 
           <!-- Come and meet (teal, photo right) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:34px 0 34px 36px;min-height:330px;">
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:34px 0 34px 36px;min-height:330px;">
             <div style="flex:1;">
-              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 16px;line-height:1.02;">Come and meet</h3>
-              <p style="font-family:Lato;font-weight:700;font-size:23px;color:#fff;margin:0 0 14px;line-height:1.25;">Guidance you can trust</p>
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Come and meet</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:23px;color:#fff;margin:0 0 12px;line-height:1.25;">Guidance you can trust</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.96);margin:0;">Trusted voices. Real stories. Practical guidance. Meet the experts, parents and people helping to make life feel a little less overwhelming and a lot less lonely.</p>
             </div>
-            <img src="/assets/p_experts.png" alt="Meet the people of the Vilij" width="560" height="640" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 42%;height:280px;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            <img src="/assets/p_experts.png" alt="Meet the people of the Vilij" width="560" height="640" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 61.2%;aspect-ratio:1.28;height:auto;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
           </div>
 
+          {/* overflow:hidden is gone. It was containing a photo that sat 26px
+              inside the card; this one runs out to the shape edge, and the
+              clip would have taken the bleed straight back off. `right` on an
+              absolutely positioned child resolves against the padding box, so
+              -22px lands it exactly on the edge without the padding arithmetic
+              card 2 needs. */}
           <!-- What's on? (orange, events photo bottom-right) -->
-          <div class="vcard-feat vevents" style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:330px;overflow:hidden;">
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 18px;line-height:1.0;">What&rsquo;s on?</h3>
-            <p style="font-family:Lato;font-weight:700;font-size:23px;color:#fff;margin:0 0 16px;line-height:1.25;max-width:48%;">Find the latest Events here.</p>
-            <p style="font-family:Lato;font-size:18px;line-height:1.5;color:rgba(255,255,255,0.96);margin:0;max-width:48%;">National and local SEND events held online and face to face.</p>
-            <img src="/assets/p_events.png" alt="A signpost pointing to events" width="800" height="440" loading="lazy" decoding="async" class="vevents-img" style="position:absolute;right:26px;bottom:26px;width:44%;height:190px;object-fit:cover;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.2);" />
+          <div class="vcard-feat vevents vbleed-r" style="position:relative;background:#f28121;border-radius:22px;padding:34px 36px;min-height:330px;">
+            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.0;">What&rsquo;s on?</h3>
+            <p style="font-family:Lato;font-weight:700;font-size:23px;color:#fff;margin:0 0 12px;line-height:1.25;max-width:45%;">Find the latest Events here.</p>
+            <p style="font-family:Lato;font-size:18px;line-height:1.5;color:rgba(255,255,255,0.96);margin:0;max-width:45%;">National and local SEND events held online and face to face.</p>
+            <img src="/assets/p_events.png" alt="A signpost pointing to events" width="800" height="440" loading="lazy" decoding="async" class="vevents-img" style="position:absolute;right:-22px;bottom:26px;width:55.2%;aspect-ratio:1.16;height:auto;object-fit:cover;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.2);" />
           </div>
 
+          {/* These two were the "different sized blocks": 240px against 330px
+              on the other four, and the only two cards on the page whose photo
+              did not bleed at all. Both now match the rest. */}
           <!-- Vilij News (orange, photo left) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:30px 34px;min-height:240px;">
-            <img src="/assets/p_founders.png" alt="Vilij founders Charlie and Steph" width="389" height="536" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 44%;height:210px;object-fit:cover;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <div class="vcard-feat vsplit vbleed-l" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:30px 34px 30px 0;min-height:330px;">
+            <img src="/assets/p_founders.png" alt="Vilij founders Charlie and Steph" width="389" height="536" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 63.6%;aspect-ratio:1.08;height:auto;object-fit:cover;margin-left:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             <div style="flex:1;">
-              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 18px;line-height:1.02;">Vilij News</h3>
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Vilij News</h3>
               <p style="font-family:Lato;font-size:18px;line-height:1.55;color:rgba(255,255,255,0.96);margin:0;">Vilij updates &amp; news from our founders Charlie &amp; Steph</p>
             </div>
           </div>
 
           <!-- Daily Chat (teal, photo right) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:26px;padding:30px 34px;min-height:240px;">
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:26px;padding:30px 0 30px 34px;min-height:330px;">
             <div style="flex:1;">
-              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 16px;line-height:1.02;">Daily Chat</h3>
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Daily Chat</h3>
               <p style="font-family:Lato;font-weight:700;font-size:23px;color:#fff;margin:0;line-height:1.25;">Today&rsquo;s Conversations</p>
             </div>
-            <img src="/assets/p_dailychat.png" alt="Daily conversations" width="560" height="640" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 46%;height:210px;object-fit:cover;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            <img src="/assets/p_dailychat.png" alt="Daily conversations" width="560" height="640" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 62.7%;aspect-ratio:1.02;height:auto;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
           </div>
 
         </div>

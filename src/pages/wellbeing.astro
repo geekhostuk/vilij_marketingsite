@@ -102,28 +102,44 @@ const gridItems = [
         </div>
       </section>
 
+      {/* Damien, 1 Aug 2026: "Wellbeing Hub — as both above." Same 800px shape
+          and 108px gutter as every other page — 536 / 72 / 536 here — so the
+          same 72px column gap and .vbleed-r inset. See /expert-hub's note and
+          cards.css for the reasoning.
+
+          Photo sizes from "Vilij Website Wellbeing Centre page v2.pdf", as a
+          share of the 800 shape:
+
+              R1 L 39.9%  0.76      R1 R 42.8%  0.79
+              R2 L 48.4%  1.09      R2 R 48.2%  1.08
+              R3 L 39.6%  0.75      R3 R 44.3%  1.03
+
+          flex-basis restates each against the card's 480px content box, not
+          the 536 shape — see the note on /expert-hub. This page is the most
+          even of the five: the middle row square, the outer rows portrait, and
+          nothing wider than half the shape. */}
       <!-- ===== WELLBEING FEATURE CARDS ===== -->
       <section style="background:#ffffff;padding:58px 0 80px;">
-        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 44px;">
+        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 72px;">
 
           <!-- Body-Based Calm (orange, photo left) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-left:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_wb_calm.jpg" alt="Someone stretching out on the floor at home" width="480" height="660" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <div class="vcard-feat vsplit vbleed-l" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 44.6%;margin-left:-22px;aspect-ratio:0.76;display:flex;">
+              <img src="/assets/p_wb_calm.jpg" alt="Someone stretching out on the floor at home" width="480" height="660" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Body-Based<br />Calm</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Calm your body when everything feels too much.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Find steadiness again, quickly and simply.</p>
             </div>
           </div>
 
-          <!-- Improve Your Emotional Wellbeing (teal, photo top-right) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_wb_emotional.jpg" alt="One person holding another&rsquo;s hands" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- Improve Your Emotional Wellbeing (teal, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 47.8%;margin-right:-22px;aspect-ratio:0.79;display:flex;">
+              <img src="/assets/p_wb_emotional.jpg" alt="One person holding another&rsquo;s hands" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Improve Your<br />Emotional Wellbeing</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Understand what you&rsquo;re feeling without judgement.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Feel seen, supported, and less alone.</p>
@@ -131,45 +147,51 @@ const gridItems = [
           </div>
 
           <!-- Burnout Survival & Recovery (teal, photo right) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:32px 0 32px 34px;min-height:330px;">
-            <div style="flex:1;min-width:0;">
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:32px 0 32px 34px;min-height:330px;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Burnout Survival<br />&amp; Recovery</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Keep going without pushing yourself to breaking point.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Rest, reset, and rebuild your energy.</p>
             </div>
-            <img src="/assets/p_wb_burnout.jpg" alt="A parent resting on the sofa with two children" width="470" height="570" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 42%;min-width:0;height:280px;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            <img src="/assets/p_wb_burnout.jpg" alt="A parent resting on the sofa with two children" width="470" height="570" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 54.0%;aspect-ratio:1.09;height:auto;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
           </div>
 
-          <!-- Navigating Your Support Team (orange, photo top-right) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_wb_team.jpg" alt="A support group sitting in a circle, hands joined" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- Navigating Your Support Team (orange, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 53.8%;margin-right:-22px;aspect-ratio:1.08;display:flex;">
+              <img src="/assets/p_wb_team.jpg" alt="A support group sitting in a circle, hands joined" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Navigating<br />Your Support Team</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Make sense of the relationships around you.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Feel clearer and less overwhelmed by others.</p>
             </div>
           </div>
 
-          <!-- Financial Peace of Mind (orange, body top, heading last) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_wb_finance.jpg" alt="Someone lying on a hillside looking out at the view" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          {/* v2 puts this one at 0.75 portrait, and p_wb_finance.jpg is a
+              460x400 landscape, so object-fit:cover takes a tall crop out of
+              the middle of a wide hillside. It survives, but it is the weakest
+              crop on the page — and it is already the card flagged in
+              FEEDBACK-damien.md for carrying a hilltop on mood rather than
+              subject. Worth pairing with that request. */}
+          <!-- Financial Peace of Mind (orange, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 44.2%;margin-right:-22px;aspect-ratio:0.75;display:flex;">
+              <img src="/assets/p_wb_finance.jpg" alt="Someone lying on a hillside looking out at the view" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Financial<br />Peace of Mind</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Reduce the stress that sits quietly in the background.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Feel more secure and able to breathe.</p>
             </div>
           </div>
 
-          <!-- Social Media - Friend or Foe? (teal, body top, heading last) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-right:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_wb_social.jpg" alt="A phone screen showing a folder of social media apps" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;min-width:0;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- Social Media - Friend or Foe? (teal, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 49.5%;margin-right:-22px;aspect-ratio:1.03;display:flex;">
+              <img src="/assets/p_wb_social.jpg" alt="A phone screen showing a folder of social media apps" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Social Media:<br />Friend or Foe?</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Step away from pressure, comparison, and noise.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Protect your peace and feel more in control.</p>
