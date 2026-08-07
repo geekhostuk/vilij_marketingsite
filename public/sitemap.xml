@@ -1,80 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The 12 indexable public routes. One is deliberately omitted:
-  /newsletter-thanks, which is noindex and reachable only from the footer
-  newsletter form.
+  The 10 indexable public routes. Three of the 13 built routes are deliberately
+  omitted, all three noindex:
+
+    /newsletter-thanks  reachable only from the footer newsletter form.
+    /library            held back behind the coming-soon banner (31 Jul 2026).
+    /wellbeing          the same.
+
+  The two held-back pages are noindex but NOT disallowed in robots.txt, and that
+  is deliberate: a page blocked from crawling cannot be read, so Google never
+  sees the noindex and can keep an already-indexed URL listed indefinitely. The
+  crawler has to be let in to be told to go away.
+
+  Put /library and /wellbeing back here, and drop the `noindex` prop from both
+  pages, when the app features go live.
+
   Keep this file in step with src/pages/ when a route is added or removed.
+
+  Every <loc> carries a trailing slash, and that is load-bearing rather than
+  cosmetic. Astro builds each route to <route>/index.html and Cloudflare Pages
+  serves that at the trailing-slash URL, 308-redirecting the slash-less form to
+  it. Measured on production, 31 Jul 2026:
+
+    GET /cafe   ->  308 Permanent Redirect  ->  /cafe/
+    GET /cafe/  ->  200 OK
+
+  These entries listed the slash-less form until then, so every URL in this file
+  pointed at a redirect. Keep this in step with the canonical in
+  src/layouts/BaseLayout.astro — the two must agree, and both must name the URL
+  that actually returns 200.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://marketing.thevilij.co.uk/</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/cafe</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://marketing.thevilij.co.uk/cafe/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/hall</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://marketing.thevilij.co.uk/hall/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/library</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://marketing.thevilij.co.uk/expert-hub/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/wellbeing</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://marketing.thevilij.co.uk/expert-hub</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://marketing.thevilij.co.uk/privacy</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://marketing.thevilij.co.uk/privacy/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/terms</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://marketing.thevilij.co.uk/terms/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/community-guidelines</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://marketing.thevilij.co.uk/community-guidelines/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/cookie-policy</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://marketing.thevilij.co.uk/cookie-policy/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/complaints</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://marketing.thevilij.co.uk/complaints/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/safeguarding-policy</loc>
-    <lastmod>2026-07-29</lastmod>
+    <loc>https://marketing.thevilij.co.uk/safeguarding-policy/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

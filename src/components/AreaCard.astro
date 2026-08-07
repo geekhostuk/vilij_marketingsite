@@ -39,12 +39,24 @@
 // holds that position at every breakpoint, and 17px sits below the responsive
 // ramp's 20px floor, so it is never stepped down on a phone.
 import type { AreaCard } from "../data/areas";
+import { imageSize } from "../data/imageSizes";
 type Props = AreaCard;
 const { label, img, alt, title, body, href, cta, comingSoon = false } = Astro.props;
 
 // Dynamic tag: <div> for a dead tile, <a> for a live one. Everything inside is
 // identical either way, which is the point — the two states must not drift.
 const Tag = comingSoon ? "div" : "a";
+
+// SEO-REVIEW §2 — reserve the box before the file lands. `.vcard-img` already
+// pins the rendered shape with `aspect-ratio: 4 / 3`, so these attributes do not
+// change the layout at any width; they only let the browser know the shape
+// before it has downloaded anything, which is what stops the shift. Every tile
+// in /assets/tiles/ is exactly 4:3 anyway, so the two agree.
+//
+// Tiles are always below the fold — the homepage grid sits under the hero and
+// the five-feature row, and on a content page it is the last section before the
+// footer — so they are lazy on every page that uses them.
+const size = imageSize(img);
 ---
 <Fragment set:html={` <!-- ${label}${comingSoon ? " (coming soon)" : ""} --> `} />
 <Tag
@@ -54,7 +66,7 @@ const Tag = comingSoon ? "div" : "a";
     ? "border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#f7f0e8 0%,#f2ece6 46%,#e9f0ef 72%,#e6f1f1 100%);box-shadow:0 4px 14px rgba(40,80,90,0.05);border:1px solid #e4eaea;display:flex;flex-direction:column;"
     : "border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#fde7d0 0%,#f3e6d9 46%,#dcebe9 72%,#d3edee 100%);box-shadow:0 10px 28px rgba(40,80,90,0.09);display:flex;flex-direction:column;text-decoration:none;color:inherit;"}>
   <div style="position:relative;">
-    <div style="padding:14px 8px 0;"><img src={img} alt={alt} class="vcard-img" style={comingSoon ? "opacity:.42;filter:saturate(.5);" : undefined} /></div>
+    <div style="padding:14px 8px 0;"><img src={img} alt={alt} width={size?.w} height={size?.h} loading="lazy" decoding="async" class="vcard-img" style={comingSoon ? "opacity:.42;filter:saturate(.5);" : undefined} /></div>
     {comingSoon && (
       <div style="position:absolute;left:0;right:0;top:45%;background:#1f9ca0;box-shadow:0 6px 16px rgba(31,156,160,0.28);padding:10px 0;text-align:center;font-family:Lato;font-weight:700;font-size:17px;letter-spacing:2px;color:#ffffff;">COMING SOON</div>
     )}

@@ -19,6 +19,7 @@
 // bottom margin at the same time so the column does not end in dead space.
 // (There are no dot indicators on this carousel — the controls are the only nav.)
 import type { Testimonial } from "../data/testimonials";
+import { imageSize } from "../data/imageSizes";
 
 interface Props {
   list: Testimonial[];
@@ -27,22 +28,27 @@ interface Props {
 const { list, showQuoteMark = true } = Astro.props;
 const first = list[0];
 const hasNav = list.length > 1;
+
+// SEO-REVIEW §2 — the first slide's intrinsic size, so the browser reserves the
+// box before the photo lands. TestimonialScript keeps these in step if the
+// carousel is ever paged; see the note there.
+const firstSize = imageSize(first.photo);
 ---
 <section style="background:#ffffff;padding:74px 0 80px;">
   <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
     <p style="font-family:Lato;font-weight:700;font-size:23px;color:#353535;text-align:center;margin:0 0 6px;">Our Testimonials</p>
-    <h2 style="font-family:Lato;font-weight:900;font-size:50px;color:#1f9ca0;text-align:center;margin:0 0 56px;">What Our <span style="color:#f28121;">Vilijers</span> Say</h2>
+    <h2 style="font-family:Lato;font-weight:700;font-size:50px;color:#1f9ca0;text-align:center;margin:0 0 56px;">What Our <span style="color:#f28121;">Vilijers</span> Say</h2>
     <div class="vtestim" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
       {showQuoteMark ? (
         <div class="vtestim-photo" style="position:relative;">
-          <img id="t-photo" src={first.photo} alt="A SEND family" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
+          <img id="t-photo" src={first.photo} alt="A SEND family" width={firstSize?.w} height={firstSize?.h} loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
           <div class="vquote-mark" style="position:absolute;top:-22px;right:-22px;width:84px;height:84px;border-radius:50%;background:#1f9ca0;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(31,156,160,0.35);">
             <span style="font-family:Georgia,serif;font-weight:700;font-size:58px;line-height:1;color:#fff;margin-top:30px;">&rdquo;</span>
           </div>
         </div>
       ) : (
         <div class="vtestim-photo" style="position:relative;">
-          <img id="t-photo" src={first.photo} alt="A SEND family" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
+          <img id="t-photo" src={first.photo} alt="A SEND family" width={firstSize?.w} height={firstSize?.h} loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
         </div>
       )}
       <div>

@@ -35,14 +35,22 @@ const list = showSecondTestimonial ? testimonials : [testimonials[0]];
 
 // The order of the "What else you can see inside the Vilij" grid, as it stands
 // on this page. Every page uses a different order and a different second photo.
+// Damien's "all live pages on the top layer" rule (31 Jul 2026) applied here
+// too, though he has not seen this page — it is held back and noindex.
+//
+// The literal Library/Expert Hub swap he asked for does not exist on this page:
+// a page never renders its own tile, so there is no Library card here. Reordered
+// to the same intent instead. The top row carries a photo in slot 2, so it has
+// only two card slots for three live areas; Café and Vilij Hall take them and
+// the Expert Hub leads row two.
 const gridItems = [
   areas.hall,
   { label: "Beach photo", img: "/assets/p_beach.jpg", alt: "Child at the beach" },
-  areas.wellbeing,
   areas.cafe,
-  areas.marketPlaceShort,
-  areas.highStreet,
   areas.expertHub,
+  areas.marketPlaceShort,
+  areas.wellbeing,
+  areas.highStreet,
   { label: "Family photo", img: "/assets/p_jose.jpg", alt: "A SEND family" },
   areas.campus,
 ];
@@ -52,6 +60,7 @@ const gridItems = [
   title="Library — SEND Guides, Templates and Resources | The Vilij"
   description="The Vilij Library holds plain-English guides, templates and resources for SEND families: help with the system, understanding your child and daily life."
   carousel={list}
+  noindex
 >
     <style is:global>
       body { margin: 0; }
@@ -59,7 +68,7 @@ const gridItems = [
       .vlink:hover { color: #f28121 !important; }
       .vpill:hover { filter: brightness(1.05); }
       .vcard { transition: transform .25s ease, box-shadow .25s ease; }
-      .vcard-img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
+      .vcard-img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
       .vcard:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(40,80,90,0.16) !important; }
       .vnav-cta:hover { background: #15838a !important; }
     </style><div style="font-family:Lato,sans-serif;color:#353535;background:#ffffff;width:100%;overflow-x:hidden;">
@@ -70,12 +79,12 @@ const gridItems = [
           <SiteNav />
           <div class="vhero" style="display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:54px 0 70px;">
             <div>
-              <h1 style="font-family:Lato;font-weight:900;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome<br />to the Library</h1>
+              <h1 style="font-family:Lato;font-weight:700;font-size:74px;line-height:1.04;color:#1f9ca0;margin:0 0 30px;letter-spacing:-1px;">Welcome<br />to the Library</h1>
               <p style="font-family:Lato;font-weight:700;font-size:23px;line-height:1.4;color:#353535;margin:0 0 22px;max-width:520px;">Practical resources at your fingertips, ready whenever you are.</p>
               <p style="font-family:Lato;font-size:19px;line-height:1.55;color:#444;margin:0;max-width:520px;">Built from real questions, real experience, and a deep understanding of how hard this can be.</p>
             </div>
             <div class="vhero-art" style="display:flex;justify-content:center;">
-              <img src="/assets/library_hero.png" alt="The Vilij Library" style="width:100%;max-width:600px;height:auto;display:block;" />
+              <img src="/assets/library_hero.png" alt="The Vilij Library" width="1400" height="1354" fetchpriority="high" decoding="async" style="width:100%;max-width:600px;height:auto;display:block;" />
             </div>
           </div>
         </div>
@@ -90,7 +99,7 @@ const gridItems = [
       <section style="background:#ffffff;padding:90px 0 30px;">
         <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
           <div class="vpanel-soft" style="border-radius:26px;background:linear-gradient(90deg,#f6c79a 0%,#fbe5d1 26%,#ffffff 50%,#cfeae8 74%,#a4dbd7 100%);padding:50px 40px 56px;text-align:center;box-shadow:0 14px 36px rgba(40,80,90,0.08);">
-            <h2 style="font-family:Lato;font-weight:900;font-size:50px;color:#1f9ca0;margin:0 0 26px;">Why The Library Exists</h2>
+            <h2 style="font-family:Lato;font-weight:700;font-size:50px;color:#1f9ca0;margin:0 0 26px;">Why The Library Exists</h2>
             <p style="font-family:Lato;font-weight:700;font-size:23px;line-height:1.5;color:#222;margin:0 auto 28px;max-width:820px;">So no parent, grandparent or carer has to keep guessing alone. Resources and guidance for the next step.</p>
             <p style="font-family:Lato;font-size:21px;color:#2a2a2a;margin:0 0 22px;">The Library gives us:</p>
             <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;font-family:Lato;font-size:20px;color:#2a2a2a;">
@@ -101,78 +110,94 @@ const gridItems = [
         </div>
       </section>
 
+      {/* Damien, 1 Aug 2026: "Library — as Expert Hub." Same treatment, same
+          reasoning: see the long note on /expert-hub and cards.css. The 800px
+          shape and 108px gutter are identical in every one of the five PDFs, so
+          this grid gets the same 72px column gap and the same .vbleed-r inset.
+
+          Photo sizes are this page's own, from "Vilij Website Library page
+          v 2.pdf", as a share of the 800 shape:
+
+              R1 L 41.7%  0.79      R1 R 49.2%  1.18
+              R2 L 45.9%  1.14      R2 R 45.9%  0.99
+              R3 L 41.6%  0.79      R3 R 46.8%  1.31
+
+          flex-basis restates each against the card's 480px content box, not
+          the 536 shape — see the note on /expert-hub. Note how much flatter
+          this page is than Expert Hub — Library's photos are documents, desks
+          and paperwork, and v2 crops almost all of them to landscape. */}
       <!-- ===== LIBRARY FEATURE CARDS ===== -->
       <section style="background:#ffffff;padding:58px 0 80px;">
-        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 44px;">
+        <div class="vwrap vcards2" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:60px 72px;">
 
           <!-- You (The Parent) (orange, photo left) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:330px;">
-            <div class="vsplit-img" style="flex:0 0 43%;min-width:0;margin-left:-22px;align-self:stretch;display:flex;">
-              <img src="/assets/p_lib_parent.jpg" alt="A parent pausing at a window with a hot drink" style="width:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <div class="vcard-feat vsplit vbleed-l" style="position:relative;background:#f28121;border-radius:22px;display:flex;align-items:center;gap:26px;padding:32px 34px 32px 0;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 46.6%;margin-left:-22px;aspect-ratio:0.79;display:flex;">
+              <img src="/assets/p_lib_parent.jpg" alt="A parent pausing at a window with a hot drink" width="480" height="660" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <div style="flex:1;min-width:0;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">You<br />(The Parent)</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Because you matter too.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">A place for you to feel seen, supported, and not so alone.</p>
             </div>
           </div>
 
-          <!-- Education & EHCP (teal, photo top-right) -->
-          <div class="vcard-feat" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:330px;">
-            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
-              <div style="flex:1;min-width:0;">
-                <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Education<br />&amp; EHCP</h3>
-                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0;">Navigate the system with confidence.</p>
-              </div>
-              <img src="/assets/p_lib_ehcp.jpg" alt="Paperwork, a calculator and a notepad on a desk" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- Education & EHCP (teal, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 54.9%;margin-right:-22px;aspect-ratio:1.18;display:flex;">
+              <img src="/assets/p_lib_ehcp.jpg" alt="Paperwork, a calculator and a notepad on a desk" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">Helping you find your way through the system, with clarity, support, and less overwhelm.</p>
+            <div style="flex:1;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Education<br />&amp; EHCP</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Navigate the system with confidence.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Helping you find your way through the system, with clarity, support, and less overwhelm.</p>
+            </div>
           </div>
 
           <!-- Practical Tools & Templates (teal, photo right) -->
-          <div class="vcard-feat vsplit" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:32px 0 32px 34px;min-height:330px;">
-            <div style="flex:1;min-width:0;">
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;align-items:center;gap:22px;padding:32px 0 32px 34px;min-height:330px;">
+            <div style="flex:1;">
               <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Practical Tools<br />&amp; Templates</h3>
               <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Download and breathe.</p>
               <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Tools for you to lean on, so things feel clearer and easier to manage.</p>
             </div>
-            <img src="/assets/p_lib_tools.jpg" alt="A parent working through documents at a kitchen table" class="vsplit-img" style="flex:0 0 42%;min-width:0;height:280px;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+            <img src="/assets/p_lib_tools.jpg" alt="A parent working through documents at a kitchen table" width="470" height="570" loading="lazy" decoding="async" class="vsplit-img" style="flex:0 0 51.3%;aspect-ratio:1.14;height:auto;object-fit:cover;margin-right:-22px;border-radius:14px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
           </div>
 
-          <!-- Supporting Your Child (orange, photo top-right) -->
-          <div class="vcard-feat" style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:330px;">
-            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
-              <div style="flex:1;min-width:0;">
-                <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Supporting<br />Your Child</h3>
-                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0;">Understand what&rsquo;s really happening.</p>
-              </div>
-              <img src="/assets/p_lib_child.jpg" alt="A parent holding their young child close" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- Supporting Your Child (orange, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 51.3%;margin-right:-22px;aspect-ratio:0.99;display:flex;">
+              <img src="/assets/p_lib_child.jpg" alt="A parent holding their young child close" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:18px 0 0;">Understanding your child more clearly, and how best to support them.</p>
+            <div style="flex:1;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Supporting<br />Your Child</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Understand what&rsquo;s really happening.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Understanding your child more clearly, and how best to support them.</p>
+            </div>
           </div>
 
-          <!-- Everyday Life & Resources (orange, body top, heading last) -->
-          <div class="vcard-feat vcard-flip" style="position:relative;background:#f28121;border-radius:22px;padding:32px 34px;min-height:330px;">
-            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
-              <div style="flex:1;min-width:0;">
-                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Make daily life easier.</p>
-                <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support for calmer, more manageable days.</p>
-              </div>
-              <img src="/assets/p_lib_everyday.jpg" alt="Children&rsquo;s shoes, boots and bags on a shelf by the door" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- Everyday Life & Resources (orange, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#f28121;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 46.5%;margin-right:-22px;aspect-ratio:0.79;display:flex;">
+              <img src="/assets/p_lib_everyday.jpg" alt="Children&rsquo;s shoes, boots and bags on a shelf by the door" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:22px 0 0;line-height:1.02;">Everyday Life<br />&amp; Resources</h3>
+            <div style="flex:1;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">Everyday Life<br />&amp; Resources</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Make daily life easier.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Support for calmer, more manageable days.</p>
+            </div>
           </div>
 
-          <!-- SEND Roadmap & Acronym Guide (teal, body top, heading last) -->
-          <div class="vcard-feat vcard-flip" style="position:relative;background:#1f9ca0;border-radius:22px;padding:32px 34px;min-height:330px;">
-            <div class="vsplit" style="display:flex;gap:18px;align-items:flex-start;">
-              <div style="flex:1;min-width:0;">
-                <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Make sense of the system.</p>
-                <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Clear, plain-English guidance so you finally understand what all of this really means.</p>
-              </div>
-              <img src="/assets/p_lib_roadmap.jpg" alt="A notepad headed Special Needs Plan" class="vsplit-img" style="flex:0 0 40%;min-width:0;height:190px;object-fit:cover;margin-top:-26px;margin-right:-20px;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
+          <!-- SEND Roadmap & Acronym Guide (teal, photo right) -->
+          <div class="vcard-feat vsplit vbleed-r" style="position:relative;background:#1f9ca0;border-radius:22px;display:flex;flex-direction:row-reverse;align-items:center;gap:26px;padding:32px 0 32px 34px;min-height:330px;">
+            <div class="vsplit-img" style="flex:0 0 52.3%;margin-right:-22px;aspect-ratio:1.31;display:flex;">
+              <img src="/assets/p_lib_roadmap.jpg" alt="A notepad headed Special Needs Plan" width="460" height="400" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 14px 28px rgba(0,0,0,0.18);" />
             </div>
-            <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:22px 0 0;line-height:1.02;">SEND Roadmap<br />&amp; Acronym Guide</h3>
+            <div style="flex:1;">
+              <h3 style="font-family:Lato;font-weight:700;font-size:40px;color:#fff;margin:0 0 12px;line-height:1.02;">SEND Roadmap<br />&amp; Acronym Guide</h3>
+              <p style="font-family:Lato;font-weight:700;font-size:22px;color:#fff;margin:0 0 12px;">Make sense of the system.</p>
+              <p style="font-family:Lato;font-size:17px;line-height:1.5;color:rgba(255,255,255,0.95);margin:0;">Clear, plain-English guidance so you finally understand what all of this really means.</p>
+            </div>
           </div>
 
         </div>
@@ -193,7 +218,7 @@ const gridItems = [
       <!-- ===== APP SIGNUP ORANGE BAND ===== -->
       <section class="vband" style="background:#f28121;text-align:center;padding:62px 24px;">
         <p style="font-family:Lato;font-size:20px;color:#ffffff;margin:0 0 8px;">So what do I do next?</p>
-        <h2 style="font-family:Lato;font-weight:900;font-size:58px;color:#ffffff;margin:0 0 14px;">Sign up to The Vilij App.</h2>
+        <h2 style="font-family:Lato;font-weight:700;font-size:58px;color:#ffffff;margin:0 0 14px;">Sign up to The Vilij App.</h2>
         <p style="font-family:Lato;font-size:22px;color:#fff;margin:0 0 34px;">Everything SEND in one place for just {monthlyPrice} per month.</p>
         <a href="https://app.thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#1f9ca0;font-family:Lato;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">JOIN US NOW <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
       </section>
@@ -212,7 +237,7 @@ const gridItems = [
       <!-- ===== FINAL CTA ===== -->
       <section class="vband" style="background:#f28121;text-align:center;padding:66px 24px;">
         <p style="font-family:Lato;font-size:22px;color:#ffffff;margin:0 0 10px;">So, you&rsquo;ve come this far?</p>
-        <h2 style="font-family:Lato;font-weight:900;font-size:58px;color:#ffffff;margin:0 0 22px;">Your village is waiting for you.</h2>
+        <h2 style="font-family:Lato;font-weight:700;font-size:58px;color:#ffffff;margin:0 0 22px;">Your village is waiting for you.</h2>
         <p style="font-family:Lato;font-weight:700;font-size:24px;line-height:1.5;color:#fff;margin:0 0 36px;">You don&rsquo;t need to be at breaking point.<br />You don&rsquo;t need to have it all together.<br />You&rsquo;re allowed support too.</p>
         <a href="https://app.thevilij.co.uk" class="vpill" style="display:inline-flex;align-items:center;gap:16px;background:#ffffff;color:#f28121;font-family:Lato;font-weight:700;font-size:19px;letter-spacing:.5px;padding:14px 16px 14px 34px;border-radius:34px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12);">SIGN UP NOW <span style="width:40px;height:40px;border-radius:50%;background:#1f9ca0;display:inline-flex;align-items:center;justify-content:center;"><span style="width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;"></span></span></a>
       </section>

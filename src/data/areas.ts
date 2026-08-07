@@ -65,6 +65,11 @@ export interface AreaPhoto {
   img: string;
   alt: string;
   framed?: boolean;
+  /**
+   * CSS `object-position` for the framed crop, when centring the file does not
+   * centre the people in it. See the note in PhotoTile.astro.
+   */
+  objectPosition?: string;
 }
 
 export type GridItem = AreaCard | AreaPhoto;
@@ -94,6 +99,23 @@ export const hall: AreaCard = {
 // simply not being offered yet, so the tiles carry the same banner as the three
 // areas that have no page at all. `href` stays pointed at the real page, which
 // is what the tile goes back to the moment the flag comes off.
+//
+// ┌──────────────────────────────────────────────────────────────────────────┐
+// │ TEMPORARY — REVERT BEFORE MERGING TO main                                │
+// │                                                                          │
+// │ `comingSoon` is commented out on both, at Damien's request (31 Jul 2026): │
+// │ "can you make the coming soon pages that have been built live just for    │
+// │ this test as he needs to verify the design, once he has checked we can    │
+// │ hide them again."                                                        │
+// │                                                                          │
+// │ This makes the two tiles clickable so he can reach the pages by browsing  │
+// │ rather than by pasted URL. It affects the preview deployment only for as  │
+// │ long as this branch is unmerged.                                          │
+// │                                                                          │
+// │ To restore: uncomment the two `comingSoon: true` lines below. Nothing     │
+// │ else changed — both pages keep `noindex`, and both stay out of            │
+// │ sitemap.xml, so search engines are unaffected either way.                 │
+// └──────────────────────────────────────────────────────────────────────────┘
 export const library: AreaCard = {
   label: "Library",
   img: "/assets/tiles/library.png",
@@ -102,7 +124,7 @@ export const library: AreaCard = {
   body: "Practical resources at your fingertips, ready whenever you are.",
   href: "/library",
   cta: "WHAT&rsquo;S IN THE LIBRARY?",
-  comingSoon: true,
+  // comingSoon: true,   // TEMPORARY: restore before merging to main
 };
 
 export const wellbeing: AreaCard = {
@@ -113,7 +135,7 @@ export const wellbeing: AreaCard = {
   body: "Because caring for them starts with caring for you.",
   href: "/wellbeing",
   cta: "WHAT&rsquo;S ON AT THE WELLBEING CENTRE?",
-  comingSoon: true,
+  // comingSoon: true,   // TEMPORARY: restore before merging to main
 };
 
 export const expertHub: AreaCard = {

@@ -1,0 +1,81 @@
+/* ===========================================================================
+   The Vilij — feature-card geometry. ISSUES #29.
+
+   Damien, 1 Aug 2026: "Can I ask why all the left side are wider than the
+   right? Need to be equal width. […] they all try to fit within the same
+   'imaginary' outer shape with equal space down the middle to help with
+   responsive."
+
+   He is right, and the PDFs say so to the pixel. Measured out of the vector
+   content streams of all five page designs in
+   "C:\Projects\thevilij\Pages to be built\compressed" — 1920px artboard,
+   container 95.5 -> 1824.5:
+
+       left shape    111 ->  911     800 wide
+       gutter                        108
+       right shape  1019 -> 1819     800 wide
+
+   Every coloured block and every photo on all five pages sits inside its own
+   800px shape. Nothing crosses the centreline; nothing escapes. The blocks
+   vary (75%-100% of the shape) and the photos bleed off them — that is the
+   "floating outside" look — but the shape they bleed into never does.
+
+   Scaled to the site's 1144px content box that is 536 / 72 / 536, which is why
+   every card grid now carries `gap:60px 72px` inline instead of `60px 44px`.
+
+   WHAT THE BUILD DID INSTEAD, AND WHY IT LOOKED LOPSIDED
+
+   The grid track was the coloured block, not the shape: `1fr 1fr` with a 44px
+   gap, and the photos hung 22px outside the track on negative margins. On
+   /expert-hub, /library and /wellbeing five of six cards have the photo on the
+   right, so the left-column cards ate the gutter down to 22px while the
+   right-column cards overhung the container. Reading left to right, the left
+   half looks wider. That is the asymmetry Damien saw, and it is a layout-model
+   bug — not responsive, and not the images.
+
+   THE FIX IS ONE IDEA: THE BLEED MOVES INWARD
+
+   The card takes a positive 22px margin on the photo side, so the coloured
+   block is inset from the track and the photo's existing -22px lands exactly
+   ON the track edge instead of past it. Both columns then occupy an identical
+   536px and the gap down the middle is a constant 72px, at every viewport.
+
+   Add .vbleed-l / .vbleed-r to a card whenever its photo carries a negative
+   margin, matching the side. A card whose photo does not bleed needs neither.
+
+   This file is deliberately NOT inside a media query. responsive.css forbids
+   that (see its rule 1) because the desktop design is signed off; this is a
+   deliberate desktop change, requested by the person who signed it off. Keep
+   new responsive work in responsive.css and new desktop card geometry here.
+   =========================================================================== */
+
+.vcard-feat.vbleed-l { margin-left: 22px; }
+.vcard-feat.vbleed-r { margin-right: 22px; }
+
+
+/* ---------------------------------------------------------------------------
+   ISSUES #29 — the intrinsic-width floor, now unlocked everywhere.
+
+   A flex item's automatic minimum size is its min-content width, and for an
+   <img> that is the file's intrinsic pixel width. So `flex:0 0 43%` on the
+   800px-wide p_brew.png did not mean 43% — it meant "at least 800px", which
+   dragged the card past its grid track and let the page wrapper's
+   overflow-x:hidden quietly cut the surplus off the right-hand column. That is
+   Damien's "the blocks are a bit of a mess and don't line up" from 30 Jul.
+
+   It used to be patched three different ways: unconditionally in /cafe's and
+   /hall's own <style is:global>, at <=1180px in responsive.css, and as ~30
+   inline min-width:0 declarations on /expert-hub, /library and /wellbeing. The
+   inline version is the fragile one — a new card that forgets it brings the
+   bug straight back. One rule here replaces all three.
+
+   The selector goes three levels deep on purpose: the card is a grid item with
+   the same automatic minimum, and several photos are an <img width:100%>
+   inside a display:flex wrapper, so wrapper and image are both flex items with
+   an intrinsic floor of their own. Miss any one and the chain still refuses to
+   shrink.
+   --------------------------------------------------------------------------- */
+
+.vcard-feat,
+.vsplit, .vsplit > *,
+.vsplit-img, .vsplit-img > *, .vsplit-img img { min-width: 0; }
