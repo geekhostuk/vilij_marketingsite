@@ -1,9 +1,14 @@
 # The Vilij — redirects for the app pages that used to live on this domain.
 #
-# The marketing site moves from marketing.thevilij.co.uk to the apex
-# thevilij.co.uk, and the Bubble app moves the other way, from the apex to
-# app.thevilij.co.uk. So every app URL anyone has bookmarked, been emailed, or
-# had saved by a password manager now points at this site. These send them on.
+# The marketing site moved from marketing.thevilij.co.uk to the apex
+# thevilij.co.uk on 29 August 2026, and the Bubble app moved the other way, from
+# the apex to app.thevilij.co.uk. So every app URL anyone has bookmarked, been
+# emailed, or had saved by a password manager now points at this site. These
+# send them on.
+#
+# This file cannot match on hostname, only on path, so the other half of the
+# move — marketing.thevilij.co.uk itself redirecting to the apex — is not here.
+# It has to be a Redirect Rule on the zone in the Cloudflare dashboard.
 #
 # Cloudflare Pages reads this file from the root of the build output, and Astro
 # copies public/ there verbatim.

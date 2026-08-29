@@ -82,16 +82,18 @@ The five legal pages carry the "Back to the top" script only.
 ## SEO files
 
 `public/robots.txt` and `public/sitemap.xml` are copied verbatim to the site
-root at build time. The sitemap lists the 7 indexable routes and must be
-updated by hand when a route is added or removed.
+root at build time. The sitemap lists the 10 indexable routes and must be
+updated by hand when a route is added or removed. It is also the only file that
+repeats the domain — everything else derives its absolute URLs from `site` in
+`astro.config.mjs`, which has read `https://thevilij.co.uk` since 29 August 2026.
 
 ## Redirects
 
 `public/_redirects` is the Cloudflare Pages redirect file, also copied to the
-site root. It exists because the two sites swapped domains: this one moves from
-`marketing.thevilij.co.uk` to the apex `thevilij.co.uk`, and the Bubble app
-moves from the apex to `app.thevilij.co.uk`, so the app's old URLs now land
-here. Each of its 21 pages gets an exact rule and a splat rule, all 301.
+site root. It exists because the two sites swapped domains: this one moved from
+`marketing.thevilij.co.uk` to the apex `thevilij.co.uk` on 29 August 2026, and
+the Bubble app moved from the apex to `app.thevilij.co.uk`, so the app's old
+URLs now land here. Each of its 21 pages gets an exact rule and a splat rule, all 301.
 
 Two things to know before editing it. Pages matches these rules **before** it
 looks for a file to serve, so a rule shadows a route of the same name. And a

@@ -1,6 +1,6 @@
 # SEO and Site Review
 
-Review date: 31 July 2026 · Reviewer: Claude · Site: `marketing.thevilij.co.uk` (Astro 5, static, Cloudflare Pages)
+Review date: 31 July 2026 · Reviewer: Claude · Site: `marketing.thevilij.co.uk` (Astro 5, static, Cloudflare Pages) — now `thevilij.co.uk`, moved 29 August 2026
 
 Scope: the 13 built routes, `public/`, `src/`, and the built output in `dist/`. This is a technical and
 on-page SEO review. It deliberately does **not** re-list the content and dead-link gaps already tracked in

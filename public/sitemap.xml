@@ -28,65 +28,74 @@
   These entries listed the slash-less form until then, so every URL in this file
   pointed at a redirect. Keep this in step with the canonical in
   src/layouts/BaseLayout.astro — the two must agree, and both must name the URL
-  that actually returns 200.
+  that actually returns 200. That measurement was taken on marketing.thevilij,
+  but the 308 is how Cloudflare Pages serves directory index files rather than
+  anything about the host, so it holds on the apex too.
+
+  The host here is the apex, thevilij.co.uk, as of 29 August 2026. It is written
+  out by hand in each <loc>; the rest of the site derives its URLs from `site`
+  in astro.config.mjs, so that file and this one are the only two places the
+  domain is stated. The four pages carrying the testimonial carousel are dated
+  29 August because their copy changed that day; the legal pages keep 31 July,
+  because moving a page to a new host does not modify it.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://marketing.thevilij.co.uk/</loc>
-    <lastmod>2026-07-31</lastmod>
+    <loc>https://thevilij.co.uk/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/cafe/</loc>
-    <lastmod>2026-07-31</lastmod>
+    <loc>https://thevilij.co.uk/cafe/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/hall/</loc>
-    <lastmod>2026-07-31</lastmod>
+    <loc>https://thevilij.co.uk/hall/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/expert-hub/</loc>
-    <lastmod>2026-07-31</lastmod>
+    <loc>https://thevilij.co.uk/expert-hub/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/privacy/</loc>
+    <loc>https://thevilij.co.uk/privacy/</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/terms/</loc>
+    <loc>https://thevilij.co.uk/terms/</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/community-guidelines/</loc>
+    <loc>https://thevilij.co.uk/community-guidelines/</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/cookie-policy/</loc>
+    <loc>https://thevilij.co.uk/cookie-policy/</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/complaints/</loc>
+    <loc>https://thevilij.co.uk/complaints/</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://marketing.thevilij.co.uk/safeguarding-policy/</loc>
+    <loc>https://thevilij.co.uk/safeguarding-policy/</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
