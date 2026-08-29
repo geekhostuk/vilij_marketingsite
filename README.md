@@ -81,6 +81,24 @@ The five legal pages carry the "Back to the top" script only.
 root at build time. The sitemap lists the 7 indexable routes and must be
 updated by hand when a route is added or removed.
 
+## Redirects
+
+`public/_redirects` is the Cloudflare Pages redirect file, also copied to the
+site root. It exists because the two sites swapped domains: this one moves from
+`marketing.thevilij.co.uk` to the apex `thevilij.co.uk`, and the Bubble app
+moves from the apex to `app.thevilij.co.uk`, so the app's old URLs now land
+here. Each of its 21 pages gets an exact rule and a splat rule, all 301.
+
+Two things to know before editing it. Pages matches these rules **before** it
+looks for a file to serve, so a rule shadows a route of the same name. And a
+destination must not carry a query string of its own — Pages forwards the
+incoming one only when the destination has none, which is what keeps the
+one-time tokens on `/reset_pw` and `/email-confirmed` intact. The file's own
+header comment covers the rest.
+
+Verify changes with `npx wrangler pages dev dist` — it prints the number of
+rules it parsed and serves the redirects locally.
+
 ## Project structure
 
 ```
@@ -114,6 +132,7 @@ updated by hand when a route is added or removed.
 ├── public/                          # Copied verbatim to the site root
 │   ├── assets/                      # Images (illustrations, photos, logos)
 │   ├── favicon.ico, favicon-*.png   # Favicons and Apple touch icon
+│   ├── _redirects                   # App URLs -> app.thevilij.co.uk
 │   ├── robots.txt
 │   └── sitemap.xml
 ├── brand-kit/                       # Brand hand-off (git-ignored, not served)
