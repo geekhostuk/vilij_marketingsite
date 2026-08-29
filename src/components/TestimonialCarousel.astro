@@ -12,12 +12,30 @@
 // no rating (stars: null) carries neither role nor label and stays display:none,
 // so it announces nothing at all.
 //
-// C3 — with showSecondTestimonial off the list has a single entry, and a
-// carousel of one is not a carousel. The prev/next controls are not rendered at
-// all in that case rather than disabled or hidden with CSS: there is nothing to
-// page to, so there should be nothing to tab to either. The role line drops its
-// bottom margin at the same time so the column does not end in dead space.
-// (There are no dot indicators on this carousel — the controls are the only nav.)
+// C3 — the prev/next controls are only rendered when there is more than one
+// testimonial to page to, rather than disabled or hidden with CSS: nothing to
+// page to should mean nothing to tab to either. Seven real testimonials now
+// share one list, so in practice the controls are always here; the guard stays
+// because a list of one is what the site shipped with for a month, and so the
+// column does not end in dead space if that ever happens again. (There are no
+// dot indicators on this carousel — the controls are the only nav.)
+//
+// The gap above the controls is their own margin-top rather than the role
+// line's margin-bottom, because a slide with no role hides that line and would
+// otherwise take the gap with it.
+//
+// C7 — the line under the name is a location, and every slide has one. It is
+// still hidden rather than rendered empty when a testimonial has no role, so
+// that a future quote arriving without a location does not need an invented one.
+//
+// The carousel advances on its own every 10 seconds; TestimonialScript.astro
+// holds that timer and the rules about when it stops. The container below is
+// tagged so the script can find the region to pause on hover and focus.
+//
+// The photo box is a square, and every testimonial photo is cropped square to
+// match. The aspect-ratio and object-fit below are belt and braces: they hold
+// the box even if a future photo arrives at the wrong shape, so paging never
+// moves the text beside it.
 import type { Testimonial } from "../data/testimonials";
 import { imageSize } from "../data/imageSizes";
 
@@ -38,26 +56,26 @@ const firstSize = imageSize(first.photo);
   <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
     <p style="font-family:Lato;font-weight:700;font-size:23px;color:#353535;text-align:center;margin:0 0 6px;">Our Testimonials</p>
     <h2 style="font-family:Lato;font-weight:700;font-size:50px;color:#1f9ca0;text-align:center;margin:0 0 56px;">What Our <span style="color:#f28121;">Vilijers</span> Say</h2>
-    <div class="vtestim" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
+    <div id="t-carousel" class="vtestim" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
       {showQuoteMark ? (
         <div class="vtestim-photo" style="position:relative;">
-          <img id="t-photo" src={first.photo} alt="A SEND family" width={firstSize?.w} height={firstSize?.h} loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
+          <img id="t-photo" src={first.photo} alt={first.name} width={firstSize?.w} height={firstSize?.h} loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
           <div class="vquote-mark" style="position:absolute;top:-22px;right:-22px;width:84px;height:84px;border-radius:50%;background:#1f9ca0;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(31,156,160,0.35);">
             <span style="font-family:Georgia,serif;font-weight:700;font-size:58px;line-height:1;color:#fff;margin-top:30px;">&rdquo;</span>
           </div>
         </div>
       ) : (
         <div class="vtestim-photo" style="position:relative;">
-          <img id="t-photo" src={first.photo} alt="A SEND family" width={firstSize?.w} height={firstSize?.h} loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
+          <img id="t-photo" src={first.photo} alt={first.name} width={firstSize?.w} height={firstSize?.h} loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />
         </div>
       )}
       <div>
         <div id="t-stars" role={first.stars ? "img" : undefined} aria-label={first.stars ? `Rated ${first.stars} out of 5` : undefined} style={`color:#f28121;font-size:28px;letter-spacing:6px;margin-bottom:18px;${first.stars ? "" : "display:none;"}`}><span id="t-star-glyphs" aria-hidden="true">{first.stars ? "★".repeat(first.stars) : ""}</span></div>
         <p id="t-quote" style="font-family:Lato;font-size:21px;line-height:1.6;color:#5a5a5a;margin:0 0 28px;max-width:560px;">{first.quote}</p>
         <p id="t-name" style="font-family:Lato;font-weight:700;font-size:24px;color:#222;margin:0 0 4px;">{first.name}</p>
-        <p id="t-role" style={`font-family:Lato;font-size:16px;color:#888;margin:0${hasNav ? " 0 30px" : ""};`}>{first.role}</p>
+        <p id="t-role" style={`font-family:Lato;font-size:16px;color:#888;margin:0;${first.role ? "" : "display:none;"}`}>{first.role}</p>
         {hasNav && (
-        <div style="display:flex;gap:16px;">
+        <div style="display:flex;gap:16px;margin-top:30px;">
           <button id="t-prev" aria-label="Previous" style="width:58px;height:58px;border-radius:50%;border:2px solid #f0c79e;background:#fff;color:#f28121;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;">&#8249;</button>
           <button id="t-next" aria-label="Next" style="width:58px;height:58px;border-radius:50%;border:none;background:#1f9ca0;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;">&#8250;</button>
         </div>

@@ -1,0 +1,106 @@
+# The Vilij — redirects for the app pages that used to live on this domain.
+#
+# The marketing site moved from marketing.thevilij.co.uk to the apex
+# thevilij.co.uk on 29 August 2026, and the Bubble app moved the other way, from
+# the apex to app.thevilij.co.uk. So every app URL anyone has bookmarked, been
+# emailed, or had saved by a password manager now points at this site. These
+# send them on.
+#
+# This file cannot match on hostname, only on path, so the other half of the
+# move — marketing.thevilij.co.uk itself redirecting to the apex — is not here.
+# It has to be a Redirect Rule on the zone in the Cloudflare dashboard.
+#
+# Cloudflare Pages reads this file from the root of the build output, and Astro
+# copies public/ there verbatim.
+#
+# WHY NO DESTINATION CARRIES A QUERY STRING. Pages forwards the incoming
+# request's query string to the destination whenever the destination has none
+# of its own — the `destination.search ? destination.search : search` branch in
+# packages/pages-shared/asset-server/handler.ts in cloudflare/workers-sdk. That
+# is load-bearing rather than incidental: /reset_pw and /email-confirmed are
+# reached from links in emails and carry a one-time token in the query string.
+# Putting a `?` on any destination below would replace the token rather than
+# pass it on, and silently break password resets for anyone holding an old link.
+#
+# WHY EACH PAGE GETS TWO RULES. Bubble serves a page both at /page and at
+# /page/<path> when the page takes path parameters, so the splat carries the
+# rest of the path over. The splat also catches the trailing-slash form, which
+# would otherwise 404 here.
+#
+# WHY THE EXACT RULES ARE ALL FIRST. The parser counts a rule as static only
+# while it has seen no splat or placeholder rule before it: the first dynamic
+# rule sets `canCreateStaticRule = false` and every rule after it is counted as
+# dynamic, whether or not it contains a splat (parseRedirects.ts, same repo).
+# The two budgets are 2,000 static and 100 dynamic, so interleaving these would
+# spend 40 of the 100 dynamic slots instead of 20. Matching is unaffected —
+# exact matches are looked up before any splat is tried, whatever the order —
+# but keep the two blocks separate so the dynamic budget stays honest.
+#
+# THESE RULES BEAT STATIC ASSETS. Pages matches this file before it looks for a
+# file to serve, so a rule here shadows a page of the same name. None of these
+# names collide with a marketing route today; check that before adding more.
+# (/404 is the app's own 404 page. It does not change what this site serves for
+# an unknown path — Cloudflare serves 404.html internally rather than requesting
+# /404 — so a branded 404 page here would still work.)
+#
+# 301 rather than 302: the move is permanent, and we want bookmarks and saved
+# logins fixed for good.
+#
+# Both blocks are in the app's own page-list order, so they can be diffed
+# against it.
+
+# ---------------------------------------------------------------------------
+# Exact paths
+# ---------------------------------------------------------------------------
+
+# The app's index page. Its other home was the bare domain, and that now belongs
+# to the marketing homepage — someone with thevilij.co.uk bookmarked is meant to
+# land on marketing, so there is deliberately no rule for /.
+/index                        https://app.thevilij.co.uk/  301
+
+/app-home                     https://app.thevilij.co.uk/app-home  301
+/backend-template             https://app.thevilij.co.uk/backend-template  301
+/branch                       https://app.thevilij.co.uk/branch  301
+/detail                       https://app.thevilij.co.uk/detail  301
+/email-confirmed              https://app.thevilij.co.uk/email-confirmed  301
+/holding-page                 https://app.thevilij.co.uk/holding-page  301
+/list                         https://app.thevilij.co.uk/list  301
+/owner-content-list           https://app.thevilij.co.uk/owner-content-list  301
+/owner-settings               https://app.thevilij.co.uk/owner-settings  301
+/owner-users                  https://app.thevilij.co.uk/owner-users  301
+/owner_content                https://app.thevilij.co.uk/owner_content  301
+/profile                      https://app.thevilij.co.uk/profile  301
+/profile_view                 https://app.thevilij.co.uk/profile_view  301
+/sign-in                      https://app.thevilij.co.uk/sign-in  301
+/sign-up                      https://app.thevilij.co.uk/sign-up  301
+/thank-you                    https://app.thevilij.co.uk/thank-you  301
+/thank-you-early-adopter      https://app.thevilij.co.uk/thank-you-early-adopter  301
+/you-have-mail                https://app.thevilij.co.uk/you-have-mail  301
+/reset_pw                     https://app.thevilij.co.uk/reset_pw  301
+/404                          https://app.thevilij.co.uk/404  301
+
+# ---------------------------------------------------------------------------
+# Path parameters under each page. /index is absent on purpose: Bubble serves
+# its index page's path parameters off the bare domain, and those paths are the
+# marketing site's own now.
+# ---------------------------------------------------------------------------
+/app-home/*                   https://app.thevilij.co.uk/app-home/:splat  301
+/backend-template/*           https://app.thevilij.co.uk/backend-template/:splat  301
+/branch/*                     https://app.thevilij.co.uk/branch/:splat  301
+/detail/*                     https://app.thevilij.co.uk/detail/:splat  301
+/email-confirmed/*            https://app.thevilij.co.uk/email-confirmed/:splat  301
+/holding-page/*               https://app.thevilij.co.uk/holding-page/:splat  301
+/list/*                       https://app.thevilij.co.uk/list/:splat  301
+/owner-content-list/*         https://app.thevilij.co.uk/owner-content-list/:splat  301
+/owner-settings/*             https://app.thevilij.co.uk/owner-settings/:splat  301
+/owner-users/*                https://app.thevilij.co.uk/owner-users/:splat  301
+/owner_content/*              https://app.thevilij.co.uk/owner_content/:splat  301
+/profile/*                    https://app.thevilij.co.uk/profile/:splat  301
+/profile_view/*               https://app.thevilij.co.uk/profile_view/:splat  301
+/sign-in/*                    https://app.thevilij.co.uk/sign-in/:splat  301
+/sign-up/*                    https://app.thevilij.co.uk/sign-up/:splat  301
+/thank-you/*                  https://app.thevilij.co.uk/thank-you/:splat  301
+/thank-you-early-adopter/*    https://app.thevilij.co.uk/thank-you-early-adopter/:splat  301
+/you-have-mail/*              https://app.thevilij.co.uk/you-have-mail/:splat  301
+/reset_pw/*                   https://app.thevilij.co.uk/reset_pw/:splat  301
+/404/*                        https://app.thevilij.co.uk/404/:splat  301

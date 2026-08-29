@@ -5,4 +5,4 @@ Allow: /
 # already marked noindex — no value in crawling it.
 Disallow: /newsletter-thanks
 
-Sitemap: https://marketing.thevilij.co.uk/sitemap.xml
+Sitemap: https://thevilij.co.uk/sitemap.xml

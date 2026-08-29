@@ -13,9 +13,22 @@
 // Without that, paging from a 780x510 photo to a 496x411 one would shift the
 // layout at exactly the moment the user is reading it.
 //
-// Currently academic — showSecondTestimonial is false, so there is one slide and
-// nothing to page to. It is here so that turning the second slot back on does
-// not quietly reintroduce the shift.
+// Since the six beta-tester quotes landed (29 August 2026) every photo is
+// cropped to the same 900x900 square, so this no longer changes anything in
+// practice. It stays because the next photo to arrive may not be.
+//
+// The carousel also advances on its own, one slide every 10 seconds. Because
+// that moves text the reader may be part-way through, it stops whenever there
+// is any sign they are engaged with it:
+//
+//   * pointer over the carousel, or keyboard focus inside it;
+//   * the tab in the background, so returning to it does not find the carousel
+//     eight slides on from where it was left;
+//   * prefers-reduced-motion: reduce, where it never starts at all;
+//   * a list of one, which has nothing to advance to.
+//
+// Pressing prev or next restarts the clock rather than leaving the slide the
+// reader just chose to be cut short by whatever was left of the previous 10.
 import type { Testimonial } from "../data/testimonials";
 import { imageSize } from "../data/imageSizes";
 interface Props {
@@ -47,7 +60,12 @@ const list = slides.map((t) => ({ ...t, size: imageSize(t.photo) ?? null }));
           }
           if (quote) quote.textContent = cur.quote;
           if (name) name.textContent = cur.name;
-          if (role) role.textContent = cur.role;
+          if (role) {
+            // A slide with no role has no line under the name at all, rather
+            // than an empty one holding a gap open.
+            role.textContent = cur.role || "";
+            role.style.display = cur.role ? "" : "none";
+          }
           if (stars) {
             // A testimonial without a rating simply has no star row, and no
             // accessible name to announce either.
@@ -58,19 +76,47 @@ const list = slides.map((t) => ({ ...t, size: imageSize(t.photo) ?? null }));
               stars.removeAttribute("role");
               stars.removeAttribute("aria-label");
             }
-            if (starGlyphs) starGlyphs.textContent = cur.stars ? "\u2605".repeat(cur.stars) : "";
+            if (starGlyphs) starGlyphs.textContent = cur.stars ? "★".repeat(cur.stars) : "";
             stars.style.display = cur.stars ? "" : "none";
           }
         }
 
+        // Ten seconds is a slow reader's pass at the longest quote in the list.
+        const HOLD = 10000;
+        const carousel = document.getElementById("t-carousel");
+        const still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const autoplay = list.length > 1 && !still;
+        const holds = { pointer: false, focus: false, hidden: false };
+        let timer = null;
+
+        function stop() {
+          if (timer !== null) { clearInterval(timer); timer = null; }
+        }
+        function start() {
+          stop();
+          if (!autoplay) return;
+          if (holds.pointer || holds.focus || holds.hidden) return;
+          timer = setInterval(function () { t += 1; render(); }, HOLD);
+        }
+        function hold(key, on) { holds[key] = on; start(); }
+
+        if (carousel) {
+          carousel.addEventListener("mouseenter", function () { hold("pointer", true); });
+          carousel.addEventListener("mouseleave", function () { hold("pointer", false); });
+          carousel.addEventListener("focusin", function () { hold("focus", true); });
+          carousel.addEventListener("focusout", function () { hold("focus", false); });
+        }
+        document.addEventListener("visibilitychange", function () { hold("hidden", document.hidden); });
+
         const prev = document.getElementById("t-prev");
         const next = document.getElementById("t-next");
-        if (prev) prev.addEventListener("click", function (e) { e.preventDefault(); t -= 1; render(); });
-        if (next) next.addEventListener("click", function (e) { e.preventDefault(); t += 1; render(); });
+        if (prev) prev.addEventListener("click", function (e) { e.preventDefault(); t -= 1; render(); start(); });
+        if (next) next.addEventListener("click", function (e) { e.preventDefault(); t += 1; render(); start(); });
 
         const toTop = document.getElementById("to-top");
         if (toTop) toTop.addEventListener("click", function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); });
 
         render();
+        start();
       })();
     </script>

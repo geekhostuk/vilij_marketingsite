@@ -25,8 +25,14 @@ C51, C52, C55.**
 A second batch closed on 29 July 2026, this time on instructions rather than by tidying:
 **C1, C2, C20, C23, C24, C25, C54, C56, C58.** Three of those were decisions, not code — remove the
 placeholder copy without replacing it, point sign-up at the app, and give the Terms a date.
-**C3 is closed by hiding rather than filling**; C5, C6 and C7 go dormant with it, because the
-invented attributions are still in the page files, just not rendered.
+**C3 was closed by hiding rather than filling** on that date; C5, C6 and C7 went dormant with
+it, because the invented attributions were still in the page files, just not rendered.
+
+A third batch closed on 29 August 2026, when six quotes from the closed-beta testers arrived with
+their photos: **C3, C5 and C6 are now fixed outright.** The placeholder slot, the
+`showSecondTestimonial` flag and every invented attribution are gone from the codebase, replaced
+by one shared list of seven real testimonials in `src/data/testimonials.ts` that all six pages
+rotate through. C7 loses its carousel half and keeps its areas-grid half.
 
 Publishing the Safeguarding Policy (C56) raised two new items of its own, **C62** and **C63**.
 C63 is a P1: the policy's contact clause is fully filled in and includes two named individuals'
@@ -52,7 +58,6 @@ Everything below is still open, and every one of them is blocked on something ex
 | Blocked on | Items |
 |------------|-------|
 | **Copy that has to be written** | C1 and C2 are closed, but the footer blurb and newsletter blurb still have to be written — the site simply does without them in the meantime |
-| **A real second testimonial** | C5, C6, C7 — dormant, not gone. The invented names, roles and photos are still in the six page files |
 | **Pages that do not exist yet** | C21, C22, C26–C29, C33, C34 (nav, preview, footer links, Charlie's Story) · C40 |
 | **A commercial decision** | C39 — £10/month is quoted with no pricing page and no inclusions list |
 | **An asset that has to be produced** | C44 — Open Graph / Twitter Card tags need a 1200×630 image before they are worth adding |
@@ -87,7 +92,7 @@ C39, C63 and C64 are the remaining launch blockers on this list.
 |---|----------|-------|-------|
 | ✅ C1 | **P1** | ~~Footer company blurb is Lorem ipsum, sitting directly under the logo~~ *(ISSUES #1)* — **removed, not replaced.** Nothing stands in its place; the logo's bottom margin absorbed the gap. The real copy drops back under the logo when it is written. | All 12 pages, footer col 1 |
 | ✅ C2 | **P1** | ~~Newsletter blurb is Lorem ipsum — the copy meant to earn the email~~ *(ISSUES #2)* — **removed, not replaced.** The heading, field, Subscribe button and consent checkbox are untouched; the newsletter heading now takes the same 22px bottom margin as its three siblings so the four column headings sit on one line. | All 12 pages, footer col 4 |
-| ☐ C3 | **P1** | Second testimonial quote is Lorem ipsum, reachable via the ▸ button *(ISSUES #3)* | 6 content pages |
+| ✅ C3 | **P1** | ~~Second testimonial quote is Lorem ipsum, reachable via the ▸ button~~ *(ISSUES #3)* — hidden on 29 July 2026, **deleted on 29 August 2026.** Six real tester quotes took its place; the placeholder text, the invented names and the flag that hid them are all gone. | 6 content pages |
 | ✅ C4 | **P1** | ~~Company registration number renders literally as `[●]`~~ *(ISSUES #10)* — now reads **16718802**, taken from the executed Expert Community Membership Agreement for THE VILIJ LIMITED. | `privacy` §2.1 |
 
 > **Registered office (§2.1): confirmed and corrected on 29 July 2026.** The confirmed
@@ -102,17 +107,21 @@ C39, C63 and C64 are the remaining launch blockers on this list.
 
 - **C1** and **C2** — deleted from `src/components/SiteFooter.astro`. One edit each, all twelve
   pages. Nothing was written to replace them.
-- **C3** — the six placeholder quotes are still in the page files, one per page, each with its
-  own invented attribution. They are no longer rendered: `showSecondTestimonial` is now `false`
-  in `src/data/testimonials.ts`, which drops the second slot on all six pages at once. The data
-  stays so a real quote can take its place — see C3 and C5 below.
+- **C3** — hidden on 29 July 2026 behind `showSecondTestimonial`, then **removed on 29 August
+  2026.** The six placeholder quotes and their invented attributions are no longer in the page
+  files at all; the flag that hid them is gone too. `src/data/testimonials.ts` now holds one
+  shared list of seven real testimonials and every page renders that.
 
 ---
 
 ## Fabricated testimonials
 
-Only **one real testimonial exists** — Emily & Loui, Newcastle-under-Lyme. The second carousel slot
-on every content page pairs the placeholder quote with a fully invented, named and located person:
+**Fixed on 29 August 2026.** There are now **seven real testimonials** — Emily & Loui, plus the six
+closed-beta testers (Phil, Laura, Sally, Karla, Littlemissa and Lorna) who supplied quotes and
+photos. Nobody invented remains anywhere on the site.
+
+Until then only one real testimonial existed, and the second carousel slot on every content page
+paired the placeholder quote with a fully invented, named and located person:
 
 | Page | Attribution attached to the Lorem ipsum | Photo |
 |------|------------------------------------------|-------|
@@ -125,26 +134,41 @@ on every content page pairs the placeholder quote with a fully invented, named a
 
 | # | Priority | Issue | Where |
 |---|----------|-------|-------|
-| ☐ C5 | **P1** | Five invented families credited with one placeholder quote. Fill the Latin in without checking the names and the site ships five testimonials from people who don't exist. **Now dormant rather than live** — the slot is hidden, but the data is still in the six page files and comes back the moment the flag is flipped. | 6 content pages, testimonial data |
-| ☐ C6 | **P2** | Homepage credits the placeholder to "Charlie & Family" using `charlie.png` — the photo the same page uses for founder Charlie. She appears to review her own product. **Dormant** — no longer rendered. | `index` testimonial 2, Charlie's Story panel |
-| ☐ C7 | **P2** | `p_grand.png` is alt-texted "Grandparent and child" on `/cafe`, but carries four different identities across the site. **Dormant in the carousel**, but the image is still used in the areas grid on `/cafe` and `/wellbeing` with two different descriptions. | 4 pages |
+| ✅ C5 | **P1** | ~~Five invented families credited with one placeholder quote.~~ Hidden on 29 July 2026, **deleted on 29 August 2026.** The invented names, roles and photos are out of the codebase; the seven names now on the site are all real people who gave their quote and their photo. | 6 content pages, testimonial data |
+| ✅ C6 | **P2** | ~~Homepage credits the placeholder to "Charlie & Family" using `charlie.png` — the photo the same page uses for founder Charlie. She appears to review her own product.~~ **Gone.** `charlie.png` is now used only in the Charlie's Story panel, which is what it was always for. | `index` testimonial 2, Charlie's Story panel |
+| ☐ C7 | **P2** | `p_grand.jpg` is alt-texted "Grandparent and child" on `/cafe`, but carries four different identities across the site. **The carousel half is closed** — it is no longer a testimonial photo anywhere. Still open in the areas grid on `/cafe` and `/wellbeing`, where it carries two different descriptions. | 2 pages |
 | ✅ C8 | **P3** | ~~The 5-star rating is hard-coded into the carousel frame, so it also displays against the placeholder.~~ Each testimonial now carries its own `stars` value. Emily & Loui keep 5; the placeholder slot is `stars: null` and the frame hides the star row rather than rendering an empty one. | 6 content pages |
 
-**Done, 29 July 2026:** `showSecondTestimonial` is now `false`. The recommendation above was
+**Done, 29 July 2026:** `showSecondTestimonial` was set to `false`. The recommendation above was
 taken — hide the slot until a second real, consented quote exists, rather than write copy into
 an invented persona. Unsubstantiated endorsements breach CAP Code 3.45, and this is a brand
-asking families in difficulty for money.
+asking families in difficulty for money. The data stayed in the page files, so C5, C6 and C7 were
+dormant rather than fixed.
 
-One flag in `src/data/testimonials.ts` covers all six pages. Two things went with it:
+**Done, 29 August 2026:** the real quotes arrived, so the dormant data went. What changed:
 
-- **The carousel controls are no longer rendered at all** when the list has a single entry.
-  Not disabled, not hidden with CSS — absent, so there is nothing to tab to and nothing for a
-  screen reader to announce. A next button that pages to nothing is worse than the placeholder
-  it replaced. (This carousel has no dot indicators; the prev/next pair was the whole of its
-  navigation.) The role line drops its bottom margin at the same time, so the column does not
-  end in the dead space the buttons used to occupy.
-- **The data is untouched.** All six second testimonials, invented attributions and photos
-  included, are still in the page files. C5, C6 and C7 are dormant, not fixed.
+- **One list, not six copies.** `src/data/testimonials.ts` exports the seven testimonials and all
+  six pages import it. Each page used to carry its own two-entry array, which is how five
+  different invented families ended up credited with the same Latin.
+- **The flag is gone.** With nothing to hide there is nothing to flip, so `showSecondTestimonial`
+  was deleted rather than left at `false` for someone to find and turn on.
+- **The carousel controls are back**, because there is now something to page to. The guard that
+  drops them for a single-entry list stays; the 30px gap above them moved onto the buttons
+  themselves, so a slide with no role line does not take the gap with it.
+- **No invented attribution anywhere.** The six testers gave a quote and a photo; their home
+  towns followed later the same day, so every slide now carries a real location under the name.
+  Nothing was filled in on their behalf in between — the line stayed unrendered while `role` was
+  `null`, and the frame still hides it that way for any future quote that arrives without one.
+  None of the six gave a rating, so `stars` is `null` and the star row stays hidden (C8).
+- **The carousel advances on its own**, one slide every 10 seconds, so a visitor who does not
+  touch the controls still sees more than one name. It stops on hover, on keyboard focus inside
+  it, while the tab is in the background, and entirely under `prefers-reduced-motion: reduce`;
+  prev/next restart the 10 seconds rather than letting the chosen slide inherit what was left of
+  the last one. **Not yet a full pass of WCAG 2.2.2** — that wants a pause control a keyboard
+  user can reach, and hover/focus pausing is not one. See C65.
+- **The photos are square.** All seven are cropped to 900×900 and the frame holds a 1:1 box with
+  `object-fit: cover`, so paging never moves the text beside it. `p_emily_loui.png` was a 780×510
+  landscape and is now `p_emily_loui.jpg`, re-cropped to match; it was used nowhere else.
 
 ---
 
@@ -378,6 +402,7 @@ live on the site, and only their author can fix them.
 | ✅ C56 | **P2** | ~~**The Safeguarding Policy is not published anywhere.**~~ Transcribed verbatim from `THE VILIJ Safeguarding Policy (Final).pdf` (version 1.1, effective 24 July 2026) and published at **`/safeguarding-policy`** — 19 sections, 129 clauses, the longest document on the site. The mislabelled footer link is fixed: "Privacy Policy & Safeguarding Policy" is split into two entries in the Quick Links column, and "Safeguarding" is added to the legal row alongside Terms, Privacy and Cookies. Added to `sitemap.xml`. **Nothing was added to the Privacy Policy, Terms or Community Guidelines** — those are published legal texts and a new cross-reference would change what they say. Faults reproduced from the source are recorded in C62; the contact details question is C63. | `safeguarding-policy` |
 | ☐ C57 | **P3** | **The Privacy Policy PDF is behind the live site.** The source still reads `company number []`; the live page carries **16718802**, taken from the executed Membership Agreement. Anyone re-transcribing from the PDF would regress C4. | source PDF |
 | ✅ C58 | **P1** | ~~**Non-essential cookies are set with no consent.**~~ Fixed on 29 July 2026 by a consent banner, and fixed properly: the HubSpot script tag is **gone from `BaseLayout.astro` entirely**, and is injected by `CookieConsent.astro` only after someone accepts. Loading HubSpot and asking it not to track would not have worked — the cookies get set either way. Verified in a real browser on a clean profile: no `__hstc`, `hubspotutk`, `__hssc` or `__hssrc` before a choice; still none after rejecting, after a navigation and after a reload; all four present after accepting. Accept and Reject are the same size, shape and colour, and both are fully on screen down to 320×568. Escape dismisses without accepting and without overwriting an earlier answer. GPC is honoured as a refusal. Withdrawing consent deletes the four cookies and reloads the page without the script. | All 13 pages |
+| ☐ C65 | **P3** | **The testimonial carousel auto-advances with no pause control.** Since 29 August 2026 it moves to the next quote every 10 seconds. WCAG 2.2.2 (Level A) applies: information that moves automatically, starts on its own and runs for more than five seconds needs a mechanism to pause, stop or hide it. Pausing on hover, on focus inside the carousel and under `prefers-reduced-motion: reduce` covers most real readers, and prev/next restart the clock — but none of those is the pause control the criterion asks for, because a keyboard user who is reading rather than tabbing has no way to stop it. The fix is a small pause/play button beside prev/next, which is a design change. | `TestimonialCarousel`, `TestimonialScript` |
 | ☐ C64 | **P1** | **The newsletter is only captured from people who accept analytics.** The footer form is a plain HTML form; HubSpot records it through *non-HubSpot form capture*, which is a feature of the tracking script rather than a separate forms script. Blocking tracking therefore does not break the form — it still submits and still lands on `/newsletter-thanks` — but nothing reaches HubSpot. Confirmed by watching the network in both states: with analytics rejected there are no HubSpot requests at all; with analytics accepted, `collectedforms.js` loads and a `POST /collected-forms/submit/form` fires on submit. **So a visitor who refuses analytics, subscribes, and is told “You’re on the list” is not on the list.** That is worse than a form that visibly fails, and it is a decision rather than something to work around. Three ways out: accept the loss; replace the plain form with a HubSpot embedded form, whose script is independent of tracking; or POST to a Cloudflare Pages Function that calls HubSpot’s Forms API server-side, which needs no client cookies in any consent state and would also close ISSUES #13. The third is the right one. | `SiteFooter` newsletter form |
 | ☐ C63 | **P1** | **The Safeguarding Policy publishes two people's personal mobile numbers.** Clause 19.4 is fully filled in — no placeholders — and names the DSL and Deputy DSL with their roles, work email addresses and mobile numbers (`07968 212108`, `07598 179440`). Transcribed verbatim because that is what the document says and it is the client's document. But publishing a personal mobile number on an indexed marketing page is a publication decision, not a transcription detail: it will be scraped. Three options, all of which need a person to choose: publish as-is, replace the numbers with `safeguarding@thevilij.co.uk` (which clause 19.4 already gives as the reporting route), or leave the page `noindex` until the policy is reissued. **Decide before this page goes live.** | `safeguarding-policy` §19.4 |
 | ☐ C62 | **P2** | **Numbering and naming faults in the source Safeguarding Policy.** Three, all reproduced as printed. **§16.8** prints an item `(g)` with no text at all — just the letter and a semicolon; the item is omitted rather than published as an empty bracket, and `(h)` and `(i)` keep the letters the document prints (this is what `itemLabels` in `src/data/legal.ts                     shared shape for the five legal documents` is for). **§19.5** is a heading, "Emergency and external contacts", with no clause text; the content it introduces is numbered 19.6. **§19.1** names the policy owner "Charlene Andruskeviciu" where §19.4 names the same person "Charlene Andruskevicius". Only the author can fix any of these. | `safeguarding-policy` |
