@@ -338,18 +338,19 @@ internal link graph. Either point them somewhere or render them as non-links, th
 correctly does for coming-soon tiles (`const Tag = comingSoon ? "div" : "a"` — that is the right pattern,
 and it should be reused here).
 
-### 12. Placeholder testimonial copy is still in the shipped source
+### 12. Placeholder testimonial copy is still in the shipped source — **closed, 29 August 2026**
 
-`showSecondTestimonial = false` correctly hides it, and the reasoning in `testimonials.ts` is sound. But
-the Lorem ipsum quote and the invented attribution ("Charlie & Family", "SEND Family, The Vilij") are
-still in the JavaScript payload of `index.astro` and five other pages — the carousel script serialises the
-full list into the page.
+`showSecondTestimonial = false` hid it, but the Lorem ipsum quote and the invented attribution
+("Charlie & Family", "SEND Family, The Vilij") were still in the JavaScript payload of `index.astro`
+and five other pages, because the carousel script serialises the full list into the page. Not
+rendered, so never indexed as visible text — but in the HTML source, and for a site in a sector
+where trust is the entire proposition, fabricated testimonial attributions in the shipped source
+were a reputational risk worth closing.
 
-It is not rendered, so it will not be indexed as visible text. But it is in the HTML source, and for a
-site in a sector where trust is the entire proposition, fabricated testimonial attributions sitting in the
-shipped source is a reputational risk worth closing.
-
-**Recommendation.** Filter the list before it reaches `BaseLayout`, rather than only at render time.
+The recommendation was to filter the list before it reaches `BaseLayout` rather than only at render
+time. It was overtaken: six real quotes from the closed-beta testers arrived on 29 August 2026, so
+the placeholder was deleted outright along with the flag that hid it. There is nothing left to
+filter — `src/data/testimonials.ts` holds seven real testimonials and every page serialises those.
 
 ---
 

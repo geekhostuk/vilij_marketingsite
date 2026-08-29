@@ -6,32 +6,10 @@ import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import AreasGrid from "../components/AreasGrid.astro";
 import TestimonialCarousel from "../components/TestimonialCarousel.astro";
-import { showSecondTestimonial } from "../data/testimonials";
+import { testimonials } from "../data/testimonials";
 import * as areas from "../data/areas";
 
 const monthlyPrice = "£10";
-
-const testimonials = [
-  {
-    quote:
-      "As a parent of a 22-year-old son with autism, I finally feel understood. The Vilij offers practical support, genuine connection and reminds us we’re never alone.",
-    name: "Emily & Loui",
-    role: "SEND family, Newcastle-under-Lyme",
-    stars: 5,
-    photo: "/assets/p_emily_loui.png",
-  },
-  {
-    quote:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat wisi enim ad minim veniam.",
-    name: "José, Nancy & Isaac",
-    role: "SEND Family, Manchester",
-    // Placeholder slot — no real quote, so no rating to show.
-    stars: null,
-    photo: "/assets/p_jose.jpg",
-  },
-];
-
-const list = showSecondTestimonial ? testimonials : [testimonials[0]];
 
 // The order of the "What else you can see inside the Vilij" grid, as it stands
 // on this page. Every page uses a different order and a different second photo.
@@ -59,7 +37,7 @@ const gridItems = [
 <BaseLayout
   title="Library — SEND Guides, Templates and Resources | The Vilij"
   description="The Vilij Library holds plain-English guides, templates and resources for SEND families: help with the system, understanding your child and daily life."
-  carousel={list}
+  carousel={testimonials}
   noindex
 >
     <style is:global>
@@ -232,7 +210,7 @@ const gridItems = [
       </section>
 
       <!-- ===== TESTIMONIALS ===== -->
-      <TestimonialCarousel list={list} />
+      <TestimonialCarousel list={testimonials} />
 
       <!-- ===== FINAL CTA ===== -->
       <section class="vband" style="background:#f28121;text-align:center;padding:66px 24px;">

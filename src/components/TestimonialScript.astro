@@ -13,9 +13,9 @@
 // Without that, paging from a 780x510 photo to a 496x411 one would shift the
 // layout at exactly the moment the user is reading it.
 //
-// Currently academic — showSecondTestimonial is false, so there is one slide and
-// nothing to page to. It is here so that turning the second slot back on does
-// not quietly reintroduce the shift.
+// Since the six beta-tester quotes landed (29 August 2026) every photo is
+// cropped to the same 900x900 square, so this no longer changes anything in
+// practice. It stays because the next photo to arrive may not be.
 import type { Testimonial } from "../data/testimonials";
 import { imageSize } from "../data/imageSizes";
 interface Props {
@@ -47,7 +47,12 @@ const list = slides.map((t) => ({ ...t, size: imageSize(t.photo) ?? null }));
           }
           if (quote) quote.textContent = cur.quote;
           if (name) name.textContent = cur.name;
-          if (role) role.textContent = cur.role;
+          if (role) {
+            // A slide with no role has no line under the name at all, rather
+            // than an empty one holding a gap open.
+            role.textContent = cur.role || "";
+            role.style.display = cur.role ? "" : "none";
+          }
           if (stars) {
             // A testimonial without a rating simply has no star row, and no
             // accessible name to announce either.

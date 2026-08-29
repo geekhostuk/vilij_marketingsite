@@ -40,7 +40,7 @@ The page shell and every repeated block live in one place:
 | `src/components/AreasGrid.astro`, `AreaTiles.astro`, `AreaCard.astro`, `PhotoTile.astro` | The "What else you can see inside the Vilij" grid and its tiles. |
 | `src/components/TestimonialCarousel.astro`, `TestimonialScript.astro`, `ToTopScript.astro` | The carousel and the two end-of-body scripts. |
 | `src/components/LegalContents.astro`, `LegalSections.astro` | The contents jump list and clause renderer shared by the five legal pages. |
-| `src/data/areas.ts`, `testimonials.ts`, `legal.ts` | Area tile copy, the `showSecondTestimonial` flag, and the legal document shape. |
+| `src/data/areas.ts`, `testimonials.ts`, `legal.ts` | Area tile copy, the seven testimonials shared by all six carousels, and the legal document shape. |
 
 Anything that legitimately varies between pages is a prop. Where two copies of
 the same block had drifted before the extraction, both versions were kept and
@@ -54,8 +54,11 @@ the stylesheet.
 ### Interactive behaviour
 The six content pages reproduce the original design component logic with a
 small inline script:
-- **Testimonial carousel** — prev/next buttons cycle through the `testimonials`
-  array; each entry carries its own optional `stars` rating.
+- **Testimonial carousel** — prev/next buttons cycle through the shared
+  `testimonials` list in `src/data/testimonials.ts`; each entry carries its own
+  optional `stars` rating and optional `role` line, and both rows are hidden
+  rather than rendered empty when absent. All seven photos are cropped to 900×900
+  so the square photo box holds still as the carousel pages.
 - **Back to the top** — smooth-scrolls to the top of the page.
 - The monthly **price** (£10) is rendered server-side.
 
@@ -93,7 +96,7 @@ updated by hand when a route is added or removed.
 │   ├── components/                  # Header, footer, areas grid, carousel, legal renderer
 │   ├── data/
 │   │   ├── areas.ts                 # The nine area tiles' copy
-│   │   ├── testimonials.ts          # showSecondTestimonial, Testimonial type
+│   │   ├── testimonials.ts          # The seven testimonials, Testimonial type
 │   │   └── legal.ts                 # Legal document shape
 │   └── pages/
 │       ├── index.astro              # Homepage

@@ -25,8 +25,14 @@ C51, C52, C55.**
 A second batch closed on 29 July 2026, this time on instructions rather than by tidying:
 **C1, C2, C20, C23, C24, C25, C54, C56, C58.** Three of those were decisions, not code — remove the
 placeholder copy without replacing it, point sign-up at the app, and give the Terms a date.
-**C3 is closed by hiding rather than filling**; C5, C6 and C7 go dormant with it, because the
-invented attributions are still in the page files, just not rendered.
+**C3 was closed by hiding rather than filling** on that date; C5, C6 and C7 went dormant with
+it, because the invented attributions were still in the page files, just not rendered.
+
+A third batch closed on 29 August 2026, when six quotes from the closed-beta testers arrived with
+their photos: **C3, C5 and C6 are now fixed outright.** The placeholder slot, the
+`showSecondTestimonial` flag and every invented attribution are gone from the codebase, replaced
+by one shared list of seven real testimonials in `src/data/testimonials.ts` that all six pages
+rotate through. C7 loses its carousel half and keeps its areas-grid half.
 
 Publishing the Safeguarding Policy (C56) raised two new items of its own, **C62** and **C63**.
 C63 is a P1: the policy's contact clause is fully filled in and includes two named individuals'
@@ -52,7 +58,6 @@ Everything below is still open, and every one of them is blocked on something ex
 | Blocked on | Items |
 |------------|-------|
 | **Copy that has to be written** | C1 and C2 are closed, but the footer blurb and newsletter blurb still have to be written — the site simply does without them in the meantime |
-| **A real second testimonial** | C5, C6, C7 — dormant, not gone. The invented names, roles and photos are still in the six page files |
 | **Pages that do not exist yet** | C21, C22, C26–C29, C33, C34 (nav, preview, footer links, Charlie's Story) · C40 |
 | **A commercial decision** | C39 — £10/month is quoted with no pricing page and no inclusions list |
 | **An asset that has to be produced** | C44 — Open Graph / Twitter Card tags need a 1200×630 image before they are worth adding |
@@ -87,7 +92,7 @@ C39, C63 and C64 are the remaining launch blockers on this list.
 |---|----------|-------|-------|
 | ✅ C1 | **P1** | ~~Footer company blurb is Lorem ipsum, sitting directly under the logo~~ *(ISSUES #1)* — **removed, not replaced.** Nothing stands in its place; the logo's bottom margin absorbed the gap. The real copy drops back under the logo when it is written. | All 12 pages, footer col 1 |
 | ✅ C2 | **P1** | ~~Newsletter blurb is Lorem ipsum — the copy meant to earn the email~~ *(ISSUES #2)* — **removed, not replaced.** The heading, field, Subscribe button and consent checkbox are untouched; the newsletter heading now takes the same 22px bottom margin as its three siblings so the four column headings sit on one line. | All 12 pages, footer col 4 |
-| ☐ C3 | **P1** | Second testimonial quote is Lorem ipsum, reachable via the ▸ button *(ISSUES #3)* | 6 content pages |
+| ✅ C3 | **P1** | ~~Second testimonial quote is Lorem ipsum, reachable via the ▸ button~~ *(ISSUES #3)* — hidden on 29 July 2026, **deleted on 29 August 2026.** Six real tester quotes took its place; the placeholder text, the invented names and the flag that hid them are all gone. | 6 content pages |
 | ✅ C4 | **P1** | ~~Company registration number renders literally as `[●]`~~ *(ISSUES #10)* — now reads **16718802**, taken from the executed Expert Community Membership Agreement for THE VILIJ LIMITED. | `privacy` §2.1 |
 
 > **Registered office (§2.1): confirmed and corrected on 29 July 2026.** The confirmed
@@ -102,17 +107,21 @@ C39, C63 and C64 are the remaining launch blockers on this list.
 
 - **C1** and **C2** — deleted from `src/components/SiteFooter.astro`. One edit each, all twelve
   pages. Nothing was written to replace them.
-- **C3** — the six placeholder quotes are still in the page files, one per page, each with its
-  own invented attribution. They are no longer rendered: `showSecondTestimonial` is now `false`
-  in `src/data/testimonials.ts`, which drops the second slot on all six pages at once. The data
-  stays so a real quote can take its place — see C3 and C5 below.
+- **C3** — hidden on 29 July 2026 behind `showSecondTestimonial`, then **removed on 29 August
+  2026.** The six placeholder quotes and their invented attributions are no longer in the page
+  files at all; the flag that hid them is gone too. `src/data/testimonials.ts` now holds one
+  shared list of seven real testimonials and every page renders that.
 
 ---
 
 ## Fabricated testimonials
 
-Only **one real testimonial exists** — Emily & Loui, Newcastle-under-Lyme. The second carousel slot
-on every content page pairs the placeholder quote with a fully invented, named and located person:
+**Fixed on 29 August 2026.** There are now **seven real testimonials** — Emily & Loui, plus the six
+closed-beta testers (Phil, Laura, Sally, Karla, Littlemissa and Lorna) who supplied quotes and
+photos. Nobody invented remains anywhere on the site.
+
+Until then only one real testimonial existed, and the second carousel slot on every content page
+paired the placeholder quote with a fully invented, named and located person:
 
 | Page | Attribution attached to the Lorem ipsum | Photo |
 |------|------------------------------------------|-------|
@@ -125,26 +134,34 @@ on every content page pairs the placeholder quote with a fully invented, named a
 
 | # | Priority | Issue | Where |
 |---|----------|-------|-------|
-| ☐ C5 | **P1** | Five invented families credited with one placeholder quote. Fill the Latin in without checking the names and the site ships five testimonials from people who don't exist. **Now dormant rather than live** — the slot is hidden, but the data is still in the six page files and comes back the moment the flag is flipped. | 6 content pages, testimonial data |
-| ☐ C6 | **P2** | Homepage credits the placeholder to "Charlie & Family" using `charlie.png` — the photo the same page uses for founder Charlie. She appears to review her own product. **Dormant** — no longer rendered. | `index` testimonial 2, Charlie's Story panel |
-| ☐ C7 | **P2** | `p_grand.png` is alt-texted "Grandparent and child" on `/cafe`, but carries four different identities across the site. **Dormant in the carousel**, but the image is still used in the areas grid on `/cafe` and `/wellbeing` with two different descriptions. | 4 pages |
+| ✅ C5 | **P1** | ~~Five invented families credited with one placeholder quote.~~ Hidden on 29 July 2026, **deleted on 29 August 2026.** The invented names, roles and photos are out of the codebase; the seven names now on the site are all real people who gave their quote and their photo. | 6 content pages, testimonial data |
+| ✅ C6 | **P2** | ~~Homepage credits the placeholder to "Charlie & Family" using `charlie.png` — the photo the same page uses for founder Charlie. She appears to review her own product.~~ **Gone.** `charlie.png` is now used only in the Charlie's Story panel, which is what it was always for. | `index` testimonial 2, Charlie's Story panel |
+| ☐ C7 | **P2** | `p_grand.jpg` is alt-texted "Grandparent and child" on `/cafe`, but carries four different identities across the site. **The carousel half is closed** — it is no longer a testimonial photo anywhere. Still open in the areas grid on `/cafe` and `/wellbeing`, where it carries two different descriptions. | 2 pages |
 | ✅ C8 | **P3** | ~~The 5-star rating is hard-coded into the carousel frame, so it also displays against the placeholder.~~ Each testimonial now carries its own `stars` value. Emily & Loui keep 5; the placeholder slot is `stars: null` and the frame hides the star row rather than rendering an empty one. | 6 content pages |
 
-**Done, 29 July 2026:** `showSecondTestimonial` is now `false`. The recommendation above was
+**Done, 29 July 2026:** `showSecondTestimonial` was set to `false`. The recommendation above was
 taken — hide the slot until a second real, consented quote exists, rather than write copy into
 an invented persona. Unsubstantiated endorsements breach CAP Code 3.45, and this is a brand
-asking families in difficulty for money.
+asking families in difficulty for money. The data stayed in the page files, so C5, C6 and C7 were
+dormant rather than fixed.
 
-One flag in `src/data/testimonials.ts` covers all six pages. Two things went with it:
+**Done, 29 August 2026:** the real quotes arrived, so the dormant data went. What changed:
 
-- **The carousel controls are no longer rendered at all** when the list has a single entry.
-  Not disabled, not hidden with CSS — absent, so there is nothing to tab to and nothing for a
-  screen reader to announce. A next button that pages to nothing is worse than the placeholder
-  it replaced. (This carousel has no dot indicators; the prev/next pair was the whole of its
-  navigation.) The role line drops its bottom margin at the same time, so the column does not
-  end in the dead space the buttons used to occupy.
-- **The data is untouched.** All six second testimonials, invented attributions and photos
-  included, are still in the page files. C5, C6 and C7 are dormant, not fixed.
+- **One list, not six copies.** `src/data/testimonials.ts` exports the seven testimonials and all
+  six pages import it. Each page used to carry its own two-entry array, which is how five
+  different invented families ended up credited with the same Latin.
+- **The flag is gone.** With nothing to hide there is nothing to flip, so `showSecondTestimonial`
+  was deleted rather than left at `false` for someone to find and turn on.
+- **The carousel controls are back**, because there is now something to page to. The guard that
+  drops them for a single-entry list stays; the 30px gap above them moved onto the buttons
+  themselves, so a slide with no role line does not take the gap with it.
+- **No invented attribution anywhere.** The six testers gave a quote and a photo but no location
+  or relationship, so their `role` is `null` and the line under the name is not rendered at all —
+  see C7. Emily & Loui keep theirs, which is real. None of the six gave a rating either, so
+  `stars` is `null` and the star row stays hidden (C8).
+- **The photos are square.** All seven are cropped to 900×900 and the frame holds a 1:1 box with
+  `object-fit: cover`, so paging never moves the text beside it. `p_emily_loui.png` was a 780×510
+  landscape and is now `p_emily_loui.jpg`, re-cropped to match; it was used nowhere else.
 
 ---
 
