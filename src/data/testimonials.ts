@@ -13,14 +13,17 @@
 //
 // Quotes are as supplied, with the brand spelt "The Vilij" throughout (two
 // testers wrote "Villij") and two obvious typos corrected. Wording is otherwise
-// untouched.
+// untouched. The testers' home towns followed later the same day and are the
+// line under each name; "Stoke-On-Trent" is spelt "Stoke-on-Trent" here, the
+// city's own styling and the one already used for Newcastle-under-Lyme.
 export interface Testimonial {
   quote: string;
   name: string;
-  // The line under the name — a location or relationship where we have one.
-  // The six beta testers gave neither, and inventing one is what got the old
-  // placeholder slot hidden in the first place, so theirs is null and the role
-  // row is not rendered at all. See C7 in content-issues.md.
+  // The line under the name — a location or relationship. The six beta testers
+  // sent theirs on 29 August 2026, so every slide now carries one; the type
+  // stays nullable and the row is still hidden when it is null, because a
+  // testimonial arriving without a location must not get an invented one. See
+  // C7 in content-issues.md.
   role: string | null;
   // C8 — a testimonial without a rating has stars: null and the star row is
   // hidden rather than rendered empty. Only Emily & Loui gave one; the beta
@@ -42,15 +45,15 @@ export const testimonials: Testimonial[] = [
     quote:
       "The Vilij is the missing piece in our SEN journey, bringing expert advice, lived experience and guidance together in one simple, trusted place. Every journey starts with a footstep. The Vilij is a path to lay your footstep on.",
     name: "Phil",
-    role: null,
+    role: "Watford",
     stars: null,
     photo: "/assets/p_phil.jpg",
   },
   {
     quote:
       "Looking after a SEND child can often feel isolating and overwhelming. The Vilij really is a lifeline. It offers comfort, clarity and connection with others who can relate to what I’m going through. It’s lovely to know I’m not alone in this.",
-    name: "Laura",
-    role: null,
+    name: "Laura & Max",
+    role: "Stoke-on-Trent",
     stars: null,
     photo: "/assets/p_laura.jpg",
   },
@@ -58,7 +61,7 @@ export const testimonials: Testimonial[] = [
     quote:
       "Wow! The Vilij is a breath of fresh air. Everyone on similar paths, who understand and support one another, and simply “get it”. Having everything under one roof is so refreshing. The Vilij feels like a one stop shop with heart, and a hint of nostalgia that we all enjoy.",
     name: "Sally",
-    role: null,
+    role: "Northwich",
     stars: null,
     photo: "/assets/p_sally.jpg",
   },
@@ -66,7 +69,7 @@ export const testimonials: Testimonial[] = [
     quote:
       "I’ve been using The Vilij for a while now talking to people who just get it. People understand me and know how lonely it can be bringing up a special needs child. I know The Vilij will be a life-line for people who just need someone to listen. I’m really looking forward to the village community growing.",
     name: "Karla",
-    role: null,
+    role: "Stalybridge",
     stars: null,
     photo: "/assets/p_karla.jpg",
   },
@@ -74,7 +77,7 @@ export const testimonials: Testimonial[] = [
     quote:
       "Both you and Charlie together on video make my watching feel included and less alone, and for me it reinforces what The Vilij is about: real people on this journey, all at different stops on the road.",
     name: "Littlemissa",
-    role: null,
+    role: "Bedford",
     stars: null,
     photo: "/assets/p_littlemissa.jpg",
   },
@@ -82,7 +85,7 @@ export const testimonials: Testimonial[] = [
     quote:
       "I feel genuinely honoured to have been one of The Vilij testers and I’ve seen how much thought, passion and care has gone into making it something that can genuinely make a difference to SEND families.",
     name: "Lorna",
-    role: null,
+    role: "Audlem",
     stars: null,
     photo: "/assets/p_lorna.jpg",
   },

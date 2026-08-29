@@ -24,9 +24,13 @@
 // line's margin-bottom, because a slide with no role hides that line and would
 // otherwise take the gap with it.
 //
-// C7 — the six beta testers gave no location or relationship, so their role is
-// null and the line under the name is not rendered at all. Only the slides that
-// have something true to say carry one.
+// C7 — the line under the name is a location, and every slide has one. It is
+// still hidden rather than rendered empty when a testimonial has no role, so
+// that a future quote arriving without a location does not need an invented one.
+//
+// The carousel advances on its own every 10 seconds; TestimonialScript.astro
+// holds that timer and the rules about when it stops. The container below is
+// tagged so the script can find the region to pause on hover and focus.
 //
 // The photo box is a square, and every testimonial photo is cropped square to
 // match. The aspect-ratio and object-fit below are belt and braces: they hold
@@ -52,7 +56,7 @@ const firstSize = imageSize(first.photo);
   <div class="vwrap" style="max-width:1240px;margin:0 auto;padding:0 48px;">
     <p style="font-family:Lato;font-weight:700;font-size:23px;color:#353535;text-align:center;margin:0 0 6px;">Our Testimonials</p>
     <h2 style="font-family:Lato;font-weight:700;font-size:50px;color:#1f9ca0;text-align:center;margin:0 0 56px;">What Our <span style="color:#f28121;">Vilijers</span> Say</h2>
-    <div class="vtestim" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
+    <div id="t-carousel" class="vtestim" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center;">
       {showQuoteMark ? (
         <div class="vtestim-photo" style="position:relative;">
           <img id="t-photo" src={first.photo} alt={first.name} width={firstSize?.w} height={firstSize?.h} loading="lazy" decoding="async" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:18px;display:block;box-shadow:0 14px 34px rgba(0,0,0,0.14);" />

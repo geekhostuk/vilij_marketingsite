@@ -54,11 +54,15 @@ the stylesheet.
 ### Interactive behaviour
 The six content pages reproduce the original design component logic with a
 small inline script:
-- **Testimonial carousel** — prev/next buttons cycle through the shared
-  `testimonials` list in `src/data/testimonials.ts`; each entry carries its own
-  optional `stars` rating and optional `role` line, and both rows are hidden
-  rather than rendered empty when absent. All seven photos are cropped to 900×900
-  so the square photo box holds still as the carousel pages.
+- **Testimonial carousel** — cycles through the shared `testimonials` list in
+  `src/data/testimonials.ts`, on its own every 10 seconds and on the prev/next
+  buttons. The timer stops on hover, on keyboard focus inside the carousel, while
+  the tab is in the background, and completely under `prefers-reduced-motion:
+  reduce`; pressing prev or next restarts it, so a slide the reader chose gets a
+  full 10 seconds. Each entry carries its own optional `stars` rating and optional
+  `role` line, and both rows are hidden rather than rendered empty when absent.
+  All seven photos are cropped to 900×900 so the square photo box holds still as
+  the carousel pages.
 - **Back to the top** — smooth-scrolls to the top of the page.
 - The monthly **price** (£10) is rendered server-side.
 
