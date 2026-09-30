@@ -3,12 +3,12 @@
 // The surrounding <section> is not here: its background gradient is page
 // specific, so each page keeps its own header section wrapper.
 //
-// SIGN UP points at the app. Deliberately no target="_blank": app.thevilij.co.uk
+// Both pills point at the app. Deliberately no target="_blank": app.thevilij.co.uk
 // is the same brand, not an outbound link, so it opens in the same tab.
 //
 // ISSUES #20 — below 900px the three text links move into a dropdown panel
-// behind a burger button. The logo and SIGN UP stay in the bar at every width:
-// SIGN UP is the conversion action on a page aimed at people with very little
+// behind a burger button. The logo and the join pill stay in the bar at every
+// width: joining is the conversion action on a page aimed at people with very little
 // spare attention, and it should never be a tap away behind a menu.
 //
 // The links are rendered twice, once in the bar and once in the panel, and
@@ -57,11 +57,18 @@ const links = [
   { href: "/#explore", label: "Explore The Vilij", weight: 700 },
   { href: "/#about", label: "About Us", weight: 700 },
 ];
+
+// Sep 2026 redesign — two pills: log in for existing members (teal) and join
+// (orange). Log in is the one that moves into the burger panel below 900px;
+// join stays in the bar at every width, for the reason given above. The teal
+// pill keeps the `vnav-cta` class so every page's existing hover rule still
+// applies to it; the orange one is `vnav-join`, which that rule does not touch.
+const login = { href: "https://app.thevilij.co.uk", label: "Vilijer Log In" };
 ---
 <div class="vnav-shell">
   <nav style="display:flex;align-items:center;justify-content:space-between;">
     <a href="/" class="vnav-logo"><img src="/assets/logo.png" alt="The Vilij" width="570" height="248" decoding="async" style="height:62px;width:auto;display:block;" /></a>
-    <div class="vnav-right" style="display:flex;align-items:center;gap:42px;">
+    <div class="vnav-right" style="display:flex;align-items:center;gap:36px;">
       {/* The trailing {" "} keeps the whitespace the hand-written links used to
           have between them. Flex ignores whitespace-only text nodes, so it
           changes nothing — but it keeps the built markup byte-identical to what
@@ -70,14 +77,15 @@ const links = [
       {links.map((l) => (
         <a href={l.href} class="vnav-link vlink" style={`font-family:Lato;font-weight:${l.weight};font-size:18px;color:#1f9ca0;text-decoration:none;`}>{l.label}</a>
       )).flatMap((el) => [el, " "])}
-      <a href="https://app.thevilij.co.uk/sign-up" class="vnav-cta vpill" style="font-family:Lato;font-weight:700;font-size:16px;letter-spacing:.5px;color:#ffffff;background:#1f9ca0;padding:13px 30px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(31,156,160,0.3);">SIGN UP</a>
+      <a href={login.href} class="vnav-cta vpill" style="font-family:Lato;font-weight:700;font-size:16px;color:#ffffff;background:#1f9ca0;padding:12px 24px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(31,156,160,0.3);">{login.label}</a>
+      <a href="https://app.thevilij.co.uk/sign-up" class="vnav-join vpill" style="font-family:Lato;font-weight:700;font-size:16px;color:#ffffff;background:#f28121;padding:12px 24px;border-radius:30px;text-decoration:none;white-space:nowrap;box-shadow:0 6px 16px rgba(242,129,33,0.3);">Join for £10/month</a>
       <button type="button" id="vnav-toggle" class="vnav-burger" aria-expanded="false" aria-controls="vnav-panel" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
   <div id="vnav-panel" class="vnav-panel" hidden>
-    {links.map((l) => <a href={l.href} class="vlink">{l.label}</a>)}
+    {[...links, login].map((l) => <a href={l.href} class="vlink">{l.label}</a>)}
   </div>
 </div>
 <script>

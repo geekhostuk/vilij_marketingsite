@@ -109,6 +109,11 @@
      (30px 48px 0) and the footer's 46px top margin both survive. */
   .vwrap { padding-left: 32px !important; padding-right: 32px !important; }
 
+  /* The header carries three links and two pills; at 42px gaps they no
+     longer fit above the 900px burger breakpoint. */
+  .vnav-right { gap: 20px !important; }
+  .vnav-cta, .vnav-join { padding: 11px 18px !important; font-size: 15px !important; }
+
   /* Display type, first step. Sizes below 38px still fit at this width. */
   [style*="font-size:80px"] { font-size: 64px !important; }
   [style*="font-size:74px"] { font-size: 60px !important; }
@@ -167,7 +172,7 @@
 @media (max-width: 900px) {
 
   /* --- Nav ---------------------------------------------------------------
-     Logo and SIGN UP stay in the bar at every width; SIGN UP is the
+     Logo and the join pill stay in the bar at every width; joining is the
      conversion action and should never be a tap away behind a menu. Only
      the three text links move into the panel. */
 
@@ -230,7 +235,8 @@
   .vnav-panel a:last-child { border-bottom: none !important; }
 
   .vnav-logo img { height: 52px !important; width: auto !important; }
-  .vnav-cta { padding: 11px 20px !important; font-size: 15px !important; }
+  .vnav-cta { display: none !important; }
+  .vnav-join { padding: 11px 20px !important; font-size: 15px !important; }
 
   /* --- Layout ----------------------------------------------------------- */
 
@@ -437,10 +443,10 @@
 
   .vwrap { padding-left: 16px !important; padding-right: 16px !important; }
 
-  /* The bar has to hold a 101px logo, the SIGN UP pill and a 44px burger
+  /* The bar has to hold a 101px logo, the join pill and a 44px burger
      inside a 288px content box, so the pill tightens once more here. */
   .vnav-logo img { height: 44px !important; }
-  .vnav-cta { padding: 10px 14px !important; font-size: 13px !important; }
+  .vnav-join { padding: 10px 14px !important; font-size: 13px !important; }
   .vnav-right { gap: 12px !important; }
 
   /* Display type, last step. */
