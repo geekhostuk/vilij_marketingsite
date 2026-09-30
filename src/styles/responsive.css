@@ -260,6 +260,8 @@
   .vpanel3 { grid-template-columns: 1fr !important; gap: 30px !important; padding: 34px 28px !important; }
   .vcards2 { grid-template-columns: 1fr !important; gap: 28px !important; }
   .vbuilt { grid-template-columns: 1fr !important; gap: 38px !important; }
+  .vmember { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .vwhy { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
 
   .vcard-body { padding: 6px 22px 26px !important; }
 
@@ -317,6 +319,16 @@
 
   .vfeat5 { grid-template-columns: 1fr !important; gap: 20px !important; }
   .vtiles { grid-template-columns: 1fr !important; gap: 22px !important; }
+  .vwhy { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+  /* Homepage "Sound familiar?": the now -> next pairs stack, and the arrow
+     turns to point down at the box it leads to. The second column heading
+     would land between the first pair's two boxes, so it goes; the colour of
+     the boxes already carries the before/after. */
+  .vfamiliar { grid-template-columns: 1fr !important; gap: 6px !important; }
+  .vfamiliar-to { display: none !important; }
+  .vfamiliar > p:nth-of-type(2n) { margin-bottom: 18px !important; }
+  .varrow { transform: rotate(90deg) scale(.7) !important; }
   .vpanel3 { padding: 28px 22px !important; gap: 26px !important; }
   .vstory { grid-template-columns: 1fr !important; gap: 20px !important; padding: 24px !important; }
   .vcard-body { padding: 6px 20px 24px !important; }
