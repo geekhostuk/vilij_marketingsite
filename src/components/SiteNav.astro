@@ -1,133 +1,30 @@
 ---
-// The Vilij — site header navigation. Identical on all thirteen pages.
+// The Vilij — site header. Identical on all thirteen pages.
 // The surrounding <section> is not here: its background gradient is page
 // specific, so each page keeps its own header section wrapper.
 //
-// SIGN UP points at the app. Deliberately no target="_blank": app.thevilij.co.uk
-// is the same brand, not an outbound link, so it opens in the same tab.
+// Logo, then two pills: log in for existing members (teal) and join (orange).
+// The site is now a single homepage, so there are no text links — Home,
+// Explore The Vilij and About Us were removed at the client's request (Sep
+// 2026) — and with nothing left to fold away there is no burger menu either:
+// both pills stay in the bar at every width. The logo still goes home, which
+// is the way back from the legal pages.
 //
-// ISSUES #20 — below 900px the three text links move into a dropdown panel
-// behind a burger button. The logo and SIGN UP stay in the bar at every width:
-// SIGN UP is the conversion action on a page aimed at people with very little
-// spare attention, and it should never be a tap away behind a menu.
+// Both pills point at the app. Deliberately no target="_blank":
+// app.thevilij.co.uk is the same brand, not an outbound link, so it opens in
+// the same tab.
 //
-// The links are rendered twice, once in the bar and once in the panel, and
-// exactly one copy is ever live — the bar copies are display:none below 900px
-// and the panel is [hidden] above it, so neither the tab order nor the
-// accessibility tree ever contains both. The array is the single source of
-// truth so the two copies cannot drift apart.
-//
-// The panel is an in-flow dropdown under the bar rather than a full-screen
-// overlay. That means no scroll lock, no focus trap, and no chance of ending
-// up underneath the fixed cookie banner (z-index 9999).
-//
-// Sizing, hiding and the burger itself all live in src/styles/responsive.css.
-//
-// All three weights are 700. Home used to be 700 and the other two 600, a
-// subtle cue that Lato cannot express — it ships 100/300/400/700/900 and has no
-// 600. Dropping the other two to 400 was the alternative and it is worse: 400
-// at 18px teal reads as body copy, so all three links would weaken to make one
-// stand out. The `weight` field is now redundant but stays, because the array
-// feeds both the desktop bar and the mobile panel and is the one place to
-// change if a real distinction is wanted later.
-// ISSUES #15 — "Explore The Vilij" and "About Us" were dead `#` placeholders on
-// all thirteen pages. Neither has a page of its own to point at, but both have a
-// section on the homepage that already says what they promise, so they now point
-// at those:
-//
-//   /#explore  the "Everything you need, in one place." section — the heading,
-//              the five-feature row, then the nine area tiles (Café, Vilij Hall,
-//              Expert Hub and the six coming-soon ones).
-//   /#about    the "Built by families who live this life." section, the one that
-//              opens "How We Can Support You".
-//
-// Root-relative and NOT bare fragments. The nav is on all thirteen pages, so a
-// bare `#explore` would silently do nothing on the twelve that have no such
-// element; `/#explore` navigates home and scrolls on every one of them.
-//
-// The nav is in normal flow, not sticky or fixed, so the browser's own fragment
-// scroll lands correctly and neither section needs a `scroll-margin-top`. Both
-// carry generous top padding anyway (84px and 56px), so the heading is not
-// jammed against the viewport edge. If the nav is ever made sticky, both
-// sections will need a scroll-margin equal to its height.
-//
-// Give either one a real page later and this array is where it changes.
-const links = [
-  { href: "/", label: "Home", weight: 700 },
-  { href: "/#explore", label: "Explore The Vilij", weight: 700 },
-  { href: "/#about", label: "About Us", weight: 700 },
-];
+// The teal pill keeps the `vnav-cta` class so every page's existing hover rule
+// still applies to it; the orange one is `vnav-join`, which that rule does not
+// touch. The `vnav-long` words are dropped on the smallest phones so both pills
+// fit beside the logo; sizing lives in src/styles/responsive.css.
 ---
 <div class="vnav-shell">
   <nav style="display:flex;align-items:center;justify-content:space-between;">
     <a href="/" class="vnav-logo"><img src="/assets/logo.png" alt="The Vilij" width="570" height="248" decoding="async" style="height:62px;width:auto;display:block;" /></a>
-    <div class="vnav-right" style="display:flex;align-items:center;gap:42px;">
-      {/* The trailing {" "} keeps the whitespace the hand-written links used to
-          have between them. Flex ignores whitespace-only text nodes, so it
-          changes nothing — but it keeps the built markup byte-identical to what
-          shipped before, which makes "the desktop design did not move" a thing
-          you can diff rather than a thing you have to take on trust. */}
-      {links.map((l) => (
-        <a href={l.href} class="vnav-link vlink" style={`font-family:Lato;font-weight:${l.weight};font-size:18px;color:#1f9ca0;text-decoration:none;`}>{l.label}</a>
-      )).flatMap((el) => [el, " "])}
-      <a href="https://app.thevilij.co.uk/sign-up" class="vnav-cta vpill" style="font-family:Lato;font-weight:700;font-size:16px;letter-spacing:.5px;color:#ffffff;background:#1f9ca0;padding:13px 30px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(31,156,160,0.3);">SIGN UP</a>
-      <button type="button" id="vnav-toggle" class="vnav-burger" aria-expanded="false" aria-controls="vnav-panel" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="vnav-right" style="display:flex;align-items:center;gap:24px;">
+      <a href="https://app.thevilij.co.uk" class="vnav-cta vpill" style="font-family:Lato;font-weight:700;font-size:16px;color:#ffffff;background:#1f9ca0;padding:12px 24px;border-radius:30px;text-decoration:none;white-space:nowrap;box-shadow:0 6px 16px rgba(31,156,160,0.3);"><span class="vnav-long">Vilijer </span>Log In</a>
+      <a href="https://app.thevilij.co.uk/sign-up" class="vnav-join vpill" style="font-family:Lato;font-weight:700;font-size:16px;color:#ffffff;background:#f28121;padding:12px 24px;border-radius:30px;text-decoration:none;white-space:nowrap;box-shadow:0 6px 16px rgba(242,129,33,0.3);">Join <span class="vnav-long">for </span>£10/month</a>
     </div>
   </nav>
-  <div id="vnav-panel" class="vnav-panel" hidden>
-    {links.map((l) => <a href={l.href} class="vlink">{l.label}</a>)}
-  </div>
 </div>
-<script>
-  (function () {
-    const toggle = document.getElementById("vnav-toggle");
-    const panel = document.getElementById("vnav-panel");
-    if (!toggle || !panel) return;
-
-    function setOpen(open: boolean) {
-      panel.hidden = !open;
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    }
-
-    function close(refocus: boolean) {
-      if (panel.hidden) return;
-      setOpen(false);
-      if (refocus) toggle.focus();
-    }
-
-    toggle.addEventListener("click", () => setOpen(panel.hidden));
-
-    // Escape returns focus to the button; a click elsewhere does not, because
-    // the pointer has already moved the user's attention somewhere else.
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") close(true);
-    });
-
-    document.addEventListener("click", (e) => {
-      const t = e.target as Node;
-      if (!panel.contains(t) && !toggle.contains(t)) close(false);
-    });
-
-    // Close on following a link. This used to matter because the two "#"
-    // placeholders did not navigate at all and so left the panel hanging open.
-    // They now go to /#explore and /#about, and on the homepage that is a
-    // same-document scroll — which still does not unmount anything, so the panel
-    // would still hang open. Closing first is also what keeps the scroll honest:
-    // the panel is an in-flow dropdown, so hiding it shortens the document above
-    // the target. Doing that synchronously here means the browser measures the
-    // final layout when it runs the fragment scroll as the default action.
-    panel.addEventListener("click", (e) => {
-      if ((e.target as HTMLElement).closest("a")) close(false);
-    });
-
-    // Crossing back above the breakpoint hides the panel by CSS, so close it
-    // properly rather than leaving aria-expanded="true" on an invisible menu.
-    const wide = window.matchMedia("(min-width: 901px)");
-    wide.addEventListener("change", (e) => {
-      if (e.matches) close(false);
-    });
-  })();
-</script>

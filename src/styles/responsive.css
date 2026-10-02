@@ -8,9 +8,9 @@
 
    1. EVERY RULE LIVES INSIDE A max-width MEDIA QUERY.
       The desktop design is signed off and must not move. A rule outside a
-      media query can change it; a rule inside one cannot. There are exactly
-      two exceptions, both at the top of the nav section below, and both only
-      hide elements that did not exist before this file did.
+      media query can change it; a rule inside one cannot. There are no
+      exceptions. (There used to be two, hiding the mobile nav's burger and
+      panel; both went when the nav's text links were removed in Sep 2026.)
 
    2. EVERY DECLARATION CARRIES !important.
       Not for emphasis — for arithmetic. An inline style attribute beats any
@@ -68,9 +68,7 @@
      <= 1180px   small laptop / tablet landscape.  The container is 1240px wide
                  plus 48px gutters = 1336px, so this is where the site first
                  has less room than it wants. Gutters and display type only.
-     <=  900px   tablet portrait. The nav's three text links go behind a
-                 burger — its intrinsic width runs out at about 850px — and
-                 every multi-column grid collapses.
+     <=  900px   tablet portrait. Every multi-column grid collapses.
      <=  600px   phone. Single column throughout. The feature-card photos stop
                  bleeding past the card edge and stack above the copy instead.
      <=  400px   small phone. Tightest gutters and one last type step.
@@ -86,20 +84,6 @@
 
 
 /* ===========================================================================
-   NAV — the two exceptions to rule 1.
-
-   .vnav-burger and .vnav-panel are new elements introduced alongside this
-   file. Hiding them outside a media query is safe because there is no
-   previous behaviour to change: before this file existed, neither element
-   was in the markup at all. Everything else about the nav is inside a
-   query below.
-   =========================================================================== */
-
-.vnav-burger { display: none; }
-.vnav-panel { display: none; }
-
-
-/* ===========================================================================
    <= 1180px — small laptop / tablet landscape
    =========================================================================== */
 
@@ -108,6 +92,11 @@
   /* Gutters. Left/right only, so the header container's own top padding
      (30px 48px 0) and the footer's 46px top margin both survive. */
   .vwrap { padding-left: 32px !important; padding-right: 32px !important; }
+
+  /* Header: logo and two pills. They fit at every width down to a phone,
+     but each step below trims them so they never wrap. */
+  .vnav-right { gap: 20px !important; }
+  .vnav-cta, .vnav-join { padding: 11px 18px !important; font-size: 15px !important; }
 
   /* Display type, first step. Sizes below 38px still fit at this width. */
   [style*="font-size:80px"] { font-size: 64px !important; }
@@ -166,71 +155,10 @@
 
 @media (max-width: 900px) {
 
-  /* --- Nav ---------------------------------------------------------------
-     Logo and SIGN UP stay in the bar at every width; SIGN UP is the
-     conversion action and should never be a tap away behind a menu. Only
-     the three text links move into the panel. */
-
-  .vnav-link { display: none !important; }
-
-  .vnav-right { gap: 16px !important; }
-
-  .vnav-burger {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 5px !important;
-    width: 44px !important;
-    height: 44px !important;
-    padding: 0 !important;
-    background: none !important;
-    border: none !important;
-    border-radius: 10px !important;
-    cursor: pointer !important;
-    flex: none !important;
-  }
-
-  .vnav-burger span {
-    display: block !important;
-    width: 24px !important;
-    height: 2.5px !important;
-    border-radius: 2px !important;
-    background: #1f9ca0 !important;
-    transition: transform .2s ease, opacity .2s ease !important;
-  }
-
-  /* Bars fold into an X while the panel is open. The middle bar sits at the
-     centre already, so the outer two travel 7.5px (5px gap + 2.5px bar). */
-  .vnav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg) !important; }
-  .vnav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0 !important; }
-  .vnav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg) !important; }
-
-  /* The panel is an in-flow dropdown under the bar, not an overlay, so it
-     needs no scroll lock and cannot end up behind the fixed cookie banner. */
-  .vnav-panel:not([hidden]) {
-    display: flex !important;
-    flex-direction: column !important;
-    margin-top: 14px !important;
-    border-top: 1px solid rgba(31, 156, 160, .22) !important;
-  }
-
-  .vnav-panel a {
-    display: flex !important;
-    align-items: center !important;
-    min-height: 52px !important;
-    font-family: Lato, sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 19px !important;
-    color: #1f9ca0 !important;
-    text-decoration: none !important;
-    border-bottom: 1px solid rgba(31, 156, 160, .12) !important;
-  }
-
-  .vnav-panel a:last-child { border-bottom: none !important; }
-
+  /* --- Nav --------------------------------------------------------------- */
   .vnav-logo img { height: 52px !important; width: auto !important; }
-  .vnav-cta { padding: 11px 20px !important; font-size: 15px !important; }
+  .vnav-right { gap: 12px !important; }
+  .vnav-cta, .vnav-join { padding: 10px 16px !important; font-size: 14px !important; }
 
   /* --- Layout ----------------------------------------------------------- */
 
@@ -260,6 +188,8 @@
   .vpanel3 { grid-template-columns: 1fr !important; gap: 30px !important; padding: 34px 28px !important; }
   .vcards2 { grid-template-columns: 1fr !important; gap: 28px !important; }
   .vbuilt { grid-template-columns: 1fr !important; gap: 38px !important; }
+  .vmember { grid-template-columns: 1fr !important; gap: 36px !important; }
+  .vwhy { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
 
   .vcard-body { padding: 6px 22px 26px !important; }
 
@@ -281,6 +211,12 @@
 @media (max-width: 600px) {
 
   .vwrap { padding-left: 24px !important; padding-right: 24px !important; }
+
+  /* "Vilijer Log In" and "Join for £10/month" beside the logo run ~400px, so
+     the pills drop to "Log In" and "Join £10/month" on a phone. */
+  .vnav-logo img { height: 44px !important; }
+  .vnav-long { display: none !important; }
+  .vnav-right { gap: 10px !important; }
 
   /* Type, second step. Nothing below 16px, ever. */
   [style*="font-size:80px"] { font-size: 38px !important; }
@@ -317,6 +253,16 @@
 
   .vfeat5 { grid-template-columns: 1fr !important; gap: 20px !important; }
   .vtiles { grid-template-columns: 1fr !important; gap: 22px !important; }
+  .vwhy { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+  /* Homepage "Sound familiar?": the now -> next pairs stack, and the arrow
+     turns to point down at the box it leads to. The second column heading
+     would land between the first pair's two boxes, so it goes; the colour of
+     the boxes already carries the before/after. */
+  .vfamiliar { grid-template-columns: 1fr !important; gap: 6px !important; }
+  .vfamiliar-to { display: none !important; }
+  .vfamiliar > p:nth-of-type(2n) { margin-bottom: 18px !important; }
+  .varrow { transform: rotate(90deg) scale(.7) !important; }
   .vpanel3 { padding: 28px 22px !important; gap: 26px !important; }
   .vstory { grid-template-columns: 1fr !important; gap: 20px !important; padding: 24px !important; }
   .vcard-body { padding: 6px 20px 24px !important; }
@@ -425,11 +371,11 @@
 
   .vwrap { padding-left: 16px !important; padding-right: 16px !important; }
 
-  /* The bar has to hold a 101px logo, the SIGN UP pill and a 44px burger
-     inside a 288px content box, so the pill tightens once more here. */
-  .vnav-logo img { height: 44px !important; }
-  .vnav-cta { padding: 10px 14px !important; font-size: 13px !important; }
-  .vnav-right { gap: 12px !important; }
+  /* The logo and both pills share a 288px content box on the smallest
+     phones, so everything tightens once more. */
+  .vnav-logo img { height: 38px !important; }
+  .vnav-cta, .vnav-join { padding: 9px 12px !important; font-size: 13px !important; }
+  .vnav-right { gap: 8px !important; }
 
   /* Display type, last step. */
   [style*="font-size:80px"] { font-size: 34px !important; }

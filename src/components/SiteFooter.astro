@@ -5,21 +5,26 @@
 // The company blurb (C1) and the newsletter blurb (C2) were Lorem ipsum and
 // have been removed rather than rewritten — the real copy is being written
 // elsewhere. Nothing stands in their place deliberately: a substitute
-// placeholder is the same problem in a different font. Column four's line —
+// placeholder is the same problem in a different font. The newsletter column's line —
 // "Sign up to receive The Vilij News" — is the real copy and sits between the
 // heading and the form; column one still has none, and when it arrives it goes
 // under the contact email.
 //
-// The four headings sit on one line because each takes the same 22px bottom
+// The three headings sit on one line because each takes the same 22px bottom
 // margin; keep that in step if any of them changes.
 //
-// Column two's social links are live (31 Jul 2026). Two query strings were
-// dropped from the URLs as supplied: Instagram's `?hl=en` pins the interface to
-// English for every visitor, and LinkedIn's `?viewAsMember=true` is an artefact
-// of viewing your own page while signed in as an admin. Neither belongs on a
-// public link. Facebook's `?id=` is load-bearing and stays.
+// The "Join Us" column of social links (Facebook, Instagram, LinkedIn) was
+// removed at the client's request (Sep 2026), taking the grid from four columns
+// to three. If it comes back, Facebook's URL was
+// https://www.facebook.com/profile.php?id=61583218268871 — the `?id=` is
+// load-bearing.
 //
-// ISSUES #20 — the four-column grid was the worst overflow on the site: at
+// WhatsApp sits under the email. wa.me wants the number in international form
+// with no leading zero or spaces; it opens a chat in the app on a phone and
+// WhatsApp Web on a desktop, which is why it gets target="_blank" and the
+// email does not.
+//
+// ISSUES #20 — the (then) four-column grid was the worst overflow on the site: at
 // 375px its 1.3fr 1fr 1fr 1.4fr gave columns of 34-52px and the newsletter
 // input could not fit. vfoot takes it to two columns at 900px and one at 600px;
 // vnl-row stacks the input above Subscribe at 400px. The behaviour is in
@@ -34,22 +39,15 @@ interface Props {
 const { padding = "74px 0 30px" } = Astro.props;
 ---
 <footer style={`background:#ffffff;padding:${padding};`}>
-  <div class="vwrap vfoot" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1.4fr;gap:40px;">
+  <div class="vwrap vfoot" style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.3fr 1.3fr 1.4fr;gap:40px;">
     <div>
       <img src="/assets/footerlogo.png" alt="Vilij" width="441" height="192" loading="lazy" decoding="async" style="height:48px;width:auto;display:block;margin-bottom:20px;" />
-      <a href="mailto:info@thevilij.co.uk" class="vlink" style="display:block;font-family:Lato;font-size:18px;color:#444;text-decoration:none;margin-bottom:30px;">info@thevilij.co.uk</a>
+      <a href="mailto:info@thevilij.co.uk" class="vlink" style="display:block;font-family:Lato;font-size:18px;color:#444;text-decoration:none;margin-bottom:10px;">info@thevilij.co.uk</a>
+      <a href="https://wa.me/447709673403" class="vlink" target="_blank" rel="noopener" style="display:block;font-family:Lato;font-size:18px;color:#444;text-decoration:none;margin-bottom:30px;">WhatsApp: 07709 673 403</a>
       <a href="#" id="to-top" style="display:inline-flex;align-items:center;gap:14px;text-decoration:none;cursor:pointer;">
         <span style="width:52px;height:52px;border-radius:50%;border:2px solid #1f9ca0;display:inline-flex;align-items:center;justify-content:center;color:#1f9ca0;font-size:22px;">&#8593;</span>
         <span style="font-family:Lato;font-size:18px;color:#444;">Back to the top</span>
       </a>
-    </div>
-    <div>
-      <h4 style="font-family:Lato;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Join Us</h4>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px;">
-        <li><a href="https://www.facebook.com/profile.php?id=61583218268871" class="vlink" target="_blank" rel="noopener" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Facebook</a></li>
-        <li><a href="https://www.instagram.com/the.vilij/" class="vlink" target="_blank" rel="noopener" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">Instagram</a></li>
-        <li><a href="https://www.linkedin.com/company/the-vilij-ltd/" class="vlink" target="_blank" rel="noopener" style="font-family:Lato;font-size:18px;color:#444;text-decoration:none;">LinkedIn</a></li>
-      </ul>
     </div>
     <div>
       <h4 style="font-family:Lato;font-weight:700;font-size:24px;color:#1f9ca0;margin:0 0 22px;">Quick Links</h4>
