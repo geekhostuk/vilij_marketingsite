@@ -84,6 +84,11 @@ const faqs = [
       .vpill:hover { filter: brightness(1.05); }
       .vcard-img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; display: block; }
       .vnav-cta:hover { background: #15838a !important; }
+      /* Hero village map: rises into place on load, then floats gently. */
+      .vhero-map { animation: vmap-in 900ms cubic-bezier(.2,.7,.2,1) both, vmap-float 6s ease-in-out 900ms infinite; }
+      @keyframes vmap-in { from { opacity: 0; transform: translateY(40px) scale(.96); } to { opacity: 1; transform: none; } }
+      @keyframes vmap-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+      @media (prefers-reduced-motion: reduce) { .vhero-map { animation: none; } }
     </style><div style="font-family:Lato,sans-serif;color:#353535;background:red;width:100%;overflow-x:hidden;">
 
       <!-- ===== HEADER + HERO ===== -->
@@ -104,7 +109,7 @@ const faqs = [
               <JoinCta price={monthlyPrice} />
             </div>
             <div class="vhero-art" style="display:flex;justify-content:center;">
-              <img src="/assets/hero_village.png" alt="The Vilij village" width="1240" height="776" fetchpriority="high" decoding="async" style="width:100%;max-width:620px;height:auto;display:block;" />
+              <img class="vhero-map" src="/assets/hero_village.png" alt="The Vilij village" width="1240" height="776" fetchpriority="high" decoding="async" style="width:100%;max-width:620px;height:auto;display:block;" />
             </div>
           </div>
         </div>
