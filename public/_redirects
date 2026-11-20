@@ -80,6 +80,17 @@
 /404                          https://app.thevilij.co.uk/404  301
 
 # ---------------------------------------------------------------------------
+# Short links to outside services. These are 302, not 301: they are vanity
+# links whose destinations may change, and browsers cache a 301 indefinitely.
+# The trailing-slash forms are spelled out as exact rules (rather than a splat)
+# so they stay in the static budget and above the dynamic block.
+# ---------------------------------------------------------------------------
+/sessions                     https://luma.com/thevilij-events  302
+/sessions/                    https://luma.com/thevilij-events  302
+/school-meeting               https://payhip.com/TheVilij  302
+/school-meeting/              https://payhip.com/TheVilij  302
+
+# ---------------------------------------------------------------------------
 # Path parameters under each page. /index is absent on purpose: Bubble serves
 # its index page's path parameters off the bare domain, and those paths are the
 # marketing site's own now.
