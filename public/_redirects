@@ -87,8 +87,8 @@
 # ---------------------------------------------------------------------------
 /sessions                     https://luma.com/thevilij-events  302
 /sessions/                    https://luma.com/thevilij-events  302
-/school-meeting               https://payhip.com/TheVilij  302
-/school-meeting/              https://payhip.com/TheVilij  302
+/resources                    https://payhip.com/TheVilij  302
+/resources/                   https://payhip.com/TheVilij  302
 
 # ---------------------------------------------------------------------------
 # Path parameters under each page. /index is absent on purpose: Bubble serves

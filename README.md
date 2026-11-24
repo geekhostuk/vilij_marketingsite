@@ -95,7 +95,7 @@ site root. It exists because the two sites swapped domains: this one moved from
 the Bubble app moved from the apex to `app.thevilij.co.uk`, so the app's old
 URLs now land here. Each of its 21 pages gets an exact rule and a splat rule, all 301.
 It also holds two 302 short links to outside services: `/sessions` (Luma events)
-and `/school-meeting` (Payhip).
+and `/resources` (Payhip).
 
 Two things to know before editing it. Pages matches these rules **before** it
 looks for a file to serve, so a rule shadows a route of the same name. And a
